@@ -31,6 +31,12 @@ namespace Borelli_BdT.utilities {
 
     public static class DataChecker {
         public static void SetIfValidString(ref string field, string val, string errorMessage, CheckStr whatCheck) {
+            bool valid = IsValidString(val, whatCheck);
+
+            field = valid ? val : throw new Exception($"{errorMessage}");
+        }
+
+        public static bool IsValidString(string val, CheckStr whatCheck) {
             bool valid = false;
 
             switch (whatCheck) {
@@ -58,10 +64,16 @@ namespace Borelli_BdT.utilities {
                     valid = true;
                     break;
             }
-            //in questo modo mi risparmio di controllare a ogni case ma faccio una condizione riassuntiva
-            field = valid ? val : throw new Exception($"{errorMessage}");
+
+            return valid;
         }
         public static void SetIfValidDate(ref DateTime field, DateTime val, string errorMessage, CheckDate whatCheck) {
+            bool valid = IsValidDate(val, whatCheck);
+
+            field = valid ? val : throw new Exception($"{errorMessage}");
+        }
+
+        public static bool IsValidDate(DateTime val, CheckDate whatCheck) {
             bool valid = false;
 
             switch (whatCheck) {
@@ -72,7 +84,7 @@ namespace Borelli_BdT.utilities {
                     break;
             }
 
-            field = valid ? val : throw new Exception($"{errorMessage}");
+            return valid;
         }
 
         public static void SetIfListStrValid(ref List<string> dst, List<string> val, string errorMessage, CheckStrList whatCheck) {
@@ -81,23 +93,27 @@ namespace Borelli_BdT.utilities {
             switch (whatCheck) {
                 case CheckStrList.Generic:
                     for (int i = 0; i < val.Count; i++) {
-                        if (String.IsNullOrWhiteSpace(val[i]))
+                        if (!IsValidString(val[i], CheckStr.Generic))
                             break;
+
                         if (i == val.Count - 1)
                             valid = true;
                     }
                     break;
                 case CheckStrList.District:
                     for (int i = 0; i < val.Count; i++) {
-                        /*if (!Districts.IsDistrictValid(val[i]))
-                            break;*/
+                        if (!IsValidString(val[i], CheckStr.District))
+                            break;
+
                         if (i == val.Count - 1)
                             valid = true;
                     }
                     break;
                 case CheckStrList.Work:
                     for (int i = 0; i < val.Count; i++) {
-                        //TODO: controllare che il lavoro sia contenuto nel file dei lavori accettati
+                        if (!IsValidString(val[i], CheckStr.Work))
+                            break;
+
                         if (i == val.Count - 1)
                             valid = true;
                     }
@@ -108,6 +124,12 @@ namespace Borelli_BdT.utilities {
         }
 
         public static void SetIfValidNumber(ref float field, float val, string errorMessage, CheckNumb whatCheck) {
+            bool valid = IsValidNumber(val, whatCheck);
+
+            field = valid ? val : throw new Exception($"{errorMessage}");
+        }
+
+        public static bool IsValidNumber(float val, CheckNumb whatCheck) {
             bool valid = false;
 
             switch (whatCheck) {
@@ -123,7 +145,7 @@ namespace Borelli_BdT.utilities {
                     break;
             }
 
-            field = valid ? val : throw new Exception($"{errorMessage}");
+            return valid;
         }
     }
 }
