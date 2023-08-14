@@ -8,7 +8,7 @@ namespace Borelli_BdT.model {
         Accepted,
         Done
     }
-    public class Task {
+    public class Task : IEquatable<Task> {
         private string _requesterNickname, _acceptorNickname;
 
         public DateTime RequestDate { get; private set; }
@@ -121,5 +121,15 @@ namespace Borelli_BdT.model {
             return outp;
         }
 
+
+        public bool Equals(Task t) {
+            if (t == null) {
+                return false;
+            } else if (t == this) {
+                return true;
+            } else {
+                return (t.Id == Id);
+            }
+        }
     }
 }
