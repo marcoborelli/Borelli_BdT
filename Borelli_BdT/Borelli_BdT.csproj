@@ -50,6 +50,7 @@
     <Compile Include="model\Districts.cs" />
     <Compile Include="model\Jobs.cs" />
     <Compile Include="model\Task.cs" />
+    <Compile Include="model\TasksList.cs" />
     <Compile Include="model\User.cs" />
     <Compile Include="model\UsersList.cs" />
     <Compile Include="utilities\DataChecker.cs" />
