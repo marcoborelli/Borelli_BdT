@@ -27,6 +27,7 @@ namespace Borelli_BdT.utilities {
     public enum CheckNumb {
         Stars,
         Positive,
+        Percentage,
     }
 
     public static class DataChecker {
@@ -140,6 +141,11 @@ namespace Borelli_BdT.utilities {
                     break;
                 case CheckNumb.Positive:
                     if (val >= 0) {
+                        valid = true;
+                    }
+                    break;
+                case CheckNumb.Percentage:
+                    if (val <= 100 && val >= 0) {
                         valid = true;
                     }
                     break;
