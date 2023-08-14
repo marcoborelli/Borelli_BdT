@@ -8,7 +8,7 @@ namespace Borelli_BdT.model {
         Registration,
         Confirmed
     }
-    public class User {
+    public class User : IEquatable<User> {
         private string _nickname, _password;
         private CustomerMasterData _data;
         private List<string> _providesJobs;
@@ -139,6 +139,16 @@ namespace Borelli_BdT.model {
 
             //per arrotondare ogni 0.25
             AverageStars = (float)(Math.Round((TotalStars / DoneJobsNumber) * 4, MidpointRounding.ToEven)) / 4;
+        }
+
+        public bool Equals(User u) {
+            if (u == null) {
+                return false;
+            } else if (u == this) {
+                return true;
+            } else {
+                return (u.Nickname == Nickname);
+            }
         }
     }
 }
