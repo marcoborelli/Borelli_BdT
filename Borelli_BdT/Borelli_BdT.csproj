@@ -51,6 +51,7 @@
     <Compile Include="model\Jobs.cs" />
     <Compile Include="model\Task.cs" />
     <Compile Include="model\User.cs" />
+    <Compile Include="model\UsersList.cs" />
     <Compile Include="utilities\DataChecker.cs" />
     <Compile Include="view\Form1.cs">
       <SubType>Form</SubType>
