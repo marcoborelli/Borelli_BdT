@@ -54,6 +54,7 @@
     <Compile Include="model\User.cs" />
     <Compile Include="model\UsersList.cs" />
     <Compile Include="utilities\DataChecker.cs" />
+    <Compile Include="utilities\Parameters.cs" />
     <Compile Include="view\Form1.cs">
       <SubType>Form</SubType>
     </Compile>
