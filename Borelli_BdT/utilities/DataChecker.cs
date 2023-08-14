@@ -48,7 +48,7 @@ namespace Borelli_BdT.utilities {
                     valid = rxEmail.IsMatch(val);
                     break;
                 case CheckStr.District:
-                    //TODO: valid = Districts.IsDistrictValid(val);
+                    valid = Districts.IsDistrictValid(val);
                     break;
                 case CheckStr.Work:
                     valid = Jobs.IsJobValid(val);

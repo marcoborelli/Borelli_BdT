@@ -47,6 +47,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="model\CustomerMasterData.cs" />
+    <Compile Include="model\Districts.cs" />
     <Compile Include="model\Jobs.cs" />
     <Compile Include="model\Task.cs" />
     <Compile Include="model\User.cs" />
