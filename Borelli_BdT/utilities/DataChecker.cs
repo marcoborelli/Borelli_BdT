@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
+using Borelli_BdT.model;
 
 namespace Borelli_BdT.utilities {
     public enum CheckStr {
@@ -50,8 +51,7 @@ namespace Borelli_BdT.utilities {
                     //TODO: valid = Districts.IsDistrictValid(val);
                     break;
                 case CheckStr.Work:
-                    //TODO: controllare che il lavoro sia contenuto nel file dei lavori accettati
-                    valid = true;
+                    valid = Jobs.IsJobValid(val);
                     break;
                 case CheckStr.Nickname:
                     //TODO: controllare che il nickname sia davvero associato ad un utente
