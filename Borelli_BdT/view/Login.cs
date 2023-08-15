@@ -4,8 +4,8 @@ using MaterialSkin;
 using MaterialSkin.Controls;
 
 namespace Borelli_BdT {
-    public partial class Form1 : MaterialForm {
-        public Form1() {
+    public partial class Login : MaterialForm {
+        public Login() {
             InitializeComponent();
         }
     }
