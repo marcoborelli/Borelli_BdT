@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using Borelli_BdT.model;
 
 namespace Borelli_BdT.utilities {
     public /*static*/ class Parameters {
@@ -23,9 +24,16 @@ namespace Borelli_BdT.utilities {
             FilePathJobs = filePathJobs;
             DeltaPerc = deltaPerc;
         }
+
         public static void Init(string path) {
             ParametersPath = path;
-            //TODO: ClasseJson.Carica();
+            Parameters tmp = FileManager.ReadParametersFile(ParametersPath);
+
+            FPUsers = tmp.FilePathUser;
+            FPTasks = tmp.FilePathTasks;
+            FPDistricts = tmp.FilePathDistricts;
+            FPJobs = tmp.FilePathJobs;
+            DeltaPercentage = tmp.DeltaPerc;
         }
 
         private static string ParametersPath {
@@ -42,7 +50,11 @@ namespace Borelli_BdT.utilities {
 
                 if (!File.Exists(FPUsers)) {
                     File.Create(FPUsers);
-                    //TODO: aggiunta di un segretario
+                    User u = new User("DummyName", "DummySurname", "1234567789", "mail@dummy.it", "CENTRO",
+                        new DateTime(2000, 1, 1), "DuumyNickName", "password", new List<string> { "SEGRETERIA" },
+                        new List<string> { "CENTRO" }, RegContext.Confirmed);
+
+                    FileManager.WriteUsersFile(new List<User> { u }, FPUsers);
                 }
             }
         }
@@ -70,9 +82,10 @@ namespace Borelli_BdT.utilities {
                 _FPDistricts = value;
 
                 if (!File.Exists(FPDistricts)) {
-                    List<string> defaultDistricts = new List<string> { "CENTRO", "CAPPUCCINI", "INDUSTRIALE"};
                     File.Create(FPDistricts);
-                    //TODO: JsonClass.Write();
+
+                    List<string> defaultDistricts = new List<string> { "CENTRO", "CAPPUCCINI", "INDUSTRIALE" };
+                    FileManager.WriteStringFile(defaultDistricts, FPDistricts);
                 }
             }
         }
@@ -86,15 +99,20 @@ namespace Borelli_BdT.utilities {
                 _FPJobs = value;
 
                 if (!File.Exists(FPJobs)) {
-                    List<string> defaultJobs = new List<string> { "SEGRETERIA", "IDRAULICA", "MECCANICA", "BADANTE" };
                     File.Create(FPJobs);
-                    //TODO: JsonClass.Write();
+
+                    List<string> defaultJobs = new List<string> { "SEGRETERIA", "IDRAULICA", "MECCANICA", "BADANTE" };
+                    FileManager.WriteStringFile(defaultJobs, FPJobs);
                 }
             }
         }
         public static float DeltaPercentage {
             get => _deltaPercentage;
             private set => DataChecker.SetIfValidNumber(ref _deltaPercentage, value, "Inserire una percentuale [0-100]", CheckNumb.Percentage);
+        }
+
+        public static void WriteJsonFile() {
+            FileManager.WriteParamtersFile(ParametersPath);
         }
     }
 }

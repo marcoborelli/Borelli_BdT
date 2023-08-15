@@ -20,7 +20,7 @@ namespace Borelli_BdT.model {
 
         public static void Init() {
             Tasks = new List<Task>();
-            //TODO: ClasseJson.CaricaTasks(path);
+            Tasks = FileManager.ReadTasksFile(Parameters.FPTasks);
         }
 
         public static int GetTaskIndex(string id) {
@@ -112,6 +112,10 @@ namespace Borelli_BdT.model {
             }
 
             return outp;
+        }
+
+        public static void WriteJsonFile() {
+            FileManager.WriteTasksFile(Tasks, Parameters.FPTasks);
         }
     }
 }

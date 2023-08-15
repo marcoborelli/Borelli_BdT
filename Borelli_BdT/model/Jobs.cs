@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Borelli_BdT.utilities;
 
 namespace Borelli_BdT.model {
     public static class Jobs {
@@ -7,7 +8,7 @@ namespace Borelli_BdT.model {
 
         public static void Init() {
             Works = new List<string>();
-            //TODO: ClasseJson.Carica(filename);
+            Works = FileManager.ReadStringFile(Parameters.FPJobs);
         }
         public static void AddJob(string j) {
             if (Works == null)
@@ -43,7 +44,7 @@ namespace Borelli_BdT.model {
         }
 
         public static void WriteJsonFile() {
-            //TODO: ClasseJson.WriteFile(Works);
+            FileManager.WriteStringFile(Works, Parameters.FPJobs);
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Borelli_BdT.utilities;
 
 namespace Borelli_BdT.model {
     public static class Districts {
@@ -7,7 +8,7 @@ namespace Borelli_BdT.model {
 
         public static void Init() {
             Zones = new List<string>();
-            //TODO: ClasseJson.Carica();
+            Zones = FileManager.ReadStringFile(Parameters.FPDistricts);
         }
         public static void AddDistrict(string d) {
             if (Zones == null)
@@ -43,7 +44,7 @@ namespace Borelli_BdT.model {
         }
 
         public static void WriteJsonFile() {
-            //TODO: ClasseJson.WriteFile(Jobs);
+            FileManager.WriteStringFile(Zones, Parameters.FPDistricts);
         }
     }
 }

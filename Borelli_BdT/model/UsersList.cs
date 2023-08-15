@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Borelli_BdT.utilities;
 
 namespace Borelli_BdT.model {
     public static class UsersList {
@@ -8,7 +9,7 @@ namespace Borelli_BdT.model {
 
         public static void Init() {
             Users = new List<User>();
-            //TODO: ClasseJson.CaricaUtenti(path);
+            Users = FileManager.ReadUsersFile(Parameters.FPUsers);
         }
 
         public static int GetUserIndex(string username) {
@@ -40,7 +41,7 @@ namespace Borelli_BdT.model {
 
 
         public static void WriteJsonFile() {
-            //TODO: ClasseJson.WriteFile(Users);
+            FileManager.WriteUsersFile(Users, Parameters.FPUsers);
         }
     }
 }
