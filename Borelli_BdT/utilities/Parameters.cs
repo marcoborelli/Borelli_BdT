@@ -7,9 +7,30 @@ namespace Borelli_BdT.utilities {
         private static string _FPUsers, _FPTasks, _FPDistricts, _FPJobs;
         private static float _deltaPercentage;
 
+        private static string _parametersPath;
 
+        //li ri-dichiaro non statici per poterli leggere da file Json e associarli successivamente a quelli statici
+        public string FilePathUser { get; private set; }
+        public string FilePathTasks { get; private set; }
+        public string FilePathDistricts { get; private set; }
+        public string FilePathJobs { get; private set; }
+        public float DeltaPerc { get; private set; }
+
+        public Parameters (string filePathUser, string filePathTasks, string filePathDistricts, string filePathJobs, float deltaPerc) {
+            FilePathUser = filePathUser;
+            FilePathTasks = filePathTasks;
+            FilePathDistricts = filePathDistricts;
+            FilePathJobs = filePathJobs;
+            DeltaPerc = deltaPerc;
+        }
         public static void Init(string path) {
+            ParametersPath = path;
             //TODO: ClasseJson.Carica();
+        }
+
+        private static string ParametersPath {
+            get => _parametersPath;
+            set => DataChecker.SetIfValidString(ref _parametersPath, value, "Inserire un path valido", CheckStr.Generic);
         }
         public static string FPUsers {
             get => _FPUsers;
