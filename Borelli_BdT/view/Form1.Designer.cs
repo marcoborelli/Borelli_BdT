@@ -30,7 +30,9 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.FormStyle = MaterialSkin.Controls.MaterialForm.FormStyles.ActionBar_None;
             this.Name = "Form1";
+            this.Padding = new System.Windows.Forms.Padding(3, 24, 3, 3);
             this.Text = "BdT - 0.0.2";
             this.ResumeLayout(false);
 
