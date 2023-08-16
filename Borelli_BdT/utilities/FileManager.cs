@@ -53,7 +53,7 @@ namespace Borelli_BdT.utilities {
 
 
             string text = JsonConvert.SerializeObject(input, Formatting.Indented);
-            File.WriteAllText(filePath, text);
+            WriteFile(filePath, text);
         }
         public static void WriteUsersFile(List<User> input, string filePath) {
             if (!File.Exists(filePath))
@@ -64,7 +64,7 @@ namespace Borelli_BdT.utilities {
 
 
             string text = JsonConvert.SerializeObject(input, Formatting.Indented);
-            File.WriteAllText(filePath, text);
+            WriteFile(filePath, text);
         }
         public static void WriteTasksFile(List<model.Task> input, string filePath) {
             if (!File.Exists(filePath))
@@ -75,7 +75,7 @@ namespace Borelli_BdT.utilities {
 
 
             string text = JsonConvert.SerializeObject(input, Formatting.Indented);
-            File.WriteAllText(filePath, text);
+            WriteFile(filePath, text);
         }
         public static void WriteParamtersFile(string filePath) {
             if (!File.Exists(filePath))
@@ -84,7 +84,17 @@ namespace Borelli_BdT.utilities {
 
             Parameters p = new Parameters(Parameters.FPUsers, Parameters.FPTasks, Parameters.FPDistricts, Parameters.FPJobs, Parameters.DeltaPercentage);
             string text = JsonConvert.SerializeObject(p, Formatting.Indented);
-            File.WriteAllText(filePath, text);
+            WriteFile(filePath, text);
+        }
+        public static void CreateFile(string filePath) {
+            using (FileStream fs = new FileStream(filePath, FileMode.Create, FileAccess.Write, FileShare.None)) {
+            }
+        }
+
+        public static void WriteFile(string filePath, string text) {
+            using (StreamWriter writer = new StreamWriter(filePath, false)) {
+                writer.Write(text);
+            }
         }
     }
 }

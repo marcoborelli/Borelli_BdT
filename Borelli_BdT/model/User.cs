@@ -153,6 +153,9 @@ namespace Borelli_BdT.model {
             RecievedHours += t;
         }
 
+        public bool IsPasswordCorrect(string passwd) {
+            return (passwd == Password);
+        }
         private void AddHoursAndStarsToUser(TimeSpan taskLength, float star) {
             AddDoneHours(taskLength);
 
