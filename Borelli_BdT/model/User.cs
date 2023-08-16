@@ -1,22 +1,31 @@
 ﻿using System;
 using System.Collections.Generic;
 using Borelli_BdT.utilities;
+using Newtonsoft.Json;
 
 namespace Borelli_BdT.model {
     public enum RegContext {
         Registration,
         Confirmed
     }
+
     public class User : IEquatable<User> {
         private string _nickname, _password;
         private CustomerMasterData _data;
         private List<string> _providesJobs;
         private List<string> _jobsDistrict;
         private float _totalStars, _averageStars, _doneJobsNumber;
+
+        [JsonProperty]
         public TimeSpan DoneHours { get; private set; }
+        [JsonProperty]
         public TimeSpan RecievedHours { get; private set; }
+        [JsonProperty]
         public RegContext State { get; private set; }
 
+
+        public User() {
+        }
 
         public User(CustomerMasterData userData, string nickname, string passwd, List<string> providesJobs, List<string> jobDistr,
             float totalStar, float averageStar, float doneJobsNumber, TimeSpan doneHours, TimeSpan recievedHours, RegContext step) {
@@ -57,14 +66,17 @@ namespace Borelli_BdT.model {
         }
 
 
+        [JsonProperty]
         public string Nickname { //PK
             get => _nickname;
             private set => DataChecker.SetIfValidString(ref _nickname, value, "Inserire un nickname valido", CheckStr.Generic);
         }
+        [JsonProperty]
         private string Password {
             get => _password;
             set => DataChecker.SetIfValidString(ref _password, value, "Inserire una password valida", CheckStr.Generic);
         }
+        [JsonProperty]
         public List<string> ProvidesJobs {
             get => _providesJobs;
             private set {
@@ -78,22 +90,27 @@ namespace Borelli_BdT.model {
                 }
             }
         }
+        [JsonProperty]
         public List<string> JobsDistrict {
             get => _jobsDistrict;
             private set => DataChecker.SetIfListStrValid(ref _jobsDistrict, value, "Uno o più elementi della lista non sono riconosciuti come zone di lavoro", CheckStrList.District);
         }
+        [JsonProperty]
         public float TotalStars {
             get => _totalStars;
             private set => DataChecker.SetIfValidNumber(ref _totalStars, value, "La somma totale delle stelle deve essere positiva", CheckNumb.Positive);
         }
+        [JsonProperty]
         public float AverageStars {
             get => _averageStars;
             private set => DataChecker.SetIfValidNumber(ref _averageStars, value, "Inserire un corretto numero di stelle [0-5]", CheckNumb.Stars);
         }
+        [JsonProperty]
         public float DoneJobsNumber {
             get => _doneJobsNumber;
             private set => DataChecker.SetIfValidNumber(ref _doneJobsNumber, value, "La somma totale del numero di lavori fatti deve essere positiva", CheckNumb.Positive);
         }
+        [JsonProperty]
         public CustomerMasterData Data {
             get => _data;
             private set {
@@ -156,6 +173,7 @@ namespace Borelli_BdT.model {
         public bool IsPasswordCorrect(string passwd) {
             return (passwd == Password);
         }
+
         private void AddHoursAndStarsToUser(TimeSpan taskLength, float star) {
             AddDoneHours(taskLength);
 
