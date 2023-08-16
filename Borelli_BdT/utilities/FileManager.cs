@@ -62,7 +62,6 @@ namespace Borelli_BdT.utilities {
             if (input == null)
                 throw new Exception("Inserire una lista di User valida");
 
-
             string text = JsonConvert.SerializeObject(input, Formatting.Indented);
             WriteFile(filePath, text);
         }
@@ -86,6 +85,43 @@ namespace Borelli_BdT.utilities {
             string text = JsonConvert.SerializeObject(p, Formatting.Indented);
             WriteFile(filePath, text);
         }
+
+
+        public static void CheckDistrictFile(string filePath) {
+            if (!File.Exists(Parameters.FPDistricts)) {
+                CreateFile(Parameters.FPDistricts);
+
+                List<string> defaultDistricts = new List<string> { "CENTRO", "CAPPUCCINI", "INDUSTRIALE" };
+                WriteStringFile(defaultDistricts, filePath);
+            }
+        }
+
+        public static void CheckJobsFile(string filePath) {
+            if (!File.Exists(Parameters.FPJobs)) {
+                CreateFile(Parameters.FPJobs);
+
+                List<string> defaultJobs = new List<string> { "SEGRETERIA", "IDRAULICA", "MECCANICA", "BADANTE" };
+                WriteStringFile(defaultJobs, filePath);
+            }
+        }
+
+        public static void CheckTasksFile(string filePath) {
+            if (!File.Exists(Parameters.FPTasks)) {
+                CreateFile(filePath);
+            }
+        }
+        public static void CheckUsersFile(string filePath) {
+
+            if (!File.Exists(Parameters.FPUsers)) {
+                CreateFile(Parameters.FPUsers);
+                User u = new User("DummyName", "DummySurname", "1234567789", "mail@dummy.it", "Via AAA", "CENTRO",
+                     new DateTime(2000, 1, 1), "DummyNickName", "password", new List<string> { "SEGRETERIA" },
+                     new List<string> { "CENTRO" }, RegContext.Confirmed);
+
+                WriteUsersFile(new List<User> { u }, filePath);
+            }
+        }
+
         public static void CreateFile(string filePath) {
             using (FileStream fs = new FileStream(filePath, FileMode.Create, FileAccess.Write, FileShare.None)) {
             }

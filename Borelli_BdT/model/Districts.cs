@@ -7,6 +7,7 @@ namespace Borelli_BdT.model {
         private static List<string> Zones { get; set; }
 
         public static void Init() {
+            FileManager.CheckDistrictFile(Parameters.FPDistricts);
             Zones = new List<string>();
             Zones = FileManager.ReadStringFile(Parameters.FPDistricts);
         }

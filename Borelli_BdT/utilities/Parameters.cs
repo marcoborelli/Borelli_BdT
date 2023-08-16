@@ -47,15 +47,6 @@ namespace Borelli_BdT.utilities {
                     throw new Exception("Inserire un percorso file per il file 'users.json' valido");
 
                 _FPUsers = value;
-
-                if (!File.Exists(FPUsers)) {
-                    File.Create(FPUsers);
-                    User u = new User("DummyName", "DummySurname", "1234567789", "mail@dummy.it", "CENTRO",
-                        new DateTime(2000, 1, 1), "DuumyNickName", "password", new List<string> { "SEGRETERIA" },
-                        new List<string> { "CENTRO" }, RegContext.Confirmed);
-
-                    FileManager.WriteUsersFile(new List<User> { u }, FPUsers);
-                }
             }
         }
 
@@ -66,10 +57,6 @@ namespace Borelli_BdT.utilities {
                     throw new Exception("Inserire un percorso file per il file 'tasks.json' valido");
 
                 _FPTasks = value;
-
-                if (!File.Exists(FPTasks)) {
-                    File.Create(FPTasks);
-                }
             }
         }
 
@@ -80,13 +67,6 @@ namespace Borelli_BdT.utilities {
                     throw new Exception("Inserire un percorso file per il file 'districts.json' valido");
 
                 _FPDistricts = value;
-
-                if (!File.Exists(FPDistricts)) {
-                    File.Create(FPDistricts);
-
-                    List<string> defaultDistricts = new List<string> { "CENTRO", "CAPPUCCINI", "INDUSTRIALE" };
-                    FileManager.WriteStringFile(defaultDistricts, FPDistricts);
-                }
             }
         }
 
@@ -97,13 +77,6 @@ namespace Borelli_BdT.utilities {
                     throw new Exception("Inserire un percorso file per il file 'jobs.json' valido");
 
                 _FPJobs = value;
-
-                if (!File.Exists(FPJobs)) {
-                    File.Create(FPJobs);
-
-                    List<string> defaultJobs = new List<string> { "SEGRETERIA", "IDRAULICA", "MECCANICA", "BADANTE" };
-                    FileManager.WriteStringFile(defaultJobs, FPJobs);
-                }
             }
         }
         public static float DeltaPercentage {

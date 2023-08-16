@@ -7,6 +7,7 @@ namespace Borelli_BdT.model {
         private static List<string> Works { get; set; }
 
         public static void Init() {
+            FileManager.CheckJobsFile(Parameters.FPJobs);
             Works = new List<string>();
             Works = FileManager.ReadStringFile(Parameters.FPJobs);
         }

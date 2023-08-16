@@ -19,6 +19,7 @@ namespace Borelli_BdT.model {
         public static List<Task> Tasks { get; private set; }
 
         public static void Init() {
+            FileManager.CheckTasksFile(Parameters.FPTasks);
             Tasks = new List<Task>();
             Tasks = FileManager.ReadTasksFile(Parameters.FPTasks);
         }
@@ -54,6 +55,7 @@ namespace Borelli_BdT.model {
 
             return (Tasks.FindIndex(x => x.Id == id) != -1);
         }
+
         public List<Task> GetRequestedTasks(string username, RqTaskState whatState) {
             if (Tasks == null)
                 throw new Exception("Lista non inizializzata, chiamare prima l'initializer della classe statica TasksList");
