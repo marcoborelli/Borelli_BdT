@@ -16,7 +16,7 @@ namespace Borelli_BdT.model {
         All,
     }
     public class TasksList {
-        private static List<Task> Tasks { get; set; }
+        public static List<Task> Tasks { get; private set; }
 
         public static void Init() {
             Tasks = new List<Task>();

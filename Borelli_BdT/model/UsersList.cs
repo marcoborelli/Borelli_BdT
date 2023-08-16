@@ -5,7 +5,7 @@ using Borelli_BdT.utilities;
 
 namespace Borelli_BdT.model {
     public static class UsersList {
-        private static List<User> Users { get; set; }
+        public static List<User> Users { get; private set; }
 
         public static void Init() {
             Users = new List<User>();

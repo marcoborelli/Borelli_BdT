@@ -17,7 +17,7 @@ namespace Borelli_BdT.utilities {
         public string FilePathJobs { get; private set; }
         public float DeltaPerc { get; private set; }
 
-        public Parameters (string filePathUser, string filePathTasks, string filePathDistricts, string filePathJobs, float deltaPerc) {
+        public Parameters(string filePathUser, string filePathTasks, string filePathDistricts, string filePathJobs, float deltaPerc) {
             FilePathUser = filePathUser;
             FilePathTasks = filePathTasks;
             FilePathDistricts = filePathDistricts;

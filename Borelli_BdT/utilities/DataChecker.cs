@@ -79,7 +79,7 @@ namespace Borelli_BdT.utilities {
 
             switch (whatCheck) {
                 case CheckDate.Adult:
-                    if (DateTime.Now.Year - val.Year < 18) {
+                    if (DateTime.Now.Year - val.Year >= 18) {
                         valid = true;
                     }
                     break;

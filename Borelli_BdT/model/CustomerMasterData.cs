@@ -6,11 +6,12 @@ namespace Borelli_BdT.model {
         private string _name, _surname, _phoneNumb, _email, _homeAddress, _district;
         private DateTime _bithDate;
 
-        public CustomerMasterData(string name, string surname, string phoneNumb, string email, string district, DateTime birthDate) {
+        public CustomerMasterData(string name, string surname, string phoneNumb, string email, string homeAddress, string district, DateTime birthDate) {
             Name = name;
             Surname = surname;
             PhoneNumber = phoneNumb;
             Email = email;
+            HomeAddress = homeAddress;
             District = district;
             BirthDate = birthDate;
         }
@@ -38,7 +39,7 @@ namespace Borelli_BdT.model {
         }
         public string District {
             get => _district;
-            private set  => DataChecker.SetIfValidString(ref _district, value, "Il quartiere indicato non è riconosciuto", CheckStr.District);
+            private set => DataChecker.SetIfValidString(ref _district, value, "Il quartiere indicato non è riconosciuto", CheckStr.District);
         }
         public DateTime BirthDate {
             get => _bithDate;

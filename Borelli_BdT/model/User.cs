@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using Borelli_BdT.utilities;
-using Microsoft.SqlServer.Server;
 
 namespace Borelli_BdT.model {
     public enum RegContext {
@@ -19,18 +18,41 @@ namespace Borelli_BdT.model {
         public RegContext State { get; private set; }
 
 
-        public User(CustomerMasterData userData, string nickname, string passwd, List<string> providesJobs, List<string> jobDistr, RegContext step) {
+        public User(CustomerMasterData userData, string nickname, string passwd, List<string> providesJobs, List<string> jobDistr,
+            float totalStar, float averageStar, float doneJobsNumber, TimeSpan doneHours, TimeSpan recievedHours, RegContext step) {
+
             Data = userData;
+
             Nickname = nickname;
             Password = passwd;
+
             ProvidesJobs = new List<string>(providesJobs);
             JobsDistrict = new List<string>(jobDistr);
 
+            TotalStars = totalStar;
+            AverageStars = averageStar;
+            DoneJobsNumber = doneJobsNumber;
+
+            DoneHours = doneHours;
+            RecievedHours = recievedHours;
+
             State = step;
         }
-        public User(string name, string surnm, string phoneNum, string mail, string distr, DateTime birthDate, string nicknm,
+        public User(CustomerMasterData userData, string nickname, string passwd, List<string> providesJobs, List<string> jobDistr, RegContext step) :
+            this(userData, nickname, passwd, providesJobs, jobDistr, 0, 0, 0, new TimeSpan(0, 0, 0), new TimeSpan(0, 0, 0), step) {
+        }
+
+
+        public User(string name, string surnm, string phoneNum, string mail, string homeAddress, string distr, DateTime birthDate, string nicknm,
+            string passwd, List<string> providesJobs, List<string> jobDistr, float totalStar, float averageStar, float doneJobsNumber,
+            TimeSpan doneHours, TimeSpan recievedHours, RegContext step) : this
+            (new CustomerMasterData(name, surnm, phoneNum, mail, homeAddress, distr, birthDate), nicknm, passwd, providesJobs, jobDistr,
+            totalStar, averageStar, doneJobsNumber, doneHours, recievedHours, step) {
+        }
+
+        public User(string name, string surnm, string phoneNum, string mail, string homeAddress, string distr, DateTime birthDate, string nicknm,
             string passwd, List<string> providesJobs, List<string> jobDistr, RegContext step) : this
-            (new CustomerMasterData(name, surnm, phoneNum, mail, distr, birthDate), nicknm, passwd, providesJobs, jobDistr, step) {
+            (new CustomerMasterData(name, surnm, phoneNum, mail, homeAddress, distr, birthDate), nicknm, passwd, providesJobs, jobDistr, step) {
             //sto solo ricreando l'oggetto prendendo in input tutti i campi
         }
 
