@@ -38,6 +38,12 @@ namespace Borelli_BdT.model {
 
             return Users.Contains(u);
         }
+        public static bool IsUserValid(string username) {
+            if (Users == null)
+                throw new Exception("Lista non inizializzata, chiamare prima l'initializer della classe statica UsersList");
+
+            return (Users.FindIndex(x => x.Nickname == username) != -1);
+        }
 
 
         public static void WriteJsonFile() {

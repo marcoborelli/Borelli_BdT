@@ -61,8 +61,7 @@ namespace Borelli_BdT.utilities {
                     valid = Jobs.IsJobValid(val);
                     break;
                 case CheckStr.Nickname:
-                    //TODO: controllare che il nickname sia davvero associato ad un utente
-                    valid = true;
+                    valid = UsersList.IsUserValid(val);
                     break;
             }
 
