@@ -64,6 +64,7 @@
     <Compile Include="presenter\EntityUser.cs" />
     <Compile Include="utilities\DataChecker.cs" />
     <Compile Include="utilities\FileManager.cs" />
+    <Compile Include="utilities\FormManager.cs" />
     <Compile Include="utilities\Parameters.cs" />
     <Compile Include="view\Login.cs">
       <SubType>Form</SubType>
