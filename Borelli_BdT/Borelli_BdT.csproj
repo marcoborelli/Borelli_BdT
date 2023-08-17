@@ -61,6 +61,7 @@
     <Compile Include="model\User.cs" />
     <Compile Include="model\UsersList.cs" />
     <Compile Include="presenter\EntityCustomerMasterData.cs" />
+    <Compile Include="presenter\EntityUser.cs" />
     <Compile Include="utilities\DataChecker.cs" />
     <Compile Include="utilities\FileManager.cs" />
     <Compile Include="utilities\Parameters.cs" />

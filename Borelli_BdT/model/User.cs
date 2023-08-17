@@ -30,6 +30,8 @@ namespace Borelli_BdT.model {
         public User(CustomerMasterData userData, string nickname, string passwd, List<string> providesJobs, List<string> jobDistr,
             float totalStar, float averageStar, float doneJobsNumber, TimeSpan doneHours, TimeSpan recievedHours, RegContext step) {
 
+            State = step;
+
             Data = userData;
 
             Nickname = nickname;
@@ -44,8 +46,6 @@ namespace Borelli_BdT.model {
 
             DoneHours = doneHours;
             RecievedHours = recievedHours;
-
-            State = step;
         }
         public User(CustomerMasterData userData, string nickname, string passwd, List<string> providesJobs, List<string> jobDistr, RegContext step) :
             this(userData, nickname, passwd, providesJobs, jobDistr, 0, 0, 0, new TimeSpan(0, 0, 0), new TimeSpan(0, 0, 0), step) {
