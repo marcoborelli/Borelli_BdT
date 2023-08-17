@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Borelli_BdT.view;
 
 namespace Borelli_BdT {
     internal static class Program {

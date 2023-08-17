@@ -1,4 +1,4 @@
-﻿namespace Borelli_BdT {
+﻿namespace Borelli_BdT.view {
     partial class Login {
         /// <summary>
         /// Variabile di progettazione necessaria.
