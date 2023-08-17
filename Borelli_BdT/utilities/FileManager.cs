@@ -44,45 +44,15 @@ namespace Borelli_BdT.utilities {
         }
 
 
-        public static void WriteStringFile(List<string> input, string filePath) {
+        public static void WriteJsonFile<T>(T input, string filePath) {
             if (!File.Exists(filePath))
                 throw new Exception("Inserire un file path valido");
 
             if (input == null)
-                throw new Exception("Inserire una lista di stringhe valida");
+                throw new Exception("Inserire un input valido");
 
 
             string text = JsonConvert.SerializeObject(input, Formatting.Indented);
-            WriteFile(filePath, text);
-        }
-        public static void WriteUsersFile(List<User> input, string filePath) {
-            if (!File.Exists(filePath))
-                throw new Exception("Inserire un file path valido");
-
-            if (input == null)
-                throw new Exception("Inserire una lista di User valida");
-
-            string text = JsonConvert.SerializeObject(input, Formatting.Indented);
-            WriteFile(filePath, text);
-        }
-        public static void WriteTasksFile(List<model.Task> input, string filePath) {
-            if (!File.Exists(filePath))
-                throw new Exception("Inserire un file path valido");
-
-            if (input == null)
-                throw new Exception("Inserire una lista di User valida");
-
-
-            string text = JsonConvert.SerializeObject(input, Formatting.Indented);
-            WriteFile(filePath, text);
-        }
-        public static void WriteParamtersFile(string filePath) {
-            if (!File.Exists(filePath))
-                throw new Exception("Inserire un file path valido");
-
-
-            Parameters p = new Parameters(Parameters.FPUsers, Parameters.FPTasks, Parameters.FPDistricts, Parameters.FPJobs, Parameters.DeltaPercentage);
-            string text = JsonConvert.SerializeObject(p, Formatting.Indented);
             WriteFile(filePath, text);
         }
 
@@ -92,7 +62,7 @@ namespace Borelli_BdT.utilities {
                 CreateFile(Parameters.FPDistricts);
 
                 List<string> defaultDistricts = new List<string> { "CENTRO", "CAPPUCCINI", "INDUSTRIALE" };
-                WriteStringFile(defaultDistricts, filePath);
+                WriteJsonFile(defaultDistricts, filePath);
             }
         }
 
@@ -101,7 +71,7 @@ namespace Borelli_BdT.utilities {
                 CreateFile(Parameters.FPJobs);
 
                 List<string> defaultJobs = new List<string> { "SEGRETERIA", "IDRAULICA", "MECCANICA", "BADANTE" };
-                WriteStringFile(defaultJobs, filePath);
+                WriteJsonFile(defaultJobs, filePath);
             }
         }
 
@@ -118,7 +88,7 @@ namespace Borelli_BdT.utilities {
                      new DateTime(2000, 1, 1), "DummyNickName", "password", new List<string> { "SEGRETERIA" },
                      new List<string> { "CENTRO" }, RegContext.Confirmed);
 
-                WriteUsersFile(new List<User> { u }, filePath);
+                WriteJsonFile(new List<User> { u }, filePath);
             }
         }
 

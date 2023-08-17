@@ -48,7 +48,7 @@ namespace Borelli_BdT.model {
 
 
         public static void WriteJsonFile() {
-            FileManager.WriteUsersFile(Users, Parameters.FPUsers);
+            FileManager.WriteJsonFile(Users, Parameters.FPUsers);
         }
     }
 }

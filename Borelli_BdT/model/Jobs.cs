@@ -45,7 +45,7 @@ namespace Borelli_BdT.model {
         }
 
         public static void WriteJsonFile() {
-            FileManager.WriteStringFile(Works, Parameters.FPJobs);
+            FileManager.WriteJsonFile(Works, Parameters.FPJobs);
         }
     }
 }

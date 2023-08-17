@@ -45,7 +45,7 @@ namespace Borelli_BdT.model {
         }
 
         public static void WriteJsonFile() {
-            FileManager.WriteStringFile(Zones, Parameters.FPDistricts);
+            FileManager.WriteJsonFile(Zones, Parameters.FPDistricts);
         }
     }
 }

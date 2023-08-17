@@ -85,7 +85,8 @@ namespace Borelli_BdT.utilities {
         }
 
         public static void WriteJsonFile() {
-            FileManager.WriteParamtersFile(ParametersPath);
+            Parameters p = new Parameters(FPUsers, FPTasks, FPDistricts, FPJobs, DeltaPercentage);
+            FileManager.WriteJsonFile(p, ParametersPath);
         }
     }
 }

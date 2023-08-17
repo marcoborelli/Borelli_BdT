@@ -129,7 +129,7 @@ namespace Borelli_BdT.model {
         }
 
         public static void WriteJsonFile() {
-            FileManager.WriteTasksFile(Tasks, Parameters.FPTasks);
+            FileManager.WriteJsonFile(Tasks, Parameters.FPTasks);
         }
     }
 }
