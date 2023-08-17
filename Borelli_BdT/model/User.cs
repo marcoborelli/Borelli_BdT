@@ -72,9 +72,9 @@ namespace Borelli_BdT.model {
             private set => DataChecker.SetIfValidString(ref _nickname, value, "Inserire un nickname valido", CheckStr.Generic);
         }
         [JsonProperty]
-        private string Password {
+        public string Password { //TODO: se si puo' rimettere, tutto privato
             get => _password;
-            set => DataChecker.SetIfValidString(ref _password, value, "Inserire una password valida", CheckStr.Generic);
+            private  set => DataChecker.SetIfValidString(ref _password, value, "Inserire una password valida", CheckStr.Generic);
         }
         [JsonProperty]
         public List<string> ProvidesJobs {

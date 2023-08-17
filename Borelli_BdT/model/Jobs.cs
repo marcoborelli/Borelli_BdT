@@ -4,7 +4,7 @@ using Borelli_BdT.utilities;
 
 namespace Borelli_BdT.model {
     public static class Jobs {
-        private static List<string> Works { get; set; }
+        public static List<string> Works { get; private set; }
 
         public static void Init() {
             FileManager.CheckJobsFile(Parameters.FPJobs);

@@ -4,7 +4,7 @@ using Borelli_BdT.utilities;
 
 namespace Borelli_BdT.model {
     public static class Districts {
-        private static List<string> Zones { get; set; }
+        public static List<string> Zones { get; private set; }
 
         public static void Init() {
             FileManager.CheckDistrictFile(Parameters.FPDistricts);
