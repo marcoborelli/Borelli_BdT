@@ -46,6 +46,29 @@ namespace Borelli_BdT.model {
             return (Users.FindIndex(x => x.Nickname == username) != -1);
         }
 
+        public static void AddUser(User u) {
+            if (Users == null)
+                throw new Exception("Lista non inizializzata, chiamare prima l'initializer della classe statica UsersList");
+
+            if (u == null)
+                throw new Exception("Inserire un utente valido");
+
+            Users.Add(u);
+        }
+
+        public static List<User> GetInPhaseUsers(RegContext phase) {
+            if (Users == null)
+                throw new Exception("Lista non inizializzata, chiamare prima l'initializer della classe statica UsersList");
+
+            List<User> outp = new List<User>();
+
+            for (int i = 0; i < Users.Count; i++) {
+                if (Users[i].State == phase)
+                    outp.Add(Users[i]);
+            }
+
+            return outp;
+        }
 
         public static void WriteJsonFile() {
             FileManager.WriteJsonFile(Users, Parameters.FPUsers);

@@ -56,6 +56,16 @@ namespace Borelli_BdT.model {
             return (Tasks.FindIndex(x => x.Id == id) != -1);
         }
 
+        public static void AddTask(Task t) {
+            if (Tasks == null)
+                throw new Exception("Lista non inizializzata, chiamare prima l'initializer della classe statica TasksList");
+
+            if (t == null)
+                throw new Exception("Inserire una task valida");
+
+            Tasks.Add(t);
+        }
+
         public List<Task> GetRequestedTasks(string username, RqTaskState whatState) {
             if (Tasks == null)
                 throw new Exception("Lista non inizializzata, chiamare prima l'initializer della classe statica TasksList");
