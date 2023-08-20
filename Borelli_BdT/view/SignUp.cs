@@ -63,9 +63,9 @@ namespace Borelli_BdT.view {
 
             pictureBoxPhoto.AllowDrop = true;
 
-            /*SignUpPresenter p = new SignUpPresenter(this); TODO
+            SignUpPresenter p = new SignUpPresenter(this);
             mButtonCreateAccount.Click += new EventHandler(p.OnCreateAccount);
-            mButtonDelete.Click += new EventHandler(p.OnCloseButton);*/
+            mButtonDelete.Click += new EventHandler(p.OnCloseButton);
 
             mTextBoxUsername.Text = username;
             mTextBoxPasswd.Text = passwd;
