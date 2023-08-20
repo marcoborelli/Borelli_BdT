@@ -35,42 +35,43 @@ namespace Borelli_BdT.utilities {
         }
 
 
-        public static void CheckDistrictFile(string filePath) {
+        public static void CheckDistrictFile() {
             if (!File.Exists(Parameters.FPDistricts)) {
                 CreateFile(Parameters.FPDistricts);
 
                 List<string> defaultDistricts = new List<string> { "CENTRO", "CAPPUCCINI", "INDUSTRIALE" };
-                WriteJsonFile(defaultDistricts, filePath);
+                WriteJsonFile(defaultDistricts, Parameters.FPDistricts);
             }
         }
 
-        public static void CheckJobsFile(string filePath) {
+        public static void CheckJobsFile() {
             if (!File.Exists(Parameters.FPJobs)) {
                 CreateFile(Parameters.FPJobs);
 
                 List<string> defaultJobs = new List<string> { "SEGRETERIA", "IDRAULICA", "MECCANICA", "BADANTE" };
-                WriteJsonFile(defaultJobs, filePath);
+                WriteJsonFile(defaultJobs, Parameters.FPJobs);
             }
         }
 
-        public static void CheckTasksFile(string filePath) {
+        public static void CheckTasksFile() {
             if (!File.Exists(Parameters.FPTasks)) {
-                CreateFile(filePath);
+                CreateFile(Parameters.FPTasks);
             }
         }
-        public static void CheckUsersFile(string filePath) {
-
+        public static void CheckUsersFile() {
             if (!File.Exists(Parameters.FPUsers)) {
                 CreateFile(Parameters.FPUsers);
                 User u = new User("DummyName", "DummySurname", "1234567789", "mail@dummy.it", "Via AAA", "CENTRO",
                      new DateTime(2000, 1, 1), "DummyNickName", "password", new List<string> { "SEGRETERIA" },
                      new List<string> { "CENTRO" }, RegContext.Confirmed);
 
-                WriteJsonFile(new List<User> { u }, filePath);
+                WriteJsonFile(new List<User> { u }, Parameters.FPUsers);
+            }
+        }
             }
         }
 
-        public static void CheckPicturesFolder(string path) {
+        public static void CheckFolder(string path) {
             if (!Directory.Exists(path)) {
                 Directory.CreateDirectory(path);
             }

@@ -29,7 +29,7 @@ namespace Borelli_BdT.presenter {
                 UsersList.WriteJsonFile();
 
                 if (View.IsThereAnImage()) {
-                    FileManager.CheckPicturesFolder(Parameters.DPPictures);
+                    FileManager.CheckFolder(Parameters.DPPictures);
                     View.SaveProfilePicture($"{Parameters.DPPictures}/{u.Nickname}");
                 }
 

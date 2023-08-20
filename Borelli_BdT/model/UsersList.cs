@@ -8,7 +8,7 @@ namespace Borelli_BdT.model {
         public static List<User> Users { get; private set; }
 
         public static void Init() {
-            FileManager.CheckUsersFile(Parameters.FPUsers);
+            FileManager.CheckUsersFile();
             Users = new List<User>(FileManager.ReadJsonFile<List<User>>(Parameters.FPUsers));
         }
 

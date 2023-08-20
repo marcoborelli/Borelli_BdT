@@ -19,7 +19,7 @@ namespace Borelli_BdT.model {
         public static List<Task> Tasks { get; private set; }
 
         public static void Init() {
-            FileManager.CheckTasksFile(Parameters.FPTasks);
+            FileManager.CheckTasksFile();
             Tasks = new List<Task>(FileManager.ReadJsonFile<List<Task>>(Parameters.FPTasks));
         }
 
