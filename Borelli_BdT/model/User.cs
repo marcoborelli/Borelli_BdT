@@ -18,8 +18,10 @@ namespace Borelli_BdT.model {
 
         [JsonProperty]
         public TimeSpan DoneHours { get; private set; }
+
         [JsonProperty]
         public TimeSpan RecievedHours { get; private set; }
+
         [JsonProperty]
         public RegContext State { get; private set; }
 

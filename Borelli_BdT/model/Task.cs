@@ -19,6 +19,7 @@ namespace Borelli_BdT.model {
         public DateTime RequestDate { get; private set; }
         private DateTime _acceptedTaskDate, _startTaskDate, _endTaskDate;
         private TimeSpan _taskLength;
+
         private float _stars;
         private string _job, _id;
 
@@ -39,6 +40,7 @@ namespace Borelli_BdT.model {
             get => _requesterNickname;
             private set => DataChecker.SetIfValidString(ref _requesterNickname, value, "Inserire un nickname di un richiedente associato ad un utente", CheckStr.Nickname);
         }
+
         [JsonProperty]
         public string AcceptorNickname {
             get => _acceptorNickname;
@@ -113,6 +115,21 @@ namespace Borelli_BdT.model {
 
         public Task() {
             Status = TPhase.Nothing;
+        }
+        public Task(string id, string rq, string acc, DateTime rqDate, DateTime accDate, DateTime strDate, DateTime endDate,
+            TimeSpan tskLngth, float stars, string job, TPhase status) {
+            Status = status;
+
+            Id = id;
+            RequesterNickname = rq;
+            AcceptorNickname = acc;
+            RequestDate = rqDate;
+            AcceptedTaskDate = accDate;
+            StartTaskDate = strDate;
+            EndTaskDate = endDate;
+            TaskLength = tskLngth;
+            Stars = stars;
+            Job = job;
         }
 
         public void Create(string reqNickname, DateTime reqDate, string job) { //a farla e' il richiedente
