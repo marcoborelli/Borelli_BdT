@@ -16,6 +16,9 @@ namespace Borelli_BdT.presenter {
         public string Field7 { get; set; }
 
         public static EntityCustomerMasterData GetEntity(CustomerMasterData data) {
+            if (data == null)
+                throw new Exception("Inserire dati validi");
+
             EntityCustomerMasterData e = new EntityCustomerMasterData {
                 Field1 = data.Name,
                 Field2 = data.Surname,

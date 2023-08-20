@@ -25,6 +25,9 @@ namespace Borelli_BdT.presenter {
         }
 
         public static EntityUser GetEntity(User u) {
+            if (u == null)
+                throw new Exception("Inserire un utente valido");
+
             EntityUser e = new EntityUser {
                 Field1 = u.Nickname,
                 Field2 = u.Password,

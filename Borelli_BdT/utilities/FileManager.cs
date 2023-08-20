@@ -13,6 +13,8 @@ namespace Borelli_BdT.utilities {
             string text = File.ReadAllText(filePath);
             List<string> outp = JsonConvert.DeserializeObject<List<string>>(text);
 
+            if (outp == null)
+                outp = new List<string>();
             return outp;
         }
         public static List<User> ReadUsersFile(string filePath) {
@@ -22,6 +24,8 @@ namespace Borelli_BdT.utilities {
             string text = File.ReadAllText(filePath);
             List<User> outp = JsonConvert.DeserializeObject<List<User>>(text);
 
+            if (outp == null)
+                outp = new List<User>();
             return outp;
         }
         public static List<model.Task> ReadTasksFile(string filePath) {
@@ -31,6 +35,8 @@ namespace Borelli_BdT.utilities {
             string text = File.ReadAllText(filePath);
             List<model.Task> outp = JsonConvert.DeserializeObject<List<model.Task>>(text);
 
+            if (outp == null)
+                outp = new List<Task>();
             return outp;
         }
         public static Parameters ReadParametersFile(string filePath) {
