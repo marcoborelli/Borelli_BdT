@@ -30,6 +30,13 @@ namespace Borelli_BdT.utilities {
         Percentage,
     }
 
+    public enum TaskUserFilter {
+        ZoneAndJob,
+        Job,
+        Zone,
+        Nothing,
+    }
+
     public static class DataChecker {
         public static void SetIfValidString(ref string field, string val, string errorMessage, CheckStr whatCheck) {
             bool valid = IsValidString(val, whatCheck);
@@ -148,6 +155,37 @@ namespace Borelli_BdT.utilities {
                         valid = true;
                     }
                     break;
+            }
+
+            return valid;
+        }
+
+        public static bool IsAppropriateTaskUser(Task t, User u, TaskUserFilter filter) {
+            if (!TasksList.IsTaskValid(t))
+                throw new Exception("Inserire una task valida");
+
+            if (!UsersList.IsUserValid(u))
+                throw new Exception("Inserire un utente valido");
+
+            User requester = UsersList.GetUser(t.RequesterNickname);
+
+            bool valid = false;
+
+            if (requester != null && !requester.Equals(u) && t.Status == TPhase.Request) {
+                switch (filter) {
+                    case TaskUserFilter.Nothing:
+                        valid = true;
+                        break;
+                    case TaskUserFilter.Zone:
+                        valid = u.JobsDistrict.Contains(requester.Data.District);
+                        break;
+                    case TaskUserFilter.Job:
+                        valid = u.ProvidesJobs.Contains(t.Job);
+                        break;
+                    case TaskUserFilter.ZoneAndJob:
+                        valid = (u.ProvidesJobs.Contains(t.Job) && u.JobsDistrict.Contains(requester.Data.District));
+                        break;
+                }
             }
 
             return valid;

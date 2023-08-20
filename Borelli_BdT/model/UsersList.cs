@@ -70,6 +70,36 @@ namespace Borelli_BdT.model {
             return outp;
         }
 
+        public static List<User> GetAppropriateUsers(Task t, TaskUserFilter filter) {
+            if (Users == null)
+                throw new Exception("Lista non inizializzata, chiamare prima l'initializer della classe statica UsersList");
+
+            if (!TasksList.IsTaskValid(t))
+                throw new Exception("Inserire una task valida");
+
+            List<User> outp = new List<User>();
+
+            for (int i = 0; i < Users.Count; i++) {
+                if (DataChecker.IsAppropriateTaskUser(t, Users[i], filter)) {
+                    outp.Add(Users[i]);
+                }
+            }
+
+            return outp;
+        }
+
+        public static List<User> GetAppropriateUsers(string id, TaskUserFilter filter) {
+            if (Users == null)
+                throw new Exception("Lista non inizializzata, chiamare prima l'initializer della classe statica UsersList");
+
+            Task t = TasksList.GetTask(id);
+            if (t == null) {
+                throw new Exception("Inserire una task valida");
+            }
+
+            return GetAppropriateUsers(t, filter);
+        }
+
         public static void WriteJsonFile() {
             FileManager.WriteJsonFile(Users, Parameters.FPUsers);
         }

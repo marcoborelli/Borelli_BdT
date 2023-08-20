@@ -66,6 +66,38 @@ namespace Borelli_BdT.model {
             Tasks.Add(t);
         }
 
+        public static List<Task> GetAppropriateTasks(User u, TaskUserFilter filter) {
+            if (Tasks == null)
+                throw new Exception("Lista non inizializzata, chiamare prima l'initializer della classe statica TasksList");
+
+            if (!UsersList.IsUserValid(u))
+                throw new Exception("Inserire un utente valido");
+
+
+            List<Task> outp = new List<Task>();
+
+            for (int i = 0; i < Tasks.Count; i++) {
+                if (DataChecker.IsAppropriateTaskUser(Tasks[i], u, filter)) {
+                    outp.Add(Tasks[i]);
+                }
+            }
+
+            return outp;
+        }
+
+        public static List<Task> GetAppropriateTasks(string nickname, TaskUserFilter filter) {
+            if (Tasks == null)
+                throw new Exception("Lista non inizializzata, chiamare prima l'initializer della classe statica TasksList");
+
+            User u = UsersList.GetUser(nickname);
+            if (u == null) {
+                throw new Exception("Inserire un utente valido");
+            }
+
+            return GetAppropriateTasks(u, filter);
+        }
+
+
         public static List<Task> GetRequestedTasks(string username, RqTaskState whatState) {
             if (Tasks == null)
                 throw new Exception("Lista non inizializzata, chiamare prima l'initializer della classe statica TasksList");
