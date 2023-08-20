@@ -15,10 +15,9 @@ namespace Borelli_BdT.view {
             FormManager.Init();
             FormManager.AddForm(this);
 
-            //TODO
-            /*LoginPresenter p = new LoginPresenter(this);
+            LoginPresenter p = new LoginPresenter(this);
             mButtonLogin.Click += new EventHandler(p.OnLogin);
-            mButtonSignUp.Click += new EventHandler(p.OnSignUp);*/
+            mButtonSignUp.Click += new EventHandler(p.OnSignUp);
         }
 
         public List<string> GetFieldsValue() {
