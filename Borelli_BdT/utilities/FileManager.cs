@@ -68,6 +68,12 @@ namespace Borelli_BdT.utilities {
                 WriteJsonFile(new List<User> { u }, Parameters.FPUsers);
             }
         }
+        public static void CheckParametersFile() {
+            if (!File.Exists(Parameters.ParametersPath)) {
+                CreateFile(Parameters.ParametersPath);
+                Parameters p = new Parameters("data", 12);
+
+                WriteJsonFile(p, Parameters.ParametersPath);
             }
         }
 

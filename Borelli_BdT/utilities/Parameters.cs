@@ -3,7 +3,8 @@
 namespace Borelli_BdT.utilities {
     public /*static*/ class Parameters {
         private static float _deltaPercentage;
-        private static string _parametersPath, _DPBase;
+        private static string _DPBase;
+        public static string ParametersPath { get; private set; }
         public static string FPUsers { get; private set; }
         public static string FPTasks { get; private set; }
         public static string FPDistricts { get; private set; }
@@ -20,12 +21,14 @@ namespace Borelli_BdT.utilities {
             DeltaPerc = deltaPerc;
         }
 
-        public static void Init(string path) {
-            ParametersPath = path;
+        public static void Init() {
+            ParametersPath = "parameters.json";
+            FileManager.CheckParametersFile();
 
             Parameters tmp = FileManager.ReadJsonFile<Parameters>(ParametersPath);
 
             DPBase = tmp.BasePath;
+            FileManager.CheckFolder(DPBase);
             DeltaPercentage = tmp.DeltaPerc;
 
             FPUsers = $"{DPBase}/users.json";
@@ -36,11 +39,6 @@ namespace Borelli_BdT.utilities {
         }
 
 
-
-        private static string ParametersPath {
-            get => _parametersPath;
-            set => DataChecker.SetIfValidString(ref _parametersPath, value, "Inserire un path valido", CheckStr.Generic);
-        }
 
 
         public static string DPBase {

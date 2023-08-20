@@ -45,7 +45,7 @@ namespace Borelli_BdT.presenter {
         }
 
         private void InitStaticClasses() {
-            Parameters.Init(@"data\ciao.json"); //TODO: controllare che il file esista davvero e rinominare il file
+            Parameters.Init();
 
             Districts.Init();
             Jobs.Init();
