@@ -23,7 +23,7 @@ namespace Borelli_BdT.utilities {
         public static void Init(string path) {
             ParametersPath = path;
 
-            Parameters tmp = FileManager.ReadParametersFile(ParametersPath);
+            Parameters tmp = FileManager.ReadJsonFile<Parameters>(ParametersPath);
 
             DPBase = tmp.BasePath;
             DeltaPercentage = tmp.DeltaPerc;

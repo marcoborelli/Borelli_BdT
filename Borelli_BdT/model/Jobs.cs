@@ -8,8 +8,7 @@ namespace Borelli_BdT.model {
 
         public static void Init() {
             FileManager.CheckJobsFile(Parameters.FPJobs);
-            Works = new List<string>();
-            Works = FileManager.ReadStringFile(Parameters.FPJobs);
+            Works = new List<string>(FileManager.ReadJsonFile<List<string>>(Parameters.FPJobs));
         }
         public static void AddJob(string j) {
             if (Works == null)

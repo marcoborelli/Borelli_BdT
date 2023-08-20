@@ -6,52 +6,21 @@ using Borelli_BdT.model;
 
 namespace Borelli_BdT.utilities {
     public static class FileManager {
-        public static List<string> ReadStringFile(string filePath) {
+
+        public static T ReadJsonFile<T>(string filePath) {
             if (!File.Exists(filePath))
                 throw new Exception("Inserire un file path valido");
 
             string text = File.ReadAllText(filePath);
-            List<string> outp = JsonConvert.DeserializeObject<List<string>>(text);
+            T outp = JsonConvert.DeserializeObject<T>(text);
 
-            if (outp == null)
-                outp = new List<string>();
 
-            return outp;
-        }
-        public static List<User> ReadUsersFile(string filePath) {
-            if (!File.Exists(filePath))
-                throw new Exception("Inserire un file path valido");
-
-            string text = File.ReadAllText(filePath);
-            List<User> outp = JsonConvert.DeserializeObject<List<User>>(text);
-
-            if (outp == null)
-                outp = new List<User>();
+            if (outp == null) { //peche' in ogni caso io la lista la devo inizializzare, non puo' stare null
+                outp = (T)Activator.CreateInstance(typeof(T));
+            }
 
             return outp;
         }
-        public static List<model.Task> ReadTasksFile(string filePath) {
-            if (!File.Exists(filePath))
-                throw new Exception("Inserire un file path valido");
-
-            string text = File.ReadAllText(filePath);
-            List<model.Task> outp = JsonConvert.DeserializeObject<List<model.Task>>(text);
-
-            if (outp == null)
-                outp = new List<Task>();
-
-            return outp;
-        }
-        public static Parameters ReadParametersFile(string filePath) {
-            if (!File.Exists(filePath))
-                throw new Exception("Inserire un file path valido");
-
-            string text = File.ReadAllText(filePath);
-            Parameters outp = JsonConvert.DeserializeObject<Parameters>(text);
-
-            return outp;
-        }
-
 
         public static void WriteJsonFile<T>(T input, string filePath) {
             if (!File.Exists(filePath))

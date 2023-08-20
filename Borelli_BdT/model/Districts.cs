@@ -8,8 +8,7 @@ namespace Borelli_BdT.model {
 
         public static void Init() {
             FileManager.CheckDistrictFile(Parameters.FPDistricts);
-            Zones = new List<string>();
-            Zones = FileManager.ReadStringFile(Parameters.FPDistricts);
+            Zones = new List<string>(FileManager.ReadJsonFile<List<string>>(Parameters.FPDistricts));
         }
         public static void AddDistrict(string d) {
             if (Zones == null)
