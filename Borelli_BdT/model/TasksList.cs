@@ -15,7 +15,7 @@ namespace Borelli_BdT.model {
         Done,
         All,
     }
-    public class TasksList {
+    public static class TasksList {
         public static List<Task> Tasks { get; private set; }
 
         public static void Init() {
@@ -66,7 +66,7 @@ namespace Borelli_BdT.model {
             Tasks.Add(t);
         }
 
-        public List<Task> GetRequestedTasks(string username, RqTaskState whatState) {
+        public static List<Task> GetRequestedTasks(string username, RqTaskState whatState) {
             if (Tasks == null)
                 throw new Exception("Lista non inizializzata, chiamare prima l'initializer della classe statica TasksList");
 
@@ -76,7 +76,7 @@ namespace Borelli_BdT.model {
             List<Task> outp = new List<Task>();
 
             for (int i = 0; i < Tasks.Count; i++) {
-                if (Tasks[i].AcceptorNickname != username)
+                if (Tasks[i].RequesterNickname != username)
                     continue;
 
                 switch (whatState) {
@@ -105,7 +105,7 @@ namespace Borelli_BdT.model {
         }
 
 
-        public List<Task> GetAcceptedTasks(string username, AcTaskState whatState) {
+        public static List<Task> GetAcceptedTasks(string username, AcTaskState whatState) {
             if (Tasks == null)
                 throw new Exception("Lista non inizializzata, chiamare prima l'initializer della classe statica TasksList");
 
@@ -115,7 +115,7 @@ namespace Borelli_BdT.model {
             List<Task> outp = new List<Task>();
 
             for (int i = 0; i < Tasks.Count; i++) {
-                if (Tasks[i].RequesterNickname != username) //se non è quello il richiedente salto anche lo switch
+                if (Tasks[i].AcceptorNickname != username) //se non e' quello colui che ha accettato salto anche lo switch
                     continue;
 
                 switch (whatState) {
