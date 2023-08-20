@@ -8,7 +8,7 @@ using Borelli_BdT.utilities;
 
 namespace Borelli_BdT.view {
     public partial class Login : MaterialForm {
-        //private SignUp SignUpForm { get; set; } TODO
+        private SignUp SignUpForm { get; set; }
         //private MainPage MainForm { get; set; } TODO
         public Login() {
             InitializeComponent();
@@ -49,11 +49,11 @@ namespace Borelli_BdT.view {
             this.Show();*/
         }
 
-        public void ShowSignUpForm() { //TODO
-            /*SignUpForm = new SignUp(mTextBoxUsername.Text, mTextBoxPasswd.Text);
+        public void ShowSignUpForm() {
+            SignUpForm = new SignUp(mTextBoxUsername.Text, mTextBoxPasswd.Text);
             this.Hide();
             SignUpForm.ShowDialog();
-            this.Show();*/
+            this.Show();
         }
     }
 }
