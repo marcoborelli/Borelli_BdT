@@ -13,7 +13,7 @@ namespace Borelli_BdT.view {
             InitializeComponent();
             FormManager.AddForm(this);
 
-            //TODO MainPagePresenter p = new MainPagePresenter(this, username);
+            MainPagePresenter p = new MainPagePresenter(this, username);
         }
 
         public void ChargeUserData(EntityCustomerMasterData e, string photoPhat) {

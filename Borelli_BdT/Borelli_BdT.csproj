@@ -64,6 +64,7 @@
     <Compile Include="presenter\EntityTask.cs" />
     <Compile Include="presenter\EntityUser.cs" />
     <Compile Include="presenter\LoginPresenter.cs" />
+    <Compile Include="presenter\MainPagePresenter.cs" />
     <Compile Include="presenter\SignUpPresenter.cs" />
     <Compile Include="utilities\DataChecker.cs" />
     <Compile Include="utilities\FileManager.cs" />
