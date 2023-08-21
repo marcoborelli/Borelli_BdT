@@ -112,6 +112,11 @@ namespace Borelli_BdT.view {
             MessageBox.Show($"{text}");
         }
 
+        public void UserIsAlredyInUse(string text) {
+            MessageBox.Show($"{text}");
+            mTextBoxUsername.Text = String.Empty;
+        }
+
         public void CloseForm() {
             this.Close();
         }

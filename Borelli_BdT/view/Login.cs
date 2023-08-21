@@ -42,7 +42,7 @@ namespace Borelli_BdT.view {
             MessageBox.Show("L'utente in questione è ancora in attesa di conferma da parte della segreteria");
         }
 
-        public void DoLogin() { //TODO
+        public void DoLogin() {
             MainForm = new MainPage(mTextBoxUsername.Text);
             this.Hide();
             MainForm.ShowDialog();

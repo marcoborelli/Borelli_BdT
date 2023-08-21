@@ -22,6 +22,11 @@ namespace Borelli_BdT.presenter {
         public void OnCreateAccount(object sender, EventArgs e) {
             EntityUser tmp = View.CurrentUser;
 
+            if (UsersList.IsUserValid(tmp.Field1)) {
+                View.UserIsAlredyInUse("Il nome utente scelto è già in uso, sceglierne uno diverso");
+                return;
+            }
+
             try {
                 User u = new User(EntityCustomerMasterData.GetCustomerMasterData(tmp.Field11), tmp.Field1, tmp.Field2, tmp.Field3, tmp.Field4, RegContext.Registration);
                 UsersList.AddUser(u);
