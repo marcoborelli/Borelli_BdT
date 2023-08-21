@@ -9,11 +9,27 @@ using Borelli_BdT.utilities;
 
 namespace Borelli_BdT.view {
     public partial class MainPage : MaterialForm {
+        public enum LoadTskList {
+            HomeScreen,
+            Details,
+        }
+        public enum TaskType {
+            Done,
+            Requested,
+            Pertinent,
+        }
+
+        public enum LoadUsrList {
+            ToAccept,
+            Details,
+        }
+
         public MainPage(string username) {
             InitializeComponent();
             FormManager.AddForm(this);
 
             MainPagePresenter p = new MainPagePresenter(this, username);
+            materialTabControl1.SelectedIndexChanged += new EventHandler(p.LoadSelectedTab);
         }
 
         public void ChargeUserData(EntityCustomerMasterData e, string photoPhat) {
@@ -24,24 +40,51 @@ namespace Borelli_BdT.view {
             mLabelDistr.Text = e.Field6;
         }
 
-        public void ChargeDoneTasks(List<EntityTask> tsk) {
-            for (int i = 0; i < tsk.Count; i++) {
-                ListViewItem tmp = new ListViewItem(new string[] { tsk[i].Field1, tsk[i].Field2, tsk[i].Field8 });
-                mListViewDoneJobs.Items.Add(tmp);
-            }
-        }
+        public void LoadTasksList(List<EntityTask> tsk, TaskType type, LoadTskList how) {
+            MaterialListView lwOutp = new MaterialListView();
+            ListViewItem lvi = new ListViewItem();
 
-        public void ChargeRequestedTasks(List<EntityTask> tsk) {
             for (int i = 0; i < tsk.Count; i++) {
-                ListViewItem tmp = new ListViewItem(new string[] { tsk[i].Field1, tsk[i].Field3, tsk[i].Field8 });
-                mListViewReqJobs.Items.Add(tmp);
-            }
-        }
+                switch (type) {
+                    case TaskType.Done:
+                        switch (how) {
+                            case LoadTskList.HomeScreen:
+                                lwOutp = mListViewDoneJobs;
+                                lvi = new ListViewItem(new string[] { tsk[i].Field1, tsk[i].Field2, tsk[i].Field8 }); //id, richiedente, ore
+                                break;
+                            case LoadTskList.Details:
+                                //TODO
+                                break;
+                        }
+                        break;
+                    case TaskType.Requested:
+                        switch (how) {
+                            case LoadTskList.HomeScreen:
+                                lwOutp = mListViewReqJobs;
+                                lvi = new ListViewItem(new string[] { tsk[i].Field1, tsk[i].Field3, tsk[i].Field8 }); //id, donatore, ore
+                                break;
+                            case LoadTskList.Details:
+                                //TODO
+                                break;
+                        }
+                        break;
+                    case TaskType.Pertinent:
+                        switch (how) {
+                            case LoadTskList.HomeScreen:
+                                lwOutp = mListViewPertinentTask;
+                                lvi = new ListViewItem(new string[] { tsk[i].Field1, tsk[i].Field2, tsk[i].Field10 }); //id, richiedente, lavoro
+                                break;
+                            case LoadTskList.Details:
+                                //TODO
+                                break;
+                        }
+                        break;
+                }
 
-        public void ChargeAppropriateTasks(List<EntityTask> tsk) {
-            for (int i = 0; i < tsk.Count; i++) {
-                ListViewItem tmp = new ListViewItem(new string[] { tsk[i].Field1, tsk[i].Field2, tsk[i].Field10 });
-                mListViewPertinentTask.Items.Add(tmp);
+                if (i == 0)
+                    lwOutp.Items.Clear();
+
+                lwOutp.Items.Add(lvi);
             }
         }
 
@@ -54,6 +97,10 @@ namespace Borelli_BdT.view {
             labelDeltaHours.Font = new Font("Cooper Black", 14);
 
             labelDeltaHours.Text = $"{delta.Hours}h {delta.Minutes}m";
+        }
+
+        public int GetSelectedTabIndex() {
+            return materialTabControl1.SelectedIndex;
         }
     }
 }

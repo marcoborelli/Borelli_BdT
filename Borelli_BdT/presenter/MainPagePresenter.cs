@@ -23,20 +23,33 @@ namespace Borelli_BdT.presenter {
             set => _view = (value != null) ? value : throw new Exception("Inserire un attributo view valido");
         }
 
-        public void ChargeHomeScreen() {
+        public void LoadSelectedTab(object sender, EventArgs e) {
+            int tabIndex = View.GetSelectedTabIndex();
+
+            switch(tabIndex) {
+                case 0:
+                    ChargeHomeScreen();
+                    break;
+            }
+        }
+
+        private void ChargeHomeScreen() {
+            MainPage.LoadTskList tab = MainPage.LoadTskList.HomeScreen;
+
             View.ChargeUserData(EntityCustomerMasterData.GetEntity(CurrentUser.Data), $"{Parameters.DPPictures}/{CurrentUser.Nickname}.jpg");
 
             List<EntityTask> pertinentTasks = GetEntityTasksList(TasksList.GetAppropriateTasks(CurrentUser, TaskUserFilter.ZoneAndJob));
-            View.ChargeAppropriateTasks(pertinentTasks);
+            View.LoadTasksList(pertinentTasks, MainPage.TaskType.Pertinent, tab);
 
             List<EntityTask> doneTasks = GetEntityTasksList(TasksList.GetAcceptedTasks(CurrentUser.Nickname, AcTaskState.Done));
-            View.ChargeDoneTasks(doneTasks);
+            View.LoadTasksList(doneTasks, MainPage.TaskType.Done, tab);
 
             View.WriteDeltaHours(CurrentUser.DoneHours - CurrentUser.RecievedHours);
 
             List<EntityTask> reqTask = GetEntityTasksList(TasksList.GetRequestedTasks(CurrentUser.Nickname, RqTaskState.Done));
-            View.ChargeRequestedTasks(reqTask);
+            View.LoadTasksList(reqTask, MainPage.TaskType.Requested, tab);
         }
+
 
         public List<EntityTask> GetEntityTasksList(List<model.Task> input) {
             List<EntityTask> outp = new List<EntityTask>();
