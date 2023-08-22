@@ -11,6 +11,11 @@ using Borelli_BdT.utilities;
 namespace Borelli_BdT.view {
     public partial class SignUp : MaterialForm {
 
+        public enum FormState {
+            SignUp,
+            Confirmation,
+        }
+
         public EntityUser CurrentUser {
             get {
                 EntityUser e = new EntityUser {
@@ -25,8 +30,8 @@ namespace Borelli_BdT.view {
             set {
                 mTextBoxUsername.Text = value.Field1;
                 mTextBoxPasswd.Text = value.Field2;
-                SetCheckedIndexFromList(mCheckLBoxJobs, value.Field3);
-                SetCheckedIndexFromList(mCheckLBoxDistricts, value.Field4);
+                SetCheckedIndexFromList(mCheckLBoxJobs, mTextBoxOtherJob, value.Field3);
+                SetCheckedIndexFromList(mCheckLBoxDistricts, mTextBoxOtherDistr, value.Field4);
                 CurrentData = value.Field11;
             }
         }
@@ -53,23 +58,36 @@ namespace Borelli_BdT.view {
                 dTimePickerBorn.Text = value.Field7;
             }
         }
+        public FormState FState { get; private set; }
 
+        public SignUp(EntityUser e) {
+            InitializeComponent();
+            FormManager.AddForm(this);
 
-        public SignUp() : this(String.Empty, String.Empty) {
+            SignUpPresenter p = new SignUpPresenter(this);
+            mButtonCreateAccount.Click += new EventHandler(p.OnCreateAccount);
+            mButtonDelete.Click += new EventHandler(p.OnDeleteAccount);
+            mButtonSaveChanges.Click += new EventHandler(p.OnSaveChanges);
+
+            CurrentUser = e;
+
+            FState = FormState.Confirmation;
+            SetForm();
         }
         public SignUp(string username, string passwd) {
             InitializeComponent();
             FormManager.AddForm(this);
 
-            pictureBoxPhoto.AllowDrop = true;
-
             SignUpPresenter p = new SignUpPresenter(this);
             mButtonCreateAccount.Click += new EventHandler(p.OnCreateAccount);
-            mButtonDelete.Click += new EventHandler(p.OnCloseButton);
 
             mTextBoxUsername.Text = username;
             mTextBoxPasswd.Text = passwd;
+
+            FState = FormState.SignUp;
+            SetForm();
         }
+
 
         private void mButtonLoadImage_Click(object sender, EventArgs e) {
             OpenFileDialog ofd = new OpenFileDialog();
@@ -96,6 +114,11 @@ namespace Borelli_BdT.view {
         }
 
 
+
+        public void CloseForm() {
+            this.Close();
+        }
+
         public bool IsThereAnImage() {
             return pictureBoxPhoto.Image != null;
         }
@@ -110,15 +133,12 @@ namespace Borelli_BdT.view {
 
         public void SuccessRegistration(string text) {
             MessageBox.Show($"{text}");
+            this.Close();
         }
 
         public void UserIsAlredyInUse(string text) {
             MessageBox.Show($"{text}");
             mTextBoxUsername.Text = String.Empty;
-        }
-
-        public void CloseForm() {
-            this.Close();
         }
 
         public void LoadDistricts(List<string> items) {
@@ -175,6 +195,28 @@ namespace Borelli_BdT.view {
 
             tb.Text = String.Join("; ", support);
         }
+
+        private void SetForm() {
+            switch (FState) {
+                case FormState.SignUp:
+                    pictureBoxPhoto.AllowDrop = true;
+                    mButtonDelete.Visible = mButtonSaveChanges.Visible = false;
+                    mButtonLoadImage.Visible = true; //faccio cosi' perche' senno' si bugga visualmente
+                    break;
+                case FormState.Confirmation: //non devo poter modificare nessun campo tranne lavori e quartieri in cui lavora
+                    pictureBoxPhoto.AllowDrop = false;
+                    mTextBoxPasswd.Visible = false;
+                    mTextBoxUsername.Enabled = mTextBoxName.Enabled = mTextBoxSurname.Enabled = mTextBoxPhNumb.Enabled =
+                        mTextBoxMail.Enabled = mTextBoxAddr.Enabled = false;
+                    mComboBoxHDistr.Enabled = dTimePickerBorn.Enabled = false;
+
+                    mButtonCreateAccount.Text = "CONFERMA ACCOUNT";
+
+                    pictureBoxPhoto.ImageLocation = $"{Parameters.DPPictures}/{CurrentUser.Field1}.jpg";
+                    pictureBoxPhoto.BorderStyle = BorderStyle.None;
+
+                    break;
+            }
         }
     }
 }
