@@ -33,8 +33,8 @@ namespace Borelli_BdT.view {
             materialTabControl1.SelectedIndexChanged += new EventHandler(Presenter.LoadSelectedTab);
 
             mListViewAcceptUsers.MouseDoubleClick += new MouseEventHandler(Presenter.DoubleClickOnAcceptUsersLW);
-            //TODO mButtonModDistr.Click += new EventHandler(Presenter.OnModifyDistr);
-            //TODO mButtonModJobs.Click += new EventHandler(Presenter.OnModifyJobs);
+            mButtonModDistr.Click += new EventHandler(Presenter.OnModifyDistr);
+            mButtonModJobs.Click += new EventHandler(Presenter.OnModifyJobs);
         }
 
 
@@ -153,7 +153,7 @@ namespace Borelli_BdT.view {
         }
 
         private void ClosedSignUpForm(object sender, FormClosedEventArgs e) {
-            //TODO Presenter.LoadAcceptNewUserTab();
+            Presenter.LoadAcceptNewUserTab();
         }
     }
 }
