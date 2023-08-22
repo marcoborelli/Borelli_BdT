@@ -24,12 +24,13 @@ namespace Borelli_BdT.view {
             Details,
         }
 
+        MainPagePresenter Presenter { get; set; }
         public MainPage(string username) {
             InitializeComponent();
             FormManager.AddForm(this);
 
-            MainPagePresenter p = new MainPagePresenter(this, username);
-            materialTabControl1.SelectedIndexChanged += new EventHandler(p.LoadSelectedTab);
+            Presenter = new MainPagePresenter(this, username);
+            materialTabControl1.SelectedIndexChanged += new EventHandler(Presenter.LoadSelectedTab);
         }
 
         public void ChargeUserData(EntityCustomerMasterData e, string photoPhat) {
@@ -40,6 +41,16 @@ namespace Borelli_BdT.view {
             mLabelDistr.Text = e.Field6;
         }
 
+        public void WriteDeltaHours(TimeSpan delta) {
+            if (delta.TotalMinutes < 0) {
+                labelDeltaHours.ForeColor = Color.Red;
+            } else if (delta.TotalMinutes > 0) {
+                labelDeltaHours.ForeColor = Color.Green;
+            }
+            labelDeltaHours.Font = new Font("Cooper Black", 14);
+
+            labelDeltaHours.Text = $"{delta.Hours}h {delta.Minutes}m";
+        }
         public void LoadTasksList(List<EntityTask> tsk, TaskType type, LoadTskList how) {
             MaterialListView lwOutp = new MaterialListView();
             ListViewItem lvi = new ListViewItem();
@@ -88,15 +99,8 @@ namespace Borelli_BdT.view {
             }
         }
 
-        public void WriteDeltaHours(TimeSpan delta) {
-            if (delta.TotalMinutes < 0) {
-                labelDeltaHours.ForeColor = Color.Red;
-            } else if (delta.TotalMinutes > 0) {
-                labelDeltaHours.ForeColor = Color.Green;
             }
-            labelDeltaHours.Font = new Font("Cooper Black", 14);
 
-            labelDeltaHours.Text = $"{delta.Hours}h {delta.Minutes}m";
         }
 
         public int GetSelectedTabIndex() {
