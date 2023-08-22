@@ -121,7 +121,7 @@ namespace Borelli_BdT.view {
             this.Close();
         }
 
-        public void AddDistricts(List<string> items) {
+        public void LoadDistricts(List<string> items) {
             if (items != null) {
                 for (int i = 0; i < items.Count; i++) {
                     mComboBoxHDistr.Items.Add(items[i]);
@@ -132,7 +132,7 @@ namespace Borelli_BdT.view {
 
         }
 
-        public void AddJobs(List<string> items) {
+        public void LoadJobs(List<string> items) {
             if (items != null) {
                 for (int i = 0; i < items.Count; i++) {
                     mCheckLBoxJobs.Items.Add(items[i]);
@@ -148,18 +148,33 @@ namespace Borelli_BdT.view {
                     selectedItems.Add(clb.Items[i].Text);
             }
 
-            tb.Text = tb.Text.Trim().ToUpper();
-            if (!String.IsNullOrWhiteSpace(tb.Text) && !selectedItems.Contains(tb.Text)) {
-                selectedItems.Add(tb.Text.Trim().ToUpper());
+
+            List<string> otherWork = new List<string>(tb.Text.Split(';'));
+            for (int i = 0; i < otherWork.Count; i++)
+                otherWork[i] = otherWork[i].Trim().ToUpper();
+
+            if (!String.IsNullOrWhiteSpace(tb.Text)) {
+                selectedItems.AddRange(otherWork);
             }
 
 
             return selectedItems;
         }
-        private void SetCheckedIndexFromList(MaterialCheckedListBox clb, List<string> checkedItems) {
+        private void SetCheckedIndexFromList(MaterialCheckedListBox clb, MaterialTextBox tb, List<string> checkedItems) {
             for (int i = 0; i < clb.Items.Count; i++) {
                 clb.Items[i].Checked = checkedItems.Contains(clb.Items[i].Text);
             }
+
+            //creao una lista uguale a quella di partenza cui tolgo tutti gli elementi già presenti nella checkedListBox così mi restano i lavori "nuovi"
+            List<string> support = new List<string>();
+            support.AddRange(checkedItems);
+
+            for (int i = 0; i < clb.Items.Count;i++) {
+                support.Remove(clb.Items[i].Text);
+            }
+
+            tb.Text = String.Join("; ", support);
+        }
         }
     }
 }

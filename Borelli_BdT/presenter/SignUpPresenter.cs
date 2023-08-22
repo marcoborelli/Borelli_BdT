@@ -10,8 +10,8 @@ namespace Borelli_BdT.presenter {
         public SignUpPresenter(SignUp view) {
             View = view;
 
-            View.AddDistricts(Districts.Zones);
-            View.AddJobs(Jobs.Works);
+            View.LoadDistricts(Districts.Zones);
+            View.LoadJobs(Jobs.Works);
         }
 
         private SignUp View {
