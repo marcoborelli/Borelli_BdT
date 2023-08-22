@@ -9,6 +9,7 @@ namespace Borelli_BdT.model {
         public static void Init() {
             FileManager.CheckDistrictFile();
             Zones = new List<string>(FileManager.ReadJsonFile<List<string>>(Parameters.FPDistricts));
+            Zones.Sort();
         }
         public static void AddDistrict(string d) {
             if (Zones == null)
@@ -19,7 +20,10 @@ namespace Borelli_BdT.model {
             if (Zones.Contains(d))
                 throw new Exception("La zona è già esistente");
 
-            Zones.Add(d);
+            if (!String.IsNullOrWhiteSpace(d)) {
+                Zones.Add(d);
+                Zones.Sort();
+            }
         }
 
         public static void RemoveDistrict(string d) {
