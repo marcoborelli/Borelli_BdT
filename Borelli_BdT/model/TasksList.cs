@@ -65,6 +65,24 @@ namespace Borelli_BdT.model {
             Tasks.Add(t);
         }
 
+        public static void RemoveTask(Task t) {
+            if (Tasks == null)
+                throw new Exception("Lista non inizializzata, chiamare prima l'initializer della classe statica TasksList");
+
+            if (t == null)
+                throw new Exception("Inserire una task valida");
+
+            Tasks.Remove(t);
+        }
+
+        public static void RemoveTask(string id) {
+            if (Tasks == null)
+                throw new Exception("Lista non inizializzata, chiamare prima l'initializer della classe statica TasksList");
+
+            Task t = GetTask(id);
+            RemoveTask(t);
+        }
+
         public static List<Task> GetAppropriateTasks(User u, TaskUserFilter filter) {
             if (Tasks == null)
                 throw new Exception("Lista non inizializzata, chiamare prima l'initializer della classe statica TasksList");

@@ -55,6 +55,23 @@ namespace Borelli_BdT.model {
             Users.Add(u);
         }
 
+        public static void RemoveUser(User u) {
+            if (Users == null)
+                throw new Exception("Lista non inizializzata, chiamare prima l'initializer della classe statica UsersList");
+
+            if (u == null)
+                throw new Exception("Inserire un utente valido");
+
+            Users.Remove(u);
+        }
+        public static void RemoveUser(string username) {
+            if (Users == null)
+                throw new Exception("Lista non inizializzata, chiamare prima l'initializer della classe statica UsersList");
+
+            User u = GetUser(username);
+            Users.Remove(u);
+        }
+
         public static List<User> GetInPhaseUsers(RegContext phase) {
             if (Users == null)
                 throw new Exception("Lista non inizializzata, chiamare prima l'initializer della classe statica UsersList");
