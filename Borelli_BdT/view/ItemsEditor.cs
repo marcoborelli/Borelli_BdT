@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Windows.Forms;
 using MaterialSkin;
 using MaterialSkin.Controls;
+using Borelli_BdT.presenter;
 using Borelli_BdT.utilities;
 
 namespace Borelli_BdT.view {
@@ -20,10 +21,9 @@ namespace Borelli_BdT.view {
 
             FormUse = u;
 
-            //TODO
-            /*ItemsEditorPresenter p = new ItemsEditorPresenter(this);
+            ItemsEditorPresenter p = new ItemsEditorPresenter(this);
             mButtonAdd.Click += new EventHandler(p.OnAddButton);
-            mButtonSaveChanges.Click += new EventHandler(p.SaveChanges);*/
+            mButtonSaveChanges.Click += new EventHandler(p.SaveChanges);
         }
 
         public void LoadItemsInListBox(List<string> items) {
