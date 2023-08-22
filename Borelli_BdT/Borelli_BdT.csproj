@@ -70,6 +70,12 @@
     <Compile Include="utilities\FileManager.cs" />
     <Compile Include="utilities\FormManager.cs" />
     <Compile Include="utilities\Parameters.cs" />
+    <Compile Include="view\ItemsEditor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="view\ItemsEditor.Designer.cs">
+      <DependentUpon>ItemsEditor.cs</DependentUpon>
+    </Compile>
     <Compile Include="view\Login.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -99,6 +105,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="view\ItemsEditor.resx">
+      <DependentUpon>ItemsEditor.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="view\Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
     </EmbeddedResource>
