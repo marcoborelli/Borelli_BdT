@@ -31,7 +31,12 @@ namespace Borelli_BdT.view {
 
             Presenter = new MainPagePresenter(this, username);
             materialTabControl1.SelectedIndexChanged += new EventHandler(Presenter.LoadSelectedTab);
+
+            mListViewAcceptUsers.MouseDoubleClick += new MouseEventHandler(Presenter.DoubleClickOnAcceptUsersLW);
+            //TODO mButtonModDistr.Click += new EventHandler(Presenter.OnModifyDistr);
+            //TODO mButtonModJobs.Click += new EventHandler(Presenter.OnModifyJobs);
         }
+
 
         public void ChargeUserData(EntityCustomerMasterData e, string photoPhat) {
             pictureBoxPhoto.ImageLocation = photoPhat;
@@ -51,6 +56,7 @@ namespace Borelli_BdT.view {
 
             labelDeltaHours.Text = $"{delta.Hours}h {delta.Minutes}m";
         }
+
         public void LoadTasksList(List<EntityTask> tsk, TaskType type, LoadTskList how) {
             MaterialListView lwOutp = new MaterialListView();
             ListViewItem lvi = new ListViewItem();
@@ -99,12 +105,55 @@ namespace Borelli_BdT.view {
             }
         }
 
-            }
 
+        public void LoadUsersList(List<EntityUser> usr, LoadUsrList how) {
+            MaterialListView lwOutp = new MaterialListView();
+            ListViewItem lvi = new ListViewItem();
+
+            for (int i = 0; i < usr.Count; i++) {
+                switch (how) {
+                    case LoadUsrList.ToAccept:
+                        lwOutp = mListViewAcceptUsers;
+
+                        EntityCustomerMasterData tmp = usr[i].Field11;
+                        lvi = new ListViewItem(new string[] { usr[i].Field1, tmp.Field1, tmp.Field2, tmp.Field3, tmp.Field4 });
+                        break;
+                    case LoadUsrList.Details:
+                        //TODO
+                        break;
+                }
+
+                if (i == 0)
+                    lwOutp.Items.Clear();
+
+                lwOutp.Items.Add(lvi);
+            }
         }
+
+        public void ShowEditorForm(ItemsEditor.Use use) {
+            ItemsEditor itmsForm = new ItemsEditor(use);
+            itmsForm.Show();
+        }
+
+        public void OpenSignUpForm(EntityUser e) {
+            SignUp signUpForm = new SignUp(e);
+            signUpForm.Show();
+
+            signUpForm.FormClosed += new FormClosedEventHandler(ClosedSignUpForm);
+        }
+
+
+
 
         public int GetSelectedTabIndex() {
             return materialTabControl1.SelectedIndex;
+        }
+        public string GetUserNicknameInUsersListView() {
+            return mListViewAcceptUsers.SelectedItems[0].SubItems[0].Text;
+        }
+
+        private void ClosedSignUpForm(object sender, FormClosedEventArgs e) {
+            //TODO Presenter.LoadAcceptNewUserTab();
         }
     }
 }
