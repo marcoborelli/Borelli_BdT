@@ -4,17 +4,6 @@ using System.Linq;
 using Borelli_BdT.utilities;
 
 namespace Borelli_BdT.model {
-    public enum RqTaskState {
-        Requested,
-        Accepted,
-        Done,
-        All,
-    }
-    public enum AcTaskState {
-        Accepted,
-        Done,
-        All,
-    }
     public static class TasksList {
         public static List<Task> Tasks { get; private set; }
 

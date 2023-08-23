@@ -36,7 +36,7 @@ namespace Borelli_BdT.presenter {
                 Field9 = $"{t.TaskLength}",
                 Field10 = $"{t.Stars}",
                 Field11 = t.Job,
-                Field12 = nameof(t.Status)
+                Field12 = t.Status.ToString()
             };
 
             return e;

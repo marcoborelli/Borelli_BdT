@@ -61,7 +61,7 @@ namespace Borelli_BdT.utilities {
         public static void CheckUsersFile() {
             if (!File.Exists(Parameters.FPUsers)) {
                 CreateFile(Parameters.FPUsers);
-                User u = new User("DummyName", "DummySurname", "1234567789", "mail@dummy.it", "Via AAA", "CENTRO",
+                User u = new User("DummyName", "DummySurname", "1234567789", "mail@dummy.it", "Via dummy", "CENTRO",
                      new DateTime(2000, 1, 1), "DummyNickName", "password", new List<string> { "SEGRETERIA" },
                      new List<string> { "CENTRO" }, RegContext.Confirmed);
 

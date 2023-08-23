@@ -4,6 +4,20 @@ using System.Text.RegularExpressions;
 using Borelli_BdT.model;
 
 namespace Borelli_BdT.utilities {
+    /*sono della tasksList ma dato che servono anche a view. TODO: vedere se vale la pena spostarli*/
+    public enum RqTaskState {
+        Requested,
+        Accepted,
+        Done,
+        All,
+    }
+    public enum AcTaskState {
+        Accepted,
+        Done,
+        All,
+    }
+
+
     public enum CheckStr {
         Generic,
         PhoneNumber,
