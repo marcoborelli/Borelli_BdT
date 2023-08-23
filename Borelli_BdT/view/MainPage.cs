@@ -23,10 +23,19 @@ namespace Borelli_BdT.view {
          * da parte del presenter che non vi ha accesso.
          * Es: la ListView che sitrova sull'Home delle task fatte avra' indice 4: 0(LoadTskList.HomeScreen) + 4(TaskType.Done) */
 
+
         public enum LoadUsrList {
             ToAccept,
             Details,
         }
+
+        public enum ResarchOption {
+            None,
+            Requester,
+            Acceptor,
+            Job,
+        }
+
 
         private MainPagePresenter Presenter { get; set; }
         private List<MaterialListView> MListViews { get; set; }
@@ -35,15 +44,23 @@ namespace Borelli_BdT.view {
             InitializeComponent();
             FormManager.AddForm(this);
 
-            MListViews = new List<MaterialListView> { mListViewPertinentTask/*, mListViewPertinentComplete*/, mListViewReqJobs/*, mListViewReqJobsComplete, */, mListViewDoneJobs/*, mListViewDoneJobsComplete*/};
+            MListViews = new List<MaterialListView> { mListViewPertinentTask, mListViewPertinentComplete, mListViewReqJobs/*, mListViewReqJobsComplete, */, mListViewDoneJobs/*, mListViewDoneJobsComplete*/};
 
             Presenter = new MainPagePresenter(this, username);
             materialTabControl1.SelectedIndexChanged += new EventHandler(Presenter.LoadSelectedTab);
+
+            //TODO
+            /*
+            textBoxSearchAcceptTask.TextChanged += new EventHandler(Presenter.ReLoadReqAcceptTask);
+            mButtonAcceptTask.Click += new EventHandler(Presenter.OnAcceptTask);
+            mButtonReqTask.Click += new EventHandler(Presenter.OnRequestTask);
+            */
 
             mListViewAcceptUsers.MouseDoubleClick += new MouseEventHandler(Presenter.DoubleClickOnAcceptUsersLW);
             mButtonModDistr.Click += new EventHandler(Presenter.OnModifyDistr);
             mButtonModJobs.Click += new EventHandler(Presenter.OnModifyJobs);
         }
+
 
 
         public void ChargeUserData(EntityCustomerMasterData e, string photoPhat) {
@@ -67,6 +84,30 @@ namespace Borelli_BdT.view {
 
 
 
+        public void LoadJobsList(List<string> input) {
+            if (input != null) {
+                for (int i = 0; i < input.Count; i++) {
+                    mComboBoxChooseJob.Items.Add(input[i]);
+
+                    if (i == 0)
+                        mComboBoxChooseJob.Text = input[i];
+                }
+            }
+        }
+
+        public void ErrorInRequestAccept(string message) {
+            MessageBox.Show(message);
+        }
+        public List<string> GetReqestTaskFields() {
+            return new List<string> { mComboBoxChooseJob.Text, mMultiLineTextBoxCaption.Text };
+        }
+
+        public void ResetRequestTaskFields() {
+            mMultiLineTextBoxCaption.Text = String.Empty;
+        }
+
+
+
         public void ShowEditorForm(ItemsEditor.Use use) {
             ItemsEditor itmsForm = new ItemsEditor(use);
             itmsForm.Show();
@@ -78,6 +119,7 @@ namespace Borelli_BdT.view {
 
             signUpForm.FormClosed += new FormClosedEventHandler(ClosedSignUpForm);
         }
+
 
 
         public void LoadTasksList(List<EntityTask> tsk, TaskType type, LoadTskList how) {
@@ -115,7 +157,8 @@ namespace Borelli_BdT.view {
                                 lvi = new ListViewItem(new string[] { tsk[i].Field1, tsk[i].Field3, tsk[i].Field11 }); //id, richiedente, lavoro
                                 break;
                             case LoadTskList.Details:
-                                //TODO
+                                lwOutp = mListViewPertinentComplete;
+                                lvi = new ListViewItem(new string[] { tsk[i].Field1, tsk[i].Field3, tsk[i].Field11, tsk[i].Field2 }); //id, richiedente, lavoro, descrizione
                                 break;
                         }
                         break;
@@ -127,7 +170,6 @@ namespace Borelli_BdT.view {
                 lwOutp.Items.Add(lvi);
             }
         }
-
 
         public void LoadUsersList(List<EntityUser> usr, LoadUsrList how) {
             MaterialListView lwOutp = new MaterialListView();
@@ -153,18 +195,60 @@ namespace Borelli_BdT.view {
             }
         }
 
+        public string GetTextInSearchBar(TaskType type) {
+            string research = "";
 
+            switch (type) {
+                case TaskType.Pertinent:
+                    research = textBoxSearchAcceptTask.Text;
+                    break;
+                case TaskType.Requested:
+                    //TODO:
+                    break;
+                case TaskType.Done:
+                    //TODO
+                    break;
+            }
+
+            return research;
         }
 
+        public ResarchOption GetUsedFilter(TaskType type) {
+            ResarchOption outp = ResarchOption.None;
 
+            switch (type) {
+                case TaskType.Pertinent:
+                    outp = mRButtonJob.Checked ? ResarchOption.Job : ResarchOption.Requester;
+                    break;
+                case TaskType.Requested:
+                    //TODO:
+                    break;
+                case TaskType.Done:
+                    //TODO
+                    break;
+            }
 
+            return outp;
+        }
 
         public int GetSelectedTabIndex() {
             return materialTabControl1.SelectedIndex;
         }
+
         public string GetUserNicknameInUsersListView() {
             return mListViewAcceptUsers.SelectedItems[0].SubItems[0].Text;
         }
+        public string GetTaskIdFromListView(TaskType type, LoadTskList how) { //di defualt tutti gli id si trovano sulla prima colonna
+            MaterialListView m = GetCurrentListView(type, how);
+            return m.SelectedItems[0].SubItems[0].Text;
+        }
+
+        public void ClearListViewTask(TaskType type, LoadTskList how) {
+            MaterialListView m = GetCurrentListView(type, how);
+            m.Items.Clear();
+        }
+
+
 
         private void ClosedSignUpForm(object sender, FormClosedEventArgs e) {
             Presenter.LoadAcceptNewUserTab();
