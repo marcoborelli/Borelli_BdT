@@ -76,7 +76,7 @@ namespace Borelli_BdT.model {
         [JsonProperty]
         public string Password { //TODO: se si puo' rimettere, tutto privato
             get => _password;
-            private  set => DataChecker.SetIfValidString(ref _password, value, "Inserire una password valida", CheckStr.Generic);
+            private set => DataChecker.SetIfValidString(ref _password, value, "Inserire una password valida", CheckStr.Generic);
         }
         [JsonProperty]
         public List<string> ProvidesJobs {
@@ -126,14 +126,14 @@ namespace Borelli_BdT.model {
 
 
 
-        public Task RequestTask(string job) {
+        public Task RequestTask(string job, string caption) {
             Task t = new Task();
-            int oreChePuoSforare = (DoneHours.Hours * 12) / 100; //puo' sforare del 12% delle ore donate
+            int oreChePuoSforare = (DoneHours.Hours * (int)Parameters.DeltaPercentage) / 100; //puo' sforare di un tot% rispetto alle ore donate
 
-            if ((DoneHours - RecievedHours) < new TimeSpan(-oreChePuoSforare + 1, 0, 0)) //+1 perche' se si e' alla prima richiesta lo si concede
+            if ((DoneHours - RecievedHours) < new TimeSpan(-oreChePuoSforare - 1, 0, 0)) //-1 perche' se si e' alla prima richiesta lo si concede
                 throw new Exception("Sono state sforate le ore massime di differenza tra ore donate/ricevute");
 
-            t.Create(Nickname, DateTime.Now, job);
+            t.Create(Nickname, DateTime.Now, job, caption);
 
             return t;
         }

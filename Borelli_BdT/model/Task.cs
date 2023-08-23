@@ -13,6 +13,9 @@ namespace Borelli_BdT.model {
         private string _requesterNickname, _acceptorNickname;
 
         [JsonProperty]
+        public string Caption { get; private set; }
+
+        [JsonProperty]
         public TPhase Status { get; private set; }
 
         [JsonProperty]
@@ -116,11 +119,12 @@ namespace Borelli_BdT.model {
         public Task() {
             Status = TPhase.Nothing;
         }
-        public Task(string id, string rq, string acc, DateTime rqDate, DateTime accDate, DateTime strDate, DateTime endDate,
+        public Task(string id, string caption, string rq, string acc, DateTime rqDate, DateTime accDate, DateTime strDate, DateTime endDate,
             TimeSpan tskLngth, float stars, string job, TPhase status) {
             Status = status;
 
             Id = id;
+            Caption = caption;
             RequesterNickname = rq;
             AcceptorNickname = acc;
             RequestDate = rqDate;
@@ -132,21 +136,22 @@ namespace Borelli_BdT.model {
             Job = job;
         }
 
-        public void Create(string reqNickname, DateTime reqDate, string job) { //a farla e' il richiedente
+        public void Create(string reqNickname, DateTime reqDate, string job, string caption) { //a farla e' il richiedente
             Status = TPhase.Request;
             Id = CreateId(reqNickname, reqDate);
             RequesterNickname = reqNickname;
             RequestDate = reqDate;
+            Caption = caption;
             Job = job;
         }
 
-        public void Accept(string accUserNickname, DateTime startTaskDate) { //a farla e' il donatore di ore
+        public void Accept(string accUserNickname, DateTime acceptTaskDate) { //a farla e' il donatore di ore
             if (Status != TPhase.Request)
                 throw new Exception("Non è stato rispettato il giusto procedimento nella macchina a stati della task");
 
             Status = TPhase.Accepted;
             AcceptorNickname = accUserNickname;
-            AcceptedTaskDate = startTaskDate;
+            AcceptedTaskDate = acceptTaskDate;
         }
 
         public void End(DateTime startTaskDate, DateTime endTaskDate, TimeSpan taskDuration, float starsValutation) { //a farlo e' il richiedente

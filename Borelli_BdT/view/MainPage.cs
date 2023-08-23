@@ -67,7 +67,7 @@ namespace Borelli_BdT.view {
                         switch (how) {
                             case LoadTskList.HomeScreen:
                                 lwOutp = mListViewDoneJobs;
-                                lvi = new ListViewItem(new string[] { tsk[i].Field1, tsk[i].Field2, tsk[i].Field8 }); //id, richiedente, ore
+                                lvi = new ListViewItem(new string[] { tsk[i].Field1, tsk[i].Field3, tsk[i].Field9 }); //id, richiedente, ore
                                 break;
                             case LoadTskList.Details:
                                 //TODO
@@ -78,7 +78,7 @@ namespace Borelli_BdT.view {
                         switch (how) {
                             case LoadTskList.HomeScreen:
                                 lwOutp = mListViewReqJobs;
-                                lvi = new ListViewItem(new string[] { tsk[i].Field1, tsk[i].Field3, tsk[i].Field8 }); //id, donatore, ore
+                                lvi = new ListViewItem(new string[] { tsk[i].Field1, tsk[i].Field4, tsk[i].Field9 }); //id, donatore, ore
                                 break;
                             case LoadTskList.Details:
                                 //TODO
@@ -89,7 +89,7 @@ namespace Borelli_BdT.view {
                         switch (how) {
                             case LoadTskList.HomeScreen:
                                 lwOutp = mListViewPertinentTask;
-                                lvi = new ListViewItem(new string[] { tsk[i].Field1, tsk[i].Field2, tsk[i].Field10 }); //id, richiedente, lavoro
+                                lvi = new ListViewItem(new string[] { tsk[i].Field1, tsk[i].Field3, tsk[i].Field11 }); //id, richiedente, lavoro
                                 break;
                             case LoadTskList.Details:
                                 //TODO
