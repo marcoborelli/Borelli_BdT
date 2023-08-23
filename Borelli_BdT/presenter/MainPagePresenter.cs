@@ -1,9 +1,9 @@
 ﻿using System;
+using System.Windows.Forms;
 using System.Collections.Generic;
 using Borelli_BdT.model;
 using Borelli_BdT.view;
 using Borelli_BdT.utilities;
-using System.Windows.Forms;
 
 namespace Borelli_BdT.presenter {
     public class MainPagePresenter {
@@ -37,16 +37,6 @@ namespace Borelli_BdT.presenter {
             }
         }
 
-
-        public void DoubleClickOnAcceptUsersLW(object sender, MouseEventArgs e) {
-            string uNick = View.GetUserNicknameInUsersListView();
-
-            User u = UsersList.GetUser(uNick);
-            EntityUser eu = EntityUser.GetEntity(u);
-
-            View.OpenSignUpForm(eu);
-        }
-
         public void ChargeHomeScreen() {
             MainPage.LoadTskList tab = MainPage.LoadTskList.HomeScreen;
 
@@ -66,6 +56,14 @@ namespace Borelli_BdT.presenter {
 
 
 
+        public void DoubleClickOnAcceptUsersLW(object sender, MouseEventArgs e) {
+            string uNick = View.GetUserNicknameInUsersListView();
+
+            User u = UsersList.GetUser(uNick);
+            EntityUser eu = EntityUser.GetEntity(u);
+
+            View.OpenSignUpForm(eu);
+        }
         public void LoadAcceptNewUserTab() {
             List<EntityUser> stillNotAcceptedUsers = GetEntityUsersList(UsersList.GetInPhaseUsers(RegContext.Registration));
             View.LoadUsersList(stillNotAcceptedUsers, MainPage.LoadUsrList.ToAccept);
@@ -78,7 +76,11 @@ namespace Borelli_BdT.presenter {
             View.ShowEditorForm(ItemsEditor.Use.Jobs);
         }
 
-        public List<EntityTask> GetEntityTasksList(List<model.Task> input) {
+
+
+
+
+        private List<EntityTask> GetEntityTasksList(List<model.Task> input) {
             List<EntityTask> outp = new List<EntityTask>();
 
             for (int i = 0; i < input.Count; i++) {
@@ -88,7 +90,7 @@ namespace Borelli_BdT.presenter {
             return outp;
         }
 
-        public List<EntityUser> GetEntityUsersList(List<User> input) {
+        private List<EntityUser> GetEntityUsersList(List<User> input) {
             List<EntityUser> outp = new List<EntityUser>();
 
             for (int i = 0; i < input.Count; i++) {

@@ -9,25 +9,33 @@ using Borelli_BdT.utilities;
 
 namespace Borelli_BdT.view {
     public partial class MainPage : MaterialForm {
-        public enum LoadTskList {
+        public enum LoadTskList { //indica se la listView in questione e' nella HomeScreen (pochi dettagli) o nel tab dedicato (dettagliata)
             HomeScreen,
             Details,
         }
-        public enum TaskType {
-            Done,
-            Requested,
+        public enum TaskType { //indica se e' la lista delle task pertinenti, richieste o fatte.
             Pertinent,
+            Requested = 2,
+            Done = 4,
         }
+        /* La logica consiste in una lista di 6 listView (2 (HomeScreen e Details) per ognuno dei 3 task type
+         * (Pertinent, Requested, Done)). Questi enumm, tramite la loro somma, vengono usati per riconoscere la giusta ListView
+         * da parte del presenter che non vi ha accesso.
+         * Es: la ListView che sitrova sull'Home delle task fatte avra' indice 4: 0(LoadTskList.HomeScreen) + 4(TaskType.Done) */
 
         public enum LoadUsrList {
             ToAccept,
             Details,
         }
 
-        MainPagePresenter Presenter { get; set; }
+        private MainPagePresenter Presenter { get; set; }
+        private List<MaterialListView> MListViews { get; set; }
+
         public MainPage(string username) {
             InitializeComponent();
             FormManager.AddForm(this);
+
+            MListViews = new List<MaterialListView> { mListViewPertinentTask/*, mListViewPertinentComplete*/, mListViewReqJobs/*, mListViewReqJobsComplete, */, mListViewDoneJobs/*, mListViewDoneJobsComplete*/};
 
             Presenter = new MainPagePresenter(this, username);
             materialTabControl1.SelectedIndexChanged += new EventHandler(Presenter.LoadSelectedTab);
@@ -54,8 +62,23 @@ namespace Borelli_BdT.view {
             }
             labelDeltaHours.Font = new Font("Cooper Black", 14);
 
-            labelDeltaHours.Text = $"{delta.Hours}h {delta.Minutes}m";
+            labelDeltaHours.Text = $"{delta.Hours}h {Math.Abs(delta.Minutes)}m";
         }
+
+
+
+        public void ShowEditorForm(ItemsEditor.Use use) {
+            ItemsEditor itmsForm = new ItemsEditor(use);
+            itmsForm.Show();
+        }
+
+        public void OpenSignUpForm(EntityUser e) {
+            SignUp signUpForm = new SignUp(e);
+            signUpForm.Show();
+
+            signUpForm.FormClosed += new FormClosedEventHandler(ClosedSignUpForm);
+        }
+
 
         public void LoadTasksList(List<EntityTask> tsk, TaskType type, LoadTskList how) {
             MaterialListView lwOutp = new MaterialListView();
@@ -130,16 +153,7 @@ namespace Borelli_BdT.view {
             }
         }
 
-        public void ShowEditorForm(ItemsEditor.Use use) {
-            ItemsEditor itmsForm = new ItemsEditor(use);
-            itmsForm.Show();
-        }
 
-        public void OpenSignUpForm(EntityUser e) {
-            SignUp signUpForm = new SignUp(e);
-            signUpForm.Show();
-
-            signUpForm.FormClosed += new FormClosedEventHandler(ClosedSignUpForm);
         }
 
 
@@ -154,6 +168,9 @@ namespace Borelli_BdT.view {
 
         private void ClosedSignUpForm(object sender, FormClosedEventArgs e) {
             Presenter.LoadAcceptNewUserTab();
+        }
+        private MaterialListView GetCurrentListView(TaskType type, LoadTskList how) {
+            return MListViews[(int)type + (int)how];
         }
     }
 }
