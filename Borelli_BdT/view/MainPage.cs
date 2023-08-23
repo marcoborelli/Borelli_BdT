@@ -49,12 +49,9 @@ namespace Borelli_BdT.view {
             Presenter = new MainPagePresenter(this, username);
             materialTabControl1.SelectedIndexChanged += new EventHandler(Presenter.LoadSelectedTab);
 
-            //TODO
-            /*
             textBoxSearchAcceptTask.TextChanged += new EventHandler(Presenter.ReLoadReqAcceptTask);
             mButtonAcceptTask.Click += new EventHandler(Presenter.OnAcceptTask);
             mButtonReqTask.Click += new EventHandler(Presenter.OnRequestTask);
-            */
 
             mListViewAcceptUsers.MouseDoubleClick += new MouseEventHandler(Presenter.DoubleClickOnAcceptUsersLW);
             mButtonModDistr.Click += new EventHandler(Presenter.OnModifyDistr);
