@@ -37,6 +37,9 @@ namespace Borelli_BdT.presenter {
                     LoadJobsList();
                     break;
                 case 2:
+                    LoadAcceptedTasks();
+                    break;
+                case 3:
                     LoadAcceptNewUserTab();
                     break;
             }
@@ -70,7 +73,7 @@ namespace Borelli_BdT.presenter {
             List<EntityTask> pertinentFilteredTask = FilterTasks(pertinentTasks, rxRicerca, View.GetUsedFilter(tt));
 
             View.ClearListViewTask(tt, MainPage.LoadTskList.Details);
-            View.LoadTasksList(pertinentFilteredTask, MainPage.TaskType.Pertinent, MainPage.LoadTskList.Details);
+            View.LoadTasksList(pertinentFilteredTask, tt, MainPage.LoadTskList.Details);
         }
 
         public void LoadJobsList() {
@@ -116,6 +119,30 @@ namespace Borelli_BdT.presenter {
 
 
 
+        public void LoadAcceptedTasks() {
+            AcTaskState taskState = View.GetUsedStateFilter();
+            MainPage.TaskType tt = MainPage.TaskType.Done;
+
+            Regex rxRicerca = new Regex(View.GetTextInSearchBar(tt), RegexOptions.IgnoreCase);
+
+            List<EntityTask> doneTasks = GetEntityTasksList(TasksList.GetAcceptedTasks(CurrentUser.Nickname, taskState));
+            List<EntityTask> donePertinentTasks = FilterTasks(doneTasks, rxRicerca, View.GetUsedFilter(tt));
+
+            View.LoadTasksList(donePertinentTasks, MainPage.TaskType.Done, MainPage.LoadTskList.Details);
+        }
+
+        public void ReLoadReqDoneTask(object sender, EventArgs e) {
+            LoadAcceptedTasks();
+        }
+
+        public bool IsAcceptedTaskDone(EntityTask e) {
+            Task t = EntityTask.GetTask(e);
+
+            return t.Status == TPhase.Done;
+        }
+
+
+
         public void DoubleClickOnAcceptUsersLW(object sender, MouseEventArgs e) {
             string uNick = View.GetUserNicknameInUsersListView();
 
@@ -124,6 +151,7 @@ namespace Borelli_BdT.presenter {
 
             View.OpenSignUpForm(eu);
         }
+
         public void LoadAcceptNewUserTab() {
             List<EntityUser> stillNotAcceptedUsers = GetEntityUsersList(UsersList.GetInPhaseUsers(RegContext.Registration));
             View.LoadUsersList(stillNotAcceptedUsers, MainPage.LoadUsrList.ToAccept);
@@ -132,11 +160,10 @@ namespace Borelli_BdT.presenter {
         public void OnModifyDistr(object sender, EventArgs e) {
             View.ShowEditorForm(ItemsEditor.Use.Districts);
         }
+
         public void OnModifyJobs(object sender, EventArgs e) {
             View.ShowEditorForm(ItemsEditor.Use.Jobs);
         }
-
-
 
 
 
@@ -159,6 +186,7 @@ namespace Borelli_BdT.presenter {
 
             return outp;
         }
+
 
 
         private List<EntityTask> FilterTasks(List<EntityTask> input, Regex rx, MainPage.ResarchOption opt) {

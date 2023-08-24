@@ -55,7 +55,7 @@ namespace Borelli_BdT.view {
             mButtonAcceptTask.Click += new EventHandler(Presenter.OnAcceptTask);
             mButtonReqTask.Click += new EventHandler(Presenter.OnRequestTask);
 
-            //TODO: textBoxSearchDoneTasks.TextChanged += new EventHandler(Presenter.ReLoadReqDoneTask);
+            textBoxSearchDoneTasks.TextChanged += new EventHandler(Presenter.ReLoadReqDoneTask);
 
             mListViewAcceptUsers.MouseDoubleClick += new MouseEventHandler(Presenter.DoubleClickOnAcceptUsersLW);
             mButtonModDistr.Click += new EventHandler(Presenter.OnModifyDistr);
@@ -157,7 +157,7 @@ namespace Borelli_BdT.view {
                                 lwOutp = mListViewDoneJobsComplete;
                                 lvi = new ListViewItem(new string[] { tsk[i].Field1, tsk[i].Field3, tsk[i].Field11, tsk[i].Field6, tsk[i].Field9 }); //id, richiedente, lavoro, data acc., ore
 
-                                //TODO: lvi.BackColor = Presenter.IsAcceptedTaskDone(tsk[i]) ? Verdolino : Giallino;
+                                lvi.BackColor = Presenter.IsAcceptedTaskDone(tsk[i]) ? Verdolino : Giallino;
                                 break;
                         }
                         break;
