@@ -56,19 +56,44 @@
             this.mLabelName = new MaterialSkin.Controls.MaterialLabel();
             this.tabCreateAcceptTask = new System.Windows.Forms.TabPage();
             this.materialCard7 = new MaterialSkin.Controls.MaterialCard();
+            this.mButtonReqTask = new MaterialSkin.Controls.MaterialButton();
+            this.mMultiLineTextBoxCaption = new MaterialSkin.Controls.MaterialMultiLineTextBox2();
+            this.mComboBoxChooseJob = new MaterialSkin.Controls.MaterialComboBox();
             this.materialCard6 = new MaterialSkin.Controls.MaterialCard();
             this.mButtonAcceptTask = new MaterialSkin.Controls.MaterialButton();
             this.materialLabel1 = new MaterialSkin.Controls.MaterialLabel();
             this.textBoxSearchAcceptTask = new System.Windows.Forms.TextBox();
             this.mLabel4 = new MaterialSkin.Controls.MaterialLabel();
-            this.mRButtonJob = new MaterialSkin.Controls.MaterialRadioButton();
-            this.mRButtonRequester = new MaterialSkin.Controls.MaterialRadioButton();
+            this.tARmRButtonJob = new MaterialSkin.Controls.MaterialRadioButton();
+            this.tARmRButtonRequester = new MaterialSkin.Controls.MaterialRadioButton();
             this.mListViewPertinentComplete = new MaterialSkin.Controls.MaterialListView();
             this.cacId = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.cacRequester = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.cacJob = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.cacCaption = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.tabAccept = new System.Windows.Forms.TabPage();
+            this.tabAcceptedTask = new System.Windows.Forms.TabPage();
+            this.textBoxSearchDoneTasks = new System.Windows.Forms.TextBox();
+            this.materialLabel3 = new MaterialSkin.Controls.MaterialLabel();
+            this.materialCard10 = new MaterialSkin.Controls.MaterialCard();
+            this.materialLabel2 = new MaterialSkin.Controls.MaterialLabel();
+            this.tACCmRButtonJob = new MaterialSkin.Controls.MaterialRadioButton();
+            this.tACCmRButtonRequester = new MaterialSkin.Controls.MaterialRadioButton();
+            this.materialCard9 = new MaterialSkin.Controls.MaterialCard();
+            this.mLabel5 = new MaterialSkin.Controls.MaterialLabel();
+            this.tACCmRButtonDone = new MaterialSkin.Controls.MaterialRadioButton();
+            this.tACCmRButtonAccepted = new MaterialSkin.Controls.MaterialRadioButton();
+            this.tACCmRButtonAll = new MaterialSkin.Controls.MaterialRadioButton();
+            this.materialCard8 = new MaterialSkin.Controls.MaterialCard();
+            this.materialLabel5 = new MaterialSkin.Controls.MaterialLabel();
+            this.labelDotDone = new System.Windows.Forms.Label();
+            this.materialLabel4 = new MaterialSkin.Controls.MaterialLabel();
+            this.mListViewDoneJobsComplete = new MaterialSkin.Controls.MaterialListView();
+            this.caccId = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.caccRequester = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.caccJob = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.caccDateAccept = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.caccHours = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.tabAcceptUsers = new System.Windows.Forms.TabPage();
             this.mButtonModDistr = new MaterialSkin.Controls.MaterialButton();
             this.mButtonModJobs = new MaterialSkin.Controls.MaterialButton();
             this.mListViewAcceptUsers = new MaterialSkin.Controls.MaterialListView();
@@ -78,9 +103,8 @@
             this.caPhNumb = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.caEmail = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
-            this.mComboBoxChooseJob = new MaterialSkin.Controls.MaterialComboBox();
-            this.mMultiLineTextBoxCaption = new MaterialSkin.Controls.MaterialMultiLineTextBox2();
-            this.mButtonReqTask = new MaterialSkin.Controls.MaterialButton();
+            this.materialLabel6 = new MaterialSkin.Controls.MaterialLabel();
+            this.labelDotAccepted = new System.Windows.Forms.Label();
             this.materialTabControl1.SuspendLayout();
             this.tabHome.SuspendLayout();
             this.materialCard1.SuspendLayout();
@@ -92,14 +116,19 @@
             this.tabCreateAcceptTask.SuspendLayout();
             this.materialCard7.SuspendLayout();
             this.materialCard6.SuspendLayout();
-            this.tabAccept.SuspendLayout();
+            this.tabAcceptedTask.SuspendLayout();
+            this.materialCard10.SuspendLayout();
+            this.materialCard9.SuspendLayout();
+            this.materialCard8.SuspendLayout();
+            this.tabAcceptUsers.SuspendLayout();
             this.SuspendLayout();
             // 
             // materialTabControl1
             // 
             this.materialTabControl1.Controls.Add(this.tabHome);
             this.materialTabControl1.Controls.Add(this.tabCreateAcceptTask);
-            this.materialTabControl1.Controls.Add(this.tabAccept);
+            this.materialTabControl1.Controls.Add(this.tabAcceptedTask);
+            this.materialTabControl1.Controls.Add(this.tabAcceptUsers);
             this.materialTabControl1.Depth = 0;
             this.materialTabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.materialTabControl1.ImageList = this.imageList1;
@@ -140,7 +169,7 @@
             this.materialCard1.Name = "materialCard1";
             this.materialCard1.Padding = new System.Windows.Forms.Padding(14);
             this.materialCard1.Size = new System.Drawing.Size(82, 44);
-            this.materialCard1.TabIndex = 2;
+            this.materialCard1.TabIndex = 4;
             // 
             // labelDeltaHours
             // 
@@ -165,7 +194,7 @@
             this.materialCard5.Name = "materialCard5";
             this.materialCard5.Padding = new System.Windows.Forms.Padding(14);
             this.materialCard5.Size = new System.Drawing.Size(318, 192);
-            this.materialCard5.TabIndex = 3;
+            this.materialCard5.TabIndex = 5;
             // 
             // mLabel2
             // 
@@ -176,7 +205,7 @@
             this.mLabel2.MouseState = MaterialSkin.MouseState.HOVER;
             this.mLabel2.Name = "mLabel2";
             this.mLabel2.Size = new System.Drawing.Size(103, 19);
-            this.mLabel2.TabIndex = 8;
+            this.mLabel2.TabIndex = 0;
             this.mLabel2.Text = "Task richieste:";
             // 
             // mListViewReqJobs
@@ -198,7 +227,7 @@
             this.mListViewReqJobs.Name = "mListViewReqJobs";
             this.mListViewReqJobs.OwnerDraw = true;
             this.mListViewReqJobs.Size = new System.Drawing.Size(284, 150);
-            this.mListViewReqJobs.TabIndex = 7;
+            this.mListViewReqJobs.TabIndex = 1;
             this.mListViewReqJobs.UseCompatibleStateImageBehavior = false;
             this.mListViewReqJobs.View = System.Windows.Forms.View.Details;
             // 
@@ -227,7 +256,7 @@
             this.materialCard4.Name = "materialCard4";
             this.materialCard4.Padding = new System.Windows.Forms.Padding(14);
             this.materialCard4.Size = new System.Drawing.Size(208, 44);
-            this.materialCard4.TabIndex = 1;
+            this.materialCard4.TabIndex = 3;
             // 
             // materialCard3
             // 
@@ -253,7 +282,7 @@
             this.mLabel1.MouseState = MaterialSkin.MouseState.HOVER;
             this.mLabel1.Name = "mLabel1";
             this.mLabel1.Size = new System.Drawing.Size(77, 19);
-            this.mLabel1.TabIndex = 6;
+            this.mLabel1.TabIndex = 0;
             this.mLabel1.Text = "Task fatte:";
             // 
             // mListViewDoneJobs
@@ -275,7 +304,7 @@
             this.mListViewDoneJobs.Name = "mListViewDoneJobs";
             this.mListViewDoneJobs.OwnerDraw = true;
             this.mListViewDoneJobs.Size = new System.Drawing.Size(284, 150);
-            this.mListViewDoneJobs.TabIndex = 0;
+            this.mListViewDoneJobs.TabIndex = 1;
             this.mListViewDoneJobs.UseCompatibleStateImageBehavior = false;
             this.mListViewDoneJobs.View = System.Windows.Forms.View.Details;
             // 
@@ -317,7 +346,7 @@
             this.mLabel3.MouseState = MaterialSkin.MouseState.HOVER;
             this.mLabel3.Name = "mLabel3";
             this.mLabel3.Size = new System.Drawing.Size(110, 19);
-            this.mLabel3.TabIndex = 8;
+            this.mLabel3.TabIndex = 0;
             this.mLabel3.Text = "Task pertinenti:";
             // 
             // mListViewPertinentTask
@@ -339,7 +368,7 @@
             this.mListViewPertinentTask.Name = "mListViewPertinentTask";
             this.mListViewPertinentTask.OwnerDraw = true;
             this.mListViewPertinentTask.Size = new System.Drawing.Size(284, 150);
-            this.mListViewPertinentTask.TabIndex = 7;
+            this.mListViewPertinentTask.TabIndex = 1;
             this.mListViewPertinentTask.UseCompatibleStateImageBehavior = false;
             this.mListViewPertinentTask.View = System.Windows.Forms.View.Details;
             // 
@@ -393,7 +422,7 @@
             this.mLabelDistr.MouseState = MaterialSkin.MouseState.HOVER;
             this.mLabelDistr.Name = "mLabelDistr";
             this.mLabelDistr.Size = new System.Drawing.Size(107, 19);
-            this.mLabelDistr.TabIndex = 4;
+            this.mLabelDistr.TabIndex = 3;
             this.mLabelDistr.Text = "materialLabel4";
             // 
             // mLabelAddress
@@ -405,7 +434,7 @@
             this.mLabelAddress.MouseState = MaterialSkin.MouseState.HOVER;
             this.mLabelAddress.Name = "mLabelAddress";
             this.mLabelAddress.Size = new System.Drawing.Size(107, 19);
-            this.mLabelAddress.TabIndex = 3;
+            this.mLabelAddress.TabIndex = 2;
             this.mLabelAddress.Text = "materialLabel3";
             // 
             // mLabelSurname
@@ -417,7 +446,7 @@
             this.mLabelSurname.MouseState = MaterialSkin.MouseState.HOVER;
             this.mLabelSurname.Name = "mLabelSurname";
             this.mLabelSurname.Size = new System.Drawing.Size(107, 19);
-            this.mLabelSurname.TabIndex = 2;
+            this.mLabelSurname.TabIndex = 1;
             this.mLabelSurname.Text = "materialLabel2";
             // 
             // mLabelName
@@ -429,7 +458,7 @@
             this.mLabelName.MouseState = MaterialSkin.MouseState.HOVER;
             this.mLabelName.Name = "mLabelName";
             this.mLabelName.Size = new System.Drawing.Size(96, 19);
-            this.mLabelName.TabIndex = 1;
+            this.mLabelName.TabIndex = 0;
             this.mLabelName.Text = "mLabelName";
             // 
             // tabCreateAcceptTask
@@ -460,6 +489,75 @@
             this.materialCard7.Size = new System.Drawing.Size(286, 492);
             this.materialCard7.TabIndex = 1;
             // 
+            // mButtonReqTask
+            // 
+            this.mButtonReqTask.AutoSize = false;
+            this.mButtonReqTask.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.mButtonReqTask.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            this.mButtonReqTask.Depth = 0;
+            this.mButtonReqTask.HighEmphasis = true;
+            this.mButtonReqTask.Icon = null;
+            this.mButtonReqTask.Location = new System.Drawing.Point(18, 436);
+            this.mButtonReqTask.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.mButtonReqTask.MouseState = MaterialSkin.MouseState.HOVER;
+            this.mButtonReqTask.Name = "mButtonReqTask";
+            this.mButtonReqTask.NoAccentTextColor = System.Drawing.Color.Empty;
+            this.mButtonReqTask.Size = new System.Drawing.Size(158, 36);
+            this.mButtonReqTask.TabIndex = 2;
+            this.mButtonReqTask.Text = "FAI RICHIESTA";
+            this.mButtonReqTask.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            this.mButtonReqTask.UseAccentColor = false;
+            this.mButtonReqTask.UseVisualStyleBackColor = true;
+            // 
+            // mMultiLineTextBoxCaption
+            // 
+            this.mMultiLineTextBoxCaption.AnimateReadOnly = false;
+            this.mMultiLineTextBoxCaption.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.mMultiLineTextBoxCaption.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
+            this.mMultiLineTextBoxCaption.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.mMultiLineTextBoxCaption.Depth = 0;
+            this.mMultiLineTextBoxCaption.HideSelection = true;
+            this.mMultiLineTextBoxCaption.Hint = "Descrizione (opzionale)";
+            this.mMultiLineTextBoxCaption.Location = new System.Drawing.Point(17, 72);
+            this.mMultiLineTextBoxCaption.MaxLength = 32767;
+            this.mMultiLineTextBoxCaption.MouseState = MaterialSkin.MouseState.OUT;
+            this.mMultiLineTextBoxCaption.Name = "mMultiLineTextBoxCaption";
+            this.mMultiLineTextBoxCaption.PasswordChar = '\0';
+            this.mMultiLineTextBoxCaption.ReadOnly = false;
+            this.mMultiLineTextBoxCaption.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.mMultiLineTextBoxCaption.SelectedText = "";
+            this.mMultiLineTextBoxCaption.SelectionLength = 0;
+            this.mMultiLineTextBoxCaption.SelectionStart = 0;
+            this.mMultiLineTextBoxCaption.ShortcutsEnabled = true;
+            this.mMultiLineTextBoxCaption.Size = new System.Drawing.Size(252, 153);
+            this.mMultiLineTextBoxCaption.TabIndex = 1;
+            this.mMultiLineTextBoxCaption.TabStop = false;
+            this.mMultiLineTextBoxCaption.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.mMultiLineTextBoxCaption.UseSystemPasswordChar = false;
+            // 
+            // mComboBoxChooseJob
+            // 
+            this.mComboBoxChooseJob.AutoResize = false;
+            this.mComboBoxChooseJob.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.mComboBoxChooseJob.Depth = 0;
+            this.mComboBoxChooseJob.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
+            this.mComboBoxChooseJob.DropDownHeight = 174;
+            this.mComboBoxChooseJob.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.mComboBoxChooseJob.DropDownWidth = 121;
+            this.mComboBoxChooseJob.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
+            this.mComboBoxChooseJob.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.mComboBoxChooseJob.FormattingEnabled = true;
+            this.mComboBoxChooseJob.Hint = "Lavoro";
+            this.mComboBoxChooseJob.IntegralHeight = false;
+            this.mComboBoxChooseJob.ItemHeight = 43;
+            this.mComboBoxChooseJob.Location = new System.Drawing.Point(17, 17);
+            this.mComboBoxChooseJob.MaxDropDownItems = 4;
+            this.mComboBoxChooseJob.MouseState = MaterialSkin.MouseState.OUT;
+            this.mComboBoxChooseJob.Name = "mComboBoxChooseJob";
+            this.mComboBoxChooseJob.Size = new System.Drawing.Size(177, 49);
+            this.mComboBoxChooseJob.StartIndex = 0;
+            this.mComboBoxChooseJob.TabIndex = 0;
+            // 
             // materialCard6
             // 
             this.materialCard6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
@@ -467,8 +565,8 @@
             this.materialCard6.Controls.Add(this.materialLabel1);
             this.materialCard6.Controls.Add(this.textBoxSearchAcceptTask);
             this.materialCard6.Controls.Add(this.mLabel4);
-            this.materialCard6.Controls.Add(this.mRButtonJob);
-            this.materialCard6.Controls.Add(this.mRButtonRequester);
+            this.materialCard6.Controls.Add(this.tARmRButtonJob);
+            this.materialCard6.Controls.Add(this.tARmRButtonRequester);
             this.materialCard6.Controls.Add(this.mListViewPertinentComplete);
             this.materialCard6.Depth = 0;
             this.materialCard6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
@@ -494,7 +592,7 @@
             this.mButtonAcceptTask.Name = "mButtonAcceptTask";
             this.mButtonAcceptTask.NoAccentTextColor = System.Drawing.Color.Empty;
             this.mButtonAcceptTask.Size = new System.Drawing.Size(158, 36);
-            this.mButtonAcceptTask.TabIndex = 15;
+            this.mButtonAcceptTask.TabIndex = 3;
             this.mButtonAcceptTask.Text = "ACCETTA TASK";
             this.mButtonAcceptTask.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
             this.mButtonAcceptTask.UseAccentColor = false;
@@ -509,7 +607,7 @@
             this.materialLabel1.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel1.Name = "materialLabel1";
             this.materialLabel1.Size = new System.Drawing.Size(57, 19);
-            this.materialLabel1.TabIndex = 14;
+            this.materialLabel1.TabIndex = 0;
             this.materialLabel1.Text = "Ricerca:";
             // 
             // textBoxSearchAcceptTask
@@ -517,7 +615,7 @@
             this.textBoxSearchAcceptTask.Location = new System.Drawing.Point(80, 17);
             this.textBoxSearchAcceptTask.Name = "textBoxSearchAcceptTask";
             this.textBoxSearchAcceptTask.Size = new System.Drawing.Size(346, 20);
-            this.textBoxSearchAcceptTask.TabIndex = 13;
+            this.textBoxSearchAcceptTask.TabIndex = 1;
             // 
             // mLabel4
             // 
@@ -528,41 +626,41 @@
             this.mLabel4.MouseState = MaterialSkin.MouseState.HOVER;
             this.mLabel4.Name = "mLabel4";
             this.mLabel4.Size = new System.Drawing.Size(88, 19);
-            this.mLabel4.TabIndex = 12;
+            this.mLabel4.TabIndex = 4;
             this.mLabel4.Text = "Filtra ricerca";
             // 
-            // mRButtonJob
+            // tARmRButtonJob
             // 
-            this.mRButtonJob.AutoSize = true;
-            this.mRButtonJob.Depth = 0;
-            this.mRButtonJob.Location = new System.Drawing.Point(290, 438);
-            this.mRButtonJob.Margin = new System.Windows.Forms.Padding(0);
-            this.mRButtonJob.MouseLocation = new System.Drawing.Point(-1, -1);
-            this.mRButtonJob.MouseState = MaterialSkin.MouseState.HOVER;
-            this.mRButtonJob.Name = "mRButtonJob";
-            this.mRButtonJob.Ripple = true;
-            this.mRButtonJob.Size = new System.Drawing.Size(84, 37);
-            this.mRButtonJob.TabIndex = 10;
-            this.mRButtonJob.TabStop = true;
-            this.mRButtonJob.Text = "Lavoro";
-            this.mRButtonJob.UseVisualStyleBackColor = true;
+            this.tARmRButtonJob.AutoSize = true;
+            this.tARmRButtonJob.Depth = 0;
+            this.tARmRButtonJob.Location = new System.Drawing.Point(290, 438);
+            this.tARmRButtonJob.Margin = new System.Windows.Forms.Padding(0);
+            this.tARmRButtonJob.MouseLocation = new System.Drawing.Point(-1, -1);
+            this.tARmRButtonJob.MouseState = MaterialSkin.MouseState.HOVER;
+            this.tARmRButtonJob.Name = "tARmRButtonJob";
+            this.tARmRButtonJob.Ripple = true;
+            this.tARmRButtonJob.Size = new System.Drawing.Size(84, 37);
+            this.tARmRButtonJob.TabIndex = 6;
+            this.tARmRButtonJob.TabStop = true;
+            this.tARmRButtonJob.Text = "Lavoro";
+            this.tARmRButtonJob.UseVisualStyleBackColor = true;
             // 
-            // mRButtonRequester
+            // tARmRButtonRequester
             // 
-            this.mRButtonRequester.AutoSize = true;
-            this.mRButtonRequester.Checked = true;
-            this.mRButtonRequester.Depth = 0;
-            this.mRButtonRequester.Location = new System.Drawing.Point(290, 401);
-            this.mRButtonRequester.Margin = new System.Windows.Forms.Padding(0);
-            this.mRButtonRequester.MouseLocation = new System.Drawing.Point(-1, -1);
-            this.mRButtonRequester.MouseState = MaterialSkin.MouseState.HOVER;
-            this.mRButtonRequester.Name = "mRButtonRequester";
-            this.mRButtonRequester.Ripple = true;
-            this.mRButtonRequester.Size = new System.Drawing.Size(117, 37);
-            this.mRButtonRequester.TabIndex = 9;
-            this.mRButtonRequester.TabStop = true;
-            this.mRButtonRequester.Text = "Richiedente";
-            this.mRButtonRequester.UseVisualStyleBackColor = true;
+            this.tARmRButtonRequester.AutoSize = true;
+            this.tARmRButtonRequester.Checked = true;
+            this.tARmRButtonRequester.Depth = 0;
+            this.tARmRButtonRequester.Location = new System.Drawing.Point(290, 401);
+            this.tARmRButtonRequester.Margin = new System.Windows.Forms.Padding(0);
+            this.tARmRButtonRequester.MouseLocation = new System.Drawing.Point(-1, -1);
+            this.tARmRButtonRequester.MouseState = MaterialSkin.MouseState.HOVER;
+            this.tARmRButtonRequester.Name = "tARmRButtonRequester";
+            this.tARmRButtonRequester.Ripple = true;
+            this.tARmRButtonRequester.Size = new System.Drawing.Size(117, 37);
+            this.tARmRButtonRequester.TabIndex = 5;
+            this.tARmRButtonRequester.TabStop = true;
+            this.tARmRButtonRequester.Text = "Richiedente";
+            this.tARmRButtonRequester.UseVisualStyleBackColor = true;
             // 
             // mListViewPertinentComplete
             // 
@@ -584,7 +682,7 @@
             this.mListViewPertinentComplete.Name = "mListViewPertinentComplete";
             this.mListViewPertinentComplete.OwnerDraw = true;
             this.mListViewPertinentComplete.Size = new System.Drawing.Size(409, 330);
-            this.mListViewPertinentComplete.TabIndex = 8;
+            this.mListViewPertinentComplete.TabIndex = 2;
             this.mListViewPertinentComplete.UseCompatibleStateImageBehavior = false;
             this.mListViewPertinentComplete.View = System.Windows.Forms.View.Details;
             // 
@@ -607,19 +705,295 @@
             this.cacCaption.Text = "DESCRIZIONE";
             this.cacCaption.Width = 135;
             // 
-            // tabAccept
+            // tabAcceptedTask
             // 
-            this.tabAccept.Controls.Add(this.mButtonModDistr);
-            this.tabAccept.Controls.Add(this.mButtonModJobs);
-            this.tabAccept.Controls.Add(this.mListViewAcceptUsers);
-            this.tabAccept.ImageKey = "bald-head-with-question-mark.png";
-            this.tabAccept.Location = new System.Drawing.Point(4, 39);
-            this.tabAccept.Name = "tabAccept";
-            this.tabAccept.Padding = new System.Windows.Forms.Padding(3);
-            this.tabAccept.Size = new System.Drawing.Size(850, 520);
-            this.tabAccept.TabIndex = 1;
-            this.tabAccept.Text = "ACCETTAZIONE";
-            this.tabAccept.UseVisualStyleBackColor = true;
+            this.tabAcceptedTask.Controls.Add(this.textBoxSearchDoneTasks);
+            this.tabAcceptedTask.Controls.Add(this.materialLabel3);
+            this.tabAcceptedTask.Controls.Add(this.materialCard10);
+            this.tabAcceptedTask.Controls.Add(this.materialCard9);
+            this.tabAcceptedTask.Controls.Add(this.materialCard8);
+            this.tabAcceptedTask.Controls.Add(this.mListViewDoneJobsComplete);
+            this.tabAcceptedTask.Location = new System.Drawing.Point(4, 39);
+            this.tabAcceptedTask.Name = "tabAcceptedTask";
+            this.tabAcceptedTask.Size = new System.Drawing.Size(850, 520);
+            this.tabAcceptedTask.TabIndex = 3;
+            this.tabAcceptedTask.Text = "TASK ACCETTATE";
+            this.tabAcceptedTask.UseVisualStyleBackColor = true;
+            // 
+            // textBoxSearchDoneTasks
+            // 
+            this.textBoxSearchDoneTasks.Location = new System.Drawing.Point(54, 6);
+            this.textBoxSearchDoneTasks.Name = "textBoxSearchDoneTasks";
+            this.textBoxSearchDoneTasks.Size = new System.Drawing.Size(499, 20);
+            this.textBoxSearchDoneTasks.TabIndex = 7;
+            // 
+            // materialLabel3
+            // 
+            this.materialLabel3.AutoSize = true;
+            this.materialLabel3.Depth = 0;
+            this.materialLabel3.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.materialLabel3.Location = new System.Drawing.Point(3, 6);
+            this.materialLabel3.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialLabel3.Name = "materialLabel3";
+            this.materialLabel3.Size = new System.Drawing.Size(45, 19);
+            this.materialLabel3.TabIndex = 6;
+            this.materialLabel3.Text = "Cerca:";
+            // 
+            // materialCard10
+            // 
+            this.materialCard10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.materialCard10.Controls.Add(this.materialLabel2);
+            this.materialCard10.Controls.Add(this.tACCmRButtonJob);
+            this.materialCard10.Controls.Add(this.tACCmRButtonRequester);
+            this.materialCard10.Depth = 0;
+            this.materialCard10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.materialCard10.Location = new System.Drawing.Point(570, 32);
+            this.materialCard10.Margin = new System.Windows.Forms.Padding(14);
+            this.materialCard10.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialCard10.Name = "materialCard10";
+            this.materialCard10.Padding = new System.Windows.Forms.Padding(14);
+            this.materialCard10.Size = new System.Drawing.Size(215, 132);
+            this.materialCard10.TabIndex = 3;
+            // 
+            // materialLabel2
+            // 
+            this.materialLabel2.AutoSize = true;
+            this.materialLabel2.Depth = 0;
+            this.materialLabel2.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.materialLabel2.Location = new System.Drawing.Point(17, 14);
+            this.materialLabel2.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialLabel2.Name = "materialLabel2";
+            this.materialLabel2.Size = new System.Drawing.Size(124, 19);
+            this.materialLabel2.TabIndex = 4;
+            this.materialLabel2.Text = "Campo di ricerca:";
+            // 
+            // tACCmRButtonJob
+            // 
+            this.tACCmRButtonJob.AutoSize = true;
+            this.tACCmRButtonJob.Depth = 0;
+            this.tACCmRButtonJob.Location = new System.Drawing.Point(14, 70);
+            this.tACCmRButtonJob.Margin = new System.Windows.Forms.Padding(0);
+            this.tACCmRButtonJob.MouseLocation = new System.Drawing.Point(-1, -1);
+            this.tACCmRButtonJob.MouseState = MaterialSkin.MouseState.HOVER;
+            this.tACCmRButtonJob.Name = "tACCmRButtonJob";
+            this.tACCmRButtonJob.Ripple = true;
+            this.tACCmRButtonJob.Size = new System.Drawing.Size(84, 37);
+            this.tACCmRButtonJob.TabIndex = 5;
+            this.tACCmRButtonJob.TabStop = true;
+            this.tACCmRButtonJob.Text = "Lavoro";
+            this.tACCmRButtonJob.UseVisualStyleBackColor = true;
+            // 
+            // tACCmRButtonRequester
+            // 
+            this.tACCmRButtonRequester.AutoSize = true;
+            this.tACCmRButtonRequester.Checked = true;
+            this.tACCmRButtonRequester.Depth = 0;
+            this.tACCmRButtonRequester.Location = new System.Drawing.Point(14, 33);
+            this.tACCmRButtonRequester.Margin = new System.Windows.Forms.Padding(0);
+            this.tACCmRButtonRequester.MouseLocation = new System.Drawing.Point(-1, -1);
+            this.tACCmRButtonRequester.MouseState = MaterialSkin.MouseState.HOVER;
+            this.tACCmRButtonRequester.Name = "tACCmRButtonRequester";
+            this.tACCmRButtonRequester.Ripple = true;
+            this.tACCmRButtonRequester.Size = new System.Drawing.Size(117, 37);
+            this.tACCmRButtonRequester.TabIndex = 4;
+            this.tACCmRButtonRequester.TabStop = true;
+            this.tACCmRButtonRequester.Text = "Richiedente";
+            this.tACCmRButtonRequester.UseVisualStyleBackColor = true;
+            // 
+            // materialCard9
+            // 
+            this.materialCard9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.materialCard9.Controls.Add(this.mLabel5);
+            this.materialCard9.Controls.Add(this.tACCmRButtonDone);
+            this.materialCard9.Controls.Add(this.tACCmRButtonAccepted);
+            this.materialCard9.Controls.Add(this.tACCmRButtonAll);
+            this.materialCard9.Depth = 0;
+            this.materialCard9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.materialCard9.Location = new System.Drawing.Point(570, 181);
+            this.materialCard9.Margin = new System.Windows.Forms.Padding(14);
+            this.materialCard9.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialCard9.Name = "materialCard9";
+            this.materialCard9.Padding = new System.Windows.Forms.Padding(14);
+            this.materialCard9.Size = new System.Drawing.Size(215, 170);
+            this.materialCard9.TabIndex = 2;
+            // 
+            // mLabel5
+            // 
+            this.mLabel5.AutoSize = true;
+            this.mLabel5.Depth = 0;
+            this.mLabel5.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.mLabel5.Location = new System.Drawing.Point(17, 14);
+            this.mLabel5.MouseState = MaterialSkin.MouseState.HOVER;
+            this.mLabel5.Name = "mLabel5";
+            this.mLabel5.Size = new System.Drawing.Size(78, 19);
+            this.mLabel5.TabIndex = 3;
+            this.mLabel5.Text = "Visualizza:";
+            // 
+            // tACCmRButtonDone
+            // 
+            this.tACCmRButtonDone.AutoSize = true;
+            this.tACCmRButtonDone.Depth = 0;
+            this.tACCmRButtonDone.Location = new System.Drawing.Point(11, 119);
+            this.tACCmRButtonDone.Margin = new System.Windows.Forms.Padding(0);
+            this.tACCmRButtonDone.MouseLocation = new System.Drawing.Point(-1, -1);
+            this.tACCmRButtonDone.MouseState = MaterialSkin.MouseState.HOVER;
+            this.tACCmRButtonDone.Name = "tACCmRButtonDone";
+            this.tACCmRButtonDone.Ripple = true;
+            this.tACCmRButtonDone.Size = new System.Drawing.Size(83, 37);
+            this.tACCmRButtonDone.TabIndex = 2;
+            this.tACCmRButtonDone.TabStop = true;
+            this.tACCmRButtonDone.Text = "Chiuse";
+            this.tACCmRButtonDone.UseVisualStyleBackColor = true;
+            // 
+            // tACCmRButtonAccepted
+            // 
+            this.tACCmRButtonAccepted.AutoSize = true;
+            this.tACCmRButtonAccepted.Depth = 0;
+            this.tACCmRButtonAccepted.Location = new System.Drawing.Point(11, 82);
+            this.tACCmRButtonAccepted.Margin = new System.Windows.Forms.Padding(0);
+            this.tACCmRButtonAccepted.MouseLocation = new System.Drawing.Point(-1, -1);
+            this.tACCmRButtonAccepted.MouseState = MaterialSkin.MouseState.HOVER;
+            this.tACCmRButtonAccepted.Name = "tACCmRButtonAccepted";
+            this.tACCmRButtonAccepted.Ripple = true;
+            this.tACCmRButtonAccepted.Size = new System.Drawing.Size(178, 37);
+            this.tACCmRButtonAccepted.TabIndex = 1;
+            this.tACCmRButtonAccepted.TabStop = true;
+            this.tACCmRButtonAccepted.Text = "In attesa di chiusura";
+            this.tACCmRButtonAccepted.UseVisualStyleBackColor = true;
+            // 
+            // tACCmRButtonAll
+            // 
+            this.tACCmRButtonAll.AutoSize = true;
+            this.tACCmRButtonAll.Checked = true;
+            this.tACCmRButtonAll.Depth = 0;
+            this.tACCmRButtonAll.Location = new System.Drawing.Point(11, 45);
+            this.tACCmRButtonAll.Margin = new System.Windows.Forms.Padding(0);
+            this.tACCmRButtonAll.MouseLocation = new System.Drawing.Point(-1, -1);
+            this.tACCmRButtonAll.MouseState = MaterialSkin.MouseState.HOVER;
+            this.tACCmRButtonAll.Name = "tACCmRButtonAll";
+            this.tACCmRButtonAll.Ripple = true;
+            this.tACCmRButtonAll.Size = new System.Drawing.Size(73, 37);
+            this.tACCmRButtonAll.TabIndex = 0;
+            this.tACCmRButtonAll.TabStop = true;
+            this.tACCmRButtonAll.Text = "Tutto";
+            this.tACCmRButtonAll.UseVisualStyleBackColor = true;
+            // 
+            // materialCard8
+            // 
+            this.materialCard8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.materialCard8.Controls.Add(this.materialLabel6);
+            this.materialCard8.Controls.Add(this.labelDotAccepted);
+            this.materialCard8.Controls.Add(this.materialLabel5);
+            this.materialCard8.Controls.Add(this.labelDotDone);
+            this.materialCard8.Controls.Add(this.materialLabel4);
+            this.materialCard8.Depth = 0;
+            this.materialCard8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.materialCard8.Location = new System.Drawing.Point(570, 367);
+            this.materialCard8.Margin = new System.Windows.Forms.Padding(14);
+            this.materialCard8.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialCard8.Name = "materialCard8";
+            this.materialCard8.Padding = new System.Windows.Forms.Padding(14);
+            this.materialCard8.Size = new System.Drawing.Size(215, 150);
+            this.materialCard8.TabIndex = 1;
+            // 
+            // materialLabel5
+            // 
+            this.materialLabel5.AutoSize = true;
+            this.materialLabel5.Depth = 0;
+            this.materialLabel5.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.materialLabel5.Location = new System.Drawing.Point(45, 42);
+            this.materialLabel5.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialLabel5.Name = "materialLabel5";
+            this.materialLabel5.Size = new System.Drawing.Size(82, 19);
+            this.materialLabel5.TabIndex = 2;
+            this.materialLabel5.Text = "Completate";
+            // 
+            // labelDotDone
+            // 
+            this.labelDotDone.AutoSize = true;
+            this.labelDotDone.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelDotDone.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.labelDotDone.Location = new System.Drawing.Point(17, 42);
+            this.labelDotDone.Name = "labelDotDone";
+            this.labelDotDone.Size = new System.Drawing.Size(22, 24);
+            this.labelDotDone.TabIndex = 1;
+            this.labelDotDone.Text = "●";
+            // 
+            // materialLabel4
+            // 
+            this.materialLabel4.AutoSize = true;
+            this.materialLabel4.Depth = 0;
+            this.materialLabel4.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.materialLabel4.Location = new System.Drawing.Point(17, 14);
+            this.materialLabel4.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialLabel4.Name = "materialLabel4";
+            this.materialLabel4.Size = new System.Drawing.Size(66, 19);
+            this.materialLabel4.TabIndex = 0;
+            this.materialLabel4.Text = "Legenda:";
+            // 
+            // mListViewDoneJobsComplete
+            // 
+            this.mListViewDoneJobsComplete.AutoSizeTable = false;
+            this.mListViewDoneJobsComplete.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.mListViewDoneJobsComplete.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.mListViewDoneJobsComplete.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.caccId,
+            this.caccRequester,
+            this.caccJob,
+            this.caccDateAccept,
+            this.caccHours});
+            this.mListViewDoneJobsComplete.Depth = 0;
+            this.mListViewDoneJobsComplete.FullRowSelect = true;
+            this.mListViewDoneJobsComplete.HideSelection = false;
+            this.mListViewDoneJobsComplete.Location = new System.Drawing.Point(3, 32);
+            this.mListViewDoneJobsComplete.MinimumSize = new System.Drawing.Size(200, 100);
+            this.mListViewDoneJobsComplete.MouseLocation = new System.Drawing.Point(-1, -1);
+            this.mListViewDoneJobsComplete.MouseState = MaterialSkin.MouseState.OUT;
+            this.mListViewDoneJobsComplete.Name = "mListViewDoneJobsComplete";
+            this.mListViewDoneJobsComplete.OwnerDraw = true;
+            this.mListViewDoneJobsComplete.Size = new System.Drawing.Size(550, 485);
+            this.mListViewDoneJobsComplete.TabIndex = 0;
+            this.mListViewDoneJobsComplete.UseCompatibleStateImageBehavior = false;
+            this.mListViewDoneJobsComplete.View = System.Windows.Forms.View.Details;
+            // 
+            // caccId
+            // 
+            this.caccId.Text = "ID";
+            this.caccId.Width = 70;
+            // 
+            // caccRequester
+            // 
+            this.caccRequester.Text = "RICHIEDENTE";
+            this.caccRequester.Width = 130;
+            // 
+            // caccJob
+            // 
+            this.caccJob.Text = "LAVORO";
+            this.caccJob.Width = 130;
+            // 
+            // caccDateAccept
+            // 
+            this.caccDateAccept.Text = "PRESA IN CARICO";
+            this.caccDateAccept.Width = 150;
+            // 
+            // caccHours
+            // 
+            this.caccHours.Text = "ORE";
+            this.caccHours.Width = 70;
+            // 
+            // tabAcceptUsers
+            // 
+            this.tabAcceptUsers.Controls.Add(this.mButtonModDistr);
+            this.tabAcceptUsers.Controls.Add(this.mButtonModJobs);
+            this.tabAcceptUsers.Controls.Add(this.mListViewAcceptUsers);
+            this.tabAcceptUsers.ImageKey = "bald-head-with-question-mark.png";
+            this.tabAcceptUsers.Location = new System.Drawing.Point(4, 39);
+            this.tabAcceptUsers.Name = "tabAcceptUsers";
+            this.tabAcceptUsers.Padding = new System.Windows.Forms.Padding(3);
+            this.tabAcceptUsers.Size = new System.Drawing.Size(850, 520);
+            this.tabAcceptUsers.TabIndex = 1;
+            this.tabAcceptUsers.Text = "ACCETTAZIONE";
+            this.tabAcceptUsers.UseVisualStyleBackColor = true;
             // 
             // mButtonModDistr
             // 
@@ -719,74 +1093,28 @@
             this.imageList1.Images.SetKeyName(1, "task-list.png");
             this.imageList1.Images.SetKeyName(2, "bald-head-with-question-mark.png");
             // 
-            // mComboBoxChooseJob
+            // materialLabel6
             // 
-            this.mComboBoxChooseJob.AutoResize = false;
-            this.mComboBoxChooseJob.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.mComboBoxChooseJob.Depth = 0;
-            this.mComboBoxChooseJob.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
-            this.mComboBoxChooseJob.DropDownHeight = 174;
-            this.mComboBoxChooseJob.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.mComboBoxChooseJob.DropDownWidth = 121;
-            this.mComboBoxChooseJob.Font = new System.Drawing.Font("Roboto Medium", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
-            this.mComboBoxChooseJob.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.mComboBoxChooseJob.FormattingEnabled = true;
-            this.mComboBoxChooseJob.Hint = "Lavoro";
-            this.mComboBoxChooseJob.IntegralHeight = false;
-            this.mComboBoxChooseJob.ItemHeight = 43;
-            this.mComboBoxChooseJob.Location = new System.Drawing.Point(17, 17);
-            this.mComboBoxChooseJob.MaxDropDownItems = 4;
-            this.mComboBoxChooseJob.MouseState = MaterialSkin.MouseState.OUT;
-            this.mComboBoxChooseJob.Name = "mComboBoxChooseJob";
-            this.mComboBoxChooseJob.Size = new System.Drawing.Size(177, 49);
-            this.mComboBoxChooseJob.StartIndex = 0;
-            this.mComboBoxChooseJob.TabIndex = 0;
+            this.materialLabel6.AutoSize = true;
+            this.materialLabel6.Depth = 0;
+            this.materialLabel6.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.materialLabel6.Location = new System.Drawing.Point(45, 73);
+            this.materialLabel6.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialLabel6.Name = "materialLabel6";
+            this.materialLabel6.Size = new System.Drawing.Size(144, 19);
+            this.materialLabel6.TabIndex = 4;
+            this.materialLabel6.Text = "In attesa di chiusura";
             // 
-            // mMultiLineTextBoxCaption
+            // labelDotAccepted
             // 
-            this.mMultiLineTextBoxCaption.AnimateReadOnly = false;
-            this.mMultiLineTextBoxCaption.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.mMultiLineTextBoxCaption.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
-            this.mMultiLineTextBoxCaption.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.mMultiLineTextBoxCaption.Depth = 0;
-            this.mMultiLineTextBoxCaption.HideSelection = true;
-            this.mMultiLineTextBoxCaption.Hint = "Descrizione (opzionale)";
-            this.mMultiLineTextBoxCaption.Location = new System.Drawing.Point(17, 72);
-            this.mMultiLineTextBoxCaption.MaxLength = 32767;
-            this.mMultiLineTextBoxCaption.MouseState = MaterialSkin.MouseState.OUT;
-            this.mMultiLineTextBoxCaption.Name = "mMultiLineTextBoxCaption";
-            this.mMultiLineTextBoxCaption.PasswordChar = '\0';
-            this.mMultiLineTextBoxCaption.ReadOnly = false;
-            this.mMultiLineTextBoxCaption.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.mMultiLineTextBoxCaption.SelectedText = "";
-            this.mMultiLineTextBoxCaption.SelectionLength = 0;
-            this.mMultiLineTextBoxCaption.SelectionStart = 0;
-            this.mMultiLineTextBoxCaption.ShortcutsEnabled = true;
-            this.mMultiLineTextBoxCaption.Size = new System.Drawing.Size(252, 153);
-            this.mMultiLineTextBoxCaption.TabIndex = 1;
-            this.mMultiLineTextBoxCaption.TabStop = false;
-            this.mMultiLineTextBoxCaption.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.mMultiLineTextBoxCaption.UseSystemPasswordChar = false;
-            // 
-            // mButtonReqTask
-            // 
-            this.mButtonReqTask.AutoSize = false;
-            this.mButtonReqTask.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.mButtonReqTask.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
-            this.mButtonReqTask.Depth = 0;
-            this.mButtonReqTask.HighEmphasis = true;
-            this.mButtonReqTask.Icon = null;
-            this.mButtonReqTask.Location = new System.Drawing.Point(18, 436);
-            this.mButtonReqTask.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-            this.mButtonReqTask.MouseState = MaterialSkin.MouseState.HOVER;
-            this.mButtonReqTask.Name = "mButtonReqTask";
-            this.mButtonReqTask.NoAccentTextColor = System.Drawing.Color.Empty;
-            this.mButtonReqTask.Size = new System.Drawing.Size(158, 36);
-            this.mButtonReqTask.TabIndex = 4;
-            this.mButtonReqTask.Text = "FAI RICHIESTA";
-            this.mButtonReqTask.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
-            this.mButtonReqTask.UseAccentColor = false;
-            this.mButtonReqTask.UseVisualStyleBackColor = true;
+            this.labelDotAccepted.AutoSize = true;
+            this.labelDotAccepted.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelDotAccepted.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.labelDotAccepted.Location = new System.Drawing.Point(17, 73);
+            this.labelDotAccepted.Name = "labelDotAccepted";
+            this.labelDotAccepted.Size = new System.Drawing.Size(22, 24);
+            this.labelDotAccepted.TabIndex = 3;
+            this.labelDotAccepted.Text = "●";
             // 
             // MainPage
             // 
@@ -816,7 +1144,15 @@
             this.materialCard7.ResumeLayout(false);
             this.materialCard6.ResumeLayout(false);
             this.materialCard6.PerformLayout();
-            this.tabAccept.ResumeLayout(false);
+            this.tabAcceptedTask.ResumeLayout(false);
+            this.tabAcceptedTask.PerformLayout();
+            this.materialCard10.ResumeLayout(false);
+            this.materialCard10.PerformLayout();
+            this.materialCard9.ResumeLayout(false);
+            this.materialCard9.PerformLayout();
+            this.materialCard8.ResumeLayout(false);
+            this.materialCard8.PerformLayout();
+            this.tabAcceptUsers.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -825,7 +1161,7 @@
 
         private MaterialSkin.Controls.MaterialTabControl materialTabControl1;
         private System.Windows.Forms.TabPage tabHome;
-        private System.Windows.Forms.TabPage tabAccept;
+        private System.Windows.Forms.TabPage tabAcceptUsers;
         private System.Windows.Forms.ImageList imageList1;
         private MaterialSkin.Controls.MaterialCard materialCard5;
         private MaterialSkin.Controls.MaterialCard materialCard4;
@@ -870,8 +1206,8 @@
         private System.Windows.Forms.ColumnHeader cacRequester;
         private System.Windows.Forms.ColumnHeader cacJob;
         private System.Windows.Forms.ColumnHeader cacCaption;
-        private MaterialSkin.Controls.MaterialRadioButton mRButtonJob;
-        private MaterialSkin.Controls.MaterialRadioButton mRButtonRequester;
+        private MaterialSkin.Controls.MaterialRadioButton tARmRButtonJob;
+        private MaterialSkin.Controls.MaterialRadioButton tARmRButtonRequester;
         private MaterialSkin.Controls.MaterialLabel mLabel4;
         private MaterialSkin.Controls.MaterialLabel materialLabel1;
         private System.Windows.Forms.TextBox textBoxSearchAcceptTask;
@@ -879,5 +1215,29 @@
         private MaterialSkin.Controls.MaterialMultiLineTextBox2 mMultiLineTextBoxCaption;
         private MaterialSkin.Controls.MaterialComboBox mComboBoxChooseJob;
         private MaterialSkin.Controls.MaterialButton mButtonReqTask;
+        private System.Windows.Forms.TabPage tabAcceptedTask;
+        private MaterialSkin.Controls.MaterialCard materialCard9;
+        private MaterialSkin.Controls.MaterialCard materialCard8;
+        private MaterialSkin.Controls.MaterialListView mListViewDoneJobsComplete;
+        private MaterialSkin.Controls.MaterialLabel mLabel5;
+        private MaterialSkin.Controls.MaterialRadioButton tACCmRButtonDone;
+        private MaterialSkin.Controls.MaterialRadioButton tACCmRButtonAccepted;
+        private MaterialSkin.Controls.MaterialRadioButton tACCmRButtonAll;
+        private MaterialSkin.Controls.MaterialCard materialCard10;
+        private System.Windows.Forms.TextBox textBoxSearchDoneTasks;
+        private MaterialSkin.Controls.MaterialLabel materialLabel3;
+        private MaterialSkin.Controls.MaterialLabel materialLabel2;
+        private MaterialSkin.Controls.MaterialRadioButton tACCmRButtonJob;
+        private MaterialSkin.Controls.MaterialRadioButton tACCmRButtonRequester;
+        private System.Windows.Forms.ColumnHeader caccId;
+        private System.Windows.Forms.ColumnHeader caccRequester;
+        private System.Windows.Forms.ColumnHeader caccJob;
+        private System.Windows.Forms.ColumnHeader caccDateAccept;
+        private System.Windows.Forms.ColumnHeader caccHours;
+        private MaterialSkin.Controls.MaterialLabel materialLabel5;
+        private System.Windows.Forms.Label labelDotDone;
+        private MaterialSkin.Controls.MaterialLabel materialLabel4;
+        private MaterialSkin.Controls.MaterialLabel materialLabel6;
+        private System.Windows.Forms.Label labelDotAccepted;
     }
 }

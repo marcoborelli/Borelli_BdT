@@ -39,12 +39,14 @@ namespace Borelli_BdT.view {
 
         private MainPagePresenter Presenter { get; set; }
         private List<MaterialListView> MListViews { get; set; }
+        private Color Giallino { get; set; }
+        private Color Verdolino { get; set; }
 
         public MainPage(string username) {
             InitializeComponent();
             FormManager.AddForm(this);
 
-            MListViews = new List<MaterialListView> { mListViewPertinentTask, mListViewPertinentComplete, mListViewReqJobs/*, mListViewReqJobsComplete, */, mListViewDoneJobs/*, mListViewDoneJobsComplete*/};
+            MListViews = new List<MaterialListView> { mListViewPertinentTask, mListViewPertinentComplete, mListViewReqJobs/*, mListViewReqJobsComplete, */, mListViewDoneJobs, mListViewDoneJobsComplete };
 
             Presenter = new MainPagePresenter(this, username);
             materialTabControl1.SelectedIndexChanged += new EventHandler(Presenter.LoadSelectedTab);
@@ -53,9 +55,14 @@ namespace Borelli_BdT.view {
             mButtonAcceptTask.Click += new EventHandler(Presenter.OnAcceptTask);
             mButtonReqTask.Click += new EventHandler(Presenter.OnRequestTask);
 
+            //TODO: textBoxSearchDoneTasks.TextChanged += new EventHandler(Presenter.ReLoadReqDoneTask);
+
             mListViewAcceptUsers.MouseDoubleClick += new MouseEventHandler(Presenter.DoubleClickOnAcceptUsersLW);
             mButtonModDistr.Click += new EventHandler(Presenter.OnModifyDistr);
             mButtonModJobs.Click += new EventHandler(Presenter.OnModifyJobs);
+
+            Verdolino = Color.FromArgb(192, 255, 192);
+            Giallino = Color.FromArgb(255, 255, 192);
         }
 
 
@@ -119,6 +126,21 @@ namespace Borelli_BdT.view {
 
 
 
+        public AcTaskState GetUsedStateFilter() {
+            AcTaskState outp;
+
+            if (tACCmRButtonAll.Checked) {
+                outp = AcTaskState.All;
+            } else if (tACCmRButtonDone.Checked) {
+                outp = AcTaskState.Done;
+            } else {
+                outp = AcTaskState.Accepted;
+            }
+
+            return outp;
+        }
+
+
         public void LoadTasksList(List<EntityTask> tsk, TaskType type, LoadTskList how) {
             MaterialListView lwOutp = new MaterialListView();
             ListViewItem lvi = new ListViewItem();
@@ -132,7 +154,10 @@ namespace Borelli_BdT.view {
                                 lvi = new ListViewItem(new string[] { tsk[i].Field1, tsk[i].Field3, tsk[i].Field9 }); //id, richiedente, ore
                                 break;
                             case LoadTskList.Details:
-                                //TODO
+                                lwOutp = mListViewDoneJobsComplete;
+                                lvi = new ListViewItem(new string[] { tsk[i].Field1, tsk[i].Field3, tsk[i].Field11, tsk[i].Field6, tsk[i].Field9 }); //id, richiedente, lavoro, data acc., ore
+
+                                //TODO: lvi.BackColor = Presenter.IsAcceptedTaskDone(tsk[i]) ? Verdolino : Giallino;
                                 break;
                         }
                         break;
@@ -203,7 +228,7 @@ namespace Borelli_BdT.view {
                     //TODO:
                     break;
                 case TaskType.Done:
-                    //TODO
+                    research = textBoxSearchDoneTasks.Text;
                     break;
             }
 
@@ -215,13 +240,13 @@ namespace Borelli_BdT.view {
 
             switch (type) {
                 case TaskType.Pertinent:
-                    outp = mRButtonJob.Checked ? ResarchOption.Job : ResarchOption.Requester;
+                    outp = tARmRButtonJob.Checked ? ResarchOption.Job : ResarchOption.Requester;
                     break;
                 case TaskType.Requested:
                     //TODO:
                     break;
                 case TaskType.Done:
-                    //TODO
+                    outp = tACCmRButtonJob.Checked ? ResarchOption.Job : ResarchOption.Requester;
                     break;
             }
 
