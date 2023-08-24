@@ -31,23 +31,11 @@
             this.labelDeltaHours = new System.Windows.Forms.Label();
             this.materialCard5 = new MaterialSkin.Controls.MaterialCard();
             this.mLabel2 = new MaterialSkin.Controls.MaterialLabel();
-            this.mListViewReqJobs = new MaterialSkin.Controls.MaterialListView();
-            this.crId = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.crAcceptor = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.crHours = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.materialCard4 = new MaterialSkin.Controls.MaterialCard();
             this.materialCard3 = new MaterialSkin.Controls.MaterialCard();
             this.mLabel1 = new MaterialSkin.Controls.MaterialLabel();
-            this.mListViewDoneJobs = new MaterialSkin.Controls.MaterialListView();
-            this.cdId = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.cdRequester = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.cdHours = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.materialCard2 = new MaterialSkin.Controls.MaterialCard();
             this.mLabel3 = new MaterialSkin.Controls.MaterialLabel();
-            this.mListViewPertinentTask = new MaterialSkin.Controls.MaterialListView();
-            this.cpId = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.cpRequester = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.cpJob = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.mCardUser = new MaterialSkin.Controls.MaterialCard();
             this.pictureBoxPhoto = new System.Windows.Forms.PictureBox();
             this.mLabelDistr = new MaterialSkin.Controls.MaterialLabel();
@@ -66,11 +54,6 @@
             this.mLabel4 = new MaterialSkin.Controls.MaterialLabel();
             this.tARmRButtonJob = new MaterialSkin.Controls.MaterialRadioButton();
             this.tARmRButtonRequester = new MaterialSkin.Controls.MaterialRadioButton();
-            this.mListViewPertinentComplete = new MaterialSkin.Controls.MaterialListView();
-            this.cacId = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.cacRequester = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.cacJob = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.cacCaption = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.tabAcceptedTask = new System.Windows.Forms.TabPage();
             this.textBoxSearchDoneTasks = new System.Windows.Forms.TextBox();
             this.materialLabel3 = new MaterialSkin.Controls.MaterialLabel();
@@ -87,24 +70,41 @@
             this.materialLabel5 = new MaterialSkin.Controls.MaterialLabel();
             this.labelDotDone = new System.Windows.Forms.Label();
             this.materialLabel4 = new MaterialSkin.Controls.MaterialLabel();
-            this.mListViewDoneJobsComplete = new MaterialSkin.Controls.MaterialListView();
-            this.caccId = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.caccRequester = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.caccJob = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.caccDateAccept = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.caccHours = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.tabAcceptUsers = new System.Windows.Forms.TabPage();
             this.mButtonModDistr = new MaterialSkin.Controls.MaterialButton();
             this.mButtonModJobs = new MaterialSkin.Controls.MaterialButton();
-            this.mListViewAcceptUsers = new MaterialSkin.Controls.MaterialListView();
-            this.caNickname = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.caName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.caSurname = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.caPhNumb = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.caEmail = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.materialLabel6 = new MaterialSkin.Controls.MaterialLabel();
             this.labelDotAccepted = new System.Windows.Forms.Label();
+            this.listViewPertinentTasks = new System.Windows.Forms.ListView();
+            this.colHPid = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.colHPrequester = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.colHPjob = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.listViewAcceptedTasks = new System.Windows.Forms.ListView();
+            this.colHAid = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.colHArequester = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.colHAhours = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.listViewRequestedTasks = new System.Windows.Forms.ListView();
+            this.colHRid = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.colHRacceptor = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.colHRhours = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.listViewPertinentComplete = new System.Windows.Forms.ListView();
+            this.colSPid = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.colSPrequester = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.colSPjob = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.colSPcaption = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.listViewDoneComplete = new System.Windows.Forms.ListView();
+            this.colSAid = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.colSArequester = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.colSAjob = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.colSAdateAcc = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.colSAhours = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.listViewAcceptUsers = new System.Windows.Forms.ListView();
+            this.colAnickname = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.colAname = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.colAsurname = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.colAphNumb = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.colAmail = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.materialTabControl1.SuspendLayout();
             this.tabHome.SuspendLayout();
             this.materialCard1.SuspendLayout();
@@ -184,8 +184,8 @@
             // materialCard5
             // 
             this.materialCard5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.materialCard5.Controls.Add(this.listViewRequestedTasks);
             this.materialCard5.Controls.Add(this.mLabel2);
-            this.materialCard5.Controls.Add(this.mListViewReqJobs);
             this.materialCard5.Depth = 0;
             this.materialCard5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.materialCard5.Location = new System.Drawing.Point(455, 310);
@@ -208,43 +208,6 @@
             this.mLabel2.TabIndex = 0;
             this.mLabel2.Text = "Task richieste:";
             // 
-            // mListViewReqJobs
-            // 
-            this.mListViewReqJobs.AutoSizeTable = false;
-            this.mListViewReqJobs.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.mListViewReqJobs.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.mListViewReqJobs.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.crId,
-            this.crAcceptor,
-            this.crHours});
-            this.mListViewReqJobs.Depth = 0;
-            this.mListViewReqJobs.FullRowSelect = true;
-            this.mListViewReqJobs.HideSelection = false;
-            this.mListViewReqJobs.Location = new System.Drawing.Point(17, 34);
-            this.mListViewReqJobs.MinimumSize = new System.Drawing.Size(200, 100);
-            this.mListViewReqJobs.MouseLocation = new System.Drawing.Point(-1, -1);
-            this.mListViewReqJobs.MouseState = MaterialSkin.MouseState.OUT;
-            this.mListViewReqJobs.Name = "mListViewReqJobs";
-            this.mListViewReqJobs.OwnerDraw = true;
-            this.mListViewReqJobs.Size = new System.Drawing.Size(284, 150);
-            this.mListViewReqJobs.TabIndex = 1;
-            this.mListViewReqJobs.UseCompatibleStateImageBehavior = false;
-            this.mListViewReqJobs.View = System.Windows.Forms.View.Details;
-            // 
-            // crId
-            // 
-            this.crId.Text = "ID";
-            // 
-            // crAcceptor
-            // 
-            this.crAcceptor.Text = "ACCETTATANTE";
-            this.crAcceptor.Width = 150;
-            // 
-            // crHours
-            // 
-            this.crHours.Text = "ORE";
-            this.crHours.Width = 74;
-            // 
             // materialCard4
             // 
             this.materialCard4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
@@ -261,8 +224,8 @@
             // materialCard3
             // 
             this.materialCard3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.materialCard3.Controls.Add(this.listViewAcceptedTasks);
             this.materialCard3.Controls.Add(this.mLabel1);
-            this.materialCard3.Controls.Add(this.mListViewDoneJobs);
             this.materialCard3.Depth = 0;
             this.materialCard3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.materialCard3.Location = new System.Drawing.Point(455, 18);
@@ -285,48 +248,11 @@
             this.mLabel1.TabIndex = 0;
             this.mLabel1.Text = "Task fatte:";
             // 
-            // mListViewDoneJobs
-            // 
-            this.mListViewDoneJobs.AutoSizeTable = false;
-            this.mListViewDoneJobs.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.mListViewDoneJobs.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.mListViewDoneJobs.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.cdId,
-            this.cdRequester,
-            this.cdHours});
-            this.mListViewDoneJobs.Depth = 0;
-            this.mListViewDoneJobs.FullRowSelect = true;
-            this.mListViewDoneJobs.HideSelection = false;
-            this.mListViewDoneJobs.Location = new System.Drawing.Point(17, 34);
-            this.mListViewDoneJobs.MinimumSize = new System.Drawing.Size(200, 100);
-            this.mListViewDoneJobs.MouseLocation = new System.Drawing.Point(-1, -1);
-            this.mListViewDoneJobs.MouseState = MaterialSkin.MouseState.OUT;
-            this.mListViewDoneJobs.Name = "mListViewDoneJobs";
-            this.mListViewDoneJobs.OwnerDraw = true;
-            this.mListViewDoneJobs.Size = new System.Drawing.Size(284, 150);
-            this.mListViewDoneJobs.TabIndex = 1;
-            this.mListViewDoneJobs.UseCompatibleStateImageBehavior = false;
-            this.mListViewDoneJobs.View = System.Windows.Forms.View.Details;
-            // 
-            // cdId
-            // 
-            this.cdId.Text = "ID";
-            // 
-            // cdRequester
-            // 
-            this.cdRequester.Text = "RICHIEDENTE";
-            this.cdRequester.Width = 150;
-            // 
-            // cdHours
-            // 
-            this.cdHours.Text = "ORE";
-            this.cdHours.Width = 74;
-            // 
             // materialCard2
             // 
             this.materialCard2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.materialCard2.Controls.Add(this.listViewPertinentTasks);
             this.materialCard2.Controls.Add(this.mLabel3);
-            this.materialCard2.Controls.Add(this.mListViewPertinentTask);
             this.materialCard2.Depth = 0;
             this.materialCard2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.materialCard2.Location = new System.Drawing.Point(57, 223);
@@ -348,43 +274,6 @@
             this.mLabel3.Size = new System.Drawing.Size(110, 19);
             this.mLabel3.TabIndex = 0;
             this.mLabel3.Text = "Task pertinenti:";
-            // 
-            // mListViewPertinentTask
-            // 
-            this.mListViewPertinentTask.AutoSizeTable = false;
-            this.mListViewPertinentTask.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.mListViewPertinentTask.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.mListViewPertinentTask.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.cpId,
-            this.cpRequester,
-            this.cpJob});
-            this.mListViewPertinentTask.Depth = 0;
-            this.mListViewPertinentTask.FullRowSelect = true;
-            this.mListViewPertinentTask.HideSelection = false;
-            this.mListViewPertinentTask.Location = new System.Drawing.Point(17, 34);
-            this.mListViewPertinentTask.MinimumSize = new System.Drawing.Size(200, 100);
-            this.mListViewPertinentTask.MouseLocation = new System.Drawing.Point(-1, -1);
-            this.mListViewPertinentTask.MouseState = MaterialSkin.MouseState.OUT;
-            this.mListViewPertinentTask.Name = "mListViewPertinentTask";
-            this.mListViewPertinentTask.OwnerDraw = true;
-            this.mListViewPertinentTask.Size = new System.Drawing.Size(284, 150);
-            this.mListViewPertinentTask.TabIndex = 1;
-            this.mListViewPertinentTask.UseCompatibleStateImageBehavior = false;
-            this.mListViewPertinentTask.View = System.Windows.Forms.View.Details;
-            // 
-            // cpId
-            // 
-            this.cpId.Text = "ID";
-            // 
-            // cpRequester
-            // 
-            this.cpRequester.Text = "RICHIEDENTE";
-            this.cpRequester.Width = 135;
-            // 
-            // cpJob
-            // 
-            this.cpJob.Text = "LAVORO";
-            this.cpJob.Width = 89;
             // 
             // mCardUser
             // 
@@ -561,13 +450,13 @@
             // materialCard6
             // 
             this.materialCard6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.materialCard6.Controls.Add(this.listViewPertinentComplete);
             this.materialCard6.Controls.Add(this.mButtonAcceptTask);
             this.materialCard6.Controls.Add(this.materialLabel1);
             this.materialCard6.Controls.Add(this.textBoxSearchAcceptTask);
             this.materialCard6.Controls.Add(this.mLabel4);
             this.materialCard6.Controls.Add(this.tARmRButtonJob);
             this.materialCard6.Controls.Add(this.tARmRButtonRequester);
-            this.materialCard6.Controls.Add(this.mListViewPertinentComplete);
             this.materialCard6.Depth = 0;
             this.materialCard6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.materialCard6.Location = new System.Drawing.Point(14, 14);
@@ -662,57 +551,14 @@
             this.tARmRButtonRequester.Text = "Richiedente";
             this.tARmRButtonRequester.UseVisualStyleBackColor = true;
             // 
-            // mListViewPertinentComplete
-            // 
-            this.mListViewPertinentComplete.AutoSizeTable = false;
-            this.mListViewPertinentComplete.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.mListViewPertinentComplete.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.mListViewPertinentComplete.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.cacId,
-            this.cacRequester,
-            this.cacJob,
-            this.cacCaption});
-            this.mListViewPertinentComplete.Depth = 0;
-            this.mListViewPertinentComplete.FullRowSelect = true;
-            this.mListViewPertinentComplete.HideSelection = false;
-            this.mListViewPertinentComplete.Location = new System.Drawing.Point(17, 43);
-            this.mListViewPertinentComplete.MinimumSize = new System.Drawing.Size(200, 100);
-            this.mListViewPertinentComplete.MouseLocation = new System.Drawing.Point(-1, -1);
-            this.mListViewPertinentComplete.MouseState = MaterialSkin.MouseState.OUT;
-            this.mListViewPertinentComplete.Name = "mListViewPertinentComplete";
-            this.mListViewPertinentComplete.OwnerDraw = true;
-            this.mListViewPertinentComplete.Size = new System.Drawing.Size(409, 330);
-            this.mListViewPertinentComplete.TabIndex = 2;
-            this.mListViewPertinentComplete.UseCompatibleStateImageBehavior = false;
-            this.mListViewPertinentComplete.View = System.Windows.Forms.View.Details;
-            // 
-            // cacId
-            // 
-            this.cacId.Text = "ID";
-            // 
-            // cacRequester
-            // 
-            this.cacRequester.Text = "RICHIEDENTE";
-            this.cacRequester.Width = 125;
-            // 
-            // cacJob
-            // 
-            this.cacJob.Text = "LAVORO";
-            this.cacJob.Width = 89;
-            // 
-            // cacCaption
-            // 
-            this.cacCaption.Text = "DESCRIZIONE";
-            this.cacCaption.Width = 135;
-            // 
             // tabAcceptedTask
             // 
+            this.tabAcceptedTask.Controls.Add(this.listViewDoneComplete);
             this.tabAcceptedTask.Controls.Add(this.textBoxSearchDoneTasks);
             this.tabAcceptedTask.Controls.Add(this.materialLabel3);
             this.tabAcceptedTask.Controls.Add(this.materialCard10);
             this.tabAcceptedTask.Controls.Add(this.materialCard9);
             this.tabAcceptedTask.Controls.Add(this.materialCard8);
-            this.tabAcceptedTask.Controls.Add(this.mListViewDoneJobsComplete);
             this.tabAcceptedTask.Location = new System.Drawing.Point(4, 39);
             this.tabAcceptedTask.Name = "tabAcceptedTask";
             this.tabAcceptedTask.Size = new System.Drawing.Size(850, 520);
@@ -931,61 +777,11 @@
             this.materialLabel4.TabIndex = 0;
             this.materialLabel4.Text = "Legenda:";
             // 
-            // mListViewDoneJobsComplete
-            // 
-            this.mListViewDoneJobsComplete.AutoSizeTable = false;
-            this.mListViewDoneJobsComplete.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.mListViewDoneJobsComplete.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.mListViewDoneJobsComplete.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.caccId,
-            this.caccRequester,
-            this.caccJob,
-            this.caccDateAccept,
-            this.caccHours});
-            this.mListViewDoneJobsComplete.Depth = 0;
-            this.mListViewDoneJobsComplete.FullRowSelect = true;
-            this.mListViewDoneJobsComplete.HideSelection = false;
-            this.mListViewDoneJobsComplete.Location = new System.Drawing.Point(3, 32);
-            this.mListViewDoneJobsComplete.MinimumSize = new System.Drawing.Size(200, 100);
-            this.mListViewDoneJobsComplete.MouseLocation = new System.Drawing.Point(-1, -1);
-            this.mListViewDoneJobsComplete.MouseState = MaterialSkin.MouseState.OUT;
-            this.mListViewDoneJobsComplete.Name = "mListViewDoneJobsComplete";
-            this.mListViewDoneJobsComplete.OwnerDraw = true;
-            this.mListViewDoneJobsComplete.Size = new System.Drawing.Size(550, 485);
-            this.mListViewDoneJobsComplete.TabIndex = 0;
-            this.mListViewDoneJobsComplete.UseCompatibleStateImageBehavior = false;
-            this.mListViewDoneJobsComplete.View = System.Windows.Forms.View.Details;
-            // 
-            // caccId
-            // 
-            this.caccId.Text = "ID";
-            this.caccId.Width = 70;
-            // 
-            // caccRequester
-            // 
-            this.caccRequester.Text = "RICHIEDENTE";
-            this.caccRequester.Width = 130;
-            // 
-            // caccJob
-            // 
-            this.caccJob.Text = "LAVORO";
-            this.caccJob.Width = 130;
-            // 
-            // caccDateAccept
-            // 
-            this.caccDateAccept.Text = "PRESA IN CARICO";
-            this.caccDateAccept.Width = 150;
-            // 
-            // caccHours
-            // 
-            this.caccHours.Text = "ORE";
-            this.caccHours.Width = 70;
-            // 
             // tabAcceptUsers
             // 
+            this.tabAcceptUsers.Controls.Add(this.listViewAcceptUsers);
             this.tabAcceptUsers.Controls.Add(this.mButtonModDistr);
             this.tabAcceptUsers.Controls.Add(this.mButtonModJobs);
-            this.tabAcceptUsers.Controls.Add(this.mListViewAcceptUsers);
             this.tabAcceptUsers.ImageKey = "bald-head-with-question-mark.png";
             this.tabAcceptUsers.Location = new System.Drawing.Point(4, 39);
             this.tabAcceptUsers.Name = "tabAcceptUsers";
@@ -1035,56 +831,6 @@
             this.mButtonModJobs.UseAccentColor = false;
             this.mButtonModJobs.UseVisualStyleBackColor = true;
             // 
-            // mListViewAcceptUsers
-            // 
-            this.mListViewAcceptUsers.AutoSizeTable = false;
-            this.mListViewAcceptUsers.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.mListViewAcceptUsers.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.mListViewAcceptUsers.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.caNickname,
-            this.caName,
-            this.caSurname,
-            this.caPhNumb,
-            this.caEmail});
-            this.mListViewAcceptUsers.Depth = 0;
-            this.mListViewAcceptUsers.FullRowSelect = true;
-            this.mListViewAcceptUsers.HideSelection = false;
-            this.mListViewAcceptUsers.Location = new System.Drawing.Point(6, 9);
-            this.mListViewAcceptUsers.MinimumSize = new System.Drawing.Size(200, 100);
-            this.mListViewAcceptUsers.MouseLocation = new System.Drawing.Point(-1, -1);
-            this.mListViewAcceptUsers.MouseState = MaterialSkin.MouseState.OUT;
-            this.mListViewAcceptUsers.Name = "mListViewAcceptUsers";
-            this.mListViewAcceptUsers.OwnerDraw = true;
-            this.mListViewAcceptUsers.Size = new System.Drawing.Size(838, 454);
-            this.mListViewAcceptUsers.TabIndex = 0;
-            this.mListViewAcceptUsers.UseCompatibleStateImageBehavior = false;
-            this.mListViewAcceptUsers.View = System.Windows.Forms.View.Details;
-            // 
-            // caNickname
-            // 
-            this.caNickname.Text = "NICKNAME";
-            this.caNickname.Width = 157;
-            // 
-            // caName
-            // 
-            this.caName.Text = "NOME";
-            this.caName.Width = 157;
-            // 
-            // caSurname
-            // 
-            this.caSurname.Text = "COGNOME";
-            this.caSurname.Width = 157;
-            // 
-            // caPhNumb
-            // 
-            this.caPhNumb.Text = "NUMERO CELL.";
-            this.caPhNumb.Width = 157;
-            // 
-            // caEmail
-            // 
-            this.caEmail.Text = "E-MAIL";
-            this.caEmail.Width = 157;
-            // 
             // imageList1
             // 
             this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
@@ -1115,6 +861,193 @@
             this.labelDotAccepted.Size = new System.Drawing.Size(22, 24);
             this.labelDotAccepted.TabIndex = 3;
             this.labelDotAccepted.Text = "●";
+            // 
+            // listViewPertinentTasks
+            // 
+            this.listViewPertinentTasks.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.colHPid,
+            this.colHPrequester,
+            this.colHPjob});
+            this.listViewPertinentTasks.FullRowSelect = true;
+            this.listViewPertinentTasks.HideSelection = false;
+            this.listViewPertinentTasks.Location = new System.Drawing.Point(17, 42);
+            this.listViewPertinentTasks.Name = "listViewPertinentTasks";
+            this.listViewPertinentTasks.Size = new System.Drawing.Size(284, 158);
+            this.listViewPertinentTasks.TabIndex = 2;
+            this.listViewPertinentTasks.UseCompatibleStateImageBehavior = false;
+            this.listViewPertinentTasks.View = System.Windows.Forms.View.Details;
+            // 
+            // colHPid
+            // 
+            this.colHPid.Text = "ID";
+            // 
+            // colHPrequester
+            // 
+            this.colHPrequester.Text = "RICHIEDENTE";
+            // 
+            // colHPjob
+            // 
+            this.colHPjob.Text = "LAVORO";
+            // 
+            // listViewAcceptedTasks
+            // 
+            this.listViewAcceptedTasks.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.colHAid,
+            this.colHArequester,
+            this.colHAhours});
+            this.listViewAcceptedTasks.FullRowSelect = true;
+            this.listViewAcceptedTasks.HideSelection = false;
+            this.listViewAcceptedTasks.Location = new System.Drawing.Point(17, 33);
+            this.listViewAcceptedTasks.Name = "listViewAcceptedTasks";
+            this.listViewAcceptedTasks.Size = new System.Drawing.Size(284, 150);
+            this.listViewAcceptedTasks.TabIndex = 2;
+            this.listViewAcceptedTasks.UseCompatibleStateImageBehavior = false;
+            this.listViewAcceptedTasks.View = System.Windows.Forms.View.Details;
+            // 
+            // colHAid
+            // 
+            this.colHAid.Text = "ID";
+            // 
+            // colHArequester
+            // 
+            this.colHArequester.Text = "RICHIEDENTE";
+            // 
+            // colHAhours
+            // 
+            this.colHAhours.Text = "ORE";
+            // 
+            // listViewRequestedTasks
+            // 
+            this.listViewRequestedTasks.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.colHRid,
+            this.colHRacceptor,
+            this.colHRhours});
+            this.listViewRequestedTasks.FullRowSelect = true;
+            this.listViewRequestedTasks.HideSelection = false;
+            this.listViewRequestedTasks.Location = new System.Drawing.Point(17, 33);
+            this.listViewRequestedTasks.Name = "listViewRequestedTasks";
+            this.listViewRequestedTasks.Size = new System.Drawing.Size(284, 150);
+            this.listViewRequestedTasks.TabIndex = 3;
+            this.listViewRequestedTasks.UseCompatibleStateImageBehavior = false;
+            this.listViewRequestedTasks.View = System.Windows.Forms.View.Details;
+            // 
+            // colHRid
+            // 
+            this.colHRid.Text = "ID";
+            // 
+            // colHRacceptor
+            // 
+            this.colHRacceptor.Text = "ACCETTANTE";
+            // 
+            // colHRhours
+            // 
+            this.colHRhours.Text = "ORE";
+            // 
+            // listViewPertinentComplete
+            // 
+            this.listViewPertinentComplete.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.colSPid,
+            this.colSPrequester,
+            this.colSPjob,
+            this.colSPcaption});
+            this.listViewPertinentComplete.FullRowSelect = true;
+            this.listViewPertinentComplete.HideSelection = false;
+            this.listViewPertinentComplete.Location = new System.Drawing.Point(17, 43);
+            this.listViewPertinentComplete.Name = "listViewPertinentComplete";
+            this.listViewPertinentComplete.Size = new System.Drawing.Size(409, 328);
+            this.listViewPertinentComplete.TabIndex = 3;
+            this.listViewPertinentComplete.UseCompatibleStateImageBehavior = false;
+            this.listViewPertinentComplete.View = System.Windows.Forms.View.Details;
+            // 
+            // colSPid
+            // 
+            this.colSPid.Text = "ID";
+            // 
+            // colSPrequester
+            // 
+            this.colSPrequester.Text = "RICHIEDENTE";
+            // 
+            // colSPjob
+            // 
+            this.colSPjob.Text = "LAVORO";
+            // 
+            // colSPcaption
+            // 
+            this.colSPcaption.Text = "DESCRIZIONE";
+            // 
+            // listViewDoneComplete
+            // 
+            this.listViewDoneComplete.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.colSAid,
+            this.colSArequester,
+            this.colSAjob,
+            this.colSAdateAcc,
+            this.colSAhours});
+            this.listViewDoneComplete.FullRowSelect = true;
+            this.listViewDoneComplete.HideSelection = false;
+            this.listViewDoneComplete.Location = new System.Drawing.Point(0, 32);
+            this.listViewDoneComplete.Name = "listViewDoneComplete";
+            this.listViewDoneComplete.Size = new System.Drawing.Size(553, 488);
+            this.listViewDoneComplete.TabIndex = 8;
+            this.listViewDoneComplete.UseCompatibleStateImageBehavior = false;
+            this.listViewDoneComplete.View = System.Windows.Forms.View.Details;
+            // 
+            // colSAid
+            // 
+            this.colSAid.Text = "ID";
+            // 
+            // colSArequester
+            // 
+            this.colSArequester.Text = "RICHIEDENTE";
+            // 
+            // colSAjob
+            // 
+            this.colSAjob.Text = "LAVORO";
+            // 
+            // colSAdateAcc
+            // 
+            this.colSAdateAcc.Text = "PRESA IN CARICO";
+            // 
+            // colSAhours
+            // 
+            this.colSAhours.Text = "ORE";
+            // 
+            // listViewAcceptUsers
+            // 
+            this.listViewAcceptUsers.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.colAnickname,
+            this.colAname,
+            this.colAsurname,
+            this.colAphNumb,
+            this.colAmail});
+            this.listViewAcceptUsers.FullRowSelect = true;
+            this.listViewAcceptUsers.HideSelection = false;
+            this.listViewAcceptUsers.Location = new System.Drawing.Point(7, 6);
+            this.listViewAcceptUsers.Name = "listViewAcceptUsers";
+            this.listViewAcceptUsers.Size = new System.Drawing.Size(837, 457);
+            this.listViewAcceptUsers.TabIndex = 3;
+            this.listViewAcceptUsers.UseCompatibleStateImageBehavior = false;
+            this.listViewAcceptUsers.View = System.Windows.Forms.View.Details;
+            // 
+            // colAnickname
+            // 
+            this.colAnickname.Text = "NICKNAME";
+            // 
+            // colAname
+            // 
+            this.colAname.Text = "NOME";
+            // 
+            // colAsurname
+            // 
+            this.colAsurname.Text = "COGNOME";
+            // 
+            // colAphNumb
+            // 
+            this.colAphNumb.Text = "NUMERO DI CELL.";
+            // 
+            // colAmail
+            // 
+            this.colAmail.Text = "E-MAIL";
             // 
             // MainPage
             // 
@@ -1173,39 +1106,16 @@
         private MaterialSkin.Controls.MaterialLabel mLabelSurname;
         private MaterialSkin.Controls.MaterialLabel mLabelName;
         private MaterialSkin.Controls.MaterialLabel mLabel1;
-        private MaterialSkin.Controls.MaterialListView mListViewDoneJobs;
-        private System.Windows.Forms.ColumnHeader cdId;
-        private System.Windows.Forms.ColumnHeader cdRequester;
-        private System.Windows.Forms.ColumnHeader cdHours;
         private MaterialSkin.Controls.MaterialLabel mLabel2;
-        private MaterialSkin.Controls.MaterialListView mListViewReqJobs;
-        private System.Windows.Forms.ColumnHeader crId;
-        private System.Windows.Forms.ColumnHeader crAcceptor;
-        private System.Windows.Forms.ColumnHeader crHours;
         private MaterialSkin.Controls.MaterialCard materialCard1;
         private System.Windows.Forms.Label labelDeltaHours;
         private MaterialSkin.Controls.MaterialLabel mLabel3;
-        private MaterialSkin.Controls.MaterialListView mListViewPertinentTask;
-        private System.Windows.Forms.ColumnHeader cpId;
-        private System.Windows.Forms.ColumnHeader cpRequester;
-        private System.Windows.Forms.ColumnHeader cpJob;
         private System.Windows.Forms.PictureBox pictureBoxPhoto;
-        private MaterialSkin.Controls.MaterialListView mListViewAcceptUsers;
-        private System.Windows.Forms.ColumnHeader caNickname;
-        private System.Windows.Forms.ColumnHeader caName;
-        private System.Windows.Forms.ColumnHeader caSurname;
-        private System.Windows.Forms.ColumnHeader caPhNumb;
-        private System.Windows.Forms.ColumnHeader caEmail;
         private MaterialSkin.Controls.MaterialButton mButtonModDistr;
         private MaterialSkin.Controls.MaterialButton mButtonModJobs;
         private System.Windows.Forms.TabPage tabCreateAcceptTask;
         private MaterialSkin.Controls.MaterialCard materialCard7;
         private MaterialSkin.Controls.MaterialCard materialCard6;
-        private MaterialSkin.Controls.MaterialListView mListViewPertinentComplete;
-        private System.Windows.Forms.ColumnHeader cacId;
-        private System.Windows.Forms.ColumnHeader cacRequester;
-        private System.Windows.Forms.ColumnHeader cacJob;
-        private System.Windows.Forms.ColumnHeader cacCaption;
         private MaterialSkin.Controls.MaterialRadioButton tARmRButtonJob;
         private MaterialSkin.Controls.MaterialRadioButton tARmRButtonRequester;
         private MaterialSkin.Controls.MaterialLabel mLabel4;
@@ -1218,7 +1128,6 @@
         private System.Windows.Forms.TabPage tabAcceptedTask;
         private MaterialSkin.Controls.MaterialCard materialCard9;
         private MaterialSkin.Controls.MaterialCard materialCard8;
-        private MaterialSkin.Controls.MaterialListView mListViewDoneJobsComplete;
         private MaterialSkin.Controls.MaterialLabel mLabel5;
         private MaterialSkin.Controls.MaterialRadioButton tACCmRButtonDone;
         private MaterialSkin.Controls.MaterialRadioButton tACCmRButtonAccepted;
@@ -1229,15 +1138,39 @@
         private MaterialSkin.Controls.MaterialLabel materialLabel2;
         private MaterialSkin.Controls.MaterialRadioButton tACCmRButtonJob;
         private MaterialSkin.Controls.MaterialRadioButton tACCmRButtonRequester;
-        private System.Windows.Forms.ColumnHeader caccId;
-        private System.Windows.Forms.ColumnHeader caccRequester;
-        private System.Windows.Forms.ColumnHeader caccJob;
-        private System.Windows.Forms.ColumnHeader caccDateAccept;
-        private System.Windows.Forms.ColumnHeader caccHours;
         private MaterialSkin.Controls.MaterialLabel materialLabel5;
         private System.Windows.Forms.Label labelDotDone;
         private MaterialSkin.Controls.MaterialLabel materialLabel4;
         private MaterialSkin.Controls.MaterialLabel materialLabel6;
         private System.Windows.Forms.Label labelDotAccepted;
+        private System.Windows.Forms.ListView listViewPertinentTasks;
+        private System.Windows.Forms.ColumnHeader colHPid;
+        private System.Windows.Forms.ColumnHeader colHPrequester;
+        private System.Windows.Forms.ColumnHeader colHPjob;
+        private System.Windows.Forms.ListView listViewAcceptedTasks;
+        private System.Windows.Forms.ColumnHeader colHAid;
+        private System.Windows.Forms.ColumnHeader colHArequester;
+        private System.Windows.Forms.ColumnHeader colHAhours;
+        private System.Windows.Forms.ListView listViewRequestedTasks;
+        private System.Windows.Forms.ColumnHeader colHRid;
+        private System.Windows.Forms.ColumnHeader colHRacceptor;
+        private System.Windows.Forms.ColumnHeader colHRhours;
+        private System.Windows.Forms.ListView listViewPertinentComplete;
+        private System.Windows.Forms.ColumnHeader colSPid;
+        private System.Windows.Forms.ColumnHeader colSPrequester;
+        private System.Windows.Forms.ColumnHeader colSPjob;
+        private System.Windows.Forms.ColumnHeader colSPcaption;
+        private System.Windows.Forms.ListView listViewDoneComplete;
+        private System.Windows.Forms.ColumnHeader colSAid;
+        private System.Windows.Forms.ColumnHeader colSArequester;
+        private System.Windows.Forms.ColumnHeader colSAjob;
+        private System.Windows.Forms.ColumnHeader colSAdateAcc;
+        private System.Windows.Forms.ColumnHeader colSAhours;
+        private System.Windows.Forms.ListView listViewAcceptUsers;
+        private System.Windows.Forms.ColumnHeader colAnickname;
+        private System.Windows.Forms.ColumnHeader colAname;
+        private System.Windows.Forms.ColumnHeader colAsurname;
+        private System.Windows.Forms.ColumnHeader colAphNumb;
+        private System.Windows.Forms.ColumnHeader colAmail;
     }
 }

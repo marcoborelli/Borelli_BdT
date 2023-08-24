@@ -9,6 +9,14 @@ using Borelli_BdT.utilities;
 
 namespace Borelli_BdT.view {
     public partial class MainPage : MaterialForm {
+        /* Logica nome colonne in ListView:
+         * TASK:
+         * <col><H(ome) | S(pecific)><P(ertinent) | A(ccepted) | R(equested)><campo>
+         *
+         * USER:
+         * <col><A(cceptation)><campo> */
+
+
         public enum LoadTskList { //indica se la listView in questione e' nella HomeScreen (pochi dettagli) o nel tab dedicato (dettagliata)
             HomeScreen,
             Details,
@@ -38,7 +46,7 @@ namespace Borelli_BdT.view {
 
 
         private MainPagePresenter Presenter { get; set; }
-        private List<MaterialListView> MListViews { get; set; }
+        private List<ListView> MListViews { get; set; }
         private Color Giallino { get; set; }
         private Color Verdolino { get; set; }
 
@@ -46,7 +54,7 @@ namespace Borelli_BdT.view {
             InitializeComponent();
             FormManager.AddForm(this);
 
-            MListViews = new List<MaterialListView> { mListViewPertinentTask, mListViewPertinentComplete, mListViewReqJobs/*, mListViewReqJobsComplete, */, mListViewDoneJobs, mListViewDoneJobsComplete };
+            MListViews = new List<ListView> { listViewPertinentTasks, listViewPertinentComplete, listViewRequestedTasks/*, mListViewReqJobsComplete, */, listViewAcceptedTasks, listViewDoneComplete };
 
             Presenter = new MainPagePresenter(this, username);
             materialTabControl1.SelectedIndexChanged += new EventHandler(Presenter.LoadSelectedTab);
@@ -57,7 +65,7 @@ namespace Borelli_BdT.view {
 
             textBoxSearchDoneTasks.TextChanged += new EventHandler(Presenter.ReLoadReqDoneTask);
 
-            mListViewAcceptUsers.MouseDoubleClick += new MouseEventHandler(Presenter.DoubleClickOnAcceptUsersLW);
+            listViewAcceptUsers.MouseDoubleClick += new MouseEventHandler(Presenter.DoubleClickOnAcceptUsersLW);
             mButtonModDistr.Click += new EventHandler(Presenter.OnModifyDistr);
             mButtonModJobs.Click += new EventHandler(Presenter.OnModifyJobs);
 
@@ -142,7 +150,7 @@ namespace Borelli_BdT.view {
 
 
         public void LoadTasksList(List<EntityTask> tsk, TaskType type, LoadTskList how) {
-            MaterialListView lwOutp = new MaterialListView();
+            ListView lwOutp = new ListView();
             ListViewItem lvi = new ListViewItem();
 
             for (int i = 0; i < tsk.Count; i++) {
@@ -150,21 +158,22 @@ namespace Borelli_BdT.view {
                     case TaskType.Done:
                         switch (how) {
                             case LoadTskList.HomeScreen:
-                                lwOutp = mListViewDoneJobs;
+                                lwOutp = listViewAcceptedTasks;
                                 lvi = new ListViewItem(new string[] { tsk[i].Field1, tsk[i].Field3, tsk[i].Field9 }); //id, richiedente, ore
                                 break;
                             case LoadTskList.Details:
-                                lwOutp = mListViewDoneJobsComplete;
+                                lwOutp = listViewDoneComplete;
                                 lvi = new ListViewItem(new string[] { tsk[i].Field1, tsk[i].Field3, tsk[i].Field11, tsk[i].Field6, tsk[i].Field9 }); //id, richiedente, lavoro, data acc., ore
 
                                 lvi.BackColor = Presenter.IsAcceptedTaskDone(tsk[i]) ? Verdolino : Giallino;
+                                lvi.ForeColor = Color.Black;
                                 break;
                         }
                         break;
                     case TaskType.Requested:
                         switch (how) {
                             case LoadTskList.HomeScreen:
-                                lwOutp = mListViewReqJobs;
+                                lwOutp = listViewRequestedTasks;
                                 lvi = new ListViewItem(new string[] { tsk[i].Field1, tsk[i].Field4, tsk[i].Field9 }); //id, donatore, ore
                                 break;
                             case LoadTskList.Details:
@@ -175,11 +184,11 @@ namespace Borelli_BdT.view {
                     case TaskType.Pertinent:
                         switch (how) {
                             case LoadTskList.HomeScreen:
-                                lwOutp = mListViewPertinentTask;
+                                lwOutp = listViewPertinentTasks;
                                 lvi = new ListViewItem(new string[] { tsk[i].Field1, tsk[i].Field3, tsk[i].Field11 }); //id, richiedente, lavoro
                                 break;
                             case LoadTskList.Details:
-                                lwOutp = mListViewPertinentComplete;
+                                lwOutp = listViewPertinentComplete;
                                 lvi = new ListViewItem(new string[] { tsk[i].Field1, tsk[i].Field3, tsk[i].Field11, tsk[i].Field2 }); //id, richiedente, lavoro, descrizione
                                 break;
                         }
@@ -190,17 +199,20 @@ namespace Borelli_BdT.view {
                     lwOutp.Items.Clear();
 
                 lwOutp.Items.Add(lvi);
+
+                if (i == tsk.Count - 1)
+                    lwOutp.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
             }
         }
 
         public void LoadUsersList(List<EntityUser> usr, LoadUsrList how) {
-            MaterialListView lwOutp = new MaterialListView();
+            ListView lwOutp = new ListView();
             ListViewItem lvi = new ListViewItem();
 
             for (int i = 0; i < usr.Count; i++) {
                 switch (how) {
                     case LoadUsrList.ToAccept:
-                        lwOutp = mListViewAcceptUsers;
+                        lwOutp = listViewAcceptUsers;
 
                         EntityCustomerMasterData tmp = usr[i].Field11;
                         lvi = new ListViewItem(new string[] { usr[i].Field1, tmp.Field1, tmp.Field2, tmp.Field3, tmp.Field4 });
@@ -214,6 +226,9 @@ namespace Borelli_BdT.view {
                     lwOutp.Items.Clear();
 
                 lwOutp.Items.Add(lvi);
+
+                if (i == usr.Count - 1)
+                    lwOutp.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
             }
         }
 
@@ -258,15 +273,15 @@ namespace Borelli_BdT.view {
         }
 
         public string GetUserNicknameInUsersListView() {
-            return mListViewAcceptUsers.SelectedItems[0].SubItems[0].Text;
+            return listViewAcceptUsers.SelectedItems[0].SubItems[0].Text;
         }
         public string GetTaskIdFromListView(TaskType type, LoadTskList how) { //di defualt tutti gli id si trovano sulla prima colonna
-            MaterialListView m = GetCurrentListView(type, how);
+            ListView m = GetCurrentListView(type, how);
             return m.SelectedItems[0].SubItems[0].Text;
         }
 
         public void ClearListViewTask(TaskType type, LoadTskList how) {
-            MaterialListView m = GetCurrentListView(type, how);
+            ListView m = GetCurrentListView(type, how);
             m.Items.Clear();
         }
 
@@ -275,7 +290,7 @@ namespace Borelli_BdT.view {
         private void ClosedSignUpForm(object sender, FormClosedEventArgs e) {
             Presenter.LoadAcceptNewUserTab();
         }
-        private MaterialListView GetCurrentListView(TaskType type, LoadTskList how) {
+        private ListView GetCurrentListView(TaskType type, LoadTskList how) {
             return MListViews[(int)type + (int)how];
         }
     }
