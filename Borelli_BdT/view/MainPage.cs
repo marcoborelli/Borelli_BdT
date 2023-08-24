@@ -16,20 +16,23 @@ namespace Borelli_BdT.view {
          * USER:
          * <col><A(cceptation)><campo> */
 
+        /* Logica nome radioButton:
+         * <mRdBut><P(ertinent) | A(ccepted) | R(equested)><SF(searchFilter) | VO (viewOnly)><campo> */
+
 
         public enum LoadTskList { //indica se la listView in questione e' nella HomeScreen (pochi dettagli) o nel tab dedicato (dettagliata)
             HomeScreen,
             Details,
         }
-        public enum TaskType { //indica se e' la lista delle task pertinenti, richieste o fatte.
+        public enum TaskType { //indica se e' la lista delle task pertinenti, richieste o accettate di fare.
             Pertinent,
             Requested = 2,
-            Done = 4,
+            Accepted = 4,
         }
         /* La logica consiste in una lista di 6 listView (2 (HomeScreen e Details) per ognuno dei 3 task type
-         * (Pertinent, Requested, Done)). Questi enumm, tramite la loro somma, vengono usati per riconoscere la giusta ListView
-         * da parte del presenter che non vi ha accesso.
-         * Es: la ListView che sitrova sull'Home delle task fatte avra' indice 4: 0(LoadTskList.HomeScreen) + 4(TaskType.Done) */
+         * (Pertinent, Requested, Accepted)). Questi enumm, tramite la loro somma, vengono usati per riconoscere la giusta ListView
+         * da parte del presenter che non vi ha accesso direttamente.
+         * Es: la ListView che si trova sull'Home delle task fatte avra' indice 4: 0(LoadTskList.HomeScreen) + 4(TaskType.Accepted) */
 
 
         public enum LoadUsrList {
@@ -54,7 +57,8 @@ namespace Borelli_BdT.view {
             InitializeComponent();
             FormManager.AddForm(this);
 
-            MListViews = new List<ListView> { listViewPertinentTasks, listViewPertinentComplete, listViewRequestedTasks/*, mListViewReqJobsComplete, */, listViewAcceptedTasks, listViewDoneComplete };
+            ListView dummy = new ListView(); //TODO: messo solo per far andare il programma in questo momento. Da rimuovere
+            MListViews = new List<ListView> { listViewPertinentTasks, listViewPertinentComplete, listViewRequestedTasks, dummy/*, mListViewReqJobsComplete, */, listViewAcceptedTasks, listViewDoneComplete };
 
             Presenter = new MainPagePresenter(this, username);
             materialTabControl1.SelectedIndexChanged += new EventHandler(Presenter.LoadSelectedTab);
@@ -62,8 +66,17 @@ namespace Borelli_BdT.view {
             textBoxSearchAcceptTask.TextChanged += new EventHandler(Presenter.ReLoadReqAcceptTask);
             mButtonAcceptTask.Click += new EventHandler(Presenter.OnAcceptTask);
             mButtonReqTask.Click += new EventHandler(Presenter.OnRequestTask);
+            mRdButPSFjob.CheckedChanged += new EventHandler(Presenter.ReLoadReqAcceptTask);
+            mRdButPSFrequester.CheckedChanged += new EventHandler(Presenter.ReLoadReqAcceptTask);
 
-            textBoxSearchDoneTasks.TextChanged += new EventHandler(Presenter.ReLoadReqDoneTask);
+            textBoxSearchAcceptedTasks.TextChanged += new EventHandler(Presenter.ReLoadAcceptedTasks);
+            mRdButASFjob.CheckedChanged += new EventHandler(Presenter.ReLoadAcceptedTasks);
+            mRdButASFrequester.CheckedChanged += new EventHandler(Presenter.ReLoadAcceptedTasks);
+            mRdButAVOaccepted.CheckedChanged += new EventHandler(Presenter.ReLoadAcceptedTasks);
+            mRdButAVOall.CheckedChanged += new EventHandler(Presenter.ReLoadAcceptedTasks);
+            mRdButAVOdone.CheckedChanged += new EventHandler(Presenter.ReLoadAcceptedTasks);
+
+
 
             listViewAcceptUsers.MouseDoubleClick += new MouseEventHandler(Presenter.DoubleClickOnAcceptUsersLW);
             mButtonModDistr.Click += new EventHandler(Presenter.OnModifyDistr);
@@ -71,6 +84,9 @@ namespace Borelli_BdT.view {
 
             Verdolino = Color.FromArgb(192, 255, 192);
             Giallino = Color.FromArgb(255, 255, 192);
+
+            labelDotAccepted.ForeColor = Giallino;
+            labelDotDone.ForeColor = Verdolino;
         }
 
 
@@ -137,9 +153,9 @@ namespace Borelli_BdT.view {
         public AcTaskState GetUsedStateFilter() {
             AcTaskState outp;
 
-            if (tACCmRButtonAll.Checked) {
+            if (mRdButAVOall.Checked) {
                 outp = AcTaskState.All;
-            } else if (tACCmRButtonDone.Checked) {
+            } else if (mRdButAVOdone.Checked) {
                 outp = AcTaskState.Done;
             } else {
                 outp = AcTaskState.Accepted;
@@ -155,7 +171,7 @@ namespace Borelli_BdT.view {
 
             for (int i = 0; i < tsk.Count; i++) {
                 switch (type) {
-                    case TaskType.Done:
+                    case TaskType.Accepted:
                         switch (how) {
                             case LoadTskList.HomeScreen:
                                 lwOutp = listViewAcceptedTasks;
@@ -242,8 +258,8 @@ namespace Borelli_BdT.view {
                 case TaskType.Requested:
                     //TODO:
                     break;
-                case TaskType.Done:
-                    research = textBoxSearchDoneTasks.Text;
+                case TaskType.Accepted:
+                    research = textBoxSearchAcceptedTasks.Text;
                     break;
             }
 
@@ -255,13 +271,13 @@ namespace Borelli_BdT.view {
 
             switch (type) {
                 case TaskType.Pertinent:
-                    outp = tARmRButtonJob.Checked ? ResarchOption.Job : ResarchOption.Requester;
+                    outp = mRdButPSFjob.Checked ? ResarchOption.Job : ResarchOption.Requester;
                     break;
                 case TaskType.Requested:
                     //TODO:
                     break;
-                case TaskType.Done:
-                    outp = tACCmRButtonJob.Checked ? ResarchOption.Job : ResarchOption.Requester;
+                case TaskType.Accepted:
+                    outp = mRdButASFjob.Checked ? ResarchOption.Job : ResarchOption.Requester;
                     break;
             }
 

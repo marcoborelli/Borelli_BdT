@@ -17,7 +17,7 @@ namespace Borelli_BdT.presenter {
             if (CurrentUser == null)
                 throw new Exception("Inserire un utente valido");
 
-            ChargeHomeScreen();
+            LoadHomeScreen();
         }
 
         private MainPage View {
@@ -30,7 +30,7 @@ namespace Borelli_BdT.presenter {
 
             switch (tabIndex) {
                 case 0:
-                    ChargeHomeScreen();
+                    LoadHomeScreen();
                     break;
                 case 1:
                     LoadReqAcceptTask();
@@ -45,7 +45,7 @@ namespace Borelli_BdT.presenter {
             }
         }
 
-        public void ChargeHomeScreen() {
+        public void LoadHomeScreen() {
             MainPage.LoadTskList tab = MainPage.LoadTskList.HomeScreen;
 
             View.ChargeUserData(EntityCustomerMasterData.GetEntity(CurrentUser.Data), $"{Parameters.DPPictures}/{CurrentUser.Nickname}.jpg");
@@ -54,7 +54,7 @@ namespace Borelli_BdT.presenter {
             View.LoadTasksList(pertinentTasks, MainPage.TaskType.Pertinent, tab);
 
             List<EntityTask> doneTasks = GetEntityTasksList(TasksList.GetAcceptedTasks(CurrentUser.Nickname, AcTaskState.Done));
-            View.LoadTasksList(doneTasks, MainPage.TaskType.Done, tab);
+            View.LoadTasksList(doneTasks, MainPage.TaskType.Accepted, tab);
 
             View.WriteDeltaHours(CurrentUser.DoneHours - CurrentUser.RecievedHours);
 
@@ -121,17 +121,18 @@ namespace Borelli_BdT.presenter {
 
         public void LoadAcceptedTasks() {
             AcTaskState taskState = View.GetUsedStateFilter();
-            MainPage.TaskType tt = MainPage.TaskType.Done;
+            MainPage.TaskType tt = MainPage.TaskType.Accepted;
 
             Regex rxRicerca = new Regex(View.GetTextInSearchBar(tt), RegexOptions.IgnoreCase);
 
             List<EntityTask> doneTasks = GetEntityTasksList(TasksList.GetAcceptedTasks(CurrentUser.Nickname, taskState));
             List<EntityTask> donePertinentTasks = FilterTasks(doneTasks, rxRicerca, View.GetUsedFilter(tt));
 
-            View.LoadTasksList(donePertinentTasks, MainPage.TaskType.Done, MainPage.LoadTskList.Details);
+            View.ClearListViewTask(tt, MainPage.LoadTskList.Details);
+            View.LoadTasksList(donePertinentTasks, MainPage.TaskType.Accepted, MainPage.LoadTskList.Details);
         }
 
-        public void ReLoadReqDoneTask(object sender, EventArgs e) {
+        public void ReLoadAcceptedTasks(object sender, EventArgs e) {
             LoadAcceptedTasks();
         }
 

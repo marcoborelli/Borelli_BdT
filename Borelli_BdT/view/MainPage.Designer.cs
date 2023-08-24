@@ -52,20 +52,20 @@
             this.materialLabel1 = new MaterialSkin.Controls.MaterialLabel();
             this.textBoxSearchAcceptTask = new System.Windows.Forms.TextBox();
             this.mLabel4 = new MaterialSkin.Controls.MaterialLabel();
-            this.tARmRButtonJob = new MaterialSkin.Controls.MaterialRadioButton();
-            this.tARmRButtonRequester = new MaterialSkin.Controls.MaterialRadioButton();
+            this.mRdButPSFjob = new MaterialSkin.Controls.MaterialRadioButton();
+            this.mRdButPSFrequester = new MaterialSkin.Controls.MaterialRadioButton();
             this.tabAcceptedTask = new System.Windows.Forms.TabPage();
-            this.textBoxSearchDoneTasks = new System.Windows.Forms.TextBox();
+            this.textBoxSearchAcceptedTasks = new System.Windows.Forms.TextBox();
             this.materialLabel3 = new MaterialSkin.Controls.MaterialLabel();
             this.materialCard10 = new MaterialSkin.Controls.MaterialCard();
             this.materialLabel2 = new MaterialSkin.Controls.MaterialLabel();
-            this.tACCmRButtonJob = new MaterialSkin.Controls.MaterialRadioButton();
-            this.tACCmRButtonRequester = new MaterialSkin.Controls.MaterialRadioButton();
+            this.mRdButASFjob = new MaterialSkin.Controls.MaterialRadioButton();
+            this.mRdButASFrequester = new MaterialSkin.Controls.MaterialRadioButton();
             this.materialCard9 = new MaterialSkin.Controls.MaterialCard();
             this.mLabel5 = new MaterialSkin.Controls.MaterialLabel();
-            this.tACCmRButtonDone = new MaterialSkin.Controls.MaterialRadioButton();
-            this.tACCmRButtonAccepted = new MaterialSkin.Controls.MaterialRadioButton();
-            this.tACCmRButtonAll = new MaterialSkin.Controls.MaterialRadioButton();
+            this.mRdButAVOdone = new MaterialSkin.Controls.MaterialRadioButton();
+            this.mRdButAVOaccepted = new MaterialSkin.Controls.MaterialRadioButton();
+            this.mRdButAVOall = new MaterialSkin.Controls.MaterialRadioButton();
             this.materialCard8 = new MaterialSkin.Controls.MaterialCard();
             this.materialLabel5 = new MaterialSkin.Controls.MaterialLabel();
             this.labelDotDone = new System.Windows.Forms.Label();
@@ -455,8 +455,8 @@
             this.materialCard6.Controls.Add(this.materialLabel1);
             this.materialCard6.Controls.Add(this.textBoxSearchAcceptTask);
             this.materialCard6.Controls.Add(this.mLabel4);
-            this.materialCard6.Controls.Add(this.tARmRButtonJob);
-            this.materialCard6.Controls.Add(this.tARmRButtonRequester);
+            this.materialCard6.Controls.Add(this.mRdButPSFjob);
+            this.materialCard6.Controls.Add(this.mRdButPSFrequester);
             this.materialCard6.Depth = 0;
             this.materialCard6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.materialCard6.Location = new System.Drawing.Point(14, 14);
@@ -518,43 +518,43 @@
             this.mLabel4.TabIndex = 4;
             this.mLabel4.Text = "Filtra ricerca";
             // 
-            // tARmRButtonJob
+            // mRdButPSFjob
             // 
-            this.tARmRButtonJob.AutoSize = true;
-            this.tARmRButtonJob.Depth = 0;
-            this.tARmRButtonJob.Location = new System.Drawing.Point(290, 438);
-            this.tARmRButtonJob.Margin = new System.Windows.Forms.Padding(0);
-            this.tARmRButtonJob.MouseLocation = new System.Drawing.Point(-1, -1);
-            this.tARmRButtonJob.MouseState = MaterialSkin.MouseState.HOVER;
-            this.tARmRButtonJob.Name = "tARmRButtonJob";
-            this.tARmRButtonJob.Ripple = true;
-            this.tARmRButtonJob.Size = new System.Drawing.Size(84, 37);
-            this.tARmRButtonJob.TabIndex = 6;
-            this.tARmRButtonJob.TabStop = true;
-            this.tARmRButtonJob.Text = "Lavoro";
-            this.tARmRButtonJob.UseVisualStyleBackColor = true;
+            this.mRdButPSFjob.AutoSize = true;
+            this.mRdButPSFjob.Depth = 0;
+            this.mRdButPSFjob.Location = new System.Drawing.Point(290, 438);
+            this.mRdButPSFjob.Margin = new System.Windows.Forms.Padding(0);
+            this.mRdButPSFjob.MouseLocation = new System.Drawing.Point(-1, -1);
+            this.mRdButPSFjob.MouseState = MaterialSkin.MouseState.HOVER;
+            this.mRdButPSFjob.Name = "mRdButPSFjob";
+            this.mRdButPSFjob.Ripple = true;
+            this.mRdButPSFjob.Size = new System.Drawing.Size(84, 37);
+            this.mRdButPSFjob.TabIndex = 6;
+            this.mRdButPSFjob.TabStop = true;
+            this.mRdButPSFjob.Text = "Lavoro";
+            this.mRdButPSFjob.UseVisualStyleBackColor = true;
             // 
-            // tARmRButtonRequester
+            // mRdButPSFrequester
             // 
-            this.tARmRButtonRequester.AutoSize = true;
-            this.tARmRButtonRequester.Checked = true;
-            this.tARmRButtonRequester.Depth = 0;
-            this.tARmRButtonRequester.Location = new System.Drawing.Point(290, 401);
-            this.tARmRButtonRequester.Margin = new System.Windows.Forms.Padding(0);
-            this.tARmRButtonRequester.MouseLocation = new System.Drawing.Point(-1, -1);
-            this.tARmRButtonRequester.MouseState = MaterialSkin.MouseState.HOVER;
-            this.tARmRButtonRequester.Name = "tARmRButtonRequester";
-            this.tARmRButtonRequester.Ripple = true;
-            this.tARmRButtonRequester.Size = new System.Drawing.Size(117, 37);
-            this.tARmRButtonRequester.TabIndex = 5;
-            this.tARmRButtonRequester.TabStop = true;
-            this.tARmRButtonRequester.Text = "Richiedente";
-            this.tARmRButtonRequester.UseVisualStyleBackColor = true;
+            this.mRdButPSFrequester.AutoSize = true;
+            this.mRdButPSFrequester.Checked = true;
+            this.mRdButPSFrequester.Depth = 0;
+            this.mRdButPSFrequester.Location = new System.Drawing.Point(290, 401);
+            this.mRdButPSFrequester.Margin = new System.Windows.Forms.Padding(0);
+            this.mRdButPSFrequester.MouseLocation = new System.Drawing.Point(-1, -1);
+            this.mRdButPSFrequester.MouseState = MaterialSkin.MouseState.HOVER;
+            this.mRdButPSFrequester.Name = "mRdButPSFrequester";
+            this.mRdButPSFrequester.Ripple = true;
+            this.mRdButPSFrequester.Size = new System.Drawing.Size(117, 37);
+            this.mRdButPSFrequester.TabIndex = 5;
+            this.mRdButPSFrequester.TabStop = true;
+            this.mRdButPSFrequester.Text = "Richiedente";
+            this.mRdButPSFrequester.UseVisualStyleBackColor = true;
             // 
             // tabAcceptedTask
             // 
             this.tabAcceptedTask.Controls.Add(this.listViewDoneComplete);
-            this.tabAcceptedTask.Controls.Add(this.textBoxSearchDoneTasks);
+            this.tabAcceptedTask.Controls.Add(this.textBoxSearchAcceptedTasks);
             this.tabAcceptedTask.Controls.Add(this.materialLabel3);
             this.tabAcceptedTask.Controls.Add(this.materialCard10);
             this.tabAcceptedTask.Controls.Add(this.materialCard9);
@@ -566,12 +566,12 @@
             this.tabAcceptedTask.Text = "TASK ACCETTATE";
             this.tabAcceptedTask.UseVisualStyleBackColor = true;
             // 
-            // textBoxSearchDoneTasks
+            // textBoxSearchAcceptedTasks
             // 
-            this.textBoxSearchDoneTasks.Location = new System.Drawing.Point(54, 6);
-            this.textBoxSearchDoneTasks.Name = "textBoxSearchDoneTasks";
-            this.textBoxSearchDoneTasks.Size = new System.Drawing.Size(499, 20);
-            this.textBoxSearchDoneTasks.TabIndex = 7;
+            this.textBoxSearchAcceptedTasks.Location = new System.Drawing.Point(54, 6);
+            this.textBoxSearchAcceptedTasks.Name = "textBoxSearchAcceptedTasks";
+            this.textBoxSearchAcceptedTasks.Size = new System.Drawing.Size(499, 20);
+            this.textBoxSearchAcceptedTasks.TabIndex = 7;
             // 
             // materialLabel3
             // 
@@ -589,8 +589,8 @@
             // 
             this.materialCard10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.materialCard10.Controls.Add(this.materialLabel2);
-            this.materialCard10.Controls.Add(this.tACCmRButtonJob);
-            this.materialCard10.Controls.Add(this.tACCmRButtonRequester);
+            this.materialCard10.Controls.Add(this.mRdButASFjob);
+            this.materialCard10.Controls.Add(this.mRdButASFrequester);
             this.materialCard10.Depth = 0;
             this.materialCard10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.materialCard10.Location = new System.Drawing.Point(570, 32);
@@ -613,46 +613,46 @@
             this.materialLabel2.TabIndex = 4;
             this.materialLabel2.Text = "Campo di ricerca:";
             // 
-            // tACCmRButtonJob
+            // mRdButASFjob
             // 
-            this.tACCmRButtonJob.AutoSize = true;
-            this.tACCmRButtonJob.Depth = 0;
-            this.tACCmRButtonJob.Location = new System.Drawing.Point(14, 70);
-            this.tACCmRButtonJob.Margin = new System.Windows.Forms.Padding(0);
-            this.tACCmRButtonJob.MouseLocation = new System.Drawing.Point(-1, -1);
-            this.tACCmRButtonJob.MouseState = MaterialSkin.MouseState.HOVER;
-            this.tACCmRButtonJob.Name = "tACCmRButtonJob";
-            this.tACCmRButtonJob.Ripple = true;
-            this.tACCmRButtonJob.Size = new System.Drawing.Size(84, 37);
-            this.tACCmRButtonJob.TabIndex = 5;
-            this.tACCmRButtonJob.TabStop = true;
-            this.tACCmRButtonJob.Text = "Lavoro";
-            this.tACCmRButtonJob.UseVisualStyleBackColor = true;
+            this.mRdButASFjob.AutoSize = true;
+            this.mRdButASFjob.Depth = 0;
+            this.mRdButASFjob.Location = new System.Drawing.Point(14, 70);
+            this.mRdButASFjob.Margin = new System.Windows.Forms.Padding(0);
+            this.mRdButASFjob.MouseLocation = new System.Drawing.Point(-1, -1);
+            this.mRdButASFjob.MouseState = MaterialSkin.MouseState.HOVER;
+            this.mRdButASFjob.Name = "mRdButASFjob";
+            this.mRdButASFjob.Ripple = true;
+            this.mRdButASFjob.Size = new System.Drawing.Size(84, 37);
+            this.mRdButASFjob.TabIndex = 5;
+            this.mRdButASFjob.TabStop = true;
+            this.mRdButASFjob.Text = "Lavoro";
+            this.mRdButASFjob.UseVisualStyleBackColor = true;
             // 
-            // tACCmRButtonRequester
+            // mRdButASFrequester
             // 
-            this.tACCmRButtonRequester.AutoSize = true;
-            this.tACCmRButtonRequester.Checked = true;
-            this.tACCmRButtonRequester.Depth = 0;
-            this.tACCmRButtonRequester.Location = new System.Drawing.Point(14, 33);
-            this.tACCmRButtonRequester.Margin = new System.Windows.Forms.Padding(0);
-            this.tACCmRButtonRequester.MouseLocation = new System.Drawing.Point(-1, -1);
-            this.tACCmRButtonRequester.MouseState = MaterialSkin.MouseState.HOVER;
-            this.tACCmRButtonRequester.Name = "tACCmRButtonRequester";
-            this.tACCmRButtonRequester.Ripple = true;
-            this.tACCmRButtonRequester.Size = new System.Drawing.Size(117, 37);
-            this.tACCmRButtonRequester.TabIndex = 4;
-            this.tACCmRButtonRequester.TabStop = true;
-            this.tACCmRButtonRequester.Text = "Richiedente";
-            this.tACCmRButtonRequester.UseVisualStyleBackColor = true;
+            this.mRdButASFrequester.AutoSize = true;
+            this.mRdButASFrequester.Checked = true;
+            this.mRdButASFrequester.Depth = 0;
+            this.mRdButASFrequester.Location = new System.Drawing.Point(14, 33);
+            this.mRdButASFrequester.Margin = new System.Windows.Forms.Padding(0);
+            this.mRdButASFrequester.MouseLocation = new System.Drawing.Point(-1, -1);
+            this.mRdButASFrequester.MouseState = MaterialSkin.MouseState.HOVER;
+            this.mRdButASFrequester.Name = "mRdButASFrequester";
+            this.mRdButASFrequester.Ripple = true;
+            this.mRdButASFrequester.Size = new System.Drawing.Size(117, 37);
+            this.mRdButASFrequester.TabIndex = 4;
+            this.mRdButASFrequester.TabStop = true;
+            this.mRdButASFrequester.Text = "Richiedente";
+            this.mRdButASFrequester.UseVisualStyleBackColor = true;
             // 
             // materialCard9
             // 
             this.materialCard9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.materialCard9.Controls.Add(this.mLabel5);
-            this.materialCard9.Controls.Add(this.tACCmRButtonDone);
-            this.materialCard9.Controls.Add(this.tACCmRButtonAccepted);
-            this.materialCard9.Controls.Add(this.tACCmRButtonAll);
+            this.materialCard9.Controls.Add(this.mRdButAVOdone);
+            this.materialCard9.Controls.Add(this.mRdButAVOaccepted);
+            this.materialCard9.Controls.Add(this.mRdButAVOall);
             this.materialCard9.Depth = 0;
             this.materialCard9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.materialCard9.Location = new System.Drawing.Point(570, 181);
@@ -675,54 +675,54 @@
             this.mLabel5.TabIndex = 3;
             this.mLabel5.Text = "Visualizza:";
             // 
-            // tACCmRButtonDone
+            // mRdButAVOdone
             // 
-            this.tACCmRButtonDone.AutoSize = true;
-            this.tACCmRButtonDone.Depth = 0;
-            this.tACCmRButtonDone.Location = new System.Drawing.Point(11, 119);
-            this.tACCmRButtonDone.Margin = new System.Windows.Forms.Padding(0);
-            this.tACCmRButtonDone.MouseLocation = new System.Drawing.Point(-1, -1);
-            this.tACCmRButtonDone.MouseState = MaterialSkin.MouseState.HOVER;
-            this.tACCmRButtonDone.Name = "tACCmRButtonDone";
-            this.tACCmRButtonDone.Ripple = true;
-            this.tACCmRButtonDone.Size = new System.Drawing.Size(83, 37);
-            this.tACCmRButtonDone.TabIndex = 2;
-            this.tACCmRButtonDone.TabStop = true;
-            this.tACCmRButtonDone.Text = "Chiuse";
-            this.tACCmRButtonDone.UseVisualStyleBackColor = true;
+            this.mRdButAVOdone.AutoSize = true;
+            this.mRdButAVOdone.Depth = 0;
+            this.mRdButAVOdone.Location = new System.Drawing.Point(11, 119);
+            this.mRdButAVOdone.Margin = new System.Windows.Forms.Padding(0);
+            this.mRdButAVOdone.MouseLocation = new System.Drawing.Point(-1, -1);
+            this.mRdButAVOdone.MouseState = MaterialSkin.MouseState.HOVER;
+            this.mRdButAVOdone.Name = "mRdButAVOdone";
+            this.mRdButAVOdone.Ripple = true;
+            this.mRdButAVOdone.Size = new System.Drawing.Size(83, 37);
+            this.mRdButAVOdone.TabIndex = 2;
+            this.mRdButAVOdone.TabStop = true;
+            this.mRdButAVOdone.Text = "Chiuse";
+            this.mRdButAVOdone.UseVisualStyleBackColor = true;
             // 
-            // tACCmRButtonAccepted
+            // mRdButAVOaccepted
             // 
-            this.tACCmRButtonAccepted.AutoSize = true;
-            this.tACCmRButtonAccepted.Depth = 0;
-            this.tACCmRButtonAccepted.Location = new System.Drawing.Point(11, 82);
-            this.tACCmRButtonAccepted.Margin = new System.Windows.Forms.Padding(0);
-            this.tACCmRButtonAccepted.MouseLocation = new System.Drawing.Point(-1, -1);
-            this.tACCmRButtonAccepted.MouseState = MaterialSkin.MouseState.HOVER;
-            this.tACCmRButtonAccepted.Name = "tACCmRButtonAccepted";
-            this.tACCmRButtonAccepted.Ripple = true;
-            this.tACCmRButtonAccepted.Size = new System.Drawing.Size(178, 37);
-            this.tACCmRButtonAccepted.TabIndex = 1;
-            this.tACCmRButtonAccepted.TabStop = true;
-            this.tACCmRButtonAccepted.Text = "In attesa di chiusura";
-            this.tACCmRButtonAccepted.UseVisualStyleBackColor = true;
+            this.mRdButAVOaccepted.AutoSize = true;
+            this.mRdButAVOaccepted.Depth = 0;
+            this.mRdButAVOaccepted.Location = new System.Drawing.Point(11, 82);
+            this.mRdButAVOaccepted.Margin = new System.Windows.Forms.Padding(0);
+            this.mRdButAVOaccepted.MouseLocation = new System.Drawing.Point(-1, -1);
+            this.mRdButAVOaccepted.MouseState = MaterialSkin.MouseState.HOVER;
+            this.mRdButAVOaccepted.Name = "mRdButAVOaccepted";
+            this.mRdButAVOaccepted.Ripple = true;
+            this.mRdButAVOaccepted.Size = new System.Drawing.Size(178, 37);
+            this.mRdButAVOaccepted.TabIndex = 1;
+            this.mRdButAVOaccepted.TabStop = true;
+            this.mRdButAVOaccepted.Text = "In attesa di chiusura";
+            this.mRdButAVOaccepted.UseVisualStyleBackColor = true;
             // 
-            // tACCmRButtonAll
+            // mRdButAVOall
             // 
-            this.tACCmRButtonAll.AutoSize = true;
-            this.tACCmRButtonAll.Checked = true;
-            this.tACCmRButtonAll.Depth = 0;
-            this.tACCmRButtonAll.Location = new System.Drawing.Point(11, 45);
-            this.tACCmRButtonAll.Margin = new System.Windows.Forms.Padding(0);
-            this.tACCmRButtonAll.MouseLocation = new System.Drawing.Point(-1, -1);
-            this.tACCmRButtonAll.MouseState = MaterialSkin.MouseState.HOVER;
-            this.tACCmRButtonAll.Name = "tACCmRButtonAll";
-            this.tACCmRButtonAll.Ripple = true;
-            this.tACCmRButtonAll.Size = new System.Drawing.Size(73, 37);
-            this.tACCmRButtonAll.TabIndex = 0;
-            this.tACCmRButtonAll.TabStop = true;
-            this.tACCmRButtonAll.Text = "Tutto";
-            this.tACCmRButtonAll.UseVisualStyleBackColor = true;
+            this.mRdButAVOall.AutoSize = true;
+            this.mRdButAVOall.Checked = true;
+            this.mRdButAVOall.Depth = 0;
+            this.mRdButAVOall.Location = new System.Drawing.Point(11, 45);
+            this.mRdButAVOall.Margin = new System.Windows.Forms.Padding(0);
+            this.mRdButAVOall.MouseLocation = new System.Drawing.Point(-1, -1);
+            this.mRdButAVOall.MouseState = MaterialSkin.MouseState.HOVER;
+            this.mRdButAVOall.Name = "mRdButAVOall";
+            this.mRdButAVOall.Ripple = true;
+            this.mRdButAVOall.Size = new System.Drawing.Size(73, 37);
+            this.mRdButAVOall.TabIndex = 0;
+            this.mRdButAVOall.TabStop = true;
+            this.mRdButAVOall.Text = "Tutto";
+            this.mRdButAVOall.UseVisualStyleBackColor = true;
             // 
             // materialCard8
             // 
@@ -1116,8 +1116,8 @@
         private System.Windows.Forms.TabPage tabCreateAcceptTask;
         private MaterialSkin.Controls.MaterialCard materialCard7;
         private MaterialSkin.Controls.MaterialCard materialCard6;
-        private MaterialSkin.Controls.MaterialRadioButton tARmRButtonJob;
-        private MaterialSkin.Controls.MaterialRadioButton tARmRButtonRequester;
+        private MaterialSkin.Controls.MaterialRadioButton mRdButPSFjob;
+        private MaterialSkin.Controls.MaterialRadioButton mRdButPSFrequester;
         private MaterialSkin.Controls.MaterialLabel mLabel4;
         private MaterialSkin.Controls.MaterialLabel materialLabel1;
         private System.Windows.Forms.TextBox textBoxSearchAcceptTask;
@@ -1129,15 +1129,15 @@
         private MaterialSkin.Controls.MaterialCard materialCard9;
         private MaterialSkin.Controls.MaterialCard materialCard8;
         private MaterialSkin.Controls.MaterialLabel mLabel5;
-        private MaterialSkin.Controls.MaterialRadioButton tACCmRButtonDone;
-        private MaterialSkin.Controls.MaterialRadioButton tACCmRButtonAccepted;
-        private MaterialSkin.Controls.MaterialRadioButton tACCmRButtonAll;
+        private MaterialSkin.Controls.MaterialRadioButton mRdButAVOdone;
+        private MaterialSkin.Controls.MaterialRadioButton mRdButAVOaccepted;
+        private MaterialSkin.Controls.MaterialRadioButton mRdButAVOall;
         private MaterialSkin.Controls.MaterialCard materialCard10;
-        private System.Windows.Forms.TextBox textBoxSearchDoneTasks;
+        private System.Windows.Forms.TextBox textBoxSearchAcceptedTasks;
         private MaterialSkin.Controls.MaterialLabel materialLabel3;
         private MaterialSkin.Controls.MaterialLabel materialLabel2;
-        private MaterialSkin.Controls.MaterialRadioButton tACCmRButtonJob;
-        private MaterialSkin.Controls.MaterialRadioButton tACCmRButtonRequester;
+        private MaterialSkin.Controls.MaterialRadioButton mRdButASFjob;
+        private MaterialSkin.Controls.MaterialRadioButton mRdButASFrequester;
         private MaterialSkin.Controls.MaterialLabel materialLabel5;
         private System.Windows.Forms.Label labelDotDone;
         private MaterialSkin.Controls.MaterialLabel materialLabel4;
