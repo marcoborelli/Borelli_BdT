@@ -51,14 +51,14 @@ namespace Borelli_BdT.view {
         private MainPagePresenter Presenter { get; set; }
         private List<ListView> MListViews { get; set; }
         private Color Giallino { get; set; }
+        private Color Arancino { get; set; }
         private Color Verdolino { get; set; }
 
         public MainPage(string username) {
             InitializeComponent();
             FormManager.AddForm(this);
 
-            ListView dummy = new ListView(); //TODO: messo solo per far andare il programma in questo momento. Da rimuovere
-            MListViews = new List<ListView> { listViewPertinentTasks, listViewPertinentComplete, listViewRequestedTasks, dummy/*, mListViewReqJobsComplete, */, listViewAcceptedTasks, listViewDoneComplete };
+            MListViews = new List<ListView> { listViewPertinentTasks, listViewPertinentComplete, listViewRequestedTasks, listViewRequestedComplete, listViewAcceptedTasks, listViewDoneComplete };
 
             Presenter = new MainPagePresenter(this, username);
             materialTabControl1.SelectedIndexChanged += new EventHandler(Presenter.LoadSelectedTab);
@@ -76,18 +76,26 @@ namespace Borelli_BdT.view {
             mRdButAVOall.CheckedChanged += new EventHandler(Presenter.ReLoadAcceptedTasks);
             mRdButAVOdone.CheckedChanged += new EventHandler(Presenter.ReLoadAcceptedTasks);
 
-
+            //TODO
+            /*textBoxSearchRequestedTasks.TextChanged += new EventHandler(Presenter.ReLoadRequestedTasks);
+            mRdButRSFacceptor.CheckedChanged += new EventHandler(Presenter.ReLoadRequestedTasks);
+            mRdButRSFjob.CheckedChanged += new EventHandler(Presenter.ReLoadRequestedTasks);
+            mRdButRVOrequested.CheckedChanged += new EventHandler(Presenter.ReLoadRequestedTasks);
+            mRdButRVOaccepted.CheckedChanged += new EventHandler(Presenter.ReLoadRequestedTasks);
+            mRdButRVOdone.CheckedChanged += new EventHandler(Presenter.ReLoadRequestedTasks);
+            mRdButRVOall.CheckedChanged += new EventHandler(Presenter.ReLoadRequestedTasks);*/
 
             listViewAcceptUsers.MouseDoubleClick += new MouseEventHandler(Presenter.DoubleClickOnAcceptUsersLW);
             mButtonModDistr.Click += new EventHandler(Presenter.OnModifyDistr);
             mButtonModJobs.Click += new EventHandler(Presenter.OnModifyJobs);
 
             Verdolino = Color.FromArgb(192, 255, 192);
+            Arancino = Color.FromArgb(255, 224, 192);
             Giallino = Color.FromArgb(255, 255, 192);
 
             LoadLegendPaletteAcceptedTask();
+            LoadLegendPaletteRequestedTask();
         }
-
 
 
         public void ChargeUserData(EntityCustomerMasterData e, string photoPhat) {
@@ -163,6 +171,22 @@ namespace Borelli_BdT.view {
             return outp;
         }
 
+        public RqTaskState GetUsedStateFilterInRequested() {
+            RqTaskState outp;
+
+            if (mRdButRVOall.Checked) {
+                outp = RqTaskState.All;
+            } else if (mRdButRVOdone.Checked) {
+                outp = RqTaskState.Done;
+            } else if (mRdButRVOaccepted.Checked) {
+                outp = RqTaskState.Accepted;
+            } else {
+                outp = RqTaskState.Requested;
+            }
+
+            return outp;
+        }
+
 
         public void LoadTasksList(List<EntityTask> tsk, TaskType type, LoadTskList how) {
             ListView lwOutp = new ListView();
@@ -192,7 +216,18 @@ namespace Borelli_BdT.view {
                                 lvi = new ListViewItem(new string[] { tsk[i].Field1, tsk[i].Field4, tsk[i].Field9 }); //id, donatore, ore
                                 break;
                             case LoadTskList.Details:
-                                //TODO
+                                lwOutp = listViewRequestedComplete;
+                                lvi = new ListViewItem(new string[] { tsk[i].Field1, tsk[i].Field4, tsk[i].Field11, tsk[i].Field5, tsk[i].Field9 }); //id, donatore, lavoro, dataRichiesta, ore
+
+                                if (Presenter.IsTaskDone(tsk[i])) {
+                                    lvi.BackColor = Verdolino;
+                                /*} else if (Presenter.IsTaskAccepted(tsk[i])) {
+                                    lvi.BackColor = Giallino;*/ //TODO
+                                } else {
+                                    lvi.BackColor = Arancino;
+                                }
+
+                                lvi.ForeColor = Color.Black;
                                 break;
                         }
                         break;
@@ -255,7 +290,7 @@ namespace Borelli_BdT.view {
                     research = textBoxSearchAcceptTask.Text;
                     break;
                 case TaskType.Requested:
-                    //TODO:
+                    research = textBoxSearchRequestedTasks.Text;
                     break;
                 case TaskType.Accepted:
                     research = textBoxSearchAcceptedTasks.Text;
@@ -273,7 +308,7 @@ namespace Borelli_BdT.view {
                     outp = mRdButPSFjob.Checked ? ResarchOption.Job : ResarchOption.Requester;
                     break;
                 case TaskType.Requested:
-                    //TODO:
+                    outp = mRdButRSFjob.Checked ? ResarchOption.Job : ResarchOption.Acceptor;
                     break;
                 case TaskType.Accepted:
                     outp = mRdButASFjob.Checked ? ResarchOption.Job : ResarchOption.Requester;
@@ -302,6 +337,12 @@ namespace Borelli_BdT.view {
         public void LoadLegendPaletteAcceptedTask() {
             labelDotAccepted.ForeColor = Giallino;
             labelDotDone.ForeColor = Verdolino;
+        }
+
+        public void LoadLegendPaletteRequestedTask() {
+            labelDotClose.ForeColor = Verdolino;
+            labelDotAcceptedR.ForeColor = Giallino;
+            labelDotRequested.ForeColor = Arancino;
         }
 
 
