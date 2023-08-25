@@ -85,8 +85,7 @@ namespace Borelli_BdT.view {
             Verdolino = Color.FromArgb(192, 255, 192);
             Giallino = Color.FromArgb(255, 255, 192);
 
-            labelDotAccepted.ForeColor = Giallino;
-            labelDotDone.ForeColor = Verdolino;
+            LoadLegendPaletteAcceptedTask();
         }
 
 
@@ -150,7 +149,7 @@ namespace Borelli_BdT.view {
 
 
 
-        public AcTaskState GetUsedStateFilter() {
+        public AcTaskState GetUsedStateFilterInAccepted() {
             AcTaskState outp;
 
             if (mRdButAVOall.Checked) {
@@ -181,7 +180,7 @@ namespace Borelli_BdT.view {
                                 lwOutp = listViewDoneComplete;
                                 lvi = new ListViewItem(new string[] { tsk[i].Field1, tsk[i].Field3, tsk[i].Field11, tsk[i].Field6, tsk[i].Field9 }); //id, richiedente, lavoro, data acc., ore
 
-                                lvi.BackColor = Presenter.IsAcceptedTaskDone(tsk[i]) ? Verdolino : Giallino;
+                                lvi.BackColor = Presenter.IsTaskDone(tsk[i]) ? Verdolino : Giallino;
                                 lvi.ForeColor = Color.Black;
                                 break;
                         }
@@ -299,6 +298,10 @@ namespace Borelli_BdT.view {
         public void ClearListViewTask(TaskType type, LoadTskList how) {
             ListView m = GetCurrentListView(type, how);
             m.Items.Clear();
+        }
+        public void LoadLegendPaletteAcceptedTask() {
+            labelDotAccepted.ForeColor = Giallino;
+            labelDotDone.ForeColor = Verdolino;
         }
 
 

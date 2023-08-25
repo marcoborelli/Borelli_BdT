@@ -120,7 +120,7 @@ namespace Borelli_BdT.presenter {
 
 
         public void LoadAcceptedTasks() {
-            AcTaskState taskState = View.GetUsedStateFilter();
+            AcTaskState taskState = View.GetUsedStateFilterInAccepted();
             MainPage.TaskType tt = MainPage.TaskType.Accepted;
 
             Regex rxRicerca = new Regex(View.GetTextInSearchBar(tt), RegexOptions.IgnoreCase);
@@ -136,7 +136,7 @@ namespace Borelli_BdT.presenter {
             LoadAcceptedTasks();
         }
 
-        public bool IsAcceptedTaskDone(EntityTask e) {
+        public bool IsTaskDone(EntityTask e) {
             Task t = EntityTask.GetTask(e);
 
             return t.Status == TPhase.Done;
