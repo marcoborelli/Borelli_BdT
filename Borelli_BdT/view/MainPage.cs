@@ -76,14 +76,13 @@ namespace Borelli_BdT.view {
             mRdButAVOall.CheckedChanged += new EventHandler(Presenter.ReLoadAcceptedTasks);
             mRdButAVOdone.CheckedChanged += new EventHandler(Presenter.ReLoadAcceptedTasks);
 
-            //TODO
-            /*textBoxSearchRequestedTasks.TextChanged += new EventHandler(Presenter.ReLoadRequestedTasks);
+            textBoxSearchRequestedTasks.TextChanged += new EventHandler(Presenter.ReLoadRequestedTasks);
             mRdButRSFacceptor.CheckedChanged += new EventHandler(Presenter.ReLoadRequestedTasks);
             mRdButRSFjob.CheckedChanged += new EventHandler(Presenter.ReLoadRequestedTasks);
             mRdButRVOrequested.CheckedChanged += new EventHandler(Presenter.ReLoadRequestedTasks);
             mRdButRVOaccepted.CheckedChanged += new EventHandler(Presenter.ReLoadRequestedTasks);
             mRdButRVOdone.CheckedChanged += new EventHandler(Presenter.ReLoadRequestedTasks);
-            mRdButRVOall.CheckedChanged += new EventHandler(Presenter.ReLoadRequestedTasks);*/
+            mRdButRVOall.CheckedChanged += new EventHandler(Presenter.ReLoadRequestedTasks);
 
             listViewAcceptUsers.MouseDoubleClick += new MouseEventHandler(Presenter.DoubleClickOnAcceptUsersLW);
             mButtonModDistr.Click += new EventHandler(Presenter.OnModifyDistr);
@@ -221,8 +220,8 @@ namespace Borelli_BdT.view {
 
                                 if (Presenter.IsTaskDone(tsk[i])) {
                                     lvi.BackColor = Verdolino;
-                                /*} else if (Presenter.IsTaskAccepted(tsk[i])) {
-                                    lvi.BackColor = Giallino;*/ //TODO
+                                } else if (Presenter.IsTaskAccepted(tsk[i])) {
+                                    lvi.BackColor = Giallino;
                                 } else {
                                     lvi.BackColor = Arancino;
                                 }

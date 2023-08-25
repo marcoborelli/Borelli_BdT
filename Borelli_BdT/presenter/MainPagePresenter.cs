@@ -40,6 +40,9 @@ namespace Borelli_BdT.presenter {
                     LoadAcceptedTasks();
                     break;
                 case 3:
+                    LoadRequestedTasks();
+                    break;
+                case 4:
                     LoadAcceptNewUserTab();
                     break;
             }
@@ -144,6 +147,31 @@ namespace Borelli_BdT.presenter {
 
 
 
+        public void LoadRequestedTasks() {
+            RqTaskState taskState = View.GetUsedStateFilterInRequested();
+            MainPage.TaskType tt = MainPage.TaskType.Requested;
+
+            Regex rxRicerca = new Regex(View.GetTextInSearchBar(tt), RegexOptions.IgnoreCase);
+
+            List<EntityTask> requestedTasks = GetEntityTasksList(TasksList.GetRequestedTasks(CurrentUser.Nickname, taskState));
+            List<EntityTask> donePertinentTasks = FilterTasks(requestedTasks, rxRicerca, View.GetUsedFilter(tt));
+
+            View.ClearListViewTask(tt, MainPage.LoadTskList.Details);
+            View.LoadTasksList(donePertinentTasks, tt, MainPage.LoadTskList.Details);
+        }
+
+        public void ReLoadRequestedTasks(object sender, EventArgs e) {
+            LoadRequestedTasks();
+        }
+
+        public bool IsTaskAccepted(EntityTask e) {
+            Task t = EntityTask.GetTask(e);
+
+            return t.Status == TPhase.Accepted;
+        }
+
+
+
         public void DoubleClickOnAcceptUsersLW(object sender, MouseEventArgs e) {
             string uNick = View.GetUserNicknameInUsersListView();
 
@@ -196,8 +224,11 @@ namespace Borelli_BdT.presenter {
             for (int i = 0; i < input.Count; i++) {
                 switch (opt) {
                     case MainPage.ResarchOption.Acceptor:
-                        if (rx.IsMatch(input[i].Field4))
+                        if (input[i].Field4 == null && rx.ToString() == String.Empty) { //per la listView delle task richieste che non per forza sono ancora state accettate
                             outp.Add(input[i]);
+                        } else if (input[i].Field4 != null && rx.IsMatch(input[i].Field4)) {
+                            outp.Add(input[i]);
+                        }
                         break;
                     case MainPage.ResarchOption.Requester:
                         if (rx.IsMatch(input[i].Field3))
