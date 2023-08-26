@@ -25,7 +25,11 @@ namespace Borelli_BdT.presenter {
             set => _view = (value != null) ? value : throw new Exception("Inserire un attributo view valido");
         }
 
-        public void LoadSelectedTab(object sender, EventArgs e) {
+        public void SelectedTabChanged(object sender, EventArgs e) {
+            LoadSelectedTab();
+        }
+
+        public void LoadSelectedTab() {
             int tabIndex = View.GetSelectedTabIndex();
 
             switch (tabIndex) {
@@ -47,6 +51,8 @@ namespace Borelli_BdT.presenter {
                     break;
             }
         }
+
+
 
         public void LoadHomeScreen() {
             MainPage.LoadTskList tab = MainPage.LoadTskList.HomeScreen;

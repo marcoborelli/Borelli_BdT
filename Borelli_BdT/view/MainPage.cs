@@ -61,7 +61,7 @@ namespace Borelli_BdT.view {
             MListViews = new List<ListView> { listViewPertinentTasks, listViewPertinentComplete, listViewRequestedTasks, listViewRequestedComplete, listViewAcceptedTasks, listViewDoneComplete };
 
             Presenter = new MainPagePresenter(this, username);
-            materialTabControl1.SelectedIndexChanged += new EventHandler(Presenter.LoadSelectedTab);
+            materialTabControl1.SelectedIndexChanged += new EventHandler(Presenter.SelectedTabChanged);
 
             textBoxSearchAcceptTask.TextChanged += new EventHandler(Presenter.ReLoadReqAcceptTask);
             mButtonAcceptTask.Click += new EventHandler(Presenter.OnAcceptTask);

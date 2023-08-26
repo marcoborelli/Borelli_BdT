@@ -1008,7 +1008,7 @@
             this.listViewAcceptUsers.HideSelection = false;
             this.listViewAcceptUsers.Location = new System.Drawing.Point(7, 6);
             this.listViewAcceptUsers.Name = "listViewAcceptUsers";
-            this.listViewAcceptUsers.Size = new System.Drawing.Size(837, 457);
+            this.listViewAcceptUsers.Size = new System.Drawing.Size(757, 457);
             this.listViewAcceptUsers.TabIndex = 3;
             this.listViewAcceptUsers.UseCompatibleStateImageBehavior = false;
             this.listViewAcceptUsers.View = System.Windows.Forms.View.Details;

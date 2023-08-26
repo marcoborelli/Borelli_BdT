@@ -38,7 +38,7 @@ namespace Borelli_BdT.presenter {
                 Field7 = $"{u.DoneJobsNumber}",
                 Field8 = $"{u.DoneHours}",
                 Field9 = $"{u.RecievedHours}",
-                Field10 = nameof(u.State),
+                Field10 = u.State.ToString(),
                 Field11 = EntityCustomerMasterData.GetEntity(u.Data),
             };
 

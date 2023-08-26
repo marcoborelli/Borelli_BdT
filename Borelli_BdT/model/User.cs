@@ -165,12 +165,11 @@ namespace Borelli_BdT.model {
             t.Left();
         }
 
-        public void EndRequestedTask(Task t, User acceptedUser, DateTime startTask, DateTime endTask, TimeSpan taskLength, float stars) {
+        public void EndRequestedTask(Task t, DateTime startTask, DateTime endTask, TimeSpan taskLength, float stars) {
             if (t == null || t.Status != TPhase.Accepted || t.RequesterNickname != Nickname)
                 throw new Exception("Inserire una task valida in uno stato valido");
 
-            if (acceptedUser == null || acceptedUser.Nickname != t.AcceptorNickname)
-                throw new Exception("Inserire il giusto utente che ha accettato la task");
+            User acceptedUser = UsersList.GetUser(t.AcceptorNickname);
 
             t.End(startTask, endTask, taskLength, stars);
 
