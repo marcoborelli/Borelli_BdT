@@ -145,6 +145,25 @@ namespace Borelli_BdT.model {
             t.Accept(Nickname, DateTime.Now);
         }
 
+        public void ReviewTask(Task t, string caption) {
+            if (t == null)
+                throw new Exception("Inserire una task valida da accettare");
+
+            if (t.RequesterNickname != Nickname)
+                throw new Exception("Un utente può solo modificare una propia task");
+
+            t.Review(caption);
+        }
+
+        public void LeftTask(Task t) {
+            if (t == null)
+                throw new Exception("Inserire una task valida da accettare");
+
+            if (t.AcceptorNickname != Nickname)
+                throw new Exception("Un utente può solo modificare una propia task");
+
+            t.Left();
+        }
 
         public void EndRequestedTask(Task t, User acceptedUser, DateTime startTask, DateTime endTask, TimeSpan taskLength, float stars) {
             if (t == null || t.Status != TPhase.Accepted || t.RequesterNickname != Nickname)
@@ -186,6 +205,8 @@ namespace Borelli_BdT.model {
             AverageStars = (float)(Math.Round((TotalStars / DoneJobsNumber) * 4, MidpointRounding.ToEven)) / 4;
         }
 
+
+
         public bool Equals(User u) {
             if (u == null) {
                 return false;
@@ -194,6 +215,14 @@ namespace Borelli_BdT.model {
             } else {
                 return (u.Nickname == Nickname);
             }
+        }
+
+        public User Clone() {
+            return new User(this);
+        }
+
+        protected User(User u) : this(u.Data, u.Nickname, u.Password, u.ProvidesJobs, u.JobsDistrict, u.TotalStars,
+             u.AverageStars, u.DoneJobsNumber, u.DoneHours, u.RecievedHours, u.State) {
         }
     }
 }

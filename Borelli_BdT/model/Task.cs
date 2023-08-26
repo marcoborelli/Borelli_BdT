@@ -145,6 +145,21 @@ namespace Borelli_BdT.model {
             Job = job;
         }
 
+        public void Review(string newCaption) {
+            if (Status != TPhase.Request)
+                throw new Exception("È possibile modificare la task solo se non è ancora stata accettata");
+
+            Caption = newCaption;
+        }
+
+        public void Left() {
+            if (Status != TPhase.Accepted)
+                throw new Exception("Non è stato rispettato il giusto procedimento nella macchina a stati della task");
+
+            ResetAcceptorNickname();
+            Status = TPhase.Request;
+            AcceptedTaskDate = DateTime.MinValue;
+        }
         public void Accept(string accUserNickname, DateTime acceptTaskDate) { //a farla e' il donatore di ore
             if (Status != TPhase.Request)
                 throw new Exception("Non è stato rispettato il giusto procedimento nella macchina a stati della task");
@@ -186,6 +201,12 @@ namespace Borelli_BdT.model {
             return outp;
         }
 
+        private void ResetAcceptorNickname() {
+            if (Status == TPhase.Accepted)
+                _acceptorNickname = null;
+        }
+
+
 
         public bool Equals(Task t) {
             if (t == null) {
@@ -195,6 +216,13 @@ namespace Borelli_BdT.model {
             } else {
                 return (t.Id == Id);
             }
+        }
+        public Task Clone() {
+            return new Task(this);
+        }
+
+        protected Task(Task t) : this(t.Id, t.Caption, t.RequesterNickname, t.AcceptorNickname, t.RequestDate,
+            t.AcceptedTaskDate, t.StartTaskDate, t.EndTaskDate, t.TaskLength, t.Stars, t.Job, t.Status) {
         }
     }
 }
