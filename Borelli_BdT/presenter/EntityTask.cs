@@ -1,9 +1,5 @@
-﻿using Borelli_BdT.model;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System;
+using Borelli_BdT.model;
 
 namespace Borelli_BdT.presenter {
     public class EntityTask {

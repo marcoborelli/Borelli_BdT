@@ -1,9 +1,6 @@
-﻿using Borelli_BdT.model;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Borelli_BdT.model;
 
 namespace Borelli_BdT.presenter {
     public class EntityUser {
@@ -53,8 +50,8 @@ namespace Borelli_BdT.presenter {
 
 
         public static string[] GetEntityFieldNames() {
-            return new string[] { "NICKNAME", "PASSWD", "LAV. OFFERT", "QUARTIERI LAVORI", "STELLE TOT", "MEDIA STELLE", 
-                "NUM. LAVORI FATTI", "ORE FATTE", "ORE RICEVUTE", "DATI ANAGRAFICI" };
+            return new string[] { "NICKNAME", "PASSWD", "LAV. OFFERT", "QUARTIERI LAVORI", "STELLE TOT", "MEDIA STELLE",
+                "NUM. LAVORI FATTI", "ORE FATTE", "ORE RICEVUTE", "STATO", "DATI ANAGRAFICI" };
         }
     }
 }

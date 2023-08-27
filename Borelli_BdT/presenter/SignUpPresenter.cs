@@ -81,6 +81,8 @@ namespace Borelli_BdT.presenter {
                 int index = UsersList.GetUserIndex(tmp.Field1);
                 UsersList.Users[index] = new User(EntityCustomerMasterData.GetCustomerMasterData(tmp.Field11), tmp.Field1, tmp.Field2, tmp.Field3, tmp.Field4, RegContext.Registration);
                 UsersList.WriteJsonFile();
+
+                View.Close();
             }
         }
     }

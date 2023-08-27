@@ -59,15 +59,16 @@ namespace Borelli_BdT.view {
             }
         }
         public FormState FState { get; private set; }
+        private SignUpPresenter Presenter { get; set; }
 
         public SignUp(EntityUser e) {
             InitializeComponent();
             FormManager.AddForm(this);
 
-            SignUpPresenter p = new SignUpPresenter(this);
-            mButtonCreateAccount.Click += new EventHandler(p.OnCreateAccount);
-            mButtonDelete.Click += new EventHandler(p.OnDeleteAccount);
-            mButtonSaveChanges.Click += new EventHandler(p.OnSaveChanges);
+            Presenter = new SignUpPresenter(this);
+            mButtonCreateAccount.Click += new EventHandler(Presenter.OnCreateAccount);
+            mButtonDelete.Click += new EventHandler(Presenter.OnDeleteAccount);
+            mButtonSaveChanges.Click += new EventHandler(Presenter.OnSaveChanges);
 
             CurrentUser = e;
 
@@ -189,7 +190,7 @@ namespace Borelli_BdT.view {
             List<string> support = new List<string>();
             support.AddRange(checkedItems);
 
-            for (int i = 0; i < clb.Items.Count;i++) {
+            for (int i = 0; i < clb.Items.Count; i++) {
                 support.Remove(clb.Items[i].Text);
             }
 
