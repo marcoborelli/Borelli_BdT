@@ -71,6 +71,27 @@ namespace Borelli_BdT.presenter {
             View.LoadTasksList(reqTask, MainPage.TaskType.Requested, tab);
         }
 
+        public void DoubleClickLWRequestedTask(object sender, MouseEventArgs e) {
+            string taskId = View.GetTaskIdFromListView(MainPage.TaskType.Requested, MainPage.LoadTskList.HomeScreen);
+            EntityUser eu = EntityUser.GetEntity(CurrentUser);
+
+            View.OpenTaskDetailsForm(taskId, eu);
+        }
+
+        public void DoubleClickLWPertinentTask(object sender, MouseEventArgs e) {
+            string taskId = View.GetTaskIdFromListView(MainPage.TaskType.Pertinent, MainPage.LoadTskList.HomeScreen);
+            EntityUser eu = EntityUser.GetEntity(CurrentUser);
+
+            View.OpenTaskDetailsForm(taskId, eu);
+        }
+
+        public void DoubleClickLWAcceptedTask(object sender, MouseEventArgs e) {
+            string taskId = View.GetTaskIdFromListView(MainPage.TaskType.Accepted, MainPage.LoadTskList.HomeScreen);
+            EntityUser eu = EntityUser.GetEntity(CurrentUser);
+
+            View.OpenTaskDetailsForm(taskId, eu);
+        }
+
 
 
         public void LoadReqAcceptTask() {
@@ -126,6 +147,13 @@ namespace Borelli_BdT.presenter {
             View.ResetRequestTaskFields();
         }
 
+        public void DoubleClickLWPertinentCompleteTask(object sender, MouseEventArgs e) {
+            string taskId = View.GetTaskIdFromListView(MainPage.TaskType.Pertinent, MainPage.LoadTskList.Details);
+            EntityUser eu = EntityUser.GetEntity(CurrentUser);
+
+            View.OpenTaskDetailsForm(taskId, eu);
+        }
+
 
 
         public void LoadAcceptedTasks() {
@@ -151,6 +179,13 @@ namespace Borelli_BdT.presenter {
             return t.Status == TPhase.Done;
         }
 
+        public void DoubleClickLWAcceptedCompleteTask(object sender, MouseEventArgs e) {
+            string taskId = View.GetTaskIdFromListView(MainPage.TaskType.Accepted, MainPage.LoadTskList.Details);
+            EntityUser eu = EntityUser.GetEntity(CurrentUser);
+
+            View.OpenTaskDetailsForm(taskId, eu);
+        }
+
 
 
         public void LoadRequestedTasks() {
@@ -174,6 +209,13 @@ namespace Borelli_BdT.presenter {
             Task t = EntityTask.GetTask(e);
 
             return t.Status == TPhase.Accepted;
+        }
+
+        public void DoubleClickLWRequestedCompleteTask(object sender, MouseEventArgs e) {
+            string taskId = View.GetTaskIdFromListView(MainPage.TaskType.Requested, MainPage.LoadTskList.Details);
+            EntityUser eu = EntityUser.GetEntity(CurrentUser);
+
+            View.OpenTaskDetailsForm(taskId, eu);
         }
 
 

@@ -63,11 +63,16 @@ namespace Borelli_BdT.view {
             Presenter = new MainPagePresenter(this, username);
             materialTabControl1.SelectedIndexChanged += new EventHandler(Presenter.SelectedTabChanged);
 
+            listViewAcceptedTasks.MouseDoubleClick += new MouseEventHandler(Presenter.DoubleClickLWAcceptedTask);
+            listViewPertinentTasks.MouseDoubleClick+= new MouseEventHandler(Presenter.DoubleClickLWPertinentTask);
+            listViewRequestedTasks.MouseDoubleClick += new MouseEventHandler(Presenter.DoubleClickLWRequestedTask);
+
             textBoxSearchAcceptTask.TextChanged += new EventHandler(Presenter.ReLoadReqAcceptTask);
             mButtonAcceptTask.Click += new EventHandler(Presenter.OnAcceptTask);
             mButtonReqTask.Click += new EventHandler(Presenter.OnRequestTask);
             mRdButPSFjob.CheckedChanged += new EventHandler(Presenter.ReLoadReqAcceptTask);
             mRdButPSFrequester.CheckedChanged += new EventHandler(Presenter.ReLoadReqAcceptTask);
+            listViewPertinentComplete.MouseDoubleClick += new MouseEventHandler(Presenter.DoubleClickLWPertinentCompleteTask);
 
             textBoxSearchAcceptedTasks.TextChanged += new EventHandler(Presenter.ReLoadAcceptedTasks);
             mRdButASFjob.CheckedChanged += new EventHandler(Presenter.ReLoadAcceptedTasks);
@@ -75,6 +80,7 @@ namespace Borelli_BdT.view {
             mRdButAVOaccepted.CheckedChanged += new EventHandler(Presenter.ReLoadAcceptedTasks);
             mRdButAVOall.CheckedChanged += new EventHandler(Presenter.ReLoadAcceptedTasks);
             mRdButAVOdone.CheckedChanged += new EventHandler(Presenter.ReLoadAcceptedTasks);
+            listViewDoneComplete.MouseDoubleClick += new MouseEventHandler(Presenter.DoubleClickLWAcceptedCompleteTask);
 
             textBoxSearchRequestedTasks.TextChanged += new EventHandler(Presenter.ReLoadRequestedTasks);
             mRdButRSFacceptor.CheckedChanged += new EventHandler(Presenter.ReLoadRequestedTasks);
@@ -83,6 +89,7 @@ namespace Borelli_BdT.view {
             mRdButRVOaccepted.CheckedChanged += new EventHandler(Presenter.ReLoadRequestedTasks);
             mRdButRVOdone.CheckedChanged += new EventHandler(Presenter.ReLoadRequestedTasks);
             mRdButRVOall.CheckedChanged += new EventHandler(Presenter.ReLoadRequestedTasks);
+            listViewRequestedComplete.MouseDoubleClick += new MouseEventHandler(Presenter.DoubleClickLWRequestedCompleteTask);
 
             listViewAcceptUsers.MouseDoubleClick += new MouseEventHandler(Presenter.DoubleClickOnAcceptUsersLW);
             mButtonModDistr.Click += new EventHandler(Presenter.OnModifyDistr);
@@ -170,6 +177,8 @@ namespace Borelli_BdT.view {
             return outp;
         }
 
+
+
         public RqTaskState GetUsedStateFilterInRequested() {
             RqTaskState outp;
 
@@ -185,6 +194,14 @@ namespace Borelli_BdT.view {
 
             return outp;
         }
+
+        public void OpenTaskDetailsForm(string id, EntityUser e) {
+            TaskDetails taskDetailsForm = new TaskDetails(id, e);
+            taskDetailsForm.Show();
+
+            taskDetailsForm.FormClosed += new FormClosedEventHandler(ClosedTaskDetailsForm);
+        }
+
 
 
         public void LoadTasksList(List<EntityTask> tsk, TaskType type, LoadTskList how) {
@@ -345,6 +362,10 @@ namespace Borelli_BdT.view {
         }
 
 
+
+        private void ClosedTaskDetailsForm(object sender, FormClosedEventArgs e) {
+            Presenter.LoadSelectedTab();
+        }
 
         private void ClosedSignUpForm(object sender, FormClosedEventArgs e) {
             Presenter.LoadAcceptNewUserTab();
