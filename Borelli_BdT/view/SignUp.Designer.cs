@@ -47,6 +47,7 @@
             this.dTimePickerBorn = new System.Windows.Forms.DateTimePicker();
             this.mLabel = new MaterialSkin.Controls.MaterialLabel();
             this.mButtonSaveChanges = new MaterialSkin.Controls.MaterialButton();
+            this.mSwitchSecretary = new MaterialSkin.Controls.MaterialSwitch();
             this.materialCard1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPhoto)).BeginInit();
             this.materialCard2.SuspendLayout();
@@ -452,11 +453,27 @@
             this.mButtonSaveChanges.UseAccentColor = false;
             this.mButtonSaveChanges.UseVisualStyleBackColor = true;
             // 
+            // mSwitchSecretary
+            // 
+            this.mSwitchSecretary.AutoSize = true;
+            this.mSwitchSecretary.Depth = 0;
+            this.mSwitchSecretary.Location = new System.Drawing.Point(451, 388);
+            this.mSwitchSecretary.Margin = new System.Windows.Forms.Padding(0);
+            this.mSwitchSecretary.MouseLocation = new System.Drawing.Point(-1, -1);
+            this.mSwitchSecretary.MouseState = MaterialSkin.MouseState.HOVER;
+            this.mSwitchSecretary.Name = "mSwitchSecretary";
+            this.mSwitchSecretary.Ripple = true;
+            this.mSwitchSecretary.Size = new System.Drawing.Size(130, 37);
+            this.mSwitchSecretary.TabIndex = 21;
+            this.mSwitchSecretary.Text = "Segretario";
+            this.mSwitchSecretary.UseVisualStyleBackColor = true;
+            // 
             // SignUp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(998, 450);
+            this.Controls.Add(this.mSwitchSecretary);
             this.Controls.Add(this.mButtonSaveChanges);
             this.Controls.Add(this.mLabel);
             this.Controls.Add(this.dTimePickerBorn);
@@ -512,5 +529,6 @@
         private System.Windows.Forms.PictureBox pictureBoxPhoto;
         private MaterialSkin.Controls.MaterialButton mButtonLoadImage;
         private MaterialSkin.Controls.MaterialButton mButtonSaveChanges;
+        private MaterialSkin.Controls.MaterialSwitch mSwitchSecretary;
     }
 }

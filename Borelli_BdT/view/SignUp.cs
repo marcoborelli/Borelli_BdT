@@ -201,7 +201,7 @@ namespace Borelli_BdT.view {
             switch (FState) {
                 case FormState.SignUp:
                     pictureBoxPhoto.AllowDrop = true;
-                    mButtonDelete.Visible = mButtonSaveChanges.Visible = false;
+                    mButtonDelete.Visible = mButtonSaveChanges.Visible = mSwitchSecretary.Visible = false;
                     mButtonLoadImage.Visible = true; //faccio cosi' perche' senno' si bugga visualmente
                     break;
                 case FormState.Confirmation: //non devo poter modificare nessun campo tranne lavori e quartieri in cui lavora
