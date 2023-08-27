@@ -10,6 +10,8 @@ namespace Borelli_BdT.presenter {
     public class MainPagePresenter {
         private MainPage _view;
         private User CurrentUser { get; set; }
+        private MainPage.TaskType TaskType { get; set; }
+        private MainPage.LoadTskList LoadList { get; set; }
         public MainPagePresenter(MainPage view, string username) {
             View = view;
             CurrentUser = UsersList.GetUser(username);
@@ -34,16 +36,27 @@ namespace Borelli_BdT.presenter {
 
             switch (tabIndex) {
                 case 0:
+                    LoadList = MainPage.LoadTskList.HomeScreen;
+
                     LoadHomeScreen();
                     break;
                 case 1:
+                    TaskType = MainPage.TaskType.Pertinent;
+                    LoadList = MainPage.LoadTskList.Details;
+
                     LoadReqAcceptTask();
                     LoadJobsList();
                     break;
                 case 2:
+                    TaskType = MainPage.TaskType.Accepted;
+                    LoadList = MainPage.LoadTskList.Details;
+
                     LoadAcceptedTasks();
                     break;
                 case 3:
+                    TaskType = MainPage.TaskType.Requested;
+                    LoadList = MainPage.LoadTskList.Details;
+
                     LoadRequestedTasks();
                     break;
                 case 4:
@@ -55,38 +68,36 @@ namespace Borelli_BdT.presenter {
 
 
         public void LoadHomeScreen() {
-            MainPage.LoadTskList tab = MainPage.LoadTskList.HomeScreen;
-
-            View.ChargeUserData(EntityCustomerMasterData.GetEntity(CurrentUser.Data), $"{Parameters.DPPictures}/{CurrentUser.Nickname}.jpg");
+            View.LoadUserData(EntityCustomerMasterData.GetEntity(CurrentUser.Data), $"{Parameters.DPPictures}/{CurrentUser.Nickname}.jpg");
 
             List<EntityTask> pertinentTasks = GetEntityTasksList(TasksList.GetAppropriateTasks(CurrentUser, TaskUserFilter.ZoneAndJob));
-            View.LoadTasksList(pertinentTasks, MainPage.TaskType.Pertinent, tab);
+            View.LoadTasksList(pertinentTasks, MainPage.TaskType.Pertinent, LoadList);
 
             List<EntityTask> doneTasks = GetEntityTasksList(TasksList.GetAcceptedTasks(CurrentUser.Nickname, AcTaskState.Done));
-            View.LoadTasksList(doneTasks, MainPage.TaskType.Accepted, tab);
+            View.LoadTasksList(doneTasks, MainPage.TaskType.Accepted, LoadList);
 
             View.WriteDeltaHours(CurrentUser.DoneHours - CurrentUser.RecievedHours);
 
             List<EntityTask> reqTask = GetEntityTasksList(TasksList.GetRequestedTasks(CurrentUser.Nickname, RqTaskState.Done));
-            View.LoadTasksList(reqTask, MainPage.TaskType.Requested, tab);
+            View.LoadTasksList(reqTask, MainPage.TaskType.Requested, LoadList);
         }
 
         public void DoubleClickLWRequestedTask(object sender, MouseEventArgs e) {
-            string taskId = View.GetTaskIdFromListView(MainPage.TaskType.Requested, MainPage.LoadTskList.HomeScreen);
+            string taskId = View.GetTaskIdFromListView(MainPage.TaskType.Requested, LoadList);
             EntityUser eu = EntityUser.GetEntity(CurrentUser);
 
             View.OpenTaskDetailsForm(taskId, eu);
         }
 
         public void DoubleClickLWPertinentTask(object sender, MouseEventArgs e) {
-            string taskId = View.GetTaskIdFromListView(MainPage.TaskType.Pertinent, MainPage.LoadTskList.HomeScreen);
+            string taskId = View.GetTaskIdFromListView(MainPage.TaskType.Pertinent, LoadList);
             EntityUser eu = EntityUser.GetEntity(CurrentUser);
 
             View.OpenTaskDetailsForm(taskId, eu);
         }
 
         public void DoubleClickLWAcceptedTask(object sender, MouseEventArgs e) {
-            string taskId = View.GetTaskIdFromListView(MainPage.TaskType.Accepted, MainPage.LoadTskList.HomeScreen);
+            string taskId = View.GetTaskIdFromListView(MainPage.TaskType.Accepted, LoadList);
             EntityUser eu = EntityUser.GetEntity(CurrentUser);
 
             View.OpenTaskDetailsForm(taskId, eu);
@@ -95,15 +106,13 @@ namespace Borelli_BdT.presenter {
 
 
         public void LoadReqAcceptTask() {
-            MainPage.TaskType tt = MainPage.TaskType.Pertinent;
-
-            Regex rxRicerca = new Regex(View.GetTextInSearchBar(tt), RegexOptions.IgnoreCase);
+            Regex rxRicerca = new Regex(View.GetTextInSearchBar(TaskType), RegexOptions.IgnoreCase);
 
             List<EntityTask> pertinentTasks = GetEntityTasksList(TasksList.GetAppropriateTasks(CurrentUser, TaskUserFilter.ZoneAndJob));
-            List<EntityTask> pertinentFilteredTask = FilterTasks(pertinentTasks, rxRicerca, View.GetUsedFilter(tt));
+            List<EntityTask> pertinentFilteredTask = FilterTasks(pertinentTasks, rxRicerca, View.GetUsedFilter(TaskType));
 
-            View.ClearListViewTask(tt, MainPage.LoadTskList.Details);
-            View.LoadTasksList(pertinentFilteredTask, tt, MainPage.LoadTskList.Details);
+            View.ClearListViewTask(TaskType, LoadList);
+            View.LoadTasksList(pertinentFilteredTask, TaskType, LoadList);
         }
 
         public void LoadJobsList() {
@@ -115,9 +124,7 @@ namespace Borelli_BdT.presenter {
         }
 
         public void OnAcceptTask(object sender, EventArgs e) {
-            MainPage.TaskType tt = MainPage.TaskType.Pertinent;
-
-            string id = View.GetTaskIdFromListView(tt, MainPage.LoadTskList.Details);
+            string id = View.GetTaskIdFromListView(TaskType, LoadList);
             Task t = TasksList.GetTask(id);
 
             if (t == null)
@@ -147,26 +154,18 @@ namespace Borelli_BdT.presenter {
             View.ResetRequestTaskFields();
         }
 
-        public void DoubleClickLWPertinentCompleteTask(object sender, MouseEventArgs e) {
-            string taskId = View.GetTaskIdFromListView(MainPage.TaskType.Pertinent, MainPage.LoadTskList.Details);
-            EntityUser eu = EntityUser.GetEntity(CurrentUser);
-
-            View.OpenTaskDetailsForm(taskId, eu);
-        }
-
 
 
         public void LoadAcceptedTasks() {
             AcTaskState taskState = View.GetUsedStateFilterInAccepted();
-            MainPage.TaskType tt = MainPage.TaskType.Accepted;
 
-            Regex rxRicerca = new Regex(View.GetTextInSearchBar(tt), RegexOptions.IgnoreCase);
+            Regex rxRicerca = new Regex(View.GetTextInSearchBar(TaskType), RegexOptions.IgnoreCase);
 
             List<EntityTask> doneTasks = GetEntityTasksList(TasksList.GetAcceptedTasks(CurrentUser.Nickname, taskState));
-            List<EntityTask> donePertinentTasks = FilterTasks(doneTasks, rxRicerca, View.GetUsedFilter(tt));
+            List<EntityTask> doneFilteredTasks = FilterTasks(doneTasks, rxRicerca, View.GetUsedFilter(TaskType));
 
-            View.ClearListViewTask(tt, MainPage.LoadTskList.Details);
-            View.LoadTasksList(donePertinentTasks, MainPage.TaskType.Accepted, MainPage.LoadTskList.Details);
+            View.ClearListViewTask(TaskType, LoadList);
+            View.LoadTasksList(doneFilteredTasks, TaskType, LoadList);
         }
 
         public void ReLoadAcceptedTasks(object sender, EventArgs e) {
@@ -179,26 +178,18 @@ namespace Borelli_BdT.presenter {
             return t.Status == TPhase.Done;
         }
 
-        public void DoubleClickLWAcceptedCompleteTask(object sender, MouseEventArgs e) {
-            string taskId = View.GetTaskIdFromListView(MainPage.TaskType.Accepted, MainPage.LoadTskList.Details);
-            EntityUser eu = EntityUser.GetEntity(CurrentUser);
-
-            View.OpenTaskDetailsForm(taskId, eu);
-        }
-
 
 
         public void LoadRequestedTasks() {
             RqTaskState taskState = View.GetUsedStateFilterInRequested();
-            MainPage.TaskType tt = MainPage.TaskType.Requested;
 
-            Regex rxRicerca = new Regex(View.GetTextInSearchBar(tt), RegexOptions.IgnoreCase);
+            Regex rxRicerca = new Regex(View.GetTextInSearchBar(TaskType), RegexOptions.IgnoreCase);
 
             List<EntityTask> requestedTasks = GetEntityTasksList(TasksList.GetRequestedTasks(CurrentUser.Nickname, taskState));
-            List<EntityTask> donePertinentTasks = FilterTasks(requestedTasks, rxRicerca, View.GetUsedFilter(tt));
+            List<EntityTask> requestedPertinentTasks = FilterTasks(requestedTasks, rxRicerca, View.GetUsedFilter(TaskType));
 
-            View.ClearListViewTask(tt, MainPage.LoadTskList.Details);
-            View.LoadTasksList(donePertinentTasks, tt, MainPage.LoadTskList.Details);
+            View.ClearListViewTask(TaskType, LoadList);
+            View.LoadTasksList(requestedPertinentTasks, TaskType, LoadList);
         }
 
         public void ReLoadRequestedTasks(object sender, EventArgs e) {
@@ -209,13 +200,6 @@ namespace Borelli_BdT.presenter {
             Task t = EntityTask.GetTask(e);
 
             return t.Status == TPhase.Accepted;
-        }
-
-        public void DoubleClickLWRequestedCompleteTask(object sender, MouseEventArgs e) {
-            string taskId = View.GetTaskIdFromListView(MainPage.TaskType.Requested, MainPage.LoadTskList.Details);
-            EntityUser eu = EntityUser.GetEntity(CurrentUser);
-
-            View.OpenTaskDetailsForm(taskId, eu);
         }
 
 
@@ -244,6 +228,13 @@ namespace Borelli_BdT.presenter {
 
 
 
+        public void DoubleClickDetailsLW(object sender, MouseEventArgs e) {
+            string taskId = View.GetTaskIdFromListView(TaskType, LoadList);
+            EntityUser eu = EntityUser.GetEntity(CurrentUser);
+
+            View.OpenTaskDetailsForm(taskId, eu);
+        }
+
         private List<EntityTask> GetEntityTasksList(List<model.Task> input) {
             List<EntityTask> outp = new List<EntityTask>();
 
@@ -264,29 +255,27 @@ namespace Borelli_BdT.presenter {
             return outp;
         }
 
-
-
-        private List<EntityTask> FilterTasks(List<EntityTask> input, Regex rx, MainPage.ResarchOption opt) {
+        private List<EntityTask> FilterTasks(List<EntityTask> input, Regex rx, MainPage.ResearchOption opt) {
             List<EntityTask> outp = new List<EntityTask>();
 
             for (int i = 0; i < input.Count; i++) {
                 switch (opt) {
-                    case MainPage.ResarchOption.Acceptor:
+                    case MainPage.ResearchOption.Acceptor:
                         if (input[i].Field4 == null && rx.ToString() == String.Empty) { //per la listView delle task richieste che non per forza sono ancora state accettate
                             outp.Add(input[i]);
                         } else if (input[i].Field4 != null && rx.IsMatch(input[i].Field4)) {
                             outp.Add(input[i]);
                         }
                         break;
-                    case MainPage.ResarchOption.Requester:
+                    case MainPage.ResearchOption.Requester:
                         if (rx.IsMatch(input[i].Field3))
                             outp.Add(input[i]);
                         break;
-                    case MainPage.ResarchOption.Job:
+                    case MainPage.ResearchOption.Job:
                         if (rx.IsMatch(input[i].Field11))
                             outp.Add(input[i]);
                         break;
-                    case MainPage.ResarchOption.None:
+                    case MainPage.ResearchOption.None:
                         outp.Add(input[i]);
                         break;
                 }

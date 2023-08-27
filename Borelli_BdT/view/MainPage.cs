@@ -40,7 +40,7 @@ namespace Borelli_BdT.view {
             Details,
         }
 
-        public enum ResarchOption {
+        public enum ResearchOption {
             None,
             Requester,
             Acceptor,
@@ -72,7 +72,7 @@ namespace Borelli_BdT.view {
             mButtonReqTask.Click += new EventHandler(Presenter.OnRequestTask);
             mRdButPSFjob.CheckedChanged += new EventHandler(Presenter.ReLoadReqAcceptTask);
             mRdButPSFrequester.CheckedChanged += new EventHandler(Presenter.ReLoadReqAcceptTask);
-            listViewPertinentComplete.MouseDoubleClick += new MouseEventHandler(Presenter.DoubleClickLWPertinentCompleteTask);
+            listViewPertinentComplete.MouseDoubleClick += new MouseEventHandler(Presenter.DoubleClickDetailsLW);
 
             textBoxSearchAcceptedTasks.TextChanged += new EventHandler(Presenter.ReLoadAcceptedTasks);
             mRdButASFjob.CheckedChanged += new EventHandler(Presenter.ReLoadAcceptedTasks);
@@ -80,7 +80,7 @@ namespace Borelli_BdT.view {
             mRdButAVOaccepted.CheckedChanged += new EventHandler(Presenter.ReLoadAcceptedTasks);
             mRdButAVOall.CheckedChanged += new EventHandler(Presenter.ReLoadAcceptedTasks);
             mRdButAVOdone.CheckedChanged += new EventHandler(Presenter.ReLoadAcceptedTasks);
-            listViewDoneComplete.MouseDoubleClick += new MouseEventHandler(Presenter.DoubleClickLWAcceptedCompleteTask);
+            listViewDoneComplete.MouseDoubleClick += new MouseEventHandler(Presenter.DoubleClickDetailsLW);
 
             textBoxSearchRequestedTasks.TextChanged += new EventHandler(Presenter.ReLoadRequestedTasks);
             mRdButRSFacceptor.CheckedChanged += new EventHandler(Presenter.ReLoadRequestedTasks);
@@ -89,7 +89,7 @@ namespace Borelli_BdT.view {
             mRdButRVOaccepted.CheckedChanged += new EventHandler(Presenter.ReLoadRequestedTasks);
             mRdButRVOdone.CheckedChanged += new EventHandler(Presenter.ReLoadRequestedTasks);
             mRdButRVOall.CheckedChanged += new EventHandler(Presenter.ReLoadRequestedTasks);
-            listViewRequestedComplete.MouseDoubleClick += new MouseEventHandler(Presenter.DoubleClickLWRequestedCompleteTask);
+            listViewRequestedComplete.MouseDoubleClick += new MouseEventHandler(Presenter.DoubleClickDetailsLW);
 
             listViewAcceptUsers.MouseDoubleClick += new MouseEventHandler(Presenter.DoubleClickOnAcceptUsersLW);
             mButtonModDistr.Click += new EventHandler(Presenter.OnModifyDistr);
@@ -104,7 +104,7 @@ namespace Borelli_BdT.view {
         }
 
 
-        public void ChargeUserData(EntityCustomerMasterData e, string photoPhat) {
+        public void LoadUserData(EntityCustomerMasterData e, string photoPhat) {
             pictureBoxPhoto.ImageLocation = photoPhat;
             mLabelName.Text = e.Field1;
             mLabelSurname.Text = e.Field2;
@@ -316,18 +316,18 @@ namespace Borelli_BdT.view {
             return research;
         }
 
-        public ResarchOption GetUsedFilter(TaskType type) {
-            ResarchOption outp = ResarchOption.None;
+        public ResearchOption GetUsedFilter(TaskType type) {
+            ResearchOption outp = ResearchOption.None;
 
             switch (type) {
                 case TaskType.Pertinent:
-                    outp = mRdButPSFjob.Checked ? ResarchOption.Job : ResarchOption.Requester;
+                    outp = mRdButPSFjob.Checked ? ResearchOption.Job : ResearchOption.Requester;
                     break;
                 case TaskType.Requested:
-                    outp = mRdButRSFjob.Checked ? ResarchOption.Job : ResarchOption.Acceptor;
+                    outp = mRdButRSFjob.Checked ? ResearchOption.Job : ResearchOption.Acceptor;
                     break;
                 case TaskType.Accepted:
-                    outp = mRdButASFjob.Checked ? ResarchOption.Job : ResarchOption.Requester;
+                    outp = mRdButASFjob.Checked ? ResearchOption.Job : ResearchOption.Requester;
                     break;
             }
 
