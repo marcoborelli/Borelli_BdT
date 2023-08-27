@@ -69,20 +69,19 @@ namespace Borelli_BdT.view {
                 //this.Text += $": {value.Field12}";
             }
         }
-        //TODO: private TaskDetailsPresenter Presenter { get; set; }
+        private TaskDetailsPresenter Presenter { get; set; }
         public FormState State { get; private set; }
 
         public TaskDetails(string taskId, EntityUser e) {
             InitializeComponent();
             FormManager.AddForm(this);
 
-            //TODO
-            /*Presenter = new TaskDetailsPresenter(this, taskId, e);
+            Presenter = new TaskDetailsPresenter(this, taskId, e);
             mButtonCancel.Click += new EventHandler(Presenter.OnCancelButton);
             mButtonAction.Click += new EventHandler(Presenter.OnActionButton);
 
             State = TaskDetailsPresenter.GetFormState(taskId, e);
-            Presenter.SetForm();*/
+            Presenter.SetForm();
         }
 
 
