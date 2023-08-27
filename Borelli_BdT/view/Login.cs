@@ -55,5 +55,29 @@ namespace Borelli_BdT.view {
             SignUpForm.ShowDialog();
             this.Show();
         }
+
+
+
+        private void mTextBoxUsername_Enter(object sender, EventArgs e) {
+            mTextBoxUsername.SelectAll();
+        }
+
+        private void mTextBoxPasswd_Enter(object sender, EventArgs e) {
+            mTextBoxPasswd.SelectAll();
+        }
+
+        protected override bool ProcessCmdKey(ref Message msg, Keys keyData) {
+            switch (keyData) {
+                case Keys.Enter:
+                    mButtonLogin.PerformClick();
+                    return true;
+                default:
+                    return base.ProcessCmdKey(ref msg, keyData);
+            }
+        }
+
+        private void Login_FormClosing(object sender, FormClosingEventArgs e) { //TODO: rivedere se si puo' rimuovere, per ora e' temporaneo
+            Environment.Exit(0);
+        }
     }
 }

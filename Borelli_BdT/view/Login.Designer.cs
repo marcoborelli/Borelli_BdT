@@ -60,6 +60,7 @@
             this.mTextBoxUsername.TabIndex = 1;
             this.mTextBoxUsername.Text = "";
             this.mTextBoxUsername.TrailingIcon = null;
+            this.mTextBoxUsername.Enter += new System.EventHandler(this.mTextBoxUsername_Enter);
             // 
             // mTextBoxPasswd
             // 
@@ -79,6 +80,7 @@
             this.mTextBoxPasswd.TabIndex = 2;
             this.mTextBoxPasswd.Text = "";
             this.mTextBoxPasswd.TrailingIcon = null;
+            this.mTextBoxPasswd.Enter += new System.EventHandler(this.mTextBoxPasswd_Enter);
             // 
             // mButtonLogin
             // 
@@ -134,6 +136,7 @@
             this.Name = "Login";
             this.Padding = new System.Windows.Forms.Padding(3, 24, 3, 3);
             this.Text = "BdT - 0.0.2";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Login_FormClosing);
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -19,7 +19,7 @@ namespace Borelli_BdT.presenter {
             if (CurrentUser == null)
                 throw new Exception("Inserire un utente valido");
 
-            LoadHomeScreen();
+            LoadSelectedTab();
         }
 
         private MainPage View {
@@ -37,12 +37,14 @@ namespace Borelli_BdT.presenter {
             switch (tabIndex) {
                 case 0:
                     LoadList = MainPage.LoadTskList.HomeScreen;
+                    View.Text = "Home page";
 
                     LoadHomeScreen();
                     break;
                 case 1:
                     TaskType = MainPage.TaskType.Pertinent;
                     LoadList = MainPage.LoadTskList.Details;
+                    View.Text = "Richiesta-Accettazione task";
 
                     LoadReqAcceptTask();
                     LoadJobsList();
@@ -50,16 +52,21 @@ namespace Borelli_BdT.presenter {
                 case 2:
                     TaskType = MainPage.TaskType.Accepted;
                     LoadList = MainPage.LoadTskList.Details;
+                    View.Text = "Task accettate";
 
+                    View.LoadLegendPaletteAcceptedTask();
                     LoadAcceptedTasks();
                     break;
                 case 3:
                     TaskType = MainPage.TaskType.Requested;
                     LoadList = MainPage.LoadTskList.Details;
+                    View.Text = "Tab richieste";
 
+                    View.LoadLegendPaletteRequestedTask();
                     LoadRequestedTasks();
                     break;
                 case 4:
+                    View.Text = "Accettazione nuovi utenti";
                     LoadAcceptNewUserTab();
                     break;
             }
