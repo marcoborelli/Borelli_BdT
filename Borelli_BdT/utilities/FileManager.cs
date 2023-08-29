@@ -63,7 +63,7 @@ namespace Borelli_BdT.utilities {
                 CreateFile(Parameters.FPUsers);
                 User u = new User("DummyName", "DummySurname", "1234567789", "mail@dummy.it", "Via dummy", "CENTRO",
                      new DateTime(2000, 1, 1), "DummyNickName", "password", new List<string> { "SEGRETERIA" },
-                     new List<string> { "CENTRO" }, RegContext.Confirmed);
+                     new List<string> { "CENTRO" }, RegContext.Confirmed, UserLevel.Secretary);
 
                 WriteJsonFile(new List<User> { u }, Parameters.FPUsers);
             }

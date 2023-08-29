@@ -9,6 +9,12 @@ namespace Borelli_BdT.model {
         Confirmed
     }
 
+    public enum UserLevel {
+        Base,
+        Secretary,
+        Admin, //non usato. E' per scopi futuri
+    }
+
     public class User : IEquatable<User> {
         private string _nickname, _password;
         private CustomerMasterData _data;
@@ -25,14 +31,18 @@ namespace Borelli_BdT.model {
         [JsonProperty]
         public RegContext State { get; private set; }
 
+        [JsonProperty]
+        public UserLevel Level { get; private set; }
+
 
         public User() {
         }
 
         public User(CustomerMasterData userData, string nickname, string passwd, List<string> providesJobs, List<string> jobDistr,
-            float totalStar, float averageStar, float doneJobsNumber, TimeSpan doneHours, TimeSpan recievedHours, RegContext step) {
+            float totalStar, float averageStar, float doneJobsNumber, TimeSpan doneHours, TimeSpan recievedHours, RegContext step, UserLevel lev) {
 
             State = step;
+            Level = lev;
 
             Data = userData;
 
@@ -49,21 +59,21 @@ namespace Borelli_BdT.model {
             DoneHours = doneHours;
             RecievedHours = recievedHours;
         }
-        public User(CustomerMasterData userData, string nickname, string passwd, List<string> providesJobs, List<string> jobDistr, RegContext step) :
-            this(userData, nickname, passwd, providesJobs, jobDistr, 0, 0, 0, new TimeSpan(0, 0, 0), new TimeSpan(0, 0, 0), step) {
+        public User(CustomerMasterData userData, string nickname, string passwd, List<string> providesJobs, List<string> jobDistr, RegContext step, UserLevel lev) :
+            this(userData, nickname, passwd, providesJobs, jobDistr, 0, 0, 0, new TimeSpan(0, 0, 0), new TimeSpan(0, 0, 0), step, lev) {
         }
 
 
         public User(string name, string surnm, string phoneNum, string mail, string homeAddress, string distr, DateTime birthDate, string nicknm,
             string passwd, List<string> providesJobs, List<string> jobDistr, float totalStar, float averageStar, float doneJobsNumber,
-            TimeSpan doneHours, TimeSpan recievedHours, RegContext step) : this
+            TimeSpan doneHours, TimeSpan recievedHours, RegContext step, UserLevel lev) : this
             (new CustomerMasterData(name, surnm, phoneNum, mail, homeAddress, distr, birthDate), nicknm, passwd, providesJobs, jobDistr,
-            totalStar, averageStar, doneJobsNumber, doneHours, recievedHours, step) {
+            totalStar, averageStar, doneJobsNumber, doneHours, recievedHours, step, lev) {
         }
 
         public User(string name, string surnm, string phoneNum, string mail, string homeAddress, string distr, DateTime birthDate, string nicknm,
-            string passwd, List<string> providesJobs, List<string> jobDistr, RegContext step) : this
-            (new CustomerMasterData(name, surnm, phoneNum, mail, homeAddress, distr, birthDate), nicknm, passwd, providesJobs, jobDistr, step) {
+            string passwd, List<string> providesJobs, List<string> jobDistr, RegContext step, UserLevel lev) : this
+            (new CustomerMasterData(name, surnm, phoneNum, mail, homeAddress, distr, birthDate), nicknm, passwd, providesJobs, jobDistr, step, lev) {
             //sto solo ricreando l'oggetto prendendo in input tutti i campi
         }
 
@@ -221,7 +231,7 @@ namespace Borelli_BdT.model {
         }
 
         protected User(User u) : this(u.Data, u.Nickname, u.Password, u.ProvidesJobs, u.JobsDistrict, u.TotalStars,
-             u.AverageStars, u.DoneJobsNumber, u.DoneHours, u.RecievedHours, u.State) {
+             u.AverageStars, u.DoneJobsNumber, u.DoneHours, u.RecievedHours, u.State, u.Level) {
         }
     }
 }

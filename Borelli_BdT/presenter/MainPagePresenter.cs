@@ -235,6 +235,10 @@ namespace Borelli_BdT.presenter {
 
 
 
+        public bool IsSecretary() {
+            return (CurrentUser.Level == UserLevel.Secretary);
+        }
+
         public void DoubleClickDetailsLW(object sender, MouseEventArgs e) {
             string taskId = View.GetTaskIdFromListView(TaskType, LoadList);
             EntityUser eu = EntityUser.GetEntity(CurrentUser);

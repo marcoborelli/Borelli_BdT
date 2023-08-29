@@ -14,7 +14,8 @@ namespace Borelli_BdT.presenter {
         public string Field8 { get; set; }
         public string Field9 { get; set; }
         public string Field10 { get; set; }
-        public EntityCustomerMasterData Field11 { get; set; }
+        public string Field11 { get; set; }
+        public EntityCustomerMasterData Field12 { get; set; }
 
         public EntityUser() {
             Field3 = new List<string>();
@@ -36,22 +37,23 @@ namespace Borelli_BdT.presenter {
                 Field8 = $"{u.DoneHours}",
                 Field9 = $"{u.RecievedHours}",
                 Field10 = u.State.ToString(),
-                Field11 = EntityCustomerMasterData.GetEntity(u.Data),
+                Field11 = u.Level.ToString(),
+                Field12 = EntityCustomerMasterData.GetEntity(u.Data),
             };
 
             return e;
         }
         public static User GetUser(EntityUser e) {
-            CustomerMasterData data = EntityCustomerMasterData.GetCustomerMasterData(e.Field11);
+            CustomerMasterData data = EntityCustomerMasterData.GetCustomerMasterData(e.Field12);
 
             return new User(data, e.Field1, e.Field2, e.Field3, e.Field4, float.Parse(e.Field5), float.Parse(e.Field6), float.Parse(e.Field7),
-                TimeSpan.Parse(e.Field8), TimeSpan.Parse(e.Field9), (RegContext)Enum.Parse(typeof(RegContext), e.Field10));
+                TimeSpan.Parse(e.Field8), TimeSpan.Parse(e.Field9), (RegContext)Enum.Parse(typeof(RegContext), e.Field10), (UserLevel)Enum.Parse(typeof(UserLevel), e.Field11));
         }
 
 
         public static string[] GetEntityFieldNames() {
             return new string[] { "NICKNAME", "PASSWD", "LAV. OFFERT", "QUARTIERI LAVORI", "STELLE TOT", "MEDIA STELLE",
-                "NUM. LAVORI FATTI", "ORE FATTE", "ORE RICEVUTE", "STATO", "DATI ANAGRAFICI" };
+                "NUM. LAVORI FATTI", "ORE FATTE", "ORE RICEVUTE", "STATO", "LIVELLO", "DATI ANAGRAFICI" };
         }
     }
 }

@@ -32,7 +32,7 @@ namespace Borelli_BdT.presenter {
                             return;
                         }
 
-                        User u = new User(EntityCustomerMasterData.GetCustomerMasterData(tmp.Field11), tmp.Field1, tmp.Field2, tmp.Field3, tmp.Field4, RegContext.Registration);
+                        User u = new User(EntityCustomerMasterData.GetCustomerMasterData(tmp.Field12), tmp.Field1, tmp.Field2, tmp.Field3, tmp.Field4, RegContext.Registration, UserLevel.Base);
                         UsersList.AddUser(u);
 
                         if (View.IsThereAnImage()) {
@@ -48,7 +48,7 @@ namespace Borelli_BdT.presenter {
                         int index = UsersList.GetUserIndex(tmp.Field1);
                         User us = UsersList.GetUser(tmp.Field1);
 
-                        UsersList.Users[index] = new User(us.Data, us.Nickname, us.Password, tmp.Field3, tmp.Field4, RegContext.Confirmed);
+                        UsersList.Users[index] = new User(us.Data, us.Nickname, us.Password, tmp.Field3, tmp.Field4, RegContext.Confirmed, (UserLevel)Enum.Parse(typeof(UserLevel), tmp.Field11));
                         View.SuccessRegistration("La conferma dell'account è stata effettuata con successo");
 
                         break;
@@ -79,11 +79,21 @@ namespace Borelli_BdT.presenter {
                 EntityUser tmp = View.CurrentUser;
 
                 int index = UsersList.GetUserIndex(tmp.Field1);
-                UsersList.Users[index] = new User(EntityCustomerMasterData.GetCustomerMasterData(tmp.Field11), tmp.Field1, tmp.Field2, tmp.Field3, tmp.Field4, RegContext.Registration);
+                UsersList.Users[index] = new User(EntityCustomerMasterData.GetCustomerMasterData(tmp.Field12), tmp.Field1, tmp.Field2, tmp.Field3, tmp.Field4, RegContext.Registration, (UserLevel)Enum.Parse(typeof(UserLevel), tmp.Field11));
                 UsersList.WriteJsonFile();
 
                 View.Close();
             }
+        }
+
+
+        public bool IsSecretary(EntityUser e) {
+            User u = EntityUser.GetUser(e);
+            return u.Level == UserLevel.Secretary;
+        }
+
+        public string GetLevel(bool checkedSwitchSecretary) {
+            return checkedSwitchSecretary ? UserLevel.Secretary.ToString() : UserLevel.Base.ToString();
         }
     }
 }

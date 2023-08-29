@@ -280,7 +280,7 @@ namespace Borelli_BdT.view {
                     case LoadUsrList.ToAccept:
                         lwOutp = listViewAcceptUsers;
 
-                        EntityCustomerMasterData tmp = usr[i].Field11;
+                        EntityCustomerMasterData tmp = usr[i].Field12;
                         lvi = new ListViewItem(new string[] { usr[i].Field1, tmp.Field1, tmp.Field2, tmp.Field3, tmp.Field4 });
                         break;
                     case LoadUsrList.Details:
