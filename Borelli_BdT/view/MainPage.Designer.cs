@@ -123,14 +123,27 @@
             this.labelDotClose = new System.Windows.Forms.Label();
             this.materialLabel12 = new MaterialSkin.Controls.MaterialLabel();
             this.tabAcceptUsers = new System.Windows.Forms.TabPage();
+            this.mButtonModDistr = new MaterialSkin.Controls.MaterialButton();
+            this.mButtonModJobs = new MaterialSkin.Controls.MaterialButton();
+            this.materialCard15 = new MaterialSkin.Controls.MaterialCard();
+            this.materialLabel16 = new MaterialSkin.Controls.MaterialLabel();
+            this.labelDotRequestedUsers = new System.Windows.Forms.Label();
+            this.materialLabel17 = new MaterialSkin.Controls.MaterialLabel();
+            this.labelDotAcceptedUsers = new System.Windows.Forms.Label();
+            this.mLabel8 = new MaterialSkin.Controls.MaterialLabel();
+            this.materialCard14 = new MaterialSkin.Controls.MaterialCard();
+            this.mLabel7 = new MaterialSkin.Controls.MaterialLabel();
+            this.mRdButUVOalredy = new MaterialSkin.Controls.MaterialRadioButton();
+            this.mRdButUVOWait = new MaterialSkin.Controls.MaterialRadioButton();
+            this.mRdButUVOall = new MaterialSkin.Controls.MaterialRadioButton();
+            this.mLabel6 = new MaterialSkin.Controls.MaterialLabel();
+            this.textBoxSearchUser = new System.Windows.Forms.TextBox();
             this.listViewAcceptUsers = new System.Windows.Forms.ListView();
             this.colAnickname = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.colAname = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.colAsurname = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.colAphNumb = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.colAmail = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.mButtonModDistr = new MaterialSkin.Controls.MaterialButton();
-            this.mButtonModJobs = new MaterialSkin.Controls.MaterialButton();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.materialTabControl1.SuspendLayout();
             this.tabHome.SuspendLayout();
@@ -152,6 +165,8 @@
             this.materialCard12.SuspendLayout();
             this.materialCard13.SuspendLayout();
             this.tabAcceptUsers.SuspendLayout();
+            this.materialCard15.SuspendLayout();
+            this.materialCard14.SuspendLayout();
             this.SuspendLayout();
             // 
             // materialTabControl1
@@ -1314,9 +1329,13 @@
             // 
             // tabAcceptUsers
             // 
-            this.tabAcceptUsers.Controls.Add(this.listViewAcceptUsers);
             this.tabAcceptUsers.Controls.Add(this.mButtonModDistr);
             this.tabAcceptUsers.Controls.Add(this.mButtonModJobs);
+            this.tabAcceptUsers.Controls.Add(this.materialCard15);
+            this.tabAcceptUsers.Controls.Add(this.materialCard14);
+            this.tabAcceptUsers.Controls.Add(this.mLabel6);
+            this.tabAcceptUsers.Controls.Add(this.textBoxSearchUser);
+            this.tabAcceptUsers.Controls.Add(this.listViewAcceptUsers);
             this.tabAcceptUsers.ImageKey = "bald-head-with-question-mark.png";
             this.tabAcceptUsers.Location = new System.Drawing.Point(4, 39);
             this.tabAcceptUsers.Name = "tabAcceptUsers";
@@ -1325,6 +1344,219 @@
             this.tabAcceptUsers.TabIndex = 1;
             this.tabAcceptUsers.Text = "ACCETTAZIONE";
             this.tabAcceptUsers.UseVisualStyleBackColor = true;
+            // 
+            // mButtonModDistr
+            // 
+            this.mButtonModDistr.AutoSize = false;
+            this.mButtonModDistr.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.mButtonModDistr.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            this.mButtonModDistr.Depth = 0;
+            this.mButtonModDistr.HighEmphasis = true;
+            this.mButtonModDistr.Icon = null;
+            this.mButtonModDistr.Location = new System.Drawing.Point(570, 91);
+            this.mButtonModDistr.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.mButtonModDistr.MouseState = MaterialSkin.MouseState.HOVER;
+            this.mButtonModDistr.Name = "mButtonModDistr";
+            this.mButtonModDistr.NoAccentTextColor = System.Drawing.Color.Empty;
+            this.mButtonModDistr.Size = new System.Drawing.Size(180, 45);
+            this.mButtonModDistr.TabIndex = 2;
+            this.mButtonModDistr.Text = "MODIFICA LISTA ZONE";
+            this.mButtonModDistr.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            this.mButtonModDistr.UseAccentColor = false;
+            this.mButtonModDistr.UseVisualStyleBackColor = true;
+            // 
+            // mButtonModJobs
+            // 
+            this.mButtonModJobs.AutoSize = false;
+            this.mButtonModJobs.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.mButtonModJobs.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            this.mButtonModJobs.Depth = 0;
+            this.mButtonModJobs.HighEmphasis = true;
+            this.mButtonModJobs.Icon = null;
+            this.mButtonModJobs.Location = new System.Drawing.Point(570, 32);
+            this.mButtonModJobs.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.mButtonModJobs.MouseState = MaterialSkin.MouseState.HOVER;
+            this.mButtonModJobs.Name = "mButtonModJobs";
+            this.mButtonModJobs.NoAccentTextColor = System.Drawing.Color.Empty;
+            this.mButtonModJobs.Size = new System.Drawing.Size(180, 45);
+            this.mButtonModJobs.TabIndex = 1;
+            this.mButtonModJobs.Text = "MODIFICA LISTA LAVORI";
+            this.mButtonModJobs.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            this.mButtonModJobs.UseAccentColor = false;
+            this.mButtonModJobs.UseVisualStyleBackColor = true;
+            // 
+            // materialCard15
+            // 
+            this.materialCard15.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.materialCard15.Controls.Add(this.materialLabel16);
+            this.materialCard15.Controls.Add(this.labelDotRequestedUsers);
+            this.materialCard15.Controls.Add(this.materialLabel17);
+            this.materialCard15.Controls.Add(this.labelDotAcceptedUsers);
+            this.materialCard15.Controls.Add(this.mLabel8);
+            this.materialCard15.Depth = 0;
+            this.materialCard15.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.materialCard15.Location = new System.Drawing.Point(570, 367);
+            this.materialCard15.Margin = new System.Windows.Forms.Padding(14);
+            this.materialCard15.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialCard15.Name = "materialCard15";
+            this.materialCard15.Padding = new System.Windows.Forms.Padding(14);
+            this.materialCard15.Size = new System.Drawing.Size(215, 150);
+            this.materialCard15.TabIndex = 17;
+            // 
+            // materialLabel16
+            // 
+            this.materialLabel16.AutoSize = true;
+            this.materialLabel16.Depth = 0;
+            this.materialLabel16.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.materialLabel16.Location = new System.Drawing.Point(45, 73);
+            this.materialLabel16.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialLabel16.Name = "materialLabel16";
+            this.materialLabel16.Size = new System.Drawing.Size(144, 19);
+            this.materialLabel16.TabIndex = 4;
+            this.materialLabel16.Text = "In attesa di chiusura";
+            // 
+            // labelDotRequestedUsers
+            // 
+            this.labelDotRequestedUsers.AutoSize = true;
+            this.labelDotRequestedUsers.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelDotRequestedUsers.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.labelDotRequestedUsers.Location = new System.Drawing.Point(17, 73);
+            this.labelDotRequestedUsers.Name = "labelDotRequestedUsers";
+            this.labelDotRequestedUsers.Size = new System.Drawing.Size(22, 24);
+            this.labelDotRequestedUsers.TabIndex = 3;
+            this.labelDotRequestedUsers.Text = "●";
+            // 
+            // materialLabel17
+            // 
+            this.materialLabel17.AutoSize = true;
+            this.materialLabel17.Depth = 0;
+            this.materialLabel17.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.materialLabel17.Location = new System.Drawing.Point(45, 42);
+            this.materialLabel17.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialLabel17.Name = "materialLabel17";
+            this.materialLabel17.Size = new System.Drawing.Size(82, 19);
+            this.materialLabel17.TabIndex = 2;
+            this.materialLabel17.Text = "Completate";
+            // 
+            // labelDotAcceptedUsers
+            // 
+            this.labelDotAcceptedUsers.AutoSize = true;
+            this.labelDotAcceptedUsers.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelDotAcceptedUsers.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.labelDotAcceptedUsers.Location = new System.Drawing.Point(17, 42);
+            this.labelDotAcceptedUsers.Name = "labelDotAcceptedUsers";
+            this.labelDotAcceptedUsers.Size = new System.Drawing.Size(22, 24);
+            this.labelDotAcceptedUsers.TabIndex = 1;
+            this.labelDotAcceptedUsers.Text = "●";
+            // 
+            // mLabel8
+            // 
+            this.mLabel8.AutoSize = true;
+            this.mLabel8.Depth = 0;
+            this.mLabel8.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.mLabel8.Location = new System.Drawing.Point(17, 14);
+            this.mLabel8.MouseState = MaterialSkin.MouseState.HOVER;
+            this.mLabel8.Name = "mLabel8";
+            this.mLabel8.Size = new System.Drawing.Size(66, 19);
+            this.mLabel8.TabIndex = 0;
+            this.mLabel8.Text = "Legenda:";
+            // 
+            // materialCard14
+            // 
+            this.materialCard14.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.materialCard14.Controls.Add(this.mLabel7);
+            this.materialCard14.Controls.Add(this.mRdButUVOalredy);
+            this.materialCard14.Controls.Add(this.mRdButUVOWait);
+            this.materialCard14.Controls.Add(this.mRdButUVOall);
+            this.materialCard14.Depth = 0;
+            this.materialCard14.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.materialCard14.Location = new System.Drawing.Point(570, 181);
+            this.materialCard14.Margin = new System.Windows.Forms.Padding(14);
+            this.materialCard14.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialCard14.Name = "materialCard14";
+            this.materialCard14.Padding = new System.Windows.Forms.Padding(14);
+            this.materialCard14.Size = new System.Drawing.Size(215, 170);
+            this.materialCard14.TabIndex = 16;
+            // 
+            // mLabel7
+            // 
+            this.mLabel7.AutoSize = true;
+            this.mLabel7.Depth = 0;
+            this.mLabel7.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.mLabel7.Location = new System.Drawing.Point(17, 14);
+            this.mLabel7.MouseState = MaterialSkin.MouseState.HOVER;
+            this.mLabel7.Name = "mLabel7";
+            this.mLabel7.Size = new System.Drawing.Size(78, 19);
+            this.mLabel7.TabIndex = 3;
+            this.mLabel7.Text = "Visualizza:";
+            // 
+            // mRdButUVOalredy
+            // 
+            this.mRdButUVOalredy.AutoSize = true;
+            this.mRdButUVOalredy.Depth = 0;
+            this.mRdButUVOalredy.Location = new System.Drawing.Point(11, 119);
+            this.mRdButUVOalredy.Margin = new System.Windows.Forms.Padding(0);
+            this.mRdButUVOalredy.MouseLocation = new System.Drawing.Point(-1, -1);
+            this.mRdButUVOalredy.MouseState = MaterialSkin.MouseState.HOVER;
+            this.mRdButUVOalredy.Name = "mRdButUVOalredy";
+            this.mRdButUVOalredy.Ripple = true;
+            this.mRdButUVOalredy.Size = new System.Drawing.Size(97, 37);
+            this.mRdButUVOalredy.TabIndex = 2;
+            this.mRdButUVOalredy.TabStop = true;
+            this.mRdButUVOalredy.Text = "Accettati";
+            this.mRdButUVOalredy.UseVisualStyleBackColor = true;
+            // 
+            // mRdButUVOWait
+            // 
+            this.mRdButUVOWait.AutoSize = true;
+            this.mRdButUVOWait.Depth = 0;
+            this.mRdButUVOWait.Location = new System.Drawing.Point(11, 82);
+            this.mRdButUVOWait.Margin = new System.Windows.Forms.Padding(0);
+            this.mRdButUVOWait.MouseLocation = new System.Drawing.Point(-1, -1);
+            this.mRdButUVOWait.MouseState = MaterialSkin.MouseState.HOVER;
+            this.mRdButUVOWait.Name = "mRdButUVOWait";
+            this.mRdButUVOWait.Ripple = true;
+            this.mRdButUVOWait.Size = new System.Drawing.Size(164, 37);
+            this.mRdButUVOWait.TabIndex = 1;
+            this.mRdButUVOWait.TabStop = true;
+            this.mRdButUVOWait.Text = "In attesa di accett.";
+            this.mRdButUVOWait.UseVisualStyleBackColor = true;
+            // 
+            // mRdButUVOall
+            // 
+            this.mRdButUVOall.AutoSize = true;
+            this.mRdButUVOall.Checked = true;
+            this.mRdButUVOall.Depth = 0;
+            this.mRdButUVOall.Location = new System.Drawing.Point(11, 45);
+            this.mRdButUVOall.Margin = new System.Windows.Forms.Padding(0);
+            this.mRdButUVOall.MouseLocation = new System.Drawing.Point(-1, -1);
+            this.mRdButUVOall.MouseState = MaterialSkin.MouseState.HOVER;
+            this.mRdButUVOall.Name = "mRdButUVOall";
+            this.mRdButUVOall.Ripple = true;
+            this.mRdButUVOall.Size = new System.Drawing.Size(73, 37);
+            this.mRdButUVOall.TabIndex = 0;
+            this.mRdButUVOall.TabStop = true;
+            this.mRdButUVOall.Text = "Tutto";
+            this.mRdButUVOall.UseVisualStyleBackColor = true;
+            // 
+            // mLabel6
+            // 
+            this.mLabel6.AutoSize = true;
+            this.mLabel6.Depth = 0;
+            this.mLabel6.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.mLabel6.Location = new System.Drawing.Point(3, 6);
+            this.mLabel6.MouseState = MaterialSkin.MouseState.HOVER;
+            this.mLabel6.Name = "mLabel6";
+            this.mLabel6.Size = new System.Drawing.Size(45, 19);
+            this.mLabel6.TabIndex = 15;
+            this.mLabel6.Text = "Cerca:";
+            // 
+            // textBoxSearchUser
+            // 
+            this.textBoxSearchUser.Location = new System.Drawing.Point(54, 6);
+            this.textBoxSearchUser.Name = "textBoxSearchUser";
+            this.textBoxSearchUser.Size = new System.Drawing.Size(499, 20);
+            this.textBoxSearchUser.TabIndex = 14;
             // 
             // listViewAcceptUsers
             // 
@@ -1336,9 +1568,9 @@
             this.colAmail});
             this.listViewAcceptUsers.FullRowSelect = true;
             this.listViewAcceptUsers.HideSelection = false;
-            this.listViewAcceptUsers.Location = new System.Drawing.Point(7, 6);
+            this.listViewAcceptUsers.Location = new System.Drawing.Point(0, 32);
             this.listViewAcceptUsers.Name = "listViewAcceptUsers";
-            this.listViewAcceptUsers.Size = new System.Drawing.Size(757, 457);
+            this.listViewAcceptUsers.Size = new System.Drawing.Size(553, 488);
             this.listViewAcceptUsers.TabIndex = 3;
             this.listViewAcceptUsers.UseCompatibleStateImageBehavior = false;
             this.listViewAcceptUsers.View = System.Windows.Forms.View.Details;
@@ -1362,46 +1594,6 @@
             // colAmail
             // 
             this.colAmail.Text = "E-MAIL";
-            // 
-            // mButtonModDistr
-            // 
-            this.mButtonModDistr.AutoSize = false;
-            this.mButtonModDistr.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.mButtonModDistr.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
-            this.mButtonModDistr.Depth = 0;
-            this.mButtonModDistr.HighEmphasis = true;
-            this.mButtonModDistr.Icon = null;
-            this.mButtonModDistr.Location = new System.Drawing.Point(7, 472);
-            this.mButtonModDistr.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-            this.mButtonModDistr.MouseState = MaterialSkin.MouseState.HOVER;
-            this.mButtonModDistr.Name = "mButtonModDistr";
-            this.mButtonModDistr.NoAccentTextColor = System.Drawing.Color.Empty;
-            this.mButtonModDistr.Size = new System.Drawing.Size(158, 36);
-            this.mButtonModDistr.TabIndex = 2;
-            this.mButtonModDistr.Text = "MODIFICA LISTA ZONE";
-            this.mButtonModDistr.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
-            this.mButtonModDistr.UseAccentColor = false;
-            this.mButtonModDistr.UseVisualStyleBackColor = true;
-            // 
-            // mButtonModJobs
-            // 
-            this.mButtonModJobs.AutoSize = false;
-            this.mButtonModJobs.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.mButtonModJobs.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
-            this.mButtonModJobs.Depth = 0;
-            this.mButtonModJobs.HighEmphasis = true;
-            this.mButtonModJobs.Icon = null;
-            this.mButtonModJobs.Location = new System.Drawing.Point(200, 472);
-            this.mButtonModJobs.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-            this.mButtonModJobs.MouseState = MaterialSkin.MouseState.HOVER;
-            this.mButtonModJobs.Name = "mButtonModJobs";
-            this.mButtonModJobs.NoAccentTextColor = System.Drawing.Color.Empty;
-            this.mButtonModJobs.Size = new System.Drawing.Size(158, 36);
-            this.mButtonModJobs.TabIndex = 1;
-            this.mButtonModJobs.Text = "MODIFICA LISTA LAVORI";
-            this.mButtonModJobs.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
-            this.mButtonModJobs.UseAccentColor = false;
-            this.mButtonModJobs.UseVisualStyleBackColor = true;
             // 
             // imageList1
             // 
@@ -1458,6 +1650,11 @@
             this.materialCard13.ResumeLayout(false);
             this.materialCard13.PerformLayout();
             this.tabAcceptUsers.ResumeLayout(false);
+            this.tabAcceptUsers.PerformLayout();
+            this.materialCard15.ResumeLayout(false);
+            this.materialCard15.PerformLayout();
+            this.materialCard14.ResumeLayout(false);
+            this.materialCard14.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -1483,8 +1680,6 @@
         private System.Windows.Forms.Label labelDeltaHours;
         private MaterialSkin.Controls.MaterialLabel mLabel3;
         private System.Windows.Forms.PictureBox pictureBoxPhoto;
-        private MaterialSkin.Controls.MaterialButton mButtonModDistr;
-        private MaterialSkin.Controls.MaterialButton mButtonModJobs;
         private System.Windows.Forms.TabPage tabCreateAcceptTask;
         private MaterialSkin.Controls.MaterialCard materialCard7;
         private MaterialSkin.Controls.MaterialCard materialCard6;
@@ -1571,5 +1766,20 @@
         private MaterialSkin.Controls.MaterialRadioButton mRdButRVOrequested;
         private MaterialSkin.Controls.MaterialLabel materialLabel13;
         private System.Windows.Forms.Label labelDotAcceptedR;
+        private MaterialSkin.Controls.MaterialCard materialCard15;
+        private MaterialSkin.Controls.MaterialLabel materialLabel16;
+        private System.Windows.Forms.Label labelDotRequestedUsers;
+        private MaterialSkin.Controls.MaterialLabel materialLabel17;
+        private System.Windows.Forms.Label labelDotAcceptedUsers;
+        private MaterialSkin.Controls.MaterialLabel mLabel8;
+        private MaterialSkin.Controls.MaterialCard materialCard14;
+        private MaterialSkin.Controls.MaterialLabel mLabel7;
+        private MaterialSkin.Controls.MaterialRadioButton mRdButUVOalredy;
+        private MaterialSkin.Controls.MaterialRadioButton mRdButUVOWait;
+        private MaterialSkin.Controls.MaterialRadioButton mRdButUVOall;
+        private MaterialSkin.Controls.MaterialLabel mLabel6;
+        private System.Windows.Forms.TextBox textBoxSearchUser;
+        private MaterialSkin.Controls.MaterialButton mButtonModDistr;
+        private MaterialSkin.Controls.MaterialButton mButtonModJobs;
     }
 }

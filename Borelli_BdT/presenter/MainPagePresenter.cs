@@ -68,6 +68,7 @@ namespace Borelli_BdT.presenter {
                 case 4:
                     View.Text = "Accettazione nuovi utenti";
 
+                    View.LoadLegendPaletteUsers();
                     LoadUsersTab();
                     break;
             }
@@ -222,8 +223,18 @@ namespace Borelli_BdT.presenter {
         }
 
         public void LoadUsersTab() {
-            List<EntityUser> stillNotAcceptedUsers = GetEntityUsersList(UsersList.GetInPhaseUsers(UsersState.Registration));
-            View.LoadUsersList(stillNotAcceptedUsers);
+            UsersState uState = View.GetUsedStateFilterInUsers();
+
+            Regex rxRicerca = new Regex(View.GetTextInUsersSearchBar(), RegexOptions.IgnoreCase);
+
+            List<EntityUser> users = GetEntityUsersList(UsersList.GetInPhaseUsers(uState));
+            List<EntityUser> filteredUser = FilterUser(users, rxRicerca);
+
+            View.LoadUsersList(filteredUser);
+        }
+
+        public void ReLoadUsersTab(object sender, EventArgs e) {
+            LoadUsersTab();
         }
 
         public void OnModifyDistr(object sender, EventArgs e) {
@@ -232,6 +243,12 @@ namespace Borelli_BdT.presenter {
 
         public void OnModifyJobs(object sender, EventArgs e) {
             View.ShowEditorForm(ItemsEditor.Use.Jobs);
+        }
+
+        public bool IsConfirmedUser(EntityUser e) {
+            User u = EntityUser.GetUser(e);
+
+            return (u.State == RegContext.Confirmed);
         }
 
 
@@ -290,6 +307,18 @@ namespace Borelli_BdT.presenter {
                     case MainPage.ResearchOption.None:
                         outp.Add(input[i]);
                         break;
+                }
+            }
+
+            return outp;
+        }
+
+        private List<EntityUser> FilterUser(List<EntityUser> input, Regex rx) {
+            List<EntityUser> outp = new List<EntityUser>();
+
+            for (int i = 0; i < input.Count; i++) {
+                if (rx.IsMatch(input[i].Field1)) {
+                    outp.Add(input[i]);
                 }
             }
 

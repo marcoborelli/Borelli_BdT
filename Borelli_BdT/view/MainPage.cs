@@ -17,7 +17,7 @@ namespace Borelli_BdT.view {
          * <col><A(cceptation)><campo> */
 
         /* Logica nome radioButton:
-         * <mRdBut><P(ertinent) | A(ccepted) | R(equested)><SF(searchFilter) | VO (viewOnly)><campo> */
+         * <mRdBut><P(ertinent) | A(ccepted) | R(equested) | U(ser)><SF(searchFilter) | VO (viewOnly)><campo> */
 
 
         public enum LoadTskList { //indica se la listView in questione e' nella HomeScreen (pochi dettagli) o nel tab dedicato (dettagliata)
@@ -89,6 +89,10 @@ namespace Borelli_BdT.view {
             listViewAcceptUsers.MouseDoubleClick += new MouseEventHandler(Presenter.DoubleClickOnAcceptUsersLW);
             mButtonModDistr.Click += new EventHandler(Presenter.OnModifyDistr);
             mButtonModJobs.Click += new EventHandler(Presenter.OnModifyJobs);
+            textBoxSearchUser.TextChanged += new EventHandler(Presenter.ReLoadUsersTab);
+            mRdButUVOall.CheckedChanged += new EventHandler(Presenter.ReLoadUsersTab);
+            mRdButUVOalredy.CheckedChanged += new EventHandler(Presenter.ReLoadUsersTab);
+            mRdButUVOWait.CheckedChanged += new EventHandler(Presenter.ReLoadUsersTab);
 
             Verdolino = Color.FromArgb(192, 255, 192);
             Arancino = Color.FromArgb(255, 224, 192);
@@ -96,6 +100,7 @@ namespace Borelli_BdT.view {
 
             LoadLegendPaletteAcceptedTask();
             LoadLegendPaletteRequestedTask();
+            LoadLegendPaletteUsers();
         }
 
 
@@ -154,6 +159,20 @@ namespace Borelli_BdT.view {
             signUpForm.Show();
 
             signUpForm.FormClosed += new FormClosedEventHandler(ClosedSignUpForm);
+        }
+
+        public UsersState GetUsedStateFilterInUsers() {
+            UsersState outp;
+
+            if (mRdButUVOall.Checked) {
+                outp = UsersState.All;
+            } else if (mRdButUVOWait.Checked) {
+                outp = UsersState.Registration;
+            } else {
+                outp = UsersState.Confirmed;
+            }
+
+            return outp;
         }
 
 
@@ -276,6 +295,8 @@ namespace Borelli_BdT.view {
                 EntityCustomerMasterData tmp = usr[i].Field12;
                 lvi = new ListViewItem(new string[] { usr[i].Field1, tmp.Field1, tmp.Field2, tmp.Field3, tmp.Field4 });
 
+                lvi.BackColor = Presenter.IsConfirmedUser(usr[i]) ? Verdolino : Giallino;
+                lvi.ForeColor = Color.Black;
 
                 lwOutp.Items.Add(lvi);
 
@@ -301,6 +322,11 @@ namespace Borelli_BdT.view {
 
             return research;
         }
+
+        public string GetTextInUsersSearchBar() {
+            return textBoxSearchUser.Text;
+        }
+
 
         public ResearchOption GetUsedTasksFilter(TaskType type) {
             ResearchOption outp = ResearchOption.None;
@@ -345,6 +371,11 @@ namespace Borelli_BdT.view {
             labelDotClose.ForeColor = Verdolino;
             labelDotAcceptedR.ForeColor = Giallino;
             labelDotRequested.ForeColor = Arancino;
+        }
+
+        public void LoadLegendPaletteUsers() {
+            labelDotAcceptedUsers.ForeColor = Verdolino;
+            labelDotRequestedUsers.ForeColor = Giallino;
         }
 
 
