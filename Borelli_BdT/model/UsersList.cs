@@ -72,15 +72,28 @@ namespace Borelli_BdT.model {
             Users.Remove(u);
         }
 
-        public static List<User> GetInPhaseUsers(RegContext phase) {
+        public static List<User> GetInPhaseUsers(UsersState state) {
             if (Users == null)
                 throw new Exception("Lista non inizializzata, chiamare prima l'initializer della classe statica UsersList");
 
             List<User> outp = new List<User>();
 
             for (int i = 0; i < Users.Count; i++) {
-                if (Users[i].State == phase)
-                    outp.Add(Users[i]);
+                switch(state) {
+                    case UsersState.Registration:
+                        if (Users[i].State == RegContext.Registration) {
+                            outp.Add(Users[i]);
+                        }
+                        break;
+                    case UsersState.Confirmed:
+                        if (Users[i].State == RegContext.Confirmed) {
+                            outp.Add(Users[i]);
+                        }
+                        break;
+                    case UsersState.All:
+                        outp.Add(Users[i]);
+                        break;
+                }
             }
 
             return outp;

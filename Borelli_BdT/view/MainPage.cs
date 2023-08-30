@@ -35,11 +35,6 @@ namespace Borelli_BdT.view {
          * Es: la ListView che si trova sull'Home delle task fatte avra' indice 4: 0(LoadTskList.HomeScreen) + 4(TaskType.Accepted) */
 
 
-        public enum LoadUsrList {
-            ToAccept,
-            Details,
-        }
-
         public enum ResearchOption {
             None,
             Requester,
@@ -64,7 +59,7 @@ namespace Borelli_BdT.view {
             materialTabControl1.SelectedIndexChanged += new EventHandler(Presenter.SelectedTabChanged);
 
             listViewAcceptedTasks.MouseDoubleClick += new MouseEventHandler(Presenter.DoubleClickLWAcceptedTask);
-            listViewPertinentTasks.MouseDoubleClick+= new MouseEventHandler(Presenter.DoubleClickLWPertinentTask);
+            listViewPertinentTasks.MouseDoubleClick += new MouseEventHandler(Presenter.DoubleClickLWPertinentTask);
             listViewRequestedTasks.MouseDoubleClick += new MouseEventHandler(Presenter.DoubleClickLWRequestedTask);
 
             textBoxSearchAcceptTask.TextChanged += new EventHandler(Presenter.ReLoadReqAcceptTask);
@@ -271,25 +266,16 @@ namespace Borelli_BdT.view {
             }
         }
 
-        public void LoadUsersList(List<EntityUser> usr, LoadUsrList how) {
-            ListView lwOutp = new ListView();
+        public void LoadUsersList(List<EntityUser> usr) {
+            ListView lwOutp = listViewAcceptUsers;
             ListViewItem lvi = new ListViewItem();
 
+            lwOutp.Items.Clear();
+
             for (int i = 0; i < usr.Count; i++) {
-                switch (how) {
-                    case LoadUsrList.ToAccept:
-                        lwOutp = listViewAcceptUsers;
+                EntityCustomerMasterData tmp = usr[i].Field12;
+                lvi = new ListViewItem(new string[] { usr[i].Field1, tmp.Field1, tmp.Field2, tmp.Field3, tmp.Field4 });
 
-                        EntityCustomerMasterData tmp = usr[i].Field12;
-                        lvi = new ListViewItem(new string[] { usr[i].Field1, tmp.Field1, tmp.Field2, tmp.Field3, tmp.Field4 });
-                        break;
-                    case LoadUsrList.Details:
-                        //TODO
-                        break;
-                }
-
-                if (i == 0)
-                    lwOutp.Items.Clear();
 
                 lwOutp.Items.Add(lvi);
 
@@ -298,7 +284,7 @@ namespace Borelli_BdT.view {
             }
         }
 
-        public string GetTextInSearchBar(TaskType type) {
+        public string GetTextInTasksSearchBar(TaskType type) {
             string research = "";
 
             switch (type) {
@@ -316,7 +302,7 @@ namespace Borelli_BdT.view {
             return research;
         }
 
-        public ResearchOption GetUsedFilter(TaskType type) {
+        public ResearchOption GetUsedTasksFilter(TaskType type) {
             ResearchOption outp = ResearchOption.None;
 
             switch (type) {
@@ -368,7 +354,7 @@ namespace Borelli_BdT.view {
         }
 
         private void ClosedSignUpForm(object sender, FormClosedEventArgs e) {
-            Presenter.LoadAcceptNewUserTab();
+            Presenter.LoadSelectedTab();
         }
         private ListView GetCurrentListView(TaskType type, LoadTskList how) {
             return MListViews[(int)type + (int)how];

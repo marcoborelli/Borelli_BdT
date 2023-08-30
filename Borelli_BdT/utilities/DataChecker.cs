@@ -16,6 +16,11 @@ namespace Borelli_BdT.utilities {
         Done,
         All,
     }
+    public enum UsersState {
+        Registration,
+        Confirmed,
+        All
+    }
 
 
     public enum CheckStr {

@@ -60,14 +60,15 @@ namespace Borelli_BdT.presenter {
                 case 3:
                     TaskType = MainPage.TaskType.Requested;
                     LoadList = MainPage.LoadTskList.Details;
-                    View.Text = "Tab richieste";
+                    View.Text = "Task richieste";
 
                     View.LoadLegendPaletteRequestedTask();
                     LoadRequestedTasks();
                     break;
                 case 4:
                     View.Text = "Accettazione nuovi utenti";
-                    LoadAcceptNewUserTab();
+
+                    LoadUsersTab();
                     break;
             }
         }
@@ -113,10 +114,10 @@ namespace Borelli_BdT.presenter {
 
 
         public void LoadReqAcceptTask() {
-            Regex rxRicerca = new Regex(View.GetTextInSearchBar(TaskType), RegexOptions.IgnoreCase);
+            Regex rxRicerca = new Regex(View.GetTextInTasksSearchBar(TaskType), RegexOptions.IgnoreCase);
 
             List<EntityTask> pertinentTasks = GetEntityTasksList(TasksList.GetAppropriateTasks(CurrentUser, TaskUserFilter.ZoneAndJob));
-            List<EntityTask> pertinentFilteredTask = FilterTasks(pertinentTasks, rxRicerca, View.GetUsedFilter(TaskType));
+            List<EntityTask> pertinentFilteredTask = FilterTasks(pertinentTasks, rxRicerca, View.GetUsedTasksFilter(TaskType));
 
             View.ClearListViewTask(TaskType, LoadList);
             View.LoadTasksList(pertinentFilteredTask, TaskType, LoadList);
@@ -166,10 +167,10 @@ namespace Borelli_BdT.presenter {
         public void LoadAcceptedTasks() {
             AcTaskState taskState = View.GetUsedStateFilterInAccepted();
 
-            Regex rxRicerca = new Regex(View.GetTextInSearchBar(TaskType), RegexOptions.IgnoreCase);
+            Regex rxRicerca = new Regex(View.GetTextInTasksSearchBar(TaskType), RegexOptions.IgnoreCase);
 
             List<EntityTask> doneTasks = GetEntityTasksList(TasksList.GetAcceptedTasks(CurrentUser.Nickname, taskState));
-            List<EntityTask> doneFilteredTasks = FilterTasks(doneTasks, rxRicerca, View.GetUsedFilter(TaskType));
+            List<EntityTask> doneFilteredTasks = FilterTasks(doneTasks, rxRicerca, View.GetUsedTasksFilter(TaskType));
 
             View.ClearListViewTask(TaskType, LoadList);
             View.LoadTasksList(doneFilteredTasks, TaskType, LoadList);
@@ -190,10 +191,10 @@ namespace Borelli_BdT.presenter {
         public void LoadRequestedTasks() {
             RqTaskState taskState = View.GetUsedStateFilterInRequested();
 
-            Regex rxRicerca = new Regex(View.GetTextInSearchBar(TaskType), RegexOptions.IgnoreCase);
+            Regex rxRicerca = new Regex(View.GetTextInTasksSearchBar(TaskType), RegexOptions.IgnoreCase);
 
             List<EntityTask> requestedTasks = GetEntityTasksList(TasksList.GetRequestedTasks(CurrentUser.Nickname, taskState));
-            List<EntityTask> requestedPertinentTasks = FilterTasks(requestedTasks, rxRicerca, View.GetUsedFilter(TaskType));
+            List<EntityTask> requestedPertinentTasks = FilterTasks(requestedTasks, rxRicerca, View.GetUsedTasksFilter(TaskType));
 
             View.ClearListViewTask(TaskType, LoadList);
             View.LoadTasksList(requestedPertinentTasks, TaskType, LoadList);
@@ -220,9 +221,9 @@ namespace Borelli_BdT.presenter {
             View.OpenSignUpForm(eu);
         }
 
-        public void LoadAcceptNewUserTab() {
-            List<EntityUser> stillNotAcceptedUsers = GetEntityUsersList(UsersList.GetInPhaseUsers(RegContext.Registration));
-            View.LoadUsersList(stillNotAcceptedUsers, MainPage.LoadUsrList.ToAccept);
+        public void LoadUsersTab() {
+            List<EntityUser> stillNotAcceptedUsers = GetEntityUsersList(UsersList.GetInPhaseUsers(UsersState.Registration));
+            View.LoadUsersList(stillNotAcceptedUsers);
         }
 
         public void OnModifyDistr(object sender, EventArgs e) {
