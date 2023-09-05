@@ -26,8 +26,8 @@ namespace Borelli_BdT.view {
                 EntityTask e = new EntityTask {
                     Field1 = this.Text,
                     Field2 = mMultiLineTextBoxCaption.Text,
-                    Field3 = mTextBoxRequester.Text,
-                    Field4 = mTextBoxAcceptor.Text,
+                    Field3 = mLabelRequester.Text,
+                    Field4 = mLabelAcceptor.Text,
                     Field5 = dTimePickerRequest.Text,
                     Field6 = dTimePickerAccepted.Text,
                     Field7 = dTimePickerStarted.Text,
@@ -35,15 +35,15 @@ namespace Borelli_BdT.view {
                     Field9 = new TimeSpan(int.Parse(textBoxHours.Text), int.Parse(textBoxMinutes.Text), 0).ToString(),
                     Field10 = mTextBoxStars.Text,
                     Field11 = mTextBoxJob.Text,
-                   // Field12 = this.Text.Split(':')[1].Trim()
+                    // Field12 = this.Text.Split(':')[1].Trim()
                 };
                 return e;
             }
             set {
                 this.Text = value.Field1;
                 mMultiLineTextBoxCaption.Text = value.Field2;
-                mTextBoxRequester.Text = value.Field3;
-                mTextBoxAcceptor.Text = value.Field4;
+                mLabelRequester.Text = value.Field3;
+                mLabelAcceptor.Text = value.Field4;
                 dTimePickerRequest.Text = value.Field5;
 
                 if (DateTime.Parse(value.Field6) != DateTime.MinValue)
@@ -124,6 +124,22 @@ namespace Borelli_BdT.view {
         private void dTimePickerEnded_ValueChanged(object sender, EventArgs e) {
             dTimePickerEnded.CustomFormat = "MM/dd/yyyy";
             dTimePickerEnded.Format = DateTimePickerFormat.Long;
+        }
+
+        private void mLabelRequester_MouseHover(object sender, EventArgs e) { //TODO: aggiungere controlli che solo se non si e' quell'utente si possa fare
+            Cursor = Cursors.Hand;
+        }
+
+        private void mLabelRequester_MouseLeave(object sender, EventArgs e) {
+            Cursor = Cursors.Arrow;
+        }
+
+        private void mLabelAcceptor_MouseHover(object sender, EventArgs e) {
+            Cursor = Cursors.Hand;
+        }
+
+        private void mLabelAcceptor_MouseLeave(object sender, EventArgs e) {
+            Cursor = Cursors.Arrow;
         }
     }
 }

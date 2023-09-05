@@ -24,26 +24,28 @@
         /// </summary>
         private void InitializeComponent() {
             this.materialCard1 = new MaterialSkin.Controls.MaterialCard();
-            this.mTextBoxRequester = new MaterialSkin.Controls.MaterialTextBox();
-            this.mTextBoxAcceptor = new MaterialSkin.Controls.MaterialTextBox();
+            this.mLabelAcceptor = new MaterialSkin.Controls.MaterialLabel();
+            this.materialLabel5 = new MaterialSkin.Controls.MaterialLabel();
+            this.mLabelRequester = new MaterialSkin.Controls.MaterialLabel();
+            this.materialLabel3 = new MaterialSkin.Controls.MaterialLabel();
             this.dTimePickerRequest = new System.Windows.Forms.DateTimePicker();
             this.materialCard2 = new MaterialSkin.Controls.MaterialCard();
-            this.mLabel1 = new MaterialSkin.Controls.MaterialLabel();
-            this.mLabel2 = new MaterialSkin.Controls.MaterialLabel();
-            this.dTimePickerAccepted = new System.Windows.Forms.DateTimePicker();
-            this.mLabel3 = new MaterialSkin.Controls.MaterialLabel();
-            this.dTimePickerStarted = new System.Windows.Forms.DateTimePicker();
+            this.materialLabel1 = new MaterialSkin.Controls.MaterialLabel();
+            this.textBoxMinutes = new System.Windows.Forms.TextBox();
+            this.mLabel5 = new MaterialSkin.Controls.MaterialLabel();
+            this.textBoxHours = new System.Windows.Forms.TextBox();
+            this.materialLabel2 = new MaterialSkin.Controls.MaterialLabel();
             this.mLabel4 = new MaterialSkin.Controls.MaterialLabel();
             this.dTimePickerEnded = new System.Windows.Forms.DateTimePicker();
+            this.mLabel3 = new MaterialSkin.Controls.MaterialLabel();
+            this.dTimePickerStarted = new System.Windows.Forms.DateTimePicker();
+            this.mLabel2 = new MaterialSkin.Controls.MaterialLabel();
+            this.dTimePickerAccepted = new System.Windows.Forms.DateTimePicker();
+            this.mLabel1 = new MaterialSkin.Controls.MaterialLabel();
             this.mTextBoxJob = new MaterialSkin.Controls.MaterialTextBox();
             this.mTextBoxStars = new MaterialSkin.Controls.MaterialTextBox();
             this.mButtonAction = new MaterialSkin.Controls.MaterialButton();
             this.mButtonCancel = new MaterialSkin.Controls.MaterialButton();
-            this.materialLabel2 = new MaterialSkin.Controls.MaterialLabel();
-            this.textBoxHours = new System.Windows.Forms.TextBox();
-            this.mLabel5 = new MaterialSkin.Controls.MaterialLabel();
-            this.materialLabel1 = new MaterialSkin.Controls.MaterialLabel();
-            this.textBoxMinutes = new System.Windows.Forms.TextBox();
             this.materialCard3 = new MaterialSkin.Controls.MaterialCard();
             this.mMultiLineTextBoxCaption = new MaterialSkin.Controls.MaterialMultiLineTextBox2();
             this.materialCard1.SuspendLayout();
@@ -54,8 +56,10 @@
             // materialCard1
             // 
             this.materialCard1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.materialCard1.Controls.Add(this.mTextBoxAcceptor);
-            this.materialCard1.Controls.Add(this.mTextBoxRequester);
+            this.materialCard1.Controls.Add(this.mLabelAcceptor);
+            this.materialCard1.Controls.Add(this.materialLabel5);
+            this.materialCard1.Controls.Add(this.mLabelRequester);
+            this.materialCard1.Controls.Add(this.materialLabel3);
             this.materialCard1.Depth = 0;
             this.materialCard1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.materialCard1.Location = new System.Drawing.Point(14, 75);
@@ -66,43 +70,57 @@
             this.materialCard1.Size = new System.Drawing.Size(196, 141);
             this.materialCard1.TabIndex = 0;
             // 
-            // mTextBoxRequester
+            // mLabelAcceptor
             // 
-            this.mTextBoxRequester.AnimateReadOnly = false;
-            this.mTextBoxRequester.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.mTextBoxRequester.Depth = 0;
-            this.mTextBoxRequester.Enabled = false;
-            this.mTextBoxRequester.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.mTextBoxRequester.Hint = "Richiedente";
-            this.mTextBoxRequester.LeadingIcon = null;
-            this.mTextBoxRequester.Location = new System.Drawing.Point(17, 17);
-            this.mTextBoxRequester.MaxLength = 50;
-            this.mTextBoxRequester.MouseState = MaterialSkin.MouseState.OUT;
-            this.mTextBoxRequester.Multiline = false;
-            this.mTextBoxRequester.Name = "mTextBoxRequester";
-            this.mTextBoxRequester.Size = new System.Drawing.Size(162, 50);
-            this.mTextBoxRequester.TabIndex = 0;
-            this.mTextBoxRequester.Text = "";
-            this.mTextBoxRequester.TrailingIcon = null;
+            this.mLabelAcceptor.AutoSize = true;
+            this.mLabelAcceptor.Depth = 0;
+            this.mLabelAcceptor.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.mLabelAcceptor.Location = new System.Drawing.Point(17, 108);
+            this.mLabelAcceptor.MouseState = MaterialSkin.MouseState.HOVER;
+            this.mLabelAcceptor.Name = "mLabelAcceptor";
+            this.mLabelAcceptor.Size = new System.Drawing.Size(57, 19);
+            this.mLabelAcceptor.TabIndex = 5;
+            this.mLabelAcceptor.Text = "<nome>";
+            this.mLabelAcceptor.MouseLeave += new System.EventHandler(this.mLabelAcceptor_MouseLeave);
+            this.mLabelAcceptor.MouseHover += new System.EventHandler(this.mLabelAcceptor_MouseHover);
             // 
-            // mTextBoxAcceptor
+            // materialLabel5
             // 
-            this.mTextBoxAcceptor.AnimateReadOnly = false;
-            this.mTextBoxAcceptor.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.mTextBoxAcceptor.Depth = 0;
-            this.mTextBoxAcceptor.Enabled = false;
-            this.mTextBoxAcceptor.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.mTextBoxAcceptor.Hint = "Accettante";
-            this.mTextBoxAcceptor.LeadingIcon = null;
-            this.mTextBoxAcceptor.Location = new System.Drawing.Point(17, 74);
-            this.mTextBoxAcceptor.MaxLength = 50;
-            this.mTextBoxAcceptor.MouseState = MaterialSkin.MouseState.OUT;
-            this.mTextBoxAcceptor.Multiline = false;
-            this.mTextBoxAcceptor.Name = "mTextBoxAcceptor";
-            this.mTextBoxAcceptor.Size = new System.Drawing.Size(162, 50);
-            this.mTextBoxAcceptor.TabIndex = 1;
-            this.mTextBoxAcceptor.Text = "";
-            this.mTextBoxAcceptor.TrailingIcon = null;
+            this.materialLabel5.AutoSize = true;
+            this.materialLabel5.Depth = 0;
+            this.materialLabel5.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.materialLabel5.Location = new System.Drawing.Point(17, 82);
+            this.materialLabel5.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialLabel5.Name = "materialLabel5";
+            this.materialLabel5.Size = new System.Drawing.Size(80, 19);
+            this.materialLabel5.TabIndex = 4;
+            this.materialLabel5.Text = "Accettante:";
+            // 
+            // mLabelRequester
+            // 
+            this.mLabelRequester.AutoSize = true;
+            this.mLabelRequester.Depth = 0;
+            this.mLabelRequester.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.mLabelRequester.Location = new System.Drawing.Point(17, 40);
+            this.mLabelRequester.MouseState = MaterialSkin.MouseState.HOVER;
+            this.mLabelRequester.Name = "mLabelRequester";
+            this.mLabelRequester.Size = new System.Drawing.Size(57, 19);
+            this.mLabelRequester.TabIndex = 3;
+            this.mLabelRequester.Text = "<nome>";
+            this.mLabelRequester.MouseLeave += new System.EventHandler(this.mLabelRequester_MouseLeave);
+            this.mLabelRequester.MouseHover += new System.EventHandler(this.mLabelRequester_MouseHover);
+            // 
+            // materialLabel3
+            // 
+            this.materialLabel3.AutoSize = true;
+            this.materialLabel3.Depth = 0;
+            this.materialLabel3.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.materialLabel3.Location = new System.Drawing.Point(17, 14);
+            this.materialLabel3.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialLabel3.Name = "materialLabel3";
+            this.materialLabel3.Size = new System.Drawing.Size(87, 19);
+            this.materialLabel3.TabIndex = 2;
+            this.materialLabel3.Text = "Richiedente:";
             // 
             // dTimePickerRequest
             // 
@@ -138,57 +156,55 @@
             this.materialCard2.Size = new System.Drawing.Size(196, 294);
             this.materialCard2.TabIndex = 2;
             // 
-            // mLabel1
+            // materialLabel1
             // 
-            this.mLabel1.AutoSize = true;
-            this.mLabel1.Depth = 0;
-            this.mLabel1.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.mLabel1.Location = new System.Drawing.Point(17, 17);
-            this.mLabel1.MouseState = MaterialSkin.MouseState.HOVER;
-            this.mLabel1.Name = "mLabel1";
-            this.mLabel1.Size = new System.Drawing.Size(103, 19);
-            this.mLabel1.TabIndex = 2;
-            this.mLabel1.Text = "Data richiesta:";
+            this.materialLabel1.AutoSize = true;
+            this.materialLabel1.Depth = 0;
+            this.materialLabel1.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.materialLabel1.Location = new System.Drawing.Point(105, 262);
+            this.materialLabel1.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialLabel1.Name = "materialLabel1";
+            this.materialLabel1.Size = new System.Drawing.Size(15, 19);
+            this.materialLabel1.TabIndex = 15;
+            this.materialLabel1.Text = "m";
             // 
-            // mLabel2
+            // textBoxMinutes
             // 
-            this.mLabel2.AutoSize = true;
-            this.mLabel2.Depth = 0;
-            this.mLabel2.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.mLabel2.Location = new System.Drawing.Point(17, 72);
-            this.mLabel2.MouseState = MaterialSkin.MouseState.HOVER;
-            this.mLabel2.Name = "mLabel2";
-            this.mLabel2.Size = new System.Drawing.Size(146, 19);
-            this.mLabel2.TabIndex = 4;
-            this.mLabel2.Text = "Data presa in carico:";
+            this.textBoxMinutes.Location = new System.Drawing.Point(69, 262);
+            this.textBoxMinutes.Name = "textBoxMinutes";
+            this.textBoxMinutes.Size = new System.Drawing.Size(30, 20);
+            this.textBoxMinutes.TabIndex = 14;
             // 
-            // dTimePickerAccepted
+            // mLabel5
             // 
-            this.dTimePickerAccepted.Enabled = false;
-            this.dTimePickerAccepted.Location = new System.Drawing.Point(17, 94);
-            this.dTimePickerAccepted.Name = "dTimePickerAccepted";
-            this.dTimePickerAccepted.Size = new System.Drawing.Size(162, 20);
-            this.dTimePickerAccepted.TabIndex = 3;
+            this.mLabel5.AutoSize = true;
+            this.mLabel5.Depth = 0;
+            this.mLabel5.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.mLabel5.Location = new System.Drawing.Point(53, 263);
+            this.mLabel5.MouseState = MaterialSkin.MouseState.HOVER;
+            this.mLabel5.Name = "mLabel5";
+            this.mLabel5.Size = new System.Drawing.Size(10, 19);
+            this.mLabel5.TabIndex = 13;
+            this.mLabel5.Text = "h";
             // 
-            // mLabel3
+            // textBoxHours
             // 
-            this.mLabel3.AutoSize = true;
-            this.mLabel3.Depth = 0;
-            this.mLabel3.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.mLabel3.Location = new System.Drawing.Point(17, 131);
-            this.mLabel3.MouseState = MaterialSkin.MouseState.HOVER;
-            this.mLabel3.Name = "mLabel3";
-            this.mLabel3.Size = new System.Drawing.Size(81, 19);
-            this.mLabel3.TabIndex = 6;
-            this.mLabel3.Text = "Data inizio:";
+            this.textBoxHours.Location = new System.Drawing.Point(17, 263);
+            this.textBoxHours.Name = "textBoxHours";
+            this.textBoxHours.Size = new System.Drawing.Size(30, 20);
+            this.textBoxHours.TabIndex = 12;
             // 
-            // dTimePickerStarted
+            // materialLabel2
             // 
-            this.dTimePickerStarted.Location = new System.Drawing.Point(17, 153);
-            this.dTimePickerStarted.Name = "dTimePickerStarted";
-            this.dTimePickerStarted.Size = new System.Drawing.Size(162, 20);
-            this.dTimePickerStarted.TabIndex = 5;
-            this.dTimePickerStarted.ValueChanged += new System.EventHandler(this.dTimePickerStarted_ValueChanged);
+            this.materialLabel2.AutoSize = true;
+            this.materialLabel2.Depth = 0;
+            this.materialLabel2.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.materialLabel2.Location = new System.Drawing.Point(17, 241);
+            this.materialLabel2.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialLabel2.Name = "materialLabel2";
+            this.materialLabel2.Size = new System.Drawing.Size(62, 19);
+            this.materialLabel2.TabIndex = 11;
+            this.materialLabel2.Text = "Duarata:";
             // 
             // mLabel4
             // 
@@ -210,13 +226,65 @@
             this.dTimePickerEnded.TabIndex = 7;
             this.dTimePickerEnded.ValueChanged += new System.EventHandler(this.dTimePickerEnded_ValueChanged);
             // 
+            // mLabel3
+            // 
+            this.mLabel3.AutoSize = true;
+            this.mLabel3.Depth = 0;
+            this.mLabel3.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.mLabel3.Location = new System.Drawing.Point(17, 131);
+            this.mLabel3.MouseState = MaterialSkin.MouseState.HOVER;
+            this.mLabel3.Name = "mLabel3";
+            this.mLabel3.Size = new System.Drawing.Size(81, 19);
+            this.mLabel3.TabIndex = 6;
+            this.mLabel3.Text = "Data inizio:";
+            // 
+            // dTimePickerStarted
+            // 
+            this.dTimePickerStarted.Location = new System.Drawing.Point(17, 153);
+            this.dTimePickerStarted.Name = "dTimePickerStarted";
+            this.dTimePickerStarted.Size = new System.Drawing.Size(162, 20);
+            this.dTimePickerStarted.TabIndex = 5;
+            this.dTimePickerStarted.ValueChanged += new System.EventHandler(this.dTimePickerStarted_ValueChanged);
+            // 
+            // mLabel2
+            // 
+            this.mLabel2.AutoSize = true;
+            this.mLabel2.Depth = 0;
+            this.mLabel2.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.mLabel2.Location = new System.Drawing.Point(17, 72);
+            this.mLabel2.MouseState = MaterialSkin.MouseState.HOVER;
+            this.mLabel2.Name = "mLabel2";
+            this.mLabel2.Size = new System.Drawing.Size(146, 19);
+            this.mLabel2.TabIndex = 4;
+            this.mLabel2.Text = "Data presa in carico:";
+            // 
+            // dTimePickerAccepted
+            // 
+            this.dTimePickerAccepted.Enabled = false;
+            this.dTimePickerAccepted.Location = new System.Drawing.Point(17, 94);
+            this.dTimePickerAccepted.Name = "dTimePickerAccepted";
+            this.dTimePickerAccepted.Size = new System.Drawing.Size(162, 20);
+            this.dTimePickerAccepted.TabIndex = 3;
+            // 
+            // mLabel1
+            // 
+            this.mLabel1.AutoSize = true;
+            this.mLabel1.Depth = 0;
+            this.mLabel1.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.mLabel1.Location = new System.Drawing.Point(17, 17);
+            this.mLabel1.MouseState = MaterialSkin.MouseState.HOVER;
+            this.mLabel1.Name = "mLabel1";
+            this.mLabel1.Size = new System.Drawing.Size(103, 19);
+            this.mLabel1.TabIndex = 2;
+            this.mLabel1.Text = "Data richiesta:";
+            // 
             // mTextBoxJob
             // 
             this.mTextBoxJob.AnimateReadOnly = false;
             this.mTextBoxJob.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.mTextBoxJob.Depth = 0;
             this.mTextBoxJob.Enabled = false;
-            this.mTextBoxJob.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.mTextBoxJob.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.mTextBoxJob.Hint = "Lavoro";
             this.mTextBoxJob.LeadingIcon = null;
             this.mTextBoxJob.Location = new System.Drawing.Point(14, 17);
@@ -234,7 +302,7 @@
             this.mTextBoxStars.AnimateReadOnly = false;
             this.mTextBoxStars.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.mTextBoxStars.Depth = 0;
-            this.mTextBoxStars.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.mTextBoxStars.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.mTextBoxStars.Hint = "Stelle";
             this.mTextBoxStars.LeadingIcon = null;
             this.mTextBoxStars.Location = new System.Drawing.Point(14, 74);
@@ -286,56 +354,6 @@
             this.mButtonCancel.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
             this.mButtonCancel.UseAccentColor = false;
             this.mButtonCancel.UseVisualStyleBackColor = true;
-            // 
-            // materialLabel2
-            // 
-            this.materialLabel2.AutoSize = true;
-            this.materialLabel2.Depth = 0;
-            this.materialLabel2.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.materialLabel2.Location = new System.Drawing.Point(17, 241);
-            this.materialLabel2.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialLabel2.Name = "materialLabel2";
-            this.materialLabel2.Size = new System.Drawing.Size(62, 19);
-            this.materialLabel2.TabIndex = 11;
-            this.materialLabel2.Text = "Duarata:";
-            // 
-            // textBoxHours
-            // 
-            this.textBoxHours.Location = new System.Drawing.Point(17, 263);
-            this.textBoxHours.Name = "textBoxHours";
-            this.textBoxHours.Size = new System.Drawing.Size(30, 20);
-            this.textBoxHours.TabIndex = 12;
-            // 
-            // mLabel5
-            // 
-            this.mLabel5.AutoSize = true;
-            this.mLabel5.Depth = 0;
-            this.mLabel5.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.mLabel5.Location = new System.Drawing.Point(53, 263);
-            this.mLabel5.MouseState = MaterialSkin.MouseState.HOVER;
-            this.mLabel5.Name = "mLabel5";
-            this.mLabel5.Size = new System.Drawing.Size(10, 19);
-            this.mLabel5.TabIndex = 13;
-            this.mLabel5.Text = "h";
-            // 
-            // materialLabel1
-            // 
-            this.materialLabel1.AutoSize = true;
-            this.materialLabel1.Depth = 0;
-            this.materialLabel1.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.materialLabel1.Location = new System.Drawing.Point(105, 262);
-            this.materialLabel1.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialLabel1.Name = "materialLabel1";
-            this.materialLabel1.Size = new System.Drawing.Size(15, 19);
-            this.materialLabel1.TabIndex = 15;
-            this.materialLabel1.Text = "m";
-            // 
-            // textBoxMinutes
-            // 
-            this.textBoxMinutes.Location = new System.Drawing.Point(69, 262);
-            this.textBoxMinutes.Name = "textBoxMinutes";
-            this.textBoxMinutes.Size = new System.Drawing.Size(30, 20);
-            this.textBoxMinutes.TabIndex = 14;
             // 
             // materialCard3
             // 
@@ -392,6 +410,7 @@
             this.Name = "TaskDetails";
             this.Text = "TaskDetails";
             this.materialCard1.ResumeLayout(false);
+            this.materialCard1.PerformLayout();
             this.materialCard2.ResumeLayout(false);
             this.materialCard2.PerformLayout();
             this.materialCard3.ResumeLayout(false);
@@ -402,8 +421,6 @@
         #endregion
 
         private MaterialSkin.Controls.MaterialCard materialCard1;
-        private MaterialSkin.Controls.MaterialTextBox mTextBoxAcceptor;
-        private MaterialSkin.Controls.MaterialTextBox mTextBoxRequester;
         private System.Windows.Forms.DateTimePicker dTimePickerRequest;
         private MaterialSkin.Controls.MaterialCard materialCard2;
         private MaterialSkin.Controls.MaterialLabel mLabel4;
@@ -424,5 +441,9 @@
         private MaterialSkin.Controls.MaterialLabel materialLabel2;
         private MaterialSkin.Controls.MaterialCard materialCard3;
         private MaterialSkin.Controls.MaterialMultiLineTextBox2 mMultiLineTextBoxCaption;
+        private MaterialSkin.Controls.MaterialLabel mLabelRequester;
+        private MaterialSkin.Controls.MaterialLabel materialLabel3;
+        private MaterialSkin.Controls.MaterialLabel mLabelAcceptor;
+        private MaterialSkin.Controls.MaterialLabel materialLabel5;
     }
 }
