@@ -77,15 +77,13 @@ namespace Borelli_BdT.presenter {
 
 
         public void LoadHomeScreen() {
-            View.LoadUserData(EntityCustomerMasterData.GetEntity(CurrentUser.Data), $"{Parameters.DPPictures}/{CurrentUser.Nickname}.jpg");
+            View.LoadUserData(CurrentUser.Nickname, EntityUser.GetEntity(CurrentUser));
 
             List<EntityTask> pertinentTasks = GetEntityTasksList(TasksList.GetAppropriateTasks(CurrentUser, TaskUserFilter.ZoneAndJob));
             View.LoadTasksList(pertinentTasks, MainPage.TaskType.Pertinent, LoadList);
 
             List<EntityTask> doneTasks = GetEntityTasksList(TasksList.GetAcceptedTasks(CurrentUser.Nickname, AcTaskState.Done));
             View.LoadTasksList(doneTasks, MainPage.TaskType.Accepted, LoadList);
-
-            View.WriteDeltaHours(CurrentUser.DoneHours - CurrentUser.RecievedHours);
 
             List<EntityTask> reqTask = GetEntityTasksList(TasksList.GetRequestedTasks(CurrentUser.Nickname, RqTaskState.Done));
             View.LoadTasksList(reqTask, MainPage.TaskType.Requested, LoadList);

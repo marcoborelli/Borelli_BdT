@@ -104,26 +104,15 @@ namespace Borelli_BdT.view {
         }
 
 
-        public void LoadUserData(EntityCustomerMasterData e, string photoPath) {
-            pictureBoxPhoto.ImageLocation = photoPath;
-            mLabelName.Text = e.Field1;
-            mLabelSurname.Text = e.Field2;
-            mLabelAddress.Text = e.Field5;
-            mLabelDistr.Text = e.Field6;
+        public void LoadUserData(string username, EntityUser viewer) {
+            if (mCardAccountInfo.Controls.Count > 0)
+                mCardAccountInfo.Controls.Clear();
+
+            UserDetails userDetailsForm = new UserDetails(username, viewer);
+            userDetailsForm.TopLevel = false;
+            mCardAccountInfo.Controls.Add(userDetailsForm);
+            userDetailsForm.Show();
         }
-
-        public void WriteDeltaHours(TimeSpan delta) {
-            if (delta.TotalMinutes < 0) {
-                labelDeltaHours.ForeColor = Color.Red;
-            } else if (delta.TotalMinutes > 0) {
-                labelDeltaHours.ForeColor = Color.Green;
-            }
-            labelDeltaHours.Font = new Font("Cooper Black", 14);
-
-            labelDeltaHours.Text = $"{delta.Hours}h {Math.Abs(delta.Minutes)}m";
-        }
-
-
 
         public void LoadJobsList(List<string> input) {
             if (input != null) {
