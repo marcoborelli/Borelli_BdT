@@ -79,6 +79,8 @@ namespace Borelli_BdT.view {
             Presenter = new TaskDetailsPresenter(this, taskId, e);
             mButtonCancel.Click += new EventHandler(Presenter.OnCancelButton);
             mButtonAction.Click += new EventHandler(Presenter.OnActionButton);
+            mLabelAcceptor.Click += new EventHandler(Presenter.OnAcceptorLabel);
+            mLabelRequester.Click += new EventHandler(Presenter.OnRequesterLabel);
 
             State = TaskDetailsPresenter.GetFormState(taskId, e);
             Presenter.SetForm();
@@ -111,6 +113,11 @@ namespace Borelli_BdT.view {
 
         public void HideAllButtons() {
             mButtonAction.Visible = mButtonCancel.Visible = false;
+        }
+
+        public void OpenUserDetailsForm(string username, EntityUser e) {
+            UserDetails userDetailsForm = new UserDetails(username, e);
+            userDetailsForm.ShowDialog();
         }
 
 

@@ -92,6 +92,15 @@ namespace Borelli_BdT.presenter {
             }
         }
 
+        public void OnAcceptorLabel(object sender, EventArgs e) {
+            View.OpenUserDetailsForm(CurrentTask.AcceptorNickname, EntityUser.GetEntity(CurrentUser));
+        }
+
+        public void OnRequesterLabel(object sender, EventArgs e) {
+            View.OpenUserDetailsForm(CurrentTask.RequesterNickname, EntityUser.GetEntity(CurrentUser));
+        }
+
+
 
         public static TaskDetails.FormState GetFormState(string taskId, EntityUser e) {
             User u = EntityUser.GetUser(e);
