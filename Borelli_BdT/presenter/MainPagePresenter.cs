@@ -92,21 +92,21 @@ namespace Borelli_BdT.presenter {
         }
 
         public void DoubleClickLWRequestedTask(object sender, MouseEventArgs e) {
-            string taskId = View.GetTaskIdFromListView(MainPage.TaskType.Requested, LoadList);
+            string taskId = View.GetTaskIdFromLV(MainPage.TaskType.Requested, LoadList);
             EntityUser eu = EntityUser.GetEntity(CurrentUser);
 
             View.OpenTaskDetailsForm(taskId, eu);
         }
 
         public void DoubleClickLWPertinentTask(object sender, MouseEventArgs e) {
-            string taskId = View.GetTaskIdFromListView(MainPage.TaskType.Pertinent, LoadList);
+            string taskId = View.GetTaskIdFromLV(MainPage.TaskType.Pertinent, LoadList);
             EntityUser eu = EntityUser.GetEntity(CurrentUser);
 
             View.OpenTaskDetailsForm(taskId, eu);
         }
 
         public void DoubleClickLWAcceptedTask(object sender, MouseEventArgs e) {
-            string taskId = View.GetTaskIdFromListView(MainPage.TaskType.Accepted, LoadList);
+            string taskId = View.GetTaskIdFromLV(MainPage.TaskType.Accepted, LoadList);
             EntityUser eu = EntityUser.GetEntity(CurrentUser);
 
             View.OpenTaskDetailsForm(taskId, eu);
@@ -133,7 +133,7 @@ namespace Borelli_BdT.presenter {
         }
 
         public void OnAcceptTask(object sender, EventArgs e) {
-            string id = View.GetTaskIdFromListView(TaskType, LoadList);
+            string id = View.GetTaskIdFromLV(TaskType, LoadList);
             Task t = TasksList.GetTask(id);
 
             if (t == null)
@@ -257,8 +257,8 @@ namespace Borelli_BdT.presenter {
             return (CurrentUser.Level == UserLevel.Secretary);
         }
 
-        public void DoubleClickDetailsLW(object sender, MouseEventArgs e) {
-            string taskId = View.GetTaskIdFromListView(TaskType, LoadList);
+        public void DoubleClickDetailsLV(object sender, MouseEventArgs e) {
+            string taskId = View.GetTaskIdFromLV(TaskType, LoadList);
             EntityUser eu = EntityUser.GetEntity(CurrentUser);
 
             View.OpenTaskDetailsForm(taskId, eu);

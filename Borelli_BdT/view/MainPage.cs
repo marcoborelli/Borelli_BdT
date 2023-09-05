@@ -67,7 +67,7 @@ namespace Borelli_BdT.view {
             mButtonReqTask.Click += new EventHandler(Presenter.OnRequestTask);
             mRdButPSFjob.CheckedChanged += new EventHandler(Presenter.ReLoadReqAcceptTask);
             mRdButPSFrequester.CheckedChanged += new EventHandler(Presenter.ReLoadReqAcceptTask);
-            listViewPertinentComplete.MouseDoubleClick += new MouseEventHandler(Presenter.DoubleClickDetailsLW);
+            listViewPertinentComplete.MouseDoubleClick += new MouseEventHandler(Presenter.DoubleClickDetailsLV);
 
             textBoxSearchAcceptedTasks.TextChanged += new EventHandler(Presenter.ReLoadAcceptedTasks);
             mRdButASFjob.CheckedChanged += new EventHandler(Presenter.ReLoadAcceptedTasks);
@@ -75,7 +75,7 @@ namespace Borelli_BdT.view {
             mRdButAVOaccepted.CheckedChanged += new EventHandler(Presenter.ReLoadAcceptedTasks);
             mRdButAVOall.CheckedChanged += new EventHandler(Presenter.ReLoadAcceptedTasks);
             mRdButAVOdone.CheckedChanged += new EventHandler(Presenter.ReLoadAcceptedTasks);
-            listViewDoneComplete.MouseDoubleClick += new MouseEventHandler(Presenter.DoubleClickDetailsLW);
+            listViewDoneComplete.MouseDoubleClick += new MouseEventHandler(Presenter.DoubleClickDetailsLV);
 
             textBoxSearchRequestedTasks.TextChanged += new EventHandler(Presenter.ReLoadRequestedTasks);
             mRdButRSFacceptor.CheckedChanged += new EventHandler(Presenter.ReLoadRequestedTasks);
@@ -84,7 +84,7 @@ namespace Borelli_BdT.view {
             mRdButRVOaccepted.CheckedChanged += new EventHandler(Presenter.ReLoadRequestedTasks);
             mRdButRVOdone.CheckedChanged += new EventHandler(Presenter.ReLoadRequestedTasks);
             mRdButRVOall.CheckedChanged += new EventHandler(Presenter.ReLoadRequestedTasks);
-            listViewRequestedComplete.MouseDoubleClick += new MouseEventHandler(Presenter.DoubleClickDetailsLW);
+            listViewRequestedComplete.MouseDoubleClick += new MouseEventHandler(Presenter.DoubleClickDetailsLV);
 
             listViewAcceptUsers.MouseDoubleClick += new MouseEventHandler(Presenter.DoubleClickOnAcceptUsersLW);
             mButtonModDistr.Click += new EventHandler(Presenter.OnModifyDistr);
@@ -104,8 +104,8 @@ namespace Borelli_BdT.view {
         }
 
 
-        public void LoadUserData(EntityCustomerMasterData e, string photoPhat) {
-            pictureBoxPhoto.ImageLocation = photoPhat;
+        public void LoadUserData(EntityCustomerMasterData e, string photoPath) {
+            pictureBoxPhoto.ImageLocation = photoPath;
             mLabelName.Text = e.Field1;
             mLabelSurname.Text = e.Field2;
             mLabelAddress.Text = e.Field5;
@@ -353,7 +353,7 @@ namespace Borelli_BdT.view {
         public string GetUserNicknameInUsersListView() {
             return listViewAcceptUsers.SelectedItems[0].SubItems[0].Text;
         }
-        public string GetTaskIdFromListView(TaskType type, LoadTskList how) { //di defualt tutti gli id si trovano sulla prima colonna
+        public string GetTaskIdFromLV(TaskType type, LoadTskList how) { //di defualt tutti gli id si trovano sulla prima colonna
             ListView m = GetCurrentListView(type, how);
             return m.SelectedItems[0].SubItems[0].Text;
         }

@@ -9,15 +9,23 @@ namespace Borelli_BdT.presenter {
         private User CurrentUser { get; set; }
         private Task CurrentTask { get; set; }
 
-        public TaskDetailsPresenter(TaskDetails view, string id, EntityUser eu) {
+        public TaskDetailsPresenter(TaskDetails view, string taskId, EntityUser eu) { //TODO: controllare se ci sono altri modi per fare senza passarsi l'utente
             View = view;
 
-            Task t = TasksList.GetTask(id);
+            Task t = TasksList.GetTask(taskId);
+
+            if (t == null) {
+                throw new Exception("Errore caricamento task");
+            }
+
             EntityTask et = EntityTask.GetEntity(t);
             View.CurrentTask = et;
+            CurrentTask = t;
 
             CurrentUser = UsersList.GetUser(eu.Field1);
-            CurrentTask = TasksList.GetTask(id);
+            if (CurrentUser == null) {
+                throw new Exception("Errore caricamento user");
+            }
         }
 
         private TaskDetails View {
