@@ -42,21 +42,20 @@ namespace Borelli_BdT.view {
                 mLabelAddress.Text = value.Field5;
             }
         }
-        //TODO: private UserDetailsPresenter Presenter { get; set; }
+        private UserDetailsPresenter Presenter { get; set; }
         public FormState FState { get; private set; }
 
         public UserDetails(string username, EntityUser viewer) {
             InitializeComponent();
             FormManager.AddForm(this);
 
-            /* TODO: Presenter = new UserDetailsPresenter(this, username, viewer);
+            Presenter = new UserDetailsPresenter(this, username, viewer);
             materialTabControl1.SelectedIndexChanged += new EventHandler(Presenter.SelectedTabChanged);
             listViewDoneTasks.MouseDoubleClick += new MouseEventHandler(Presenter.DoubleClickDoneLV);
             listViewRequestedTasks.MouseDoubleClick += new MouseEventHandler(Presenter.DoubleClickRequestedLV);
 
             FState = UserDetailsPresenter.GetFormState(username, viewer);
             Presenter.SetForm();
-            */
 
             SetFontAndColorToLabels();
         }

@@ -68,6 +68,7 @@
     <Compile Include="presenter\MainPagePresenter.cs" />
     <Compile Include="presenter\SignUpPresenter.cs" />
     <Compile Include="presenter\TaskDetailsPresenter.cs" />
+    <Compile Include="presenter\UserDetailsPresenter.cs" />
     <Compile Include="utilities\DataChecker.cs" />
     <Compile Include="utilities\FileManager.cs" />
     <Compile Include="utilities\FormManager.cs" />
