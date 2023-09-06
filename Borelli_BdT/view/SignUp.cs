@@ -68,7 +68,7 @@ namespace Borelli_BdT.view {
             FormManager.AddForm(this);
 
             Presenter = new SignUpPresenter(this);
-            mButtonCreateAccount.Click += new EventHandler(Presenter.OnCreateAccount);
+            mButtonAction.Click += new EventHandler(Presenter.OnActionButton);
             mButtonDelete.Click += new EventHandler(Presenter.OnDeleteAccount);
             mButtonSaveChanges.Click += new EventHandler(Presenter.OnSaveChanges);
 
@@ -81,8 +81,8 @@ namespace Borelli_BdT.view {
             InitializeComponent();
             FormManager.AddForm(this);
 
-            SignUpPresenter p = new SignUpPresenter(this);
-            mButtonCreateAccount.Click += new EventHandler(p.OnCreateAccount);
+            Presenter = new SignUpPresenter(this);
+            mButtonAction.Click += new EventHandler(Presenter.OnActionButton);
 
             mTextBoxUsername.Text = username;
             mTextBoxPasswd.Text = passwd;
@@ -172,12 +172,13 @@ namespace Borelli_BdT.view {
             }
 
 
-            List<string> otherWork = new List<string>(tb.Text.Split(';'));
-            for (int i = 0; i < otherWork.Count; i++)
-                otherWork[i] = otherWork[i].Trim().ToUpper();
-
+            List<string> otherValue = new List<string>(tb.Text.Split(';'));
             if (!String.IsNullOrWhiteSpace(tb.Text)) {
-                selectedItems.AddRange(otherWork);
+                for (int i = 0; i < otherValue.Count; i++) {
+                    otherValue[i] = otherValue[i].Trim().ToUpper();
+                }
+
+                selectedItems.AddRange(otherValue);
             }
 
 
@@ -205,6 +206,8 @@ namespace Borelli_BdT.view {
                     pictureBoxPhoto.AllowDrop = true;
                     mButtonDelete.Visible = mButtonSaveChanges.Visible = mSwitchSecretary.Visible = false;
                     mButtonLoadImage.Visible = true; //faccio cosi' perche' senno' si bugga visualmente
+
+                    mButtonAction.Text = "CREA ACCOUNT";
                     break;
                 case FormState.Confirmation: //non devo poter modificare nessun campo tranne lavori e quartieri in cui lavora
                     pictureBoxPhoto.AllowDrop = false;
@@ -213,7 +216,7 @@ namespace Borelli_BdT.view {
                         mTextBoxMail.Enabled = mTextBoxAddr.Enabled = false;
                     mComboBoxHDistr.Enabled = dTimePickerBorn.Enabled = false;
 
-                    mButtonCreateAccount.Text = "CONFERMA ACCOUNT";
+                    mButtonAction.Text = "CONFERMA ACCOUNT";
 
                     pictureBoxPhoto.ImageLocation = Parameters.GetCompleteImagePath(CurrentUser.Field1);
                     pictureBoxPhoto.BorderStyle = BorderStyle.None;

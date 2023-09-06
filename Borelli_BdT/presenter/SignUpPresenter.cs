@@ -20,7 +20,7 @@ namespace Borelli_BdT.presenter {
             set => _view = (value != null) ? value : throw new Exception("Inserire un attributo view valido");
         }
 
-        public void OnCreateAccount(object sender, EventArgs e) {
+        public void OnActionButton(object sender, EventArgs e) {
             EntityUser tmp = View.CurrentUser;
 
             try {

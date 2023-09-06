@@ -38,7 +38,7 @@
             this.mLabel1 = new MaterialSkin.Controls.MaterialLabel();
             this.mCheckLBoxJobs = new MaterialSkin.Controls.MaterialCheckedListBox();
             this.mTextBoxOtherJob = new MaterialSkin.Controls.MaterialTextBox();
-            this.mButtonCreateAccount = new MaterialSkin.Controls.MaterialButton();
+            this.mButtonAction = new MaterialSkin.Controls.MaterialButton();
             this.mButtonDelete = new MaterialSkin.Controls.MaterialButton();
             this.materialCard3 = new MaterialSkin.Controls.MaterialCard();
             this.mLabel2 = new MaterialSkin.Controls.MaterialLabel();
@@ -314,25 +314,25 @@
             this.mTextBoxOtherJob.Text = "";
             this.mTextBoxOtherJob.TrailingIcon = null;
             // 
-            // mButtonCreateAccount
+            // mButtonAction
             // 
-            this.mButtonCreateAccount.AutoSize = false;
-            this.mButtonCreateAccount.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.mButtonCreateAccount.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
-            this.mButtonCreateAccount.Depth = 0;
-            this.mButtonCreateAccount.HighEmphasis = true;
-            this.mButtonCreateAccount.Icon = null;
-            this.mButtonCreateAccount.Location = new System.Drawing.Point(855, 379);
-            this.mButtonCreateAccount.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-            this.mButtonCreateAccount.MouseState = MaterialSkin.MouseState.HOVER;
-            this.mButtonCreateAccount.Name = "mButtonCreateAccount";
-            this.mButtonCreateAccount.NoAccentTextColor = System.Drawing.Color.Empty;
-            this.mButtonCreateAccount.Size = new System.Drawing.Size(126, 52);
-            this.mButtonCreateAccount.TabIndex = 19;
-            this.mButtonCreateAccount.Text = "CREA ACCOUNT";
-            this.mButtonCreateAccount.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
-            this.mButtonCreateAccount.UseAccentColor = false;
-            this.mButtonCreateAccount.UseVisualStyleBackColor = true;
+            this.mButtonAction.AutoSize = false;
+            this.mButtonAction.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.mButtonAction.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            this.mButtonAction.Depth = 0;
+            this.mButtonAction.HighEmphasis = true;
+            this.mButtonAction.Icon = null;
+            this.mButtonAction.Location = new System.Drawing.Point(855, 379);
+            this.mButtonAction.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.mButtonAction.MouseState = MaterialSkin.MouseState.HOVER;
+            this.mButtonAction.Name = "mButtonAction";
+            this.mButtonAction.NoAccentTextColor = System.Drawing.Color.Empty;
+            this.mButtonAction.Size = new System.Drawing.Size(126, 52);
+            this.mButtonAction.TabIndex = 19;
+            this.mButtonAction.Text = "ACTION BUTTON";
+            this.mButtonAction.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            this.mButtonAction.UseAccentColor = false;
+            this.mButtonAction.UseVisualStyleBackColor = true;
             // 
             // mButtonDelete
             // 
@@ -479,7 +479,7 @@
             this.Controls.Add(this.dTimePickerBorn);
             this.Controls.Add(this.mButtonDelete);
             this.Controls.Add(this.materialCard3);
-            this.Controls.Add(this.mButtonCreateAccount);
+            this.Controls.Add(this.mButtonAction);
             this.Controls.Add(this.materialCard2);
             this.Controls.Add(this.mComboBoxHDistr);
             this.Controls.Add(this.mTextBoxAddr);
@@ -516,7 +516,7 @@
         private MaterialSkin.Controls.MaterialComboBox mComboBoxHDistr;
         private MaterialSkin.Controls.MaterialCard materialCard2;
         private MaterialSkin.Controls.MaterialTextBox mTextBoxOtherJob;
-        private MaterialSkin.Controls.MaterialButton mButtonCreateAccount;
+        private MaterialSkin.Controls.MaterialButton mButtonAction;
         private MaterialSkin.Controls.MaterialButton mButtonDelete;
         private MaterialSkin.Controls.MaterialCard materialCard3;
         private MaterialSkin.Controls.MaterialTextBox mTextBoxOtherDistr;
