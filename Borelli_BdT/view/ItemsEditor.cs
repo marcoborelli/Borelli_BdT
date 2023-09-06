@@ -19,12 +19,20 @@ namespace Borelli_BdT.view {
             InitializeComponent();
             FormManager.AddForm(this);
 
+
             FormUse = u;
 
             ItemsEditorPresenter p = new ItemsEditorPresenter(this);
+            p.InitList();
+            p.LoadListBox();
+
+            textBoxSearch.TextChanged += new EventHandler(p.ReLoadLoadListBox);
             mButtonAdd.Click += new EventHandler(p.OnAddButton);
-            mButtonSaveChanges.Click += new EventHandler(p.SaveChanges);
+            mButtonSaveChanges.Click += new EventHandler(p.OnSaveChanges);
+            FormClosing += new FormClosingEventHandler(p.FormClosing);
         }
+
+
 
         public void LoadItemsInListBox(List<string> items) {
             mListBox.Items.Clear();
@@ -34,6 +42,14 @@ namespace Borelli_BdT.view {
             }
         }
 
+        public bool NotSavedChanges(string text) {
+            DialogResult dr = MessageBox.Show($"{text}", "MODIFICHE NON SALVATE", MessageBoxButtons.YesNo);
+            return (dr == DialogResult.Yes);
+        }
+
+        public string GetTextInSearchBar() {
+            return textBoxSearch.Text;
+        }
         public void ShowError(string error) {
             MessageBox.Show($"{error}");
             ResetTextBox();
