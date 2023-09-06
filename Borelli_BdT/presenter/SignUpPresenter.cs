@@ -37,7 +37,7 @@ namespace Borelli_BdT.presenter {
 
                         if (View.IsThereAnImage()) {
                             FileManager.CheckFolder(Parameters.DPPictures);
-                            View.SaveProfilePicture($"{Parameters.DPPictures}/{u.Nickname}");
+                            View.SaveProfilePicture(Parameters.GetCompleteImagePath(u.Nickname));
                         }
 
                         View.SuccessRegistration("La registrazione è stata effettuata con successo, ora attendi che un membro della segreteria la accetti");

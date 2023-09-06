@@ -78,8 +78,7 @@ namespace Borelli_BdT.presenter {
         private void LoadUserData() {
             EntityUser e = EntityUser.GetEntity(CurrentUser);
 
-            //TODO: implementare funzione che restituisca il nome completo (path + nome + estensione) della foto profilo
-            View.LoadUserData(e, $"{Parameters.DPPictures}/{CurrentUser.Nickname}.jpg", (CurrentUser.DoneHours - CurrentUser.RecievedHours));
+            View.LoadUserData(e, Parameters.GetCompleteImagePath(CurrentUser.Nickname), (CurrentUser.DoneHours - CurrentUser.RecievedHours));
         }
 
         private void LoadTasks() {

@@ -42,7 +42,7 @@ namespace Borelli_BdT.presenter {
             bool exception = false;
             Task backup = CurrentTask.Clone(); //perche' in caso mi inizi a mettere dei valori ma poi dia eccezione almeno cosi' ripristino il precedente stato
 
-            switch(View.State) {
+            switch (View.State) {
                 case TaskDetails.FormState.AcceptorModify: //abbandono task
                     try {
                         CurrentUser.LeftTask(CurrentTask);
@@ -74,7 +74,7 @@ namespace Borelli_BdT.presenter {
                         TimeSpan taskLength = TimeSpan.Parse(View.CurrentTask.Field9);
                         float stars = float.Parse(View.CurrentTask.Field10);
 
-                        CurrentUser.EndRequestedTask(CurrentTask,startTime, endTime, taskLength, stars);
+                        CurrentUser.EndRequestedTask(CurrentTask, startTime, endTime, taskLength, stars);
                     } catch (Exception ex) {
                         exception = true;
                         View.ShowErrorMessge(ex.Message);
@@ -93,11 +93,14 @@ namespace Borelli_BdT.presenter {
         }
 
         public void OnAcceptorLabel(object sender, EventArgs e) {
-            View.OpenUserDetailsForm(CurrentTask.AcceptorNickname, EntityUser.GetEntity(CurrentUser));
+            //TODO: vedere se si puo' mettere che anche se si apre un profilo vedendo le task di un altro profilo non si possa premere sulle info del primo profilo da cui si ha aperto il secondo
+            if (!IsViewerAcceptor())
+                View.OpenUserDetailsForm(CurrentTask.AcceptorNickname, EntityUser.GetEntity(CurrentUser));
         }
 
         public void OnRequesterLabel(object sender, EventArgs e) {
-            View.OpenUserDetailsForm(CurrentTask.RequesterNickname, EntityUser.GetEntity(CurrentUser));
+            if (!IsViewerRequester())
+                View.OpenUserDetailsForm(CurrentTask.RequesterNickname, EntityUser.GetEntity(CurrentUser));
         }
 
 
@@ -156,6 +159,14 @@ namespace Borelli_BdT.presenter {
                     View.SetActionButton("TERMINA TASK");
                     break;
             }
+        }
+
+        public bool IsViewerRequester() {
+            return (CurrentTask.RequesterNickname == CurrentUser.Nickname);
+        }
+
+        public bool IsViewerAcceptor() {
+            return (CurrentTask.AcceptorNickname == CurrentUser.Nickname);
         }
     }
 }

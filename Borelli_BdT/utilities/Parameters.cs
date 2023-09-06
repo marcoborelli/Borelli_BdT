@@ -40,7 +40,6 @@ namespace Borelli_BdT.utilities {
 
 
 
-
         public static string DPBase {
             get => _DPBase;
             private set => DataChecker.SetIfValidString(ref _DPBase, value, "Inserire un nome per la cartella bse valido", CheckStr.Generic);
@@ -51,9 +50,15 @@ namespace Borelli_BdT.utilities {
             private set => DataChecker.SetIfValidNumber(ref _deltaPercentage, value, "Inserire una percentuale [0-100]", CheckNumb.Percentage);
         }
 
+
+
         public static void WriteJsonFile() {
             Parameters p = new Parameters(DPBase, DeltaPercentage);
             FileManager.WriteJsonFile(p, ParametersPath);
+        }
+
+        public static string GetCompleteImagePath(string username) {
+            return $"{Parameters.DPPictures}/{username}.jpg";
         }
     }
 }

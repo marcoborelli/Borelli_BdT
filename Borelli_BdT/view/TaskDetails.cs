@@ -133,8 +133,9 @@ namespace Borelli_BdT.view {
             dTimePickerEnded.Format = DateTimePickerFormat.Long;
         }
 
-        private void mLabelRequester_MouseHover(object sender, EventArgs e) { //TODO: aggiungere controlli che solo se non si e' quell'utente si possa fare
-            Cursor = Cursors.Hand;
+        private void mLabelRequester_MouseHover(object sender, EventArgs e) {
+            if (!Presenter.IsViewerRequester())
+                Cursor = Cursors.Hand;
         }
 
         private void mLabelRequester_MouseLeave(object sender, EventArgs e) {
@@ -142,7 +143,8 @@ namespace Borelli_BdT.view {
         }
 
         private void mLabelAcceptor_MouseHover(object sender, EventArgs e) {
-            Cursor = Cursors.Hand;
+            if (!Presenter.IsViewerAcceptor())
+                Cursor = Cursors.Hand;
         }
 
         private void mLabelAcceptor_MouseLeave(object sender, EventArgs e) {

@@ -127,7 +127,7 @@ namespace Borelli_BdT.view {
         }
 
         public void SaveProfilePicture(string path) {
-            pictureBoxPhoto.Image.Save($"{path}.jpg", ImageFormat.Jpeg);
+            pictureBoxPhoto.Image.Save($"{path}", ImageFormat.Jpeg);
         }
 
         public void Error(string errorText) {
@@ -215,7 +215,7 @@ namespace Borelli_BdT.view {
 
                     mButtonCreateAccount.Text = "CONFERMA ACCOUNT";
 
-                    pictureBoxPhoto.ImageLocation = $"{Parameters.DPPictures}/{CurrentUser.Field1}.jpg";
+                    pictureBoxPhoto.ImageLocation = Parameters.GetCompleteImagePath(CurrentUser.Field1);
                     pictureBoxPhoto.BorderStyle = BorderStyle.None;
 
                     break;
