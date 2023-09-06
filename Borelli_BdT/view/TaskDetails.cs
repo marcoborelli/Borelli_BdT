@@ -104,11 +104,12 @@ namespace Borelli_BdT.view {
         }
 
         public void DisableRequestTaskField() {
-            mMultiLineTextBoxCaption.Enabled = false;
+            mMultiLineTextBoxCaption.ReadOnly = true;
         }
 
         public void DisableEndTaskFields() {
-            mTextBoxStars.Enabled = dTimePickerStarted.Enabled = dTimePickerEnded.Enabled = textBoxHours.Enabled = textBoxMinutes.Enabled = false;
+            mTextBoxStars.Enabled = dTimePickerStarted.Enabled = dTimePickerEnded.Enabled = false;
+            textBoxHours.ReadOnly = textBoxMinutes.ReadOnly = true;
         }
 
         public void HideAllButtons() {

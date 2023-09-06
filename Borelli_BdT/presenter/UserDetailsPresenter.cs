@@ -82,21 +82,11 @@ namespace Borelli_BdT.presenter {
         }
 
         private void LoadTasks() {
-            List<EntityTask> doneTasks = GetEntityTasksList(TasksList.GetAcceptedTasks(CurrentUser.Nickname, AcTaskState.Done));
+            List<EntityTask> doneTasks = EntityTask.GetEntityTasksList(TasksList.GetAcceptedTasks(CurrentUser.Nickname, AcTaskState.Done));
             View.LoadTasksList(doneTasks, UserDetails.TasksType.Done);
 
-            List<EntityTask> reqTask = GetEntityTasksList(TasksList.GetRequestedTasks(CurrentUser.Nickname, RqTaskState.Done));
+            List<EntityTask> reqTask = EntityTask.GetEntityTasksList(TasksList.GetRequestedTasks(CurrentUser.Nickname, RqTaskState.Done));
             View.LoadTasksList(reqTask, UserDetails.TasksType.Requested);
-        }
-
-        private List<EntityTask> GetEntityTasksList(List<model.Task> input) { //TODO: dato che questa funzione gia' esiste vedere se si puo' mettere da una sola parte
-            List<EntityTask> outp = new List<EntityTask>();
-
-            for (int i = 0; i < input.Count; i++) {
-                outp.Add(EntityTask.GetEntity(input[i]));
-            }
-
-            return outp;
         }
     }
 }

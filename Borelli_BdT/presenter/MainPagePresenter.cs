@@ -79,13 +79,13 @@ namespace Borelli_BdT.presenter {
         public void LoadHomeScreen() {
             View.LoadUserData(CurrentUser.Nickname, EntityUser.GetEntity(CurrentUser));
 
-            List<EntityTask> pertinentTasks = GetEntityTasksList(TasksList.GetAppropriateTasks(CurrentUser, TaskUserFilter.ZoneAndJob));
+            List<EntityTask> pertinentTasks = EntityTask.GetEntityTasksList(TasksList.GetAppropriateTasks(CurrentUser, TaskUserFilter.ZoneAndJob));
             View.LoadTasksList(pertinentTasks, MainPage.TaskType.Pertinent, LoadList);
 
-            List<EntityTask> doneTasks = GetEntityTasksList(TasksList.GetAcceptedTasks(CurrentUser.Nickname, AcTaskState.Done));
+            List<EntityTask> doneTasks = EntityTask.GetEntityTasksList(TasksList.GetAcceptedTasks(CurrentUser.Nickname, AcTaskState.Done));
             View.LoadTasksList(doneTasks, MainPage.TaskType.Accepted, LoadList);
 
-            List<EntityTask> reqTask = GetEntityTasksList(TasksList.GetRequestedTasks(CurrentUser.Nickname, RqTaskState.Done));
+            List<EntityTask> reqTask = EntityTask.GetEntityTasksList(TasksList.GetRequestedTasks(CurrentUser.Nickname, RqTaskState.Done));
             View.LoadTasksList(reqTask, MainPage.TaskType.Requested, LoadList);
         }
 
@@ -115,7 +115,7 @@ namespace Borelli_BdT.presenter {
         public void LoadReqAcceptTask() {
             Regex rxRicerca = new Regex(View.GetTextInTasksSearchBar(TaskType), RegexOptions.IgnoreCase);
 
-            List<EntityTask> pertinentTasks = GetEntityTasksList(TasksList.GetAppropriateTasks(CurrentUser, TaskUserFilter.ZoneAndJob));
+            List<EntityTask> pertinentTasks = EntityTask.GetEntityTasksList(TasksList.GetAppropriateTasks(CurrentUser, TaskUserFilter.ZoneAndJob));
             List<EntityTask> pertinentFilteredTask = FilterTasks(pertinentTasks, rxRicerca, View.GetUsedTasksFilter(TaskType));
 
             View.ClearListViewTask(TaskType, LoadList);
@@ -131,20 +131,24 @@ namespace Borelli_BdT.presenter {
         }
 
         public void OnAcceptTask(object sender, EventArgs e) {
-            string id = View.GetTaskIdFromLV(TaskType, LoadList);
-            Task t = TasksList.GetTask(id);
-
-            if (t == null)
-                throw new Exception("Errore durante accettazione task");
+            string id;
 
             try {
+                id = View.GetTaskIdFromLV(TaskType, LoadList);
+
+                Task t = TasksList.GetTask(id);
+                if (t == null)
+                    throw new Exception("Errore durante accettazione task");
+
                 CurrentUser.AcceptTask(t);
                 TasksList.WriteJsonFile();
+
+                LoadReqAcceptTask();
+
             } catch (Exception ex) {
-                View.ErrorInRequestAccept(ex.Message);
+                View.ErrorInRequestAccept($"{ex.Message}");
             }
 
-            LoadReqAcceptTask();
         }
 
         public void OnRequestTask(object sender, EventArgs e) {
@@ -168,7 +172,7 @@ namespace Borelli_BdT.presenter {
 
             Regex rxRicerca = new Regex(View.GetTextInTasksSearchBar(TaskType), RegexOptions.IgnoreCase);
 
-            List<EntityTask> doneTasks = GetEntityTasksList(TasksList.GetAcceptedTasks(CurrentUser.Nickname, taskState));
+            List<EntityTask> doneTasks = EntityTask.GetEntityTasksList(TasksList.GetAcceptedTasks(CurrentUser.Nickname, taskState));
             List<EntityTask> doneFilteredTasks = FilterTasks(doneTasks, rxRicerca, View.GetUsedTasksFilter(TaskType));
 
             View.ClearListViewTask(TaskType, LoadList);
@@ -180,7 +184,7 @@ namespace Borelli_BdT.presenter {
         }
 
         public bool IsTaskDone(EntityTask e) {
-            Task t = EntityTask.GetTask(e);
+            Task t = TasksList.GetTask(e.Field1);
 
             return t.Status == TPhase.Done;
         }
@@ -192,7 +196,7 @@ namespace Borelli_BdT.presenter {
 
             Regex rxRicerca = new Regex(View.GetTextInTasksSearchBar(TaskType), RegexOptions.IgnoreCase);
 
-            List<EntityTask> requestedTasks = GetEntityTasksList(TasksList.GetRequestedTasks(CurrentUser.Nickname, taskState));
+            List<EntityTask> requestedTasks = EntityTask.GetEntityTasksList(TasksList.GetRequestedTasks(CurrentUser.Nickname, taskState));
             List<EntityTask> requestedPertinentTasks = FilterTasks(requestedTasks, rxRicerca, View.GetUsedTasksFilter(TaskType));
 
             View.ClearListViewTask(TaskType, LoadList);
@@ -204,7 +208,7 @@ namespace Borelli_BdT.presenter {
         }
 
         public bool IsTaskAccepted(EntityTask e) {
-            Task t = EntityTask.GetTask(e);
+            Task t = TasksList.GetTask(e.Field1);
 
             return t.Status == TPhase.Accepted;
         }
@@ -225,7 +229,7 @@ namespace Borelli_BdT.presenter {
 
             Regex rxRicerca = new Regex(View.GetTextInUsersSearchBar(), RegexOptions.IgnoreCase);
 
-            List<EntityUser> users = GetEntityUsersList(UsersList.GetInPhaseUsers(uState));
+            List<EntityUser> users = EntityUser.GetEntityUsersList(UsersList.GetInPhaseUsers(uState));
             List<EntityUser> filteredUser = FilterUser(users, rxRicerca);
 
             View.LoadUsersList(filteredUser);
@@ -260,26 +264,6 @@ namespace Borelli_BdT.presenter {
             EntityUser eu = EntityUser.GetEntity(CurrentUser);
 
             View.OpenTaskDetailsForm(taskId, eu);
-        }
-
-        private List<EntityTask> GetEntityTasksList(List<model.Task> input) {
-            List<EntityTask> outp = new List<EntityTask>();
-
-            for (int i = 0; i < input.Count; i++) {
-                outp.Add(EntityTask.GetEntity(input[i]));
-            }
-
-            return outp;
-        }
-
-        private List<EntityUser> GetEntityUsersList(List<User> input) {
-            List<EntityUser> outp = new List<EntityUser>();
-
-            for (int i = 0; i < input.Count; i++) {
-                outp.Add(EntityUser.GetEntity(input[i]));
-            }
-
-            return outp;
         }
 
         private List<EntityTask> FilterTasks(List<EntityTask> input, Regex rx, MainPage.ResearchOption opt) {

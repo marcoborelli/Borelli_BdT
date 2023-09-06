@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Borelli_BdT.model;
 
 namespace Borelli_BdT.presenter {
@@ -16,7 +17,7 @@ namespace Borelli_BdT.presenter {
         public string Field11 { get; set; }
         public string Field12 { get; set; }
 
-        public static EntityTask GetEntity(model.Task t) {
+        public static EntityTask GetEntity(Task t) {
             if (t == null)
                 throw new Exception("Inserire una task valida");
 
@@ -38,8 +39,18 @@ namespace Borelli_BdT.presenter {
             return e;
         }
 
-        public static model.Task GetTask(EntityTask e) {
-            return new model.Task(e.Field1, e.Field2, e.Field3, e.Field4, DateTime.Parse(e.Field5), DateTime.Parse(e.Field6), DateTime.Parse(e.Field7),
+        public static List<EntityTask> GetEntityTasksList(List<Task> input) {
+            List<EntityTask> outp = new List<EntityTask>();
+
+            for (int i = 0; i < input.Count; i++) {
+                outp.Add(GetEntity(input[i]));
+            }
+
+            return outp;
+        }
+
+        public static Task GetTask(EntityTask e) {
+            return new Task(e.Field1, e.Field2, e.Field3, e.Field4, DateTime.Parse(e.Field5), DateTime.Parse(e.Field6), DateTime.Parse(e.Field7),
                 DateTime.Parse(e.Field8), TimeSpan.Parse(e.Field9), float.Parse(e.Field10), e.Field11, (TPhase)Enum.Parse(typeof(TPhase), e.Field12));
         }
 

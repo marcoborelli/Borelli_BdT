@@ -97,7 +97,8 @@ namespace Borelli_BdT.model {
             get => _taskLength;
             private set {
                 if ((int)Status >= (int)TPhase.Done) {
-                    if (value.TotalHours < (EndTaskDate - StartTaskDate).TotalHours) {
+                    if (value.TotalHours <= (((EndTaskDate - StartTaskDate).TotalHours)+ (new TimeSpan(1, 0, 0, 0).TotalHours))
+                        && value > new TimeSpan(0,1,0)) { //nello stesso giorno non prendendo l'ora calcolo direttamente le 24 ore
                         _taskLength = value;
                     } else {
                         throw new Exception($"Inserire una durata valida del lavoro");
