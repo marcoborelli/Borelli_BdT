@@ -78,6 +78,11 @@ namespace Borelli_BdT.presenter {
         private void LoadUserData() {
             EntityUser e = EntityUser.GetEntity(CurrentUser);
 
+            //TODO: se ci sono altre funzioni che vanno su piu' classi fare un'unica classe statica che le contenga tutte
+            //perche' senno' mostrerebbe (giorno : ore : minuti : secondi). Truncate perche' se c'e' mezz'ora farebbe .5
+            e.Field8 = $"{Math.Truncate(CurrentUser.DoneHours.TotalHours)} h {CurrentUser.DoneHours.Minutes}m";
+            e.Field9 = $"{Math.Truncate(CurrentUser.RecievedHours.TotalHours)} h {CurrentUser.RecievedHours.Minutes}m";
+
             View.LoadUserData(e, Parameters.GetCompleteImagePath(CurrentUser.Nickname), (CurrentUser.DoneHours - CurrentUser.RecievedHours));
         }
 

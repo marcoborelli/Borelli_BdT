@@ -83,9 +83,11 @@ namespace Borelli_BdT.presenter {
             View.LoadTasksList(pertinentTasks, MainPage.TaskType.Pertinent, LoadList);
 
             List<EntityTask> doneTasks = EntityTask.GetEntityTasksList(TasksList.GetAcceptedTasks(CurrentUser.Nickname, AcTaskState.Done));
+            GetTimeSpanHoursMinutes(doneTasks);
             View.LoadTasksList(doneTasks, MainPage.TaskType.Accepted, LoadList);
 
             List<EntityTask> reqTask = EntityTask.GetEntityTasksList(TasksList.GetRequestedTasks(CurrentUser.Nickname, RqTaskState.Done));
+            GetTimeSpanHoursMinutes(reqTask);
             View.LoadTasksList(reqTask, MainPage.TaskType.Requested, LoadList);
         }
 
@@ -174,6 +176,7 @@ namespace Borelli_BdT.presenter {
 
             List<EntityTask> doneTasks = EntityTask.GetEntityTasksList(TasksList.GetAcceptedTasks(CurrentUser.Nickname, taskState));
             List<EntityTask> doneFilteredTasks = FilterTasks(doneTasks, rxRicerca, View.GetUsedTasksFilter(TaskType));
+            GetTimeSpanHoursMinutes(doneFilteredTasks);
 
             View.ClearListViewTask(TaskType, LoadList);
             View.LoadTasksList(doneFilteredTasks, TaskType, LoadList);
@@ -198,6 +201,7 @@ namespace Borelli_BdT.presenter {
 
             List<EntityTask> requestedTasks = EntityTask.GetEntityTasksList(TasksList.GetRequestedTasks(CurrentUser.Nickname, taskState));
             List<EntityTask> requestedPertinentTasks = FilterTasks(requestedTasks, rxRicerca, View.GetUsedTasksFilter(TaskType));
+            GetTimeSpanHoursMinutes(requestedPertinentTasks);
 
             View.ClearListViewTask(TaskType, LoadList);
             View.LoadTasksList(requestedPertinentTasks, TaskType, LoadList);
@@ -305,6 +309,17 @@ namespace Borelli_BdT.presenter {
             }
 
             return outp;
+        }
+
+        private void GetTimeSpanHoursMinutes(EntityTask e) {
+            TimeSpan t = TimeSpan.Parse(e.Field9);
+            e.Field9 = $"{Math.Truncate(t.TotalHours)} h {Math.Abs(t.Minutes)}m";
+        }
+
+        private void GetTimeSpanHoursMinutes(List<EntityTask> le) {
+            for (int i = 0; i < le.Count; i++) {
+                GetTimeSpanHoursMinutes(le[i]);
+            }
         }
     }
 }
