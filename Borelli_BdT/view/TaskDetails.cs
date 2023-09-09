@@ -61,7 +61,7 @@ namespace Borelli_BdT.view {
                     dTimePickerStarted.CustomFormat = dTimePickerEnded.CustomFormat = "N.A";
                 }
 
-                textBoxHours.Text = $"{TimeSpan.Parse(value.Field9).Hours}";
+                textBoxHours.Text = $"{Math.Truncate(TimeSpan.Parse(value.Field9).TotalHours)}";
                 textBoxMinutes.Text = $"{TimeSpan.Parse(value.Field9).Minutes}";
 
                 mTextBoxStars.Text = value.Field10;

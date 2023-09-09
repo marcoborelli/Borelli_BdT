@@ -88,10 +88,23 @@ namespace Borelli_BdT.presenter {
 
         private void LoadTasks() {
             List<EntityTask> doneTasks = EntityTask.GetEntityTasksList(TasksList.GetAcceptedTasks(CurrentUser.Nickname, AcTaskState.Done));
+            GetTimeSpanHoursMinutes(doneTasks);
             View.LoadTasksList(doneTasks, UserDetails.TasksType.Done);
 
             List<EntityTask> reqTask = EntityTask.GetEntityTasksList(TasksList.GetRequestedTasks(CurrentUser.Nickname, RqTaskState.Done));
+            GetTimeSpanHoursMinutes(reqTask);
             View.LoadTasksList(reqTask, UserDetails.TasksType.Requested);
+        }
+
+        private void GetTimeSpanHoursMinutes(EntityTask e) {
+            TimeSpan t = TimeSpan.Parse(e.Field9);
+            e.Field9 = $"{Math.Truncate(t.TotalHours)} h {Math.Abs(t.Minutes)}m";
+        }
+
+        private void GetTimeSpanHoursMinutes(List<EntityTask> le) {
+            for (int i = 0; i < le.Count; i++) {
+                GetTimeSpanHoursMinutes(le[i]);
+            }
         }
     }
 }

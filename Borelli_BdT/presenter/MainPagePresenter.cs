@@ -66,7 +66,7 @@ namespace Borelli_BdT.presenter {
                     LoadRequestedTasks();
                     break;
                 case 4:
-                    View.Text = "Accettazione nuovi utenti";
+                    View.Text = "Lista utenti";
 
                     View.LoadLegendPaletteUsers();
                     LoadUsersTab();
