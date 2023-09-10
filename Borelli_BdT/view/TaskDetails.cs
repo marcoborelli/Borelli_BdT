@@ -35,7 +35,7 @@ namespace Borelli_BdT.view {
                     Field9 = new TimeSpan(int.Parse(textBoxHours.Text), int.Parse(textBoxMinutes.Text), 0).ToString(),
                     Field10 = mTextBoxStars.Text,
                     Field11 = mTextBoxJob.Text,
-                    //TODO: Field12 = mMultiLineTextBoxReview.Text,
+                    Field12 = mMultiLineTextBoxReview.Text,
                     // Field13 = this.Text.Split(':')[1].Trim()
                 };
                 return e;
@@ -67,7 +67,7 @@ namespace Borelli_BdT.view {
 
                 mTextBoxStars.Text = value.Field10;
                 mTextBoxJob.Text = value.Field11;
-                //TODO: mMultiLineTextBoxReview.Text = value.Field12;
+                mMultiLineTextBoxReview.Text = value.Field12;
                 //this.Text += $": {value.Field13}";
             }
         }
@@ -111,7 +111,7 @@ namespace Borelli_BdT.view {
 
         public void DisableEndTaskFields() {
             mTextBoxStars.Enabled = dTimePickerStarted.Enabled = dTimePickerEnded.Enabled = false;
-            textBoxHours.ReadOnly = textBoxMinutes.ReadOnly = true;
+            textBoxHours.ReadOnly = textBoxMinutes.ReadOnly = mMultiLineTextBoxReview.ReadOnly = true;
         }
 
         public void HideAllButtons() {

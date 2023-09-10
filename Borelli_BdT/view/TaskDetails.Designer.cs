@@ -48,6 +48,7 @@
             this.mButtonCancel = new MaterialSkin.Controls.MaterialButton();
             this.materialCard3 = new MaterialSkin.Controls.MaterialCard();
             this.mMultiLineTextBoxCaption = new MaterialSkin.Controls.MaterialMultiLineTextBox2();
+            this.mMultiLineTextBoxReview = new MaterialSkin.Controls.MaterialMultiLineTextBox2();
             this.materialCard1.SuspendLayout();
             this.materialCard2.SuspendLayout();
             this.materialCard3.SuspendLayout();
@@ -323,7 +324,7 @@
             this.mButtonAction.Depth = 0;
             this.mButtonAction.HighEmphasis = true;
             this.mButtonAction.Icon = null;
-            this.mButtonAction.Location = new System.Drawing.Point(221, 505);
+            this.mButtonAction.Location = new System.Drawing.Point(221, 603);
             this.mButtonAction.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.mButtonAction.MouseState = MaterialSkin.MouseState.HOVER;
             this.mButtonAction.Name = "mButtonAction";
@@ -343,7 +344,7 @@
             this.mButtonCancel.Depth = 0;
             this.mButtonCancel.HighEmphasis = true;
             this.mButtonCancel.Icon = null;
-            this.mButtonCancel.Location = new System.Drawing.Point(14, 505);
+            this.mButtonCancel.Location = new System.Drawing.Point(14, 603);
             this.mButtonCancel.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.mButtonCancel.MouseState = MaterialSkin.MouseState.HOVER;
             this.mButtonCancel.Name = "mButtonCancel";
@@ -390,17 +391,44 @@
             this.mMultiLineTextBoxCaption.SelectionLength = 0;
             this.mMultiLineTextBoxCaption.SelectionStart = 0;
             this.mMultiLineTextBoxCaption.ShortcutsEnabled = true;
-            this.mMultiLineTextBoxCaption.Size = new System.Drawing.Size(403, 110);
+            this.mMultiLineTextBoxCaption.Size = new System.Drawing.Size(403, 91);
             this.mMultiLineTextBoxCaption.TabIndex = 8;
             this.mMultiLineTextBoxCaption.TabStop = false;
             this.mMultiLineTextBoxCaption.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.mMultiLineTextBoxCaption.UseSystemPasswordChar = false;
             // 
+            // mMultiLineTextBoxReview
+            // 
+            this.mMultiLineTextBoxReview.AnimateReadOnly = false;
+            this.mMultiLineTextBoxReview.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.mMultiLineTextBoxReview.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
+            this.mMultiLineTextBoxReview.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.mMultiLineTextBoxReview.Depth = 0;
+            this.mMultiLineTextBoxReview.HideSelection = true;
+            this.mMultiLineTextBoxReview.Hint = "Recensione";
+            this.mMultiLineTextBoxReview.Location = new System.Drawing.Point(14, 493);
+            this.mMultiLineTextBoxReview.MaxLength = 32767;
+            this.mMultiLineTextBoxReview.MouseState = MaterialSkin.MouseState.OUT;
+            this.mMultiLineTextBoxReview.Name = "mMultiLineTextBoxReview";
+            this.mMultiLineTextBoxReview.PasswordChar = '\0';
+            this.mMultiLineTextBoxReview.ReadOnly = false;
+            this.mMultiLineTextBoxReview.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.mMultiLineTextBoxReview.SelectedText = "";
+            this.mMultiLineTextBoxReview.SelectionLength = 0;
+            this.mMultiLineTextBoxReview.SelectionStart = 0;
+            this.mMultiLineTextBoxReview.ShortcutsEnabled = true;
+            this.mMultiLineTextBoxReview.Size = new System.Drawing.Size(403, 91);
+            this.mMultiLineTextBoxReview.TabIndex = 9;
+            this.mMultiLineTextBoxReview.TabStop = false;
+            this.mMultiLineTextBoxReview.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.mMultiLineTextBoxReview.UseSystemPasswordChar = false;
+            // 
             // TaskDetails
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(431, 585);
+            this.ClientSize = new System.Drawing.Size(431, 675);
+            this.Controls.Add(this.mMultiLineTextBoxReview);
             this.Controls.Add(this.mMultiLineTextBoxCaption);
             this.Controls.Add(this.materialCard3);
             this.Controls.Add(this.mButtonCancel);
@@ -445,5 +473,6 @@
         private MaterialSkin.Controls.MaterialLabel materialLabel3;
         private MaterialSkin.Controls.MaterialLabel mLabelAcceptor;
         private MaterialSkin.Controls.MaterialLabel materialLabel5;
+        private MaterialSkin.Controls.MaterialMultiLineTextBox2 mMultiLineTextBoxReview;
     }
 }

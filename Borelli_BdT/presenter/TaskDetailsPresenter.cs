@@ -75,10 +75,10 @@ namespace Borelli_BdT.presenter {
                         DateTime endTime = DateTime.Parse(et.Field8);
                         TimeSpan taskLength = TimeSpan.Parse(et.Field9);
                         float stars = float.Parse(et.Field10);
-                        //TODO: string review = et.Field12;
+                        string review = et.Field12;
 
 
-                        CurrentUser.EndRequestedTask(CurrentTask, startTime, endTime, taskLength, stars, /*review*/"TODO");
+                        CurrentUser.EndRequestedTask(CurrentTask, startTime, endTime, taskLength, stars, review);
                     } catch (Exception ex) {
                         exception = true;
                         View.ShowErrorMessge(ex.Message);
