@@ -61,6 +61,13 @@ namespace Borelli_BdT.presenter {
                 TimeSpan.Parse(e.Field8), TimeSpan.Parse(e.Field9), (RegContext)Enum.Parse(typeof(RegContext), e.Field10), (UserLevel)Enum.Parse(typeof(UserLevel), e.Field11));
         }
 
+        public static string WorksToString(EntityUser e, string sep) {
+            return String.Join($"{sep}", e.Field3);
+        }
+
+        public static string DistrictsToString(EntityUser e, string sep) {
+            return String.Join($"{sep}", e.Field4);
+        }
 
         public static string[] GetEntityFieldNames() {
             return new string[] { "NICKNAME", "PASSWD", "LAV. OFFERT", "QUARTIERI LAVORI", "STELLE TOT", "MEDIA STELLE",

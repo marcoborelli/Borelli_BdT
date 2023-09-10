@@ -345,7 +345,7 @@ namespace Borelli_BdT.view {
         public string GetTaskIdFromLV(TaskType type, LoadTskList how) { //di defualt tutti gli id si trovano sulla prima colonna
             ListView m = GetCurrentListView(type, how);
 
-            if (m.SelectedItems.Count >0) {
+            if (m.SelectedItems.Count > 0) {
                 return m.SelectedItems[0].SubItems[0].Text;
             } else {
                 throw new Exception("Nessun indice selezionato");
