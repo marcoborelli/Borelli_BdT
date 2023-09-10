@@ -79,7 +79,7 @@ namespace Borelli_BdT.model {
             List<User> outp = new List<User>();
 
             for (int i = 0; i < Users.Count; i++) {
-                switch(state) {
+                switch (state) {
                     case UsersState.Registration:
                         if (Users[i].State == RegContext.Registration) {
                             outp.Add(Users[i]);
@@ -91,6 +91,39 @@ namespace Borelli_BdT.model {
                         }
                         break;
                     case UsersState.All:
+                        outp.Add(Users[i]);
+                        break;
+                }
+            }
+
+            return outp;
+        }
+
+        public static List<User> GetUserBasedOnDeltaHours(UserDelta filter) {
+            if (Users == null)
+                throw new Exception("Lista non inizializzata, chiamare prima l'initializer della classe statica UsersList");
+
+            List<User> outp = new List<User>();
+            double delta;
+
+            for (int i = 0; i < Users.Count; i++) {
+                if (Users[i].State == RegContext.Registration)
+                    continue;
+
+                switch (filter) {
+                    case UserDelta.Greater:
+                        delta = (Users[i].DoneHours - Users[i].RecievedHours).TotalMinutes;
+                        if (delta >= 0) {
+                            outp.Add(Users[i]);
+                        }
+                        break;
+                    case UserDelta.Less:
+                        delta = (Users[i].DoneHours - Users[i].RecievedHours).TotalMinutes;
+                        if (delta < 0) {
+                            outp.Add(Users[i]);
+                        }
+                        break;
+                    case UserDelta.All:
                         outp.Add(Users[i]);
                         break;
                 }

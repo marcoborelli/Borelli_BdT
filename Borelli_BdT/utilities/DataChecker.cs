@@ -21,6 +21,12 @@ namespace Borelli_BdT.utilities {
         Confirmed,
         All
     }
+    public enum UserDelta {
+        Less,
+        Greater,
+        All
+    }
+
 
 
     public enum CheckStr {
