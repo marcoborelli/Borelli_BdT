@@ -16,6 +16,9 @@ namespace Borelli_BdT.model {
         public string Caption { get; private set; }
 
         [JsonProperty]
+        public string Review { get; private set; }
+
+        [JsonProperty]
         public TPhase Status { get; private set; }
 
         [JsonProperty]
@@ -97,8 +100,8 @@ namespace Borelli_BdT.model {
             get => _taskLength;
             private set {
                 if ((int)Status >= (int)TPhase.Done) {
-                    if (value.TotalHours <= (((EndTaskDate - StartTaskDate).TotalHours)+ (new TimeSpan(1, 0, 0, 0).TotalHours))
-                        && value > new TimeSpan(0,1,0)) { //nello stesso giorno non prendendo l'ora calcolo direttamente le 24 ore
+                    if (value.TotalHours <= (((EndTaskDate - StartTaskDate).TotalHours) + (new TimeSpan(1, 0, 0, 0).TotalHours))
+                        && value > new TimeSpan(0, 1, 0)) { //nello stesso giorno non prendendo l'ora calcolo direttamente le 24 ore
                         _taskLength = value;
                     } else {
                         throw new Exception($"Inserire una durata valida del lavoro");
@@ -121,7 +124,7 @@ namespace Borelli_BdT.model {
             Status = TPhase.Nothing;
         }
         public Task(string id, string caption, string rq, string acc, DateTime rqDate, DateTime accDate, DateTime strDate, DateTime endDate,
-            TimeSpan tskLngth, float stars, string job, TPhase status) {
+            TimeSpan tskLngth, float stars, string job, string review, TPhase status) {
             Status = status;
 
             Id = id;
@@ -135,6 +138,7 @@ namespace Borelli_BdT.model {
             TaskLength = tskLngth;
             Stars = stars;
             Job = job;
+            Review = review; //recensione
         }
 
         public void Create(string reqNickname, DateTime reqDate, string job, string caption) { //a farla e' il richiedente
@@ -171,7 +175,7 @@ namespace Borelli_BdT.model {
             AcceptedTaskDate = acceptTaskDate;
         }
 
-        public void End(DateTime startTaskDate, DateTime endTaskDate, TimeSpan taskDuration, float starsValutation) { //a farlo e' il richiedente
+        public void End(DateTime startTaskDate, DateTime endTaskDate, TimeSpan taskDuration, float starsValutation, string review) { //a farlo e' il richiedente
             if (Status != TPhase.Accepted)
                 throw new Exception("Non è stato rispettato il giusto procedimento nella macchina a stati della task");
 
@@ -182,6 +186,7 @@ namespace Borelli_BdT.model {
             TaskLength = taskDuration;
 
             Stars = starsValutation;
+            Review = review;
         }
 
 
@@ -226,7 +231,7 @@ namespace Borelli_BdT.model {
         }
 
         protected Task(Task t) : this(t.Id, t.Caption, t.RequesterNickname, t.AcceptorNickname, t.RequestDate,
-            t.AcceptedTaskDate, t.StartTaskDate, t.EndTaskDate, t.TaskLength, t.Stars, t.Job, t.Status) {
+            t.AcceptedTaskDate, t.StartTaskDate, t.EndTaskDate, t.TaskLength, t.Stars, t.Job, t.Review, t.Status) {
         }
     }
 }

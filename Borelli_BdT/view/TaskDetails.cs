@@ -35,7 +35,8 @@ namespace Borelli_BdT.view {
                     Field9 = new TimeSpan(int.Parse(textBoxHours.Text), int.Parse(textBoxMinutes.Text), 0).ToString(),
                     Field10 = mTextBoxStars.Text,
                     Field11 = mTextBoxJob.Text,
-                    // Field12 = this.Text.Split(':')[1].Trim()
+                    //TODO: Field12 = mMultiLineTextBoxReview.Text,
+                    // Field13 = this.Text.Split(':')[1].Trim()
                 };
                 return e;
             }
@@ -66,7 +67,8 @@ namespace Borelli_BdT.view {
 
                 mTextBoxStars.Text = value.Field10;
                 mTextBoxJob.Text = value.Field11;
-                //this.Text += $": {value.Field12}";
+                //TODO: mMultiLineTextBoxReview.Text = value.Field12;
+                //this.Text += $": {value.Field13}";
             }
         }
         private TaskDetailsPresenter Presenter { get; set; }

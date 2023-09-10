@@ -16,6 +16,7 @@ namespace Borelli_BdT.presenter {
         public string Field10 { get; set; }
         public string Field11 { get; set; }
         public string Field12 { get; set; }
+        public string Field13 { get; set; }
 
         public static EntityTask GetEntity(Task t) {
             if (t == null)
@@ -33,7 +34,8 @@ namespace Borelli_BdT.presenter {
                 Field9 = $"{t.TaskLength}",
                 Field10 = $"{t.Stars}",
                 Field11 = t.Job,
-                Field12 = t.Status.ToString()
+                Field12 = t.Review,
+                Field13 = t.Status.ToString()
             };
 
             return e;
@@ -51,7 +53,7 @@ namespace Borelli_BdT.presenter {
 
         public static Task GetTask(EntityTask e) {
             return new Task(e.Field1, e.Field2, e.Field3, e.Field4, DateTime.Parse(e.Field5), DateTime.Parse(e.Field6), DateTime.Parse(e.Field7),
-                DateTime.Parse(e.Field8), TimeSpan.Parse(e.Field9), float.Parse(e.Field10), e.Field11, (TPhase)Enum.Parse(typeof(TPhase), e.Field12));
+                DateTime.Parse(e.Field8), TimeSpan.Parse(e.Field9), float.Parse(e.Field10), e.Field11, e.Field12, (TPhase)Enum.Parse(typeof(TPhase), e.Field13));
         }
 
         public static string[] GetEntityFieldNames() {

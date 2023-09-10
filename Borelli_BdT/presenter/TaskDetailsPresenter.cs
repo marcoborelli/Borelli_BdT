@@ -69,12 +69,16 @@ namespace Borelli_BdT.presenter {
                     break;
                 case TaskDetails.FormState.ValutateTask:
                     try {
-                        DateTime startTime = DateTime.Parse(View.CurrentTask.Field7);
-                        DateTime endTime = DateTime.Parse(View.CurrentTask.Field8);
-                        TimeSpan taskLength = TimeSpan.Parse(View.CurrentTask.Field9);
-                        float stars = float.Parse(View.CurrentTask.Field10);
+                        EntityTask et = View.CurrentTask;
 
-                        CurrentUser.EndRequestedTask(CurrentTask, startTime, endTime, taskLength, stars);
+                        DateTime startTime = DateTime.Parse(et.Field7);
+                        DateTime endTime = DateTime.Parse(et.Field8);
+                        TimeSpan taskLength = TimeSpan.Parse(et.Field9);
+                        float stars = float.Parse(et.Field10);
+                        //TODO: string review = et.Field12;
+
+
+                        CurrentUser.EndRequestedTask(CurrentTask, startTime, endTime, taskLength, stars, /*review*/"TODO");
                     } catch (Exception ex) {
                         exception = true;
                         View.ShowErrorMessge(ex.Message);
