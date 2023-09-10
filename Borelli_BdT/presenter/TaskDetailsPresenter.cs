@@ -53,7 +53,7 @@ namespace Borelli_BdT.presenter {
                     break;
                 case TaskDetails.FormState.RequesterModify:
                     try {
-                        CurrentUser.ReviewTask(CurrentTask, View.CurrentTask.Field2);
+                        CurrentUser.ModifyTask(CurrentTask, View.CurrentTask.Field2);
                     } catch (Exception ex) {
                         exception = true;
                         View.ShowErrorMessge(ex.Message);

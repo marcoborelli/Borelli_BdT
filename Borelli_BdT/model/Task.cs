@@ -146,7 +146,7 @@ namespace Borelli_BdT.model {
             Job = job;
         }
 
-        public void Review(string newCaption) {
+        public void Modify(string newCaption) {
             if (Status != TPhase.Request)
                 throw new Exception("È possibile modificare la task solo se non è ancora stata accettata");
 
@@ -161,6 +161,7 @@ namespace Borelli_BdT.model {
             Status = TPhase.Request;
             AcceptedTaskDate = DateTime.MinValue;
         }
+
         public void Accept(string accUserNickname, DateTime acceptTaskDate) { //a farla e' il donatore di ore
             if (Status != TPhase.Request)
                 throw new Exception("Non è stato rispettato il giusto procedimento nella macchina a stati della task");
@@ -182,6 +183,8 @@ namespace Borelli_BdT.model {
 
             Stars = starsValutation;
         }
+
+
 
         private string CreateId(string nickname, DateTime time) {
             string outp = "";

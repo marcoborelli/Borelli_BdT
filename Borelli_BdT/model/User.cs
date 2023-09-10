@@ -166,14 +166,14 @@ namespace Borelli_BdT.model {
             t.Accept(Nickname, DateTime.Now);
         }
 
-        public void ReviewTask(Task t, string caption) {
+        public void ModifyTask(Task t, string caption) {
             if (t == null)
                 throw new Exception("Inserire una task valida da accettare");
 
             if (t.RequesterNickname != Nickname)
                 throw new Exception("Un utente può solo modificare una propia task");
 
-            t.Review(caption);
+            t.Modify(caption);
         }
 
         public void LeftTask(Task t) {

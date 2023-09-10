@@ -1,7 +1,7 @@
 ﻿using System;
 
 namespace Borelli_BdT.utilities {
-    public /*static*/ class Parameters {
+    public class Parameters {
         private static float _deltaPercentage;
         private static string _DPBase;
         public static string ParametersPath { get; private set; }

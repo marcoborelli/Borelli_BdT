@@ -35,6 +35,7 @@ namespace Borelli_BdT.utilities {
         }
 
 
+
         public static void CheckDistrictFile() {
             if (!File.Exists(Parameters.FPDistricts)) {
                 CreateFile(Parameters.FPDistricts);
@@ -58,6 +59,7 @@ namespace Borelli_BdT.utilities {
                 CreateFile(Parameters.FPTasks);
             }
         }
+
         public static void CheckUsersFile() {
             if (!File.Exists(Parameters.FPUsers)) {
                 CreateFile(Parameters.FPUsers);
@@ -68,6 +70,7 @@ namespace Borelli_BdT.utilities {
                 WriteJsonFile(new List<User> { u }, Parameters.FPUsers);
             }
         }
+
         public static void CheckParametersFile() {
             if (!File.Exists(Parameters.ParametersPath)) {
                 CreateFile(Parameters.ParametersPath);
@@ -76,6 +79,8 @@ namespace Borelli_BdT.utilities {
                 WriteJsonFile(p, Parameters.ParametersPath);
             }
         }
+
+
 
         public static void CheckFolder(string path) {
             if (!Directory.Exists(path)) {
