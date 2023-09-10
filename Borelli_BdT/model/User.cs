@@ -29,6 +29,9 @@ namespace Borelli_BdT.model {
         public TimeSpan RecievedHours { get; private set; }
 
         [JsonProperty]
+        public TimeSpan DeltaHours { get; private set; }
+
+        [JsonProperty]
         public RegContext State { get; private set; }
 
         [JsonProperty]
@@ -39,7 +42,7 @@ namespace Borelli_BdT.model {
         }
 
         public User(CustomerMasterData userData, string nickname, string passwd, List<string> providesJobs, List<string> jobDistr,
-            float totalStar, float averageStar, float doneJobsNumber, TimeSpan doneHours, TimeSpan recievedHours, RegContext step, UserLevel lev) {
+            float totalStar, float averageStar, float doneJobsNumber, TimeSpan doneHours, TimeSpan recievedHours, TimeSpan deltaHours, RegContext step, UserLevel lev) {
 
             State = step;
             Level = lev;
@@ -58,17 +61,18 @@ namespace Borelli_BdT.model {
 
             DoneHours = doneHours;
             RecievedHours = recievedHours;
+            DeltaHours = deltaHours;
         }
         public User(CustomerMasterData userData, string nickname, string passwd, List<string> providesJobs, List<string> jobDistr, RegContext step, UserLevel lev) :
-            this(userData, nickname, passwd, providesJobs, jobDistr, 0, 0, 0, new TimeSpan(0, 0, 0), new TimeSpan(0, 0, 0), step, lev) {
+            this(userData, nickname, passwd, providesJobs, jobDistr, 0, 0, 0, new TimeSpan(0, 0, 0), new TimeSpan(0, 0, 0), new TimeSpan(0, 0, 0), step, lev) {
         }
 
 
         public User(string name, string surnm, string phoneNum, string mail, string homeAddress, string distr, DateTime birthDate, string nicknm,
             string passwd, List<string> providesJobs, List<string> jobDistr, float totalStar, float averageStar, float doneJobsNumber,
-            TimeSpan doneHours, TimeSpan recievedHours, RegContext step, UserLevel lev) : this
+            TimeSpan doneHours, TimeSpan recievedHours, TimeSpan deltaHours, RegContext step, UserLevel lev) : this
             (new CustomerMasterData(name, surnm, phoneNum, mail, homeAddress, distr, birthDate), nicknm, passwd, providesJobs, jobDistr,
-            totalStar, averageStar, doneJobsNumber, doneHours, recievedHours, step, lev) {
+            totalStar, averageStar, doneJobsNumber, doneHours, deltaHours, recievedHours, step, lev) {
         }
 
         public User(string name, string surnm, string phoneNum, string mail, string homeAddress, string distr, DateTime birthDate, string nicknm,
@@ -83,11 +87,13 @@ namespace Borelli_BdT.model {
             get => _nickname;
             private set => DataChecker.SetIfValidString(ref _nickname, value, "Inserire un nickname valido", CheckStr.Generic);
         }
+
         [JsonProperty]
         public string Password { //TODO: se si puo' rimettere, tutto privato
             get => _password;
             private set => DataChecker.SetIfValidString(ref _password, value, "Inserire una password valida", CheckStr.Generic);
         }
+
         [JsonProperty]
         public List<string> ProvidesJobs {
             get => _providesJobs;
@@ -102,26 +108,31 @@ namespace Borelli_BdT.model {
                 }
             }
         }
+
         [JsonProperty]
         public List<string> JobsDistrict {
             get => _jobsDistrict;
             private set => DataChecker.SetIfListStrValid(ref _jobsDistrict, value, "Uno o più elementi della lista non sono riconosciuti come zone di lavoro", CheckStrList.District);
         }
+
         [JsonProperty]
         public float TotalStars {
             get => _totalStars;
             private set => DataChecker.SetIfValidNumber(ref _totalStars, value, "La somma totale delle stelle deve essere positiva", CheckNumb.Positive);
         }
+
         [JsonProperty]
         public float AverageStars {
             get => _averageStars;
             private set => DataChecker.SetIfValidNumber(ref _averageStars, value, "Inserire un corretto numero di stelle [0-5]", CheckNumb.Stars);
         }
+
         [JsonProperty]
         public float DoneJobsNumber {
             get => _doneJobsNumber;
             private set => DataChecker.SetIfValidNumber(ref _doneJobsNumber, value, "La somma totale del numero di lavori fatti deve essere positiva", CheckNumb.Positive);
         }
+
         [JsonProperty]
         public CustomerMasterData Data {
             get => _data;
@@ -184,7 +195,7 @@ namespace Borelli_BdT.model {
             t.End(startTask, endTask, taskLength, stars);
 
             AddRecievedHours(taskLength);
-            acceptedUser.AddHoursAndStarsToUser(taskLength, stars);
+            AddHoursAndStarsToUser(acceptedUser, taskLength, stars);
         }
 
         public void AddDoneHours(TimeSpan t) {
@@ -193,25 +204,29 @@ namespace Borelli_BdT.model {
 
             DoneHours += t;
         }
+
         public void AddRecievedHours(TimeSpan t) {
             if (t < new TimeSpan(0, 0, 0))
                 throw new Exception("Inserire una diminuzione positiva di ore");
 
             RecievedHours += t;
+            DeltaHours = DoneHours - RecievedHours;
         }
 
         public bool IsPasswordCorrect(string passwd) {
             return (passwd == Password);
         }
 
-        private void AddHoursAndStarsToUser(TimeSpan taskLength, float star) {
-            AddDoneHours(taskLength);
+        private void AddHoursAndStarsToUser(User u, TimeSpan taskLength, float star) {
+            u.AddDoneHours(taskLength);
 
-            DoneJobsNumber++;
-            TotalStars += star;
+            u.DoneJobsNumber++;
+            u.TotalStars += star;
+
+            u.DeltaHours = u.DoneHours - u.RecievedHours;
 
             //per arrotondare ogni 0.25
-            AverageStars = (float)(Math.Round((TotalStars / DoneJobsNumber) * 4, MidpointRounding.ToEven)) / 4;
+            u.AverageStars = (float)(Math.Round((u.TotalStars / u.DoneJobsNumber) * 4, MidpointRounding.ToEven)) / 4;
         }
 
 
@@ -231,7 +246,7 @@ namespace Borelli_BdT.model {
         }
 
         protected User(User u) : this(u.Data, u.Nickname, u.Password, u.ProvidesJobs, u.JobsDistrict, u.TotalStars,
-             u.AverageStars, u.DoneJobsNumber, u.DoneHours, u.RecievedHours, u.State, u.Level) {
+             u.AverageStars, u.DoneJobsNumber, u.DoneHours, u.RecievedHours, u.DeltaHours, u.State, u.Level) {
         }
     }
 }

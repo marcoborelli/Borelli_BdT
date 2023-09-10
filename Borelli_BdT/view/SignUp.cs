@@ -23,8 +23,8 @@ namespace Borelli_BdT.view {
                     Field2 = mTextBoxPasswd.Text,
                     Field3 = GetListFromCheckedListBox(mCheckLBoxJobs, mTextBoxOtherJob),
                     Field4 = GetListFromCheckedListBox(mCheckLBoxDistricts, mTextBoxOtherDistr),
-                    Field11 = Presenter.GetLevel(mSwitchSecretary.Checked),
-                    Field12 = CurrentData,
+                    Field12 = Presenter.GetLevel(mSwitchSecretary.Checked),
+                    Field13 = CurrentData,
                 };
                 return e;
             }
@@ -34,7 +34,7 @@ namespace Borelli_BdT.view {
                 SetCheckedIndexFromList(mCheckLBoxJobs, mTextBoxOtherJob, value.Field3);
                 SetCheckedIndexFromList(mCheckLBoxDistricts, mTextBoxOtherDistr, value.Field4);
                 mSwitchSecretary.Checked = Presenter.IsSecretary(value);
-                CurrentData = value.Field12;
+                CurrentData = value.Field13;
             }
         }
         public EntityCustomerMasterData CurrentData {

@@ -30,7 +30,7 @@ namespace Borelli_BdT.view {
                 mLabelNumbTsk.Text = $"Numero task: {value.Field7}";
                 mLabelDoneHours.Text = $"Ore fatte: {value.Field8}";
                 mLabelRecievedHours.Text = $"Ore ricevute: {value.Field9}";
-                CurrentData = value.Field12;
+                CurrentData = value.Field13;
             }
         }
         public EntityCustomerMasterData CurrentData {

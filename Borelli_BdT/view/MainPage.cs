@@ -313,7 +313,7 @@ namespace Borelli_BdT.view {
             SetUsersTab(uState, lwOutp);
 
             for (int i = 0; i < usr.Count; i++) {
-                EntityCustomerMasterData tmp = usr[i].Field12;
+                EntityCustomerMasterData tmp = usr[i].Field13;
 
                 switch (uState) {
                     case UsersState.Registration:

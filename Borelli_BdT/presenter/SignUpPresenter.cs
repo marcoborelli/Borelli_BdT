@@ -32,7 +32,7 @@ namespace Borelli_BdT.presenter {
                             return;
                         }
 
-                        User u = new User(EntityCustomerMasterData.GetCustomerMasterData(tmp.Field12), tmp.Field1, tmp.Field2, tmp.Field3, tmp.Field4, RegContext.Registration, UserLevel.Base);
+                        User u = new User(EntityCustomerMasterData.GetCustomerMasterData(tmp.Field13), tmp.Field1, tmp.Field2, tmp.Field3, tmp.Field4, RegContext.Registration, UserLevel.Base);
                         UsersList.AddUser(u);
 
                         if (View.IsThereAnImage()) {
@@ -79,7 +79,7 @@ namespace Borelli_BdT.presenter {
                 EntityUser tmp = View.CurrentUser;
 
                 int index = UsersList.GetUserIndex(tmp.Field1);
-                UsersList.Users[index] = new User(EntityCustomerMasterData.GetCustomerMasterData(tmp.Field12), tmp.Field1, tmp.Field2, tmp.Field3, tmp.Field4, RegContext.Registration, (UserLevel)Enum.Parse(typeof(UserLevel), tmp.Field11));
+                UsersList.Users[index] = new User(EntityCustomerMasterData.GetCustomerMasterData(tmp.Field13), tmp.Field1, tmp.Field2, tmp.Field3, tmp.Field4, RegContext.Registration, (UserLevel)Enum.Parse(typeof(UserLevel), tmp.Field12));
                 UsersList.WriteJsonFile();
 
                 View.Close();

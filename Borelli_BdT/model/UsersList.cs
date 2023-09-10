@@ -104,7 +104,6 @@ namespace Borelli_BdT.model {
                 throw new Exception("Lista non inizializzata, chiamare prima l'initializer della classe statica UsersList");
 
             List<User> outp = new List<User>();
-            double delta;
 
             for (int i = 0; i < Users.Count; i++) {
                 if (Users[i].State == RegContext.Registration)
@@ -112,14 +111,12 @@ namespace Borelli_BdT.model {
 
                 switch (filter) {
                     case UserDelta.Greater:
-                        delta = (Users[i].DoneHours - Users[i].RecievedHours).TotalMinutes;
-                        if (delta >= 0) {
+                        if (Users[i].DeltaHours.TotalMinutes >= 0) {
                             outp.Add(Users[i]);
                         }
                         break;
                     case UserDelta.Less:
-                        delta = (Users[i].DoneHours - Users[i].RecievedHours).TotalMinutes;
-                        if (delta < 0) {
+                        if (Users[i].DeltaHours.TotalMinutes < 0) {
                             outp.Add(Users[i]);
                         }
                         break;

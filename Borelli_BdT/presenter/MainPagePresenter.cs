@@ -316,9 +316,8 @@ namespace Borelli_BdT.presenter {
 
         public string GetDeltaTimeUser(EntityUser e) {
             User u = UsersList.GetUser(e.Field1);
-            TimeSpan t = u.DoneHours - u.RecievedHours;
 
-            return $"{Math.Truncate(t.TotalHours)} h {Math.Abs(t.Minutes)}m";
+            return $"{Math.Truncate(u.DeltaHours.TotalHours)} h {Math.Abs(u.DeltaHours.Minutes)}m";
         }
 
         private List<EntityTask> FilterTasks(List<EntityTask> input, Regex rx, MainPage.ResearchOption opt) {

@@ -83,7 +83,7 @@ namespace Borelli_BdT.presenter {
             e.Field8 = $"{Math.Truncate(CurrentUser.DoneHours.TotalHours)} h {CurrentUser.DoneHours.Minutes}m";
             e.Field9 = $"{Math.Truncate(CurrentUser.RecievedHours.TotalHours)} h {CurrentUser.RecievedHours.Minutes}m";
 
-            View.LoadUserData(e, Parameters.GetCompleteImagePath(CurrentUser.Nickname), (CurrentUser.DoneHours - CurrentUser.RecievedHours));
+            View.LoadUserData(e, Parameters.GetCompleteImagePath(CurrentUser.Nickname), CurrentUser.DeltaHours);
         }
 
         private void LoadTasks() {

@@ -15,7 +15,8 @@ namespace Borelli_BdT.presenter {
         public string Field9 { get; set; }
         public string Field10 { get; set; }
         public string Field11 { get; set; }
-        public EntityCustomerMasterData Field12 { get; set; }
+        public string Field12 { get; set; }
+        public EntityCustomerMasterData Field13 { get; set; }
 
         public EntityUser() {
             Field3 = new List<string>();
@@ -36,9 +37,10 @@ namespace Borelli_BdT.presenter {
                 Field7 = $"{u.DoneJobsNumber}",
                 Field8 = $"{u.DoneHours}",
                 Field9 = $"{u.RecievedHours}",
-                Field10 = u.State.ToString(),
-                Field11 = u.Level.ToString(),
-                Field12 = EntityCustomerMasterData.GetEntity(u.Data),
+                Field10 = $"{u.DeltaHours}",
+                Field11 = u.State.ToString(),
+                Field12 = u.Level.ToString(),
+                Field13 = EntityCustomerMasterData.GetEntity(u.Data),
             };
 
             return e;
@@ -55,10 +57,10 @@ namespace Borelli_BdT.presenter {
         }
 
         public static User GetUser(EntityUser e) {
-            CustomerMasterData data = EntityCustomerMasterData.GetCustomerMasterData(e.Field12);
+            CustomerMasterData data = EntityCustomerMasterData.GetCustomerMasterData(e.Field13);
 
             return new User(data, e.Field1, e.Field2, e.Field3, e.Field4, float.Parse(e.Field5), float.Parse(e.Field6), float.Parse(e.Field7),
-                TimeSpan.Parse(e.Field8), TimeSpan.Parse(e.Field9), (RegContext)Enum.Parse(typeof(RegContext), e.Field10), (UserLevel)Enum.Parse(typeof(UserLevel), e.Field11));
+                TimeSpan.Parse(e.Field8), TimeSpan.Parse(e.Field9), TimeSpan.Parse(e.Field10), (RegContext)Enum.Parse(typeof(RegContext), e.Field11), (UserLevel)Enum.Parse(typeof(UserLevel), e.Field12));
         }
 
         public static string WorksToString(EntityUser e, string sep) {
