@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text.RegularExpressions;
 using Borelli_BdT.model;
 using Borelli_BdT.view;
@@ -12,12 +13,18 @@ namespace Borelli_BdT.presenter {
         private User CurrentUser { get; set; }
         private MainPage.TaskType TaskType { get; set; }
         private MainPage.LoadTskList LoadList { get; set; }
+
+        private bool FirstTimeInUsersTab { get; set; }
+
+
         public MainPagePresenter(MainPage view, string username) {
             View = view;
             CurrentUser = UsersList.GetUser(username);
 
             if (CurrentUser == null)
                 throw new Exception("Inserire un utente valido");
+
+            FirstTimeInUsersTab = true;
 
             LoadSelectedTab();
         }
@@ -69,6 +76,12 @@ namespace Borelli_BdT.presenter {
                     View.Text = "Lista utenti";
 
                     View.LoadLegendPaletteUsers();
+
+                    if (FirstTimeInUsersTab) {
+                        View.LoadJobsListInUsersTab(Jobs.Works);
+                        View.SetCheckedInJobsList(true);
+                    }
+
                     LoadUsersTab();
                     break;
             }
@@ -224,19 +237,39 @@ namespace Borelli_BdT.presenter {
 
             User u = UsersList.GetUser(uNick);
             EntityUser eu = EntityUser.GetEntity(u);
+            EntityUser viewer = EntityUser.GetEntity(CurrentUser);
 
-            View.OpenSignUpForm(eu);
+            if (View.GetUsersSwitchChecked() || View.GetUsedStateFilterInUsers() == UsersState.Registration)
+                View.OpenSignUpForm(eu);
+            else if (!View.GetUsersSwitchChecked())
+                View.OpenUsersDetailsForm(eu, viewer);
         }
 
         public void LoadUsersTab() {
             UsersState uState = View.GetUsedStateFilterInUsers();
+            UserDelta uDelta = View.GetUsedDeltaHoursFilterInUsers();
 
             Regex rxRicerca = new Regex(View.GetTextInUsersSearchBar(), RegexOptions.IgnoreCase);
+            List<string> selectedJobs = View.GetSelectedJobsListInLV();
 
-            List<EntityUser> users = EntityUser.GetEntityUsersList(UsersList.GetInPhaseUsers(uState));
-            List<EntityUser> filteredUser = FilterUser(users, rxRicerca);
+            List<EntityUser> users = new List<EntityUser>();
+            switch (uState) {
+                case UsersState.Confirmed:
+                    users = EntityUser.GetEntityUsersList(UsersList.GetUserBasedOnDeltaHours(uDelta));
+                    break;
+                case UsersState.Registration:
+                    users = EntityUser.GetEntityUsersList(UsersList.GetInPhaseUsers(uState));
+                    break;
+            }
 
-            View.LoadUsersList(filteredUser);
+            List<EntityUser> filteredUsers = FilterUser(users, rxRicerca);
+            filteredUsers = FilterUser(filteredUsers, selectedJobs);
+
+            GetTimeSpanUsersHoursMinutes(filteredUsers);
+
+            View.LoadUsersList(filteredUsers, uState);
+
+            FirstTimeInUsersTab = false;
         }
 
         public void ReLoadUsersTab(object sender, EventArgs e) {
@@ -251,10 +284,21 @@ namespace Borelli_BdT.presenter {
             View.ShowEditorForm(ItemsEditor.Use.Jobs);
         }
 
-        public bool IsConfirmedUser(EntityUser e) {
-            User u = EntityUser.GetUser(e);
+        public bool IsDeltaTimePositive(EntityUser e) {
+            User u = UsersList.GetUser(e.Field1);
+            return ((u.DoneHours - u.RecievedHours).TotalMinutes >= 0);
+        }
 
-            return (u.State == RegContext.Confirmed);
+        public void OnSelectAllWorksList(object sender, EventArgs e) {
+            View.SetCheckedInJobsList(true);
+        }
+
+        public void OnDeselectAllWorksList(object sender, EventArgs e) {
+            View.SetCheckedInJobsList(false);
+        }
+
+        public void ListViewJobsCheckedChanged(object sender, ItemCheckedEventArgs e) {
+            LoadUsersTab();
         }
 
 
@@ -268,6 +312,13 @@ namespace Borelli_BdT.presenter {
             EntityUser eu = EntityUser.GetEntity(CurrentUser);
 
             View.OpenTaskDetailsForm(taskId, eu);
+        }
+
+        public string GetDeltaTimeUser(EntityUser e) {
+            User u = UsersList.GetUser(e.Field1);
+            TimeSpan t = u.DoneHours - u.RecievedHours;
+
+            return $"{Math.Truncate(t.TotalHours)} h {Math.Abs(t.Minutes)}m";
         }
 
         private List<EntityTask> FilterTasks(List<EntityTask> input, Regex rx, MainPage.ResearchOption opt) {
@@ -311,6 +362,19 @@ namespace Borelli_BdT.presenter {
             return outp;
         }
 
+        private List<EntityUser> FilterUser(List<EntityUser> input, List<string> jobs) {
+            List<EntityUser> outp = new List<EntityUser>();
+
+            for (int i = 0; i < input.Count; i++) {
+                if (input[i].Field3.Intersect(jobs).Any()) {
+                    outp.Add(input[i]);
+                }
+            }
+
+            return outp;
+        }
+
+
         //TODO: mettere in un unica funzione che faccia la funzione di conversione, poi si passano da fuori i campi
         private void GetTimeSpanTasksHoursMinutes(EntityTask e) {
             TimeSpan t = TimeSpan.Parse(e.Field9);
@@ -320,6 +384,20 @@ namespace Borelli_BdT.presenter {
         private void GetTimeSpanTasksHoursMinutes(List<EntityTask> le) {
             for (int i = 0; i < le.Count; i++) {
                 GetTimeSpanTasksHoursMinutes(le[i]);
+            }
+        }
+
+        private void GetTimeSpanUsersHoursMinutes(EntityUser e) {
+            TimeSpan t = TimeSpan.Parse(e.Field8);
+            TimeSpan tt = TimeSpan.Parse(e.Field9);
+
+            e.Field8 = $"{Math.Truncate(t.TotalHours)} h {Math.Abs(t.Minutes)}m";
+            e.Field9 = $"{Math.Truncate(tt.TotalHours)} h {Math.Abs(tt.Minutes)}m";
+        }
+
+        private void GetTimeSpanUsersHoursMinutes(List<EntityUser> le) {
+            for (int i = 0; i < le.Count; i++) {
+                GetTimeSpanUsersHoursMinutes(le[i]);
             }
         }
     }

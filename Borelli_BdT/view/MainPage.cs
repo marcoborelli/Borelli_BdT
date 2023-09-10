@@ -49,6 +49,10 @@ namespace Borelli_BdT.view {
         private Color Arancino { get; set; }
         private Color Verdolino { get; set; }
 
+        private string[] ColumnsRequestedUsersLV { get; set; }
+        private string[] ColumnsAcceptedUsersLV { get; set; }
+
+
         public MainPage(string username) {
             InitializeComponent();
             FormManager.AddForm(this);
@@ -87,16 +91,24 @@ namespace Borelli_BdT.view {
             listViewRequestedComplete.MouseDoubleClick += new MouseEventHandler(Presenter.DoubleClickDetailsLV);
 
             listViewAcceptUsers.MouseDoubleClick += new MouseEventHandler(Presenter.DoubleClickOnAcceptUsersLW);
+            listViewWorksFilter.ItemChecked += new ItemCheckedEventHandler(Presenter.ListViewJobsCheckedChanged);
             mButtonModDistr.Click += new EventHandler(Presenter.OnModifyDistr);
             mButtonModJobs.Click += new EventHandler(Presenter.OnModifyJobs);
             textBoxSearchUser.TextChanged += new EventHandler(Presenter.ReLoadUsersTab);
-            mRdButUVOall.CheckedChanged += new EventHandler(Presenter.ReLoadUsersTab);
             mRdButUVOalredy.CheckedChanged += new EventHandler(Presenter.ReLoadUsersTab);
             mRdButUVOWait.CheckedChanged += new EventHandler(Presenter.ReLoadUsersTab);
+            mButtonSelectAll.Click += new EventHandler(Presenter.OnSelectAllWorksList);
+            mButtonDeselectAll.Click += new EventHandler(Presenter.OnDeselectAllWorksList);
+            mRdButUVOnegDelta.CheckedChanged += new EventHandler(Presenter.ReLoadUsersTab);
+            mRdButUVOposDelta.CheckedChanged += new EventHandler(Presenter.ReLoadUsersTab);
+            mRdButUVOallDelta.CheckedChanged += new EventHandler(Presenter.ReLoadUsersTab);
 
             Verdolino = Color.FromArgb(192, 255, 192);
             Arancino = Color.FromArgb(255, 224, 192);
             Giallino = Color.FromArgb(255, 255, 192);
+
+            ColumnsRequestedUsersLV = new string[] { "NICKNAME", "NOME", "COGNOME", "NUMERO CELL.", "MAIL" };
+            ColumnsAcceptedUsersLV = new string[] { "NICKNAME", "NOME", "COGNOME", "LAVORI", "ORE FATTE", "ORE RICEV.", "DELTA" };
 
             LoadLegendPaletteAcceptedTask();
             LoadLegendPaletteRequestedTask();
@@ -150,15 +162,34 @@ namespace Borelli_BdT.view {
             signUpForm.FormClosed += new FormClosedEventHandler(ClosedSignUpForm);
         }
 
+        public void OpenUsersDetailsForm(EntityUser toWatsh, EntityUser viewer) {
+            UserDetails userDetailsForm = new UserDetails(toWatsh.Field1, viewer);
+            userDetailsForm.ShowDialog();
+
+            userDetailsForm.FormClosed += new FormClosedEventHandler(ClosedSignUpForm);
+        }
+
         public UsersState GetUsedStateFilterInUsers() {
             UsersState outp;
 
-            if (mRdButUVOall.Checked) {
-                outp = UsersState.All;
-            } else if (mRdButUVOWait.Checked) {
+            if (mRdButUVOWait.Checked) {
                 outp = UsersState.Registration;
             } else {
                 outp = UsersState.Confirmed;
+            }
+
+            return outp;
+        }
+
+        public UserDelta GetUsedDeltaHoursFilterInUsers() {
+            UserDelta outp;
+
+            if (mRdButUVOallDelta.Checked) {
+                outp = UserDelta.All;
+            } else if (mRdButUVOposDelta.Checked) {
+                outp = UserDelta.Greater;
+            } else {
+                outp = UserDelta.Less;
             }
 
             return outp;
@@ -274,25 +305,97 @@ namespace Borelli_BdT.view {
             }
         }
 
-        public void LoadUsersList(List<EntityUser> usr) {
+        public void LoadUsersList(List<EntityUser> usr, UsersState uState) {
             ListView lwOutp = listViewAcceptUsers;
             ListViewItem lvi = new ListViewItem();
 
             lwOutp.Items.Clear();
+            SetUsersTab(uState, lwOutp);
 
             for (int i = 0; i < usr.Count; i++) {
                 EntityCustomerMasterData tmp = usr[i].Field12;
-                lvi = new ListViewItem(new string[] { usr[i].Field1, tmp.Field1, tmp.Field2, tmp.Field3, tmp.Field4 });
 
-                lvi.BackColor = Presenter.IsConfirmedUser(usr[i]) ? Verdolino : Giallino;
-                lvi.ForeColor = Color.Black;
+                switch (uState) {
+                    case UsersState.Registration:
+                        lvi = new ListViewItem(new string[] { usr[i].Field1, tmp.Field1, tmp.Field2, tmp.Field3, tmp.Field4 }); //nickname, nome, cognome, num cell, mail
+                        break;
+                    case UsersState.Confirmed:
+                        //nickname, nome, cognome, lavori, ore donate, ore ricevute, delta
+                        string delta = Presenter.GetDeltaTimeUser(usr[i]);
+                        lvi = new ListViewItem(new string[] { usr[i].Field1, tmp.Field1, tmp.Field2, EntityUser.WorksToString(usr[i], ", "), usr[i].Field8, usr[i].Field9, delta });
+
+                        lvi.BackColor = Presenter.IsDeltaTimePositive(usr[i]) ? Verdolino : Arancino;
+                        lvi.ForeColor = Color.Black;
+
+                        break;
+                }
+
 
                 lwOutp.Items.Add(lvi);
+            }
 
-                if (i == usr.Count - 1)
-                    lwOutp.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
+            lwOutp.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
+        }
+
+        public void LoadJobsListInUsersTab(List<string> input) {
+            for (int i = 0; i < input.Count; i++) { //TODO: mettere la possibilita' di aggiornare la lista solo se ci sono elementi nuovi
+                if (i == 0)
+                    listViewWorksFilter.ItemChecked -= Presenter.ListViewJobsCheckedChanged;
+
+                if (i == listViewWorksFilter.Items.Count - 1)
+                    listViewWorksFilter.ItemChecked += Presenter.ListViewJobsCheckedChanged;
+
+                listViewWorksFilter.Items.Add(input[i]);
+            }
+            listViewWorksFilter.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
+        }
+
+        public void SetCheckedInJobsList(bool check) {
+            for (int i = 0; i < listViewWorksFilter.Items.Count; i++) {
+                if (i == 0) //l'evento del ricaricare a ogni cambio check lo disabilito fino al penultimo
+                    listViewWorksFilter.ItemChecked -= Presenter.ListViewJobsCheckedChanged;
+
+                if (i == listViewWorksFilter.Items.Count - 1)
+                    listViewWorksFilter.ItemChecked += Presenter.ListViewJobsCheckedChanged;
+
+                listViewWorksFilter.Items[i].Checked = check;
             }
         }
+
+        public List<string> GetSelectedJobsListInLV() {
+            List<string> outp = new List<string>();
+
+            for (int i = 0; i < listViewWorksFilter.CheckedItems.Count; i++) {
+                outp.Add(listViewWorksFilter.CheckedItems[i].SubItems[0].Text);
+            }
+
+            return outp;
+        }
+
+        public void SetUsersTab(UsersState eUState, ListView lv) {
+            lv.Columns.Clear();
+
+            switch (eUState) {
+                case UsersState.Confirmed:
+                    mCardUsersDebt.Visible = mCardUsersLegend.Visible = mSwitchOpenInModifyProfile.Visible = true;
+                    for (int i = 0; i < ColumnsAcceptedUsersLV.Length; i++) {
+                        lv.Columns.Add(ColumnsAcceptedUsersLV[i]);
+                    }
+                    break;
+                case UsersState.Registration:
+                    mCardUsersDebt.Visible = mCardUsersLegend.Visible = mSwitchOpenInModifyProfile.Visible = false;
+                    for (int i = 0; i < ColumnsRequestedUsersLV.Length; i++) {
+                        lv.Columns.Add(ColumnsRequestedUsersLV[i]);
+                    }
+                    break;
+            }
+        }
+
+        public bool GetUsersSwitchChecked() {
+            return mSwitchOpenInModifyProfile.Checked;
+        }
+
+
 
         public string GetTextInTasksSearchBar(TaskType type) {
             string research = "";
@@ -369,8 +472,8 @@ namespace Borelli_BdT.view {
         }
 
         public void LoadLegendPaletteUsers() {
-            labelDotAcceptedUsers.ForeColor = Verdolino;
-            labelDotRequestedUsers.ForeColor = Giallino;
+            labelDotUsersMinusDelta.ForeColor = Arancino;
+            labelDotUsersPlusDelta.ForeColor = Verdolino;
         }
 
 
