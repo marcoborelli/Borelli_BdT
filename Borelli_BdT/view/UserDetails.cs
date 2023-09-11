@@ -139,7 +139,7 @@ namespace Borelli_BdT.view {
                 labelDeltaHours.ForeColor = Color.Green;
             }
 
-            labelDeltaHours.Text = $"{Math.Truncate(delta.TotalHours)}h {Math.Abs(delta.Minutes)}m";
+            labelDeltaHours.Text = Functions.GetTimeSpanHoursMinutes(delta);
         }
 
         private void SetFontAndColorToLabels() {

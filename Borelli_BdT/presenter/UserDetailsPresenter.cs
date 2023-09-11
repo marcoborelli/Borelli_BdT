@@ -77,34 +77,19 @@ namespace Borelli_BdT.presenter {
 
         private void LoadUserData() {
             EntityUser e = EntityUser.GetEntity(CurrentUser);
-
-            //TODO: se ci sono altre funzioni che vanno su piu' classi fare un'unica classe statica che le contenga tutte
-            //perche' senno' mostrerebbe (giorno : ore : minuti : secondi). Truncate perche' se c'e' mezz'ora farebbe .5
-            e.Field8 = $"{Math.Truncate(CurrentUser.DoneHours.TotalHours)} h {CurrentUser.DoneHours.Minutes}m";
-            e.Field9 = $"{Math.Truncate(CurrentUser.RecievedHours.TotalHours)} h {CurrentUser.RecievedHours.Minutes}m";
+            Functions.GetTimeSpanHoursMinutes(e);
 
             View.LoadUserData(e, Parameters.GetCompleteImagePath(CurrentUser.Nickname), CurrentUser.DeltaHours);
         }
 
         private void LoadTasks() {
             List<EntityTask> doneTasks = EntityTask.GetEntityTasksList(TasksList.GetAcceptedTasks(CurrentUser.Nickname, AcTaskState.Done));
-            GetTimeSpanHoursMinutes(doneTasks);
+            Functions.GetTimeSpanHoursMinutes(doneTasks);
             View.LoadTasksList(doneTasks, UserDetails.TasksType.Done);
 
             List<EntityTask> reqTask = EntityTask.GetEntityTasksList(TasksList.GetRequestedTasks(CurrentUser.Nickname, RqTaskState.Done));
-            GetTimeSpanHoursMinutes(reqTask);
+            Functions.GetTimeSpanHoursMinutes(reqTask);
             View.LoadTasksList(reqTask, UserDetails.TasksType.Requested);
-        }
-
-        private void GetTimeSpanHoursMinutes(EntityTask e) {
-            TimeSpan t = TimeSpan.Parse(e.Field9);
-            e.Field9 = $"{Math.Truncate(t.TotalHours)} h {Math.Abs(t.Minutes)}m";
-        }
-
-        private void GetTimeSpanHoursMinutes(List<EntityTask> le) {
-            for (int i = 0; i < le.Count; i++) {
-                GetTimeSpanHoursMinutes(le[i]);
-            }
         }
     }
 }

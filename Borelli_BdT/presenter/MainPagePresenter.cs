@@ -96,11 +96,11 @@ namespace Borelli_BdT.presenter {
             View.LoadTasksList(pertinentTasks, MainPage.TaskType.Pertinent, LoadList);
 
             List<EntityTask> doneTasks = EntityTask.GetEntityTasksList(TasksList.GetAcceptedTasks(CurrentUser.Nickname, AcTaskState.Done));
-            GetTimeSpanTasksHoursMinutes(doneTasks);
+            Functions.GetTimeSpanHoursMinutes(doneTasks);
             View.LoadTasksList(doneTasks, MainPage.TaskType.Accepted, LoadList);
 
             List<EntityTask> reqTask = EntityTask.GetEntityTasksList(TasksList.GetRequestedTasks(CurrentUser.Nickname, RqTaskState.Done));
-            GetTimeSpanTasksHoursMinutes(reqTask);
+            Functions.GetTimeSpanHoursMinutes(reqTask);
             View.LoadTasksList(reqTask, MainPage.TaskType.Requested, LoadList);
         }
 
@@ -189,7 +189,7 @@ namespace Borelli_BdT.presenter {
 
             List<EntityTask> doneTasks = EntityTask.GetEntityTasksList(TasksList.GetAcceptedTasks(CurrentUser.Nickname, taskState));
             List<EntityTask> doneFilteredTasks = FilterTasks(doneTasks, rxRicerca, View.GetUsedTasksFilter(TaskType));
-            GetTimeSpanTasksHoursMinutes(doneFilteredTasks);
+            Functions.GetTimeSpanHoursMinutes(doneFilteredTasks);
 
             View.ClearListViewTask(TaskType, LoadList);
             View.LoadTasksList(doneFilteredTasks, TaskType, LoadList);
@@ -214,7 +214,7 @@ namespace Borelli_BdT.presenter {
 
             List<EntityTask> requestedTasks = EntityTask.GetEntityTasksList(TasksList.GetRequestedTasks(CurrentUser.Nickname, taskState));
             List<EntityTask> requestedPertinentTasks = FilterTasks(requestedTasks, rxRicerca, View.GetUsedTasksFilter(TaskType));
-            GetTimeSpanTasksHoursMinutes(requestedPertinentTasks);
+            Functions.GetTimeSpanHoursMinutes(requestedPertinentTasks);
 
             View.ClearListViewTask(TaskType, LoadList);
             View.LoadTasksList(requestedPertinentTasks, TaskType, LoadList);
@@ -265,7 +265,7 @@ namespace Borelli_BdT.presenter {
             List<EntityUser> filteredUsers = FilterUser(users, rxRicerca);
             filteredUsers = FilterUser(filteredUsers, selectedJobs);
 
-            GetTimeSpanUsersHoursMinutes(filteredUsers);
+            Functions.GetTimeSpanHoursMinutes(filteredUsers);
 
             View.LoadUsersList(filteredUsers, uState);
 
@@ -371,33 +371,6 @@ namespace Borelli_BdT.presenter {
             }
 
             return outp;
-        }
-
-
-        //TODO: mettere in un unica funzione che faccia la funzione di conversione, poi si passano da fuori i campi
-        private void GetTimeSpanTasksHoursMinutes(EntityTask e) {
-            TimeSpan t = TimeSpan.Parse(e.Field9);
-            e.Field9 = $"{Math.Truncate(t.TotalHours)} h {Math.Abs(t.Minutes)}m";
-        }
-
-        private void GetTimeSpanTasksHoursMinutes(List<EntityTask> le) {
-            for (int i = 0; i < le.Count; i++) {
-                GetTimeSpanTasksHoursMinutes(le[i]);
-            }
-        }
-
-        private void GetTimeSpanUsersHoursMinutes(EntityUser e) {
-            TimeSpan t = TimeSpan.Parse(e.Field8);
-            TimeSpan tt = TimeSpan.Parse(e.Field9);
-
-            e.Field8 = $"{Math.Truncate(t.TotalHours)} h {Math.Abs(t.Minutes)}m";
-            e.Field9 = $"{Math.Truncate(tt.TotalHours)} h {Math.Abs(tt.Minutes)}m";
-        }
-
-        private void GetTimeSpanUsersHoursMinutes(List<EntityUser> le) {
-            for (int i = 0; i < le.Count; i++) {
-                GetTimeSpanUsersHoursMinutes(le[i]);
-            }
         }
     }
 }

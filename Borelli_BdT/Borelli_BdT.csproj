@@ -72,6 +72,7 @@
     <Compile Include="utilities\DataChecker.cs" />
     <Compile Include="utilities\FileManager.cs" />
     <Compile Include="utilities\FormManager.cs" />
+    <Compile Include="utilities\Functions.cs" />
     <Compile Include="utilities\Parameters.cs" />
     <Compile Include="view\ItemsEditor.cs">
       <SubType>Form</SubType>
