@@ -461,17 +461,27 @@ namespace Borelli_BdT.view {
             m.Items.Clear();
         }
         public void LoadLegendPaletteAcceptedTask() {
+            SetLabelFont(labelDotAccepted);
+            SetLabelFont(labelDotDone);
+
             labelDotAccepted.ForeColor = Giallino;
             labelDotDone.ForeColor = Verdolino;
         }
 
         public void LoadLegendPaletteRequestedTask() {
+            SetLabelFont(labelDotClose);
+            SetLabelFont(labelDotAcceptedR);
+            SetLabelFont(labelDotRequested);
+
             labelDotClose.ForeColor = Verdolino;
             labelDotAcceptedR.ForeColor = Giallino;
             labelDotRequested.ForeColor = Arancino;
         }
 
         public void LoadLegendPaletteUsers() {
+            SetLabelFont(labelDotUsersMinusDelta);
+            SetLabelFont(labelDotUsersPlusDelta);
+
             labelDotUsersMinusDelta.ForeColor = Arancino;
             labelDotUsersPlusDelta.ForeColor = Verdolino;
         }
@@ -485,8 +495,13 @@ namespace Borelli_BdT.view {
         private void ClosedSignUpForm(object sender, FormClosedEventArgs e) {
             Presenter.LoadSelectedTab();
         }
+
         private ListView GetCurrentListView(TaskType type, LoadTskList how) {
             return MListViews[(int)type + (int)how];
+        }
+
+        private void SetLabelFont(Label l) {
+            l.Font = new Font(FontFamily.GenericSansSerif, 16, FontStyle.Bold);
         }
     }
 }

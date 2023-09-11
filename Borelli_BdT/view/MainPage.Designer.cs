@@ -840,7 +840,7 @@
             this.materialLabel6.AutoSize = true;
             this.materialLabel6.Depth = 0;
             this.materialLabel6.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.materialLabel6.Location = new System.Drawing.Point(45, 73);
+            this.materialLabel6.Location = new System.Drawing.Point(45, 79);
             this.materialLabel6.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel6.Name = "materialLabel6";
             this.materialLabel6.Size = new System.Drawing.Size(144, 19);
@@ -850,11 +850,11 @@
             // labelDotAccepted
             // 
             this.labelDotAccepted.AutoSize = true;
-            this.labelDotAccepted.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelDotAccepted.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelDotAccepted.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.labelDotAccepted.Location = new System.Drawing.Point(17, 73);
             this.labelDotAccepted.Name = "labelDotAccepted";
-            this.labelDotAccepted.Size = new System.Drawing.Size(22, 24);
+            this.labelDotAccepted.Size = new System.Drawing.Size(26, 25);
             this.labelDotAccepted.TabIndex = 3;
             this.labelDotAccepted.Text = "●";
             // 
@@ -863,7 +863,7 @@
             this.materialLabel5.AutoSize = true;
             this.materialLabel5.Depth = 0;
             this.materialLabel5.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.materialLabel5.Location = new System.Drawing.Point(45, 42);
+            this.materialLabel5.Location = new System.Drawing.Point(45, 48);
             this.materialLabel5.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel5.Name = "materialLabel5";
             this.materialLabel5.Size = new System.Drawing.Size(82, 19);
@@ -873,11 +873,11 @@
             // labelDotDone
             // 
             this.labelDotDone.AutoSize = true;
-            this.labelDotDone.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelDotDone.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelDotDone.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.labelDotDone.Location = new System.Drawing.Point(17, 42);
             this.labelDotDone.Name = "labelDotDone";
-            this.labelDotDone.Size = new System.Drawing.Size(22, 24);
+            this.labelDotDone.Size = new System.Drawing.Size(26, 25);
             this.labelDotDone.TabIndex = 1;
             this.labelDotDone.Text = "●";
             // 
@@ -1146,7 +1146,7 @@
             this.materialLabel13.AutoSize = true;
             this.materialLabel13.Depth = 0;
             this.materialLabel13.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.materialLabel13.Location = new System.Drawing.Point(45, 73);
+            this.materialLabel13.Location = new System.Drawing.Point(45, 78);
             this.materialLabel13.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel13.Name = "materialLabel13";
             this.materialLabel13.Size = new System.Drawing.Size(144, 19);
@@ -1156,11 +1156,11 @@
             // labelDotAcceptedR
             // 
             this.labelDotAcceptedR.AutoSize = true;
-            this.labelDotAcceptedR.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelDotAcceptedR.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelDotAcceptedR.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.labelDotAcceptedR.Location = new System.Drawing.Point(17, 73);
             this.labelDotAcceptedR.Name = "labelDotAcceptedR";
-            this.labelDotAcceptedR.Size = new System.Drawing.Size(22, 24);
+            this.labelDotAcceptedR.Size = new System.Drawing.Size(26, 25);
             this.labelDotAcceptedR.TabIndex = 3;
             this.labelDotAcceptedR.Text = "●";
             // 
@@ -1169,7 +1169,7 @@
             this.materialLabel10.AutoSize = true;
             this.materialLabel10.Depth = 0;
             this.materialLabel10.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.materialLabel10.Location = new System.Drawing.Point(45, 104);
+            this.materialLabel10.Location = new System.Drawing.Point(45, 109);
             this.materialLabel10.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel10.Name = "materialLabel10";
             this.materialLabel10.Size = new System.Drawing.Size(157, 19);
@@ -1179,11 +1179,11 @@
             // labelDotRequested
             // 
             this.labelDotRequested.AutoSize = true;
-            this.labelDotRequested.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelDotRequested.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelDotRequested.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
             this.labelDotRequested.Location = new System.Drawing.Point(17, 104);
             this.labelDotRequested.Name = "labelDotRequested";
-            this.labelDotRequested.Size = new System.Drawing.Size(22, 24);
+            this.labelDotRequested.Size = new System.Drawing.Size(26, 25);
             this.labelDotRequested.TabIndex = 5;
             this.labelDotRequested.Text = "●";
             // 
@@ -1192,7 +1192,7 @@
             this.materialLabel11.AutoSize = true;
             this.materialLabel11.Depth = 0;
             this.materialLabel11.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.materialLabel11.Location = new System.Drawing.Point(45, 42);
+            this.materialLabel11.Location = new System.Drawing.Point(45, 47);
             this.materialLabel11.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel11.Name = "materialLabel11";
             this.materialLabel11.Size = new System.Drawing.Size(49, 19);
@@ -1202,11 +1202,11 @@
             // labelDotClose
             // 
             this.labelDotClose.AutoSize = true;
-            this.labelDotClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelDotClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelDotClose.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.labelDotClose.Location = new System.Drawing.Point(17, 42);
             this.labelDotClose.Name = "labelDotClose";
-            this.labelDotClose.Size = new System.Drawing.Size(22, 24);
+            this.labelDotClose.Size = new System.Drawing.Size(26, 25);
             this.labelDotClose.TabIndex = 1;
             this.labelDotClose.Text = "●";
             // 
@@ -1474,7 +1474,7 @@
             this.materialLabel16.AutoSize = true;
             this.materialLabel16.Depth = 0;
             this.materialLabel16.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.materialLabel16.Location = new System.Drawing.Point(45, 44);
+            this.materialLabel16.Location = new System.Drawing.Point(45, 45);
             this.materialLabel16.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel16.Name = "materialLabel16";
             this.materialLabel16.Size = new System.Drawing.Size(124, 19);
@@ -1484,11 +1484,11 @@
             // labelDotUsersPlusDelta
             // 
             this.labelDotUsersPlusDelta.AutoSize = true;
-            this.labelDotUsersPlusDelta.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelDotUsersPlusDelta.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelDotUsersPlusDelta.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.labelDotUsersPlusDelta.Location = new System.Drawing.Point(17, 44);
+            this.labelDotUsersPlusDelta.Location = new System.Drawing.Point(17, 40);
             this.labelDotUsersPlusDelta.Name = "labelDotUsersPlusDelta";
-            this.labelDotUsersPlusDelta.Size = new System.Drawing.Size(22, 24);
+            this.labelDotUsersPlusDelta.Size = new System.Drawing.Size(26, 25);
             this.labelDotUsersPlusDelta.TabIndex = 3;
             this.labelDotUsersPlusDelta.Text = "●";
             // 
@@ -1497,7 +1497,7 @@
             this.materialLabel17.AutoSize = true;
             this.materialLabel17.Depth = 0;
             this.materialLabel17.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.materialLabel17.Location = new System.Drawing.Point(45, 13);
+            this.materialLabel17.Location = new System.Drawing.Point(45, 14);
             this.materialLabel17.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel17.Name = "materialLabel17";
             this.materialLabel17.Size = new System.Drawing.Size(129, 19);
@@ -1507,11 +1507,11 @@
             // labelDotUsersMinusDelta
             // 
             this.labelDotUsersMinusDelta.AutoSize = true;
-            this.labelDotUsersMinusDelta.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelDotUsersMinusDelta.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelDotUsersMinusDelta.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
-            this.labelDotUsersMinusDelta.Location = new System.Drawing.Point(17, 13);
+            this.labelDotUsersMinusDelta.Location = new System.Drawing.Point(17, 9);
             this.labelDotUsersMinusDelta.Name = "labelDotUsersMinusDelta";
-            this.labelDotUsersMinusDelta.Size = new System.Drawing.Size(22, 24);
+            this.labelDotUsersMinusDelta.Size = new System.Drawing.Size(26, 25);
             this.labelDotUsersMinusDelta.TabIndex = 1;
             this.labelDotUsersMinusDelta.Text = "●";
             // 
