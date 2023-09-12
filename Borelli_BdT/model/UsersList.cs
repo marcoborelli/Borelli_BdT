@@ -16,7 +16,7 @@ namespace Borelli_BdT.model {
             if (Users == null)
                 throw new Exception("Lista non inizializzata, chiamare prima l'initializer della classe statica UsersList");
 
-            return Users.FindIndex(x => x.Nickname == username);
+            return Users.FindIndex(x => x.Nickname.ToUpper() == username.ToUpper());
         }
         public static int GetUserIndex(User u) {
             if (Users == null)
@@ -28,7 +28,7 @@ namespace Borelli_BdT.model {
             if (Users == null)
                 throw new Exception("Lista non inizializzata, chiamare prima l'initializer della classe statica UsersList");
 
-            return Users.FirstOrDefault(x => x.Nickname == username);
+            return Users.FirstOrDefault(x => x.Nickname.ToUpper() == username.ToUpper());
         }
 
 
@@ -42,7 +42,7 @@ namespace Borelli_BdT.model {
             if (Users == null)
                 throw new Exception("Lista non inizializzata, chiamare prima l'initializer della classe statica UsersList");
 
-            return (Users.FindIndex(x => x.Nickname == username) != -1);
+            return (Users.FindIndex(x => x.Nickname.ToUpper() == username.ToUpper()) != -1);
         }
 
         public static void AddUser(User u) {

@@ -16,6 +16,14 @@ namespace Borelli_BdT.utilities {
         Done,
         All,
     }
+    public enum TaskState {
+        Requested,
+        Accepted,
+        Done,
+        All
+    }
+
+
     public enum UsersState {
         Registration,
         Confirmed,

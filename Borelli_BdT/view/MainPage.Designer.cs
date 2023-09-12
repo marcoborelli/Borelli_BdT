@@ -122,7 +122,7 @@
             this.mRdButUVOposDelta = new MaterialSkin.Controls.MaterialRadioButton();
             this.materialCard1 = new MaterialSkin.Controls.MaterialCard();
             this.materialLabel15 = new MaterialSkin.Controls.MaterialLabel();
-            this.listViewWorksFilter = new System.Windows.Forms.ListView();
+            this.listViewWorksUsersFilter = new System.Windows.Forms.ListView();
             this.colWorksList = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.mButtonDeselectAll = new MaterialSkin.Controls.MaterialButton();
             this.mButtonSelectAll = new MaterialSkin.Controls.MaterialButton();
@@ -1329,7 +1329,7 @@
             // 
             this.materialCard1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.materialCard1.Controls.Add(this.materialLabel15);
-            this.materialCard1.Controls.Add(this.listViewWorksFilter);
+            this.materialCard1.Controls.Add(this.listViewWorksUsersFilter);
             this.materialCard1.Controls.Add(this.mButtonDeselectAll);
             this.materialCard1.Controls.Add(this.mButtonSelectAll);
             this.materialCard1.Depth = 0;
@@ -1354,19 +1354,19 @@
             this.materialLabel15.TabIndex = 11;
             this.materialLabel15.Text = "Filtra per lavoro:";
             // 
-            // listViewWorksFilter
+            // listViewWorksUsersFilter
             // 
-            this.listViewWorksFilter.CheckBoxes = true;
-            this.listViewWorksFilter.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.listViewWorksUsersFilter.CheckBoxes = true;
+            this.listViewWorksUsersFilter.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.colWorksList});
-            this.listViewWorksFilter.FullRowSelect = true;
-            this.listViewWorksFilter.HideSelection = false;
-            this.listViewWorksFilter.Location = new System.Drawing.Point(7, 33);
-            this.listViewWorksFilter.Name = "listViewWorksFilter";
-            this.listViewWorksFilter.Size = new System.Drawing.Size(198, 138);
-            this.listViewWorksFilter.TabIndex = 10;
-            this.listViewWorksFilter.UseCompatibleStateImageBehavior = false;
-            this.listViewWorksFilter.View = System.Windows.Forms.View.Details;
+            this.listViewWorksUsersFilter.FullRowSelect = true;
+            this.listViewWorksUsersFilter.HideSelection = false;
+            this.listViewWorksUsersFilter.Location = new System.Drawing.Point(7, 33);
+            this.listViewWorksUsersFilter.Name = "listViewWorksUsersFilter";
+            this.listViewWorksUsersFilter.Size = new System.Drawing.Size(198, 138);
+            this.listViewWorksUsersFilter.TabIndex = 10;
+            this.listViewWorksUsersFilter.UseCompatibleStateImageBehavior = false;
+            this.listViewWorksUsersFilter.View = System.Windows.Forms.View.Details;
             // 
             // colWorksList
             // 
@@ -1770,7 +1770,7 @@
         private MaterialSkin.Controls.MaterialButton mButtonSelectAll;
         private MaterialSkin.Controls.MaterialSwitch mSwitchOpenInModifyProfile;
         private MaterialSkin.Controls.MaterialLabel materialLabel15;
-        private System.Windows.Forms.ListView listViewWorksFilter;
+        private System.Windows.Forms.ListView listViewWorksUsersFilter;
         private MaterialSkin.Controls.MaterialRadioButton mRdButUVOallDelta;
         private System.Windows.Forms.ColumnHeader colWorksList;
     }

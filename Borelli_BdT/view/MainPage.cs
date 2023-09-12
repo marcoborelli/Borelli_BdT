@@ -11,13 +11,13 @@ namespace Borelli_BdT.view {
     public partial class MainPage : MaterialForm {
         /* Logica nome colonne in ListView:
          * TASK:
-         * <col><H(ome) | S(pecific)><P(ertinent) | A(ccepted) | R(equested)><campo>
+         * <col><H(ome) | S(pecific)><P(ertinent) | A(ccepted) | R(equested) | T(ask all)><campo>
          *
          * USER:
          * <col><A(cceptation)><campo> */
 
         /* Logica nome radioButton:
-         * <mRdBut><P(ertinent) | A(ccepted) | R(equested) | U(ser)><SF(searchFilter) | VO (viewOnly)><campo> */
+         * <mRdBut><P(ertinent) | A(ccepted) | R(equested) | U(ser) | T(ask all)><SF(searchFilter) | VO (viewOnly)><campo> */
 
 
         public enum LoadTskList { //indica se la listView in questione e' nella HomeScreen (pochi dettagli) o nel tab dedicato (dettagliata)
@@ -30,7 +30,7 @@ namespace Borelli_BdT.view {
             Accepted = 4,
         }
         /* La logica consiste in una lista di 6 listView (2 (HomeScreen e Details) per ognuno dei 3 task type
-         * (Pertinent, Requested, Accepted)). Questi enumm, tramite la loro somma, vengono usati per riconoscere la giusta ListView
+         * (Pertinent, Requested, Accepted)). Questi enum, tramite la loro somma, vengono usati per riconoscere la giusta ListView
          * da parte del presenter che non vi ha accesso direttamente.
          * Es: la ListView che si trova sull'Home delle task fatte avra' indice 4: 0(LoadTskList.HomeScreen) + 4(TaskType.Accepted) */
 
@@ -40,6 +40,11 @@ namespace Borelli_BdT.view {
             Requester,
             Acceptor,
             Job,
+        }
+
+        public enum ViewType {
+            Task,
+            Users
         }
 
 
@@ -91,14 +96,14 @@ namespace Borelli_BdT.view {
             listViewRequestedComplete.MouseDoubleClick += new MouseEventHandler(Presenter.DoubleClickDetailsLV);
 
             listViewAcceptUsers.MouseDoubleClick += new MouseEventHandler(Presenter.DoubleClickOnAcceptUsersLW);
-            listViewWorksFilter.ItemChecked += new ItemCheckedEventHandler(Presenter.ListViewJobsCheckedChanged);
+            listViewWorksUsersFilter.ItemChecked += new ItemCheckedEventHandler(Presenter.ListViewJobsUsersCheckedChanged);
             mButtonModDistr.Click += new EventHandler(Presenter.OnModifyDistr);
             mButtonModJobs.Click += new EventHandler(Presenter.OnModifyJobs);
             textBoxSearchUser.TextChanged += new EventHandler(Presenter.ReLoadUsersTab);
             mRdButUVOalredy.CheckedChanged += new EventHandler(Presenter.ReLoadUsersTab);
             mRdButUVOWait.CheckedChanged += new EventHandler(Presenter.ReLoadUsersTab);
-            mButtonSelectAll.Click += new EventHandler(Presenter.OnSelectAllWorksList);
-            mButtonDeselectAll.Click += new EventHandler(Presenter.OnDeselectAllWorksList);
+            mButtonSelectAll.Click += new EventHandler(Presenter.OnSelectAllUsersWorksList);
+            mButtonDeselectAll.Click += new EventHandler(Presenter.OnDeselectAllUseresWorksList);
             mRdButUVOnegDelta.CheckedChanged += new EventHandler(Presenter.ReLoadUsersTab);
             mRdButUVOposDelta.CheckedChanged += new EventHandler(Presenter.ReLoadUsersTab);
             mRdButUVOallDelta.CheckedChanged += new EventHandler(Presenter.ReLoadUsersTab);
@@ -337,36 +342,50 @@ namespace Borelli_BdT.view {
             lwOutp.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
         }
 
-        public void LoadJobsListInUsersTab(List<string> input) {
-            for (int i = 0; i < input.Count; i++) { //TODO: mettere la possibilita' di aggiornare la lista solo se ci sono elementi nuovi
-                if (i == 0)
-                    listViewWorksFilter.ItemChecked -= Presenter.ListViewJobsCheckedChanged;
+        public void LoadJobsListInUsersTab(List<string> input, ViewType vType) {
+            switch (vType) { //TODO: mettere la possibilita' di aggiornare la lista solo se ci sono elementi nuovi
+                case ViewType.Users:
+                    for (int i = 0; i < input.Count; i++) {
+                        if (i == 0)
+                            listViewWorksUsersFilter.ItemChecked -= Presenter.ListViewJobsUsersCheckedChanged;
 
-                if (i == listViewWorksFilter.Items.Count - 1)
-                    listViewWorksFilter.ItemChecked += Presenter.ListViewJobsCheckedChanged;
+                        if (i == listViewWorksUsersFilter.Items.Count - 1)
+                            listViewWorksUsersFilter.ItemChecked += Presenter.ListViewJobsUsersCheckedChanged;
 
-                listViewWorksFilter.Items.Add(input[i]);
+                        listViewWorksUsersFilter.Items.Add(input[i]);
+                    }
+                    listViewWorksUsersFilter.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
+                    break;
+
             }
-            listViewWorksFilter.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
+
         }
 
-        public void SetCheckedInJobsList(bool check) {
-            for (int i = 0; i < listViewWorksFilter.Items.Count; i++) {
-                if (i == 0) //l'evento del ricaricare a ogni cambio check lo disabilito fino al penultimo
-                    listViewWorksFilter.ItemChecked -= Presenter.ListViewJobsCheckedChanged;
+        public void SetCheckedInJobsList(bool check, ViewType vType) {
+            switch (vType) {
+                case ViewType.Users:
+                    for (int i = 0; i < listViewWorksUsersFilter.Items.Count; i++) {
+                        if (i == 0) //l'evento del ricaricare a ogni cambio check lo disabilito fino al penultimo
+                            listViewWorksUsersFilter.ItemChecked -= Presenter.ListViewJobsUsersCheckedChanged;
 
-                if (i == listViewWorksFilter.Items.Count - 1)
-                    listViewWorksFilter.ItemChecked += Presenter.ListViewJobsCheckedChanged;
+                        if (i == listViewWorksUsersFilter.Items.Count - 1)
+                            listViewWorksUsersFilter.ItemChecked += Presenter.ListViewJobsUsersCheckedChanged;
 
-                listViewWorksFilter.Items[i].Checked = check;
+                        listViewWorksUsersFilter.Items[i].Checked = check;
+                    }
+                    break;
+
+
             }
         }
 
-        public List<string> GetSelectedJobsListInLV() {
+        public List<string> GetSelectedJobsListInLV(ViewType vType) {
             List<string> outp = new List<string>();
 
-            for (int i = 0; i < listViewWorksFilter.CheckedItems.Count; i++) {
-                outp.Add(listViewWorksFilter.CheckedItems[i].SubItems[0].Text);
+            ListView lv = (vType == ViewType.Users) ? listViewWorksUsersFilter : null /*TODO*/;
+
+            for (int i = 0; i < lv.CheckedItems.Count; i++) {
+                outp.Add(lv.CheckedItems[i].SubItems[0].Text);
             }
 
             return outp;

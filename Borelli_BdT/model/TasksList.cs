@@ -176,6 +176,53 @@ namespace Borelli_BdT.model {
             return outp;
         }
 
+        public static List<Task> GetTasksInState(TaskState phase) {
+            if (Tasks == null)
+                throw new Exception("Lista non inizializzata, chiamare prima l'initializer della classe statica TasksList");
+
+            List<Task> outp = new List<Task>();
+
+            for (int i = 0; i < Tasks.Count; i++) {
+                switch (phase) {
+                    case TaskState.Requested:
+                        if (Tasks[i].Status == TPhase.Request) {
+                            outp.Add(Tasks[i]);
+                        }
+                        break;
+                    case TaskState.Accepted:
+                        if (Tasks[i].Status == TPhase.Accepted) {
+                            outp.Add(Tasks[i]);
+                        }
+                        break;
+                    case TaskState.Done:
+                        if (Tasks[i].Status == TPhase.Done) {
+                            outp.Add(Tasks[i]);
+                        }
+                        break;
+                    case TaskState.All:
+                        outp.Add(Tasks[i]);
+                        break;
+                }
+            }
+
+            return outp;
+        }
+
+        public static List<Task> GetTaskFromDateToDate(DateTime from, DateTime to) {
+            if (Tasks == null)
+                throw new Exception("Lista non inizializzata, chiamare prima l'initializer della classe statica TasksList");
+
+            List<Task> outp = new List<Task>();
+
+            for (int i = 0; i < Tasks.Count; i++) {
+                if (Tasks[i].RequestDate >= from && Tasks[i].RequestDate <= to) {
+                    outp.Add(Tasks[i]);
+                }
+            }
+
+            return outp;
+        }
+
         public static void WriteJsonFile() {
             FileManager.WriteJsonFile(Tasks, Parameters.FPTasks);
         }

@@ -198,24 +198,11 @@ namespace Borelli_BdT.model {
             AddHoursAndStarsToUser(acceptedUser, taskLength, stars);
         }
 
-        public void AddDoneHours(TimeSpan t) {
-            if (t < new TimeSpan(0, 0, 0))
-                throw new Exception("Inserire un aumento positivo di ore");
-
-            DoneHours += t;
-        }
-
-        public void AddRecievedHours(TimeSpan t) {
-            if (t < new TimeSpan(0, 0, 0))
-                throw new Exception("Inserire una diminuzione positiva di ore");
-
-            RecievedHours += t;
-            DeltaHours = DoneHours - RecievedHours;
-        }
-
         public bool IsPasswordCorrect(string passwd) {
             return (passwd == Password);
         }
+
+
 
         private void AddHoursAndStarsToUser(User u, TimeSpan taskLength, float star) {
             u.AddDoneHours(taskLength);
@@ -227,6 +214,21 @@ namespace Borelli_BdT.model {
 
             //per arrotondare ogni 0.25
             u.AverageStars = (float)(Math.Round((u.TotalStars / u.DoneJobsNumber) * 4, MidpointRounding.ToEven)) / 4;
+        }
+
+        private void AddDoneHours(TimeSpan t) {
+            if (t < new TimeSpan(0, 0, 0))
+                throw new Exception("Inserire un aumento positivo di ore");
+
+            DoneHours += t;
+        }
+
+        private void AddRecievedHours(TimeSpan t) {
+            if (t < new TimeSpan(0, 0, 0))
+                throw new Exception("Inserire una diminuzione positiva di ore");
+
+            RecievedHours += t;
+            DeltaHours = DoneHours - RecievedHours;
         }
 
 

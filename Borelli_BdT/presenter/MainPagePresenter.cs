@@ -78,8 +78,8 @@ namespace Borelli_BdT.presenter {
                     View.LoadLegendPaletteUsers();
 
                     if (FirstTimeInUsersTab) {
-                        View.LoadJobsListInUsersTab(Jobs.Works);
-                        View.SetCheckedInJobsList(true);
+                        View.LoadJobsListInUsersTab(Jobs.Works, MainPage.ViewType.Users);
+                        View.SetCheckedInJobsList(true, MainPage.ViewType.Users);
                     }
 
                     LoadUsersTab();
@@ -250,7 +250,7 @@ namespace Borelli_BdT.presenter {
             UserDelta uDelta = View.GetUsedDeltaHoursFilterInUsers();
 
             Regex rxRicerca = new Regex(View.GetTextInUsersSearchBar(), RegexOptions.IgnoreCase);
-            List<string> selectedJobs = View.GetSelectedJobsListInLV();
+            List<string> selectedJobs = View.GetSelectedJobsListInLV(MainPage.ViewType.Users);
 
             List<EntityUser> users = new List<EntityUser>();
             switch (uState) {
@@ -289,15 +289,15 @@ namespace Borelli_BdT.presenter {
             return ((u.DoneHours - u.RecievedHours).TotalMinutes >= 0);
         }
 
-        public void OnSelectAllWorksList(object sender, EventArgs e) {
-            View.SetCheckedInJobsList(true);
+        public void OnSelectAllUsersWorksList(object sender, EventArgs e) {
+            View.SetCheckedInJobsList(true, MainPage.ViewType.Users);
         }
 
-        public void OnDeselectAllWorksList(object sender, EventArgs e) {
-            View.SetCheckedInJobsList(false);
+        public void OnDeselectAllUseresWorksList(object sender, EventArgs e) {
+            View.SetCheckedInJobsList(false, MainPage.ViewType.Users);
         }
 
-        public void ListViewJobsCheckedChanged(object sender, ItemCheckedEventArgs e) {
+        public void ListViewJobsUsersCheckedChanged(object sender, ItemCheckedEventArgs e) {
             LoadUsersTab();
         }
 
