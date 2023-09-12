@@ -15,6 +15,7 @@ namespace Borelli_BdT.presenter {
         private MainPage.LoadTskList LoadList { get; set; }
 
         private bool FirstTimeInUsersTab { get; set; }
+        private bool FirstTimeInAllTasksTab { get; set; }
 
 
         public MainPagePresenter(MainPage view, string username) {
@@ -24,7 +25,7 @@ namespace Borelli_BdT.presenter {
             if (CurrentUser == null)
                 throw new Exception("Inserire un utente valido");
 
-            FirstTimeInUsersTab = true;
+            FirstTimeInUsersTab = FirstTimeInAllTasksTab = true;
 
             LoadSelectedTab();
         }
@@ -83,6 +84,19 @@ namespace Borelli_BdT.presenter {
                     }
 
                     LoadUsersTab();
+                    break;
+                case 5:
+                    TaskType = MainPage.TaskType.All;
+                    LoadList = MainPage.LoadTskList.Details;
+                    View.Text = "Lista totale task";
+
+                    if (FirstTimeInAllTasksTab) {
+                        View.LoadJobsListInUsersTab(Jobs.Works, MainPage.ViewType.Task);
+                        View.SetCheckedInJobsList(true, MainPage.ViewType.Task);
+                    }
+
+                    View.LoadLegendPaletteAllTasks();
+                    LoadAllTasks();
                     break;
             }
         }
@@ -303,6 +317,48 @@ namespace Borelli_BdT.presenter {
 
 
 
+        public void LoadAllTasks() {
+            TaskState tState = View.GetUsedFilterInAllTasks();
+            Regex rxRicerca = new Regex(View.GetTextInTasksSearchBar(TaskType), RegexOptions.IgnoreCase);
+            List<string> selectedJobs = View.GetSelectedJobsListInLV(MainPage.ViewType.Task);
+
+
+            List<EntityTask> allTasks = EntityTask.GetEntityTasksList(TasksList.GetTasksInState(tState));
+            List<EntityTask> allFilteredTask = FilterTasks(allTasks, selectedJobs);
+            allFilteredTask = FilterTasks(allFilteredTask, rxRicerca, View.GetUsedTasksFilter(TaskType));
+            if (View.IsSwitchDateTimePickerChecked()) {
+                DateTime[] values = View.GetTaskDateFilterDates();
+                allFilteredTask = GetTaskFromDateToDate(values[0], values[1], allFilteredTask);
+            }
+
+
+            View.ClearListViewTask(TaskType, LoadList);
+            View.LoadTasksList(allFilteredTask, TaskType, LoadList);
+        }
+
+        public void ReLoadAllTasks(object sender, EventArgs e) {
+            LoadAllTasks();
+        }
+
+        public void ListViewJobsTasksCheckedChanged(object sender, ItemCheckedEventArgs e) {
+            LoadAllTasks();
+        }
+
+        public void OnSwitchDateTime(object sender, EventArgs e) {
+            View.SetDateTimePickersState(View.IsSwitchDateTimePickerChecked());
+            LoadAllTasks();
+        }
+
+        public void OnSelectAllTasksWorksList(object sender, EventArgs e) {
+            View.SetCheckedInJobsList(true, MainPage.ViewType.Task);
+        }
+
+        public void OnDeselectAllTasksWorksList(object sender, EventArgs e) {
+            View.SetCheckedInJobsList(false, MainPage.ViewType.Task);
+        }
+
+
+
         public bool IsSecretary() {
             return (CurrentUser.Level == UserLevel.Secretary);
         }
@@ -343,6 +399,30 @@ namespace Borelli_BdT.presenter {
                     case MainPage.ResearchOption.None:
                         outp.Add(input[i]);
                         break;
+                }
+            }
+
+            return outp;
+        }
+
+        private List<EntityTask> FilterTasks(List<EntityTask> input, List<string> jobs) {
+            List<EntityTask> outp = new List<EntityTask>();
+
+            for (int i = 0; i < input.Count; i++) {
+                if (jobs.Contains(input[i].Field11)) {
+                    outp.Add(input[i]);
+                }
+            }
+
+            return outp;
+        }
+
+        private List<EntityTask> GetTaskFromDateToDate(DateTime from, DateTime to, List<EntityTask> input) {
+            List<EntityTask> outp = new List<EntityTask>();
+
+            for (int i = 0; i < input.Count; i++) {
+                if (DateTime.Parse(input[i].Field5).Date >= from.Date && DateTime.Parse(input[i].Field5).Date <= to.Date) {
+                    outp.Add(input[i]);
                 }
             }
 

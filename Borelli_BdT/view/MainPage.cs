@@ -28,6 +28,7 @@ namespace Borelli_BdT.view {
             Pertinent,
             Requested = 2,
             Accepted = 4,
+            All = 5,
         }
         /* La logica consiste in una lista di 6 listView (2 (HomeScreen e Details) per ognuno dei 3 task type
          * (Pertinent, Requested, Accepted)). Questi enum, tramite la loro somma, vengono usati per riconoscere la giusta ListView
@@ -62,7 +63,7 @@ namespace Borelli_BdT.view {
             InitializeComponent();
             FormManager.AddForm(this);
 
-            MListViews = new List<ListView> { listViewPertinentTasks, listViewPertinentComplete, listViewRequestedTasks, listViewRequestedComplete, listViewAcceptedTasks, listViewDoneComplete };
+            MListViews = new List<ListView> { listViewPertinentTasks, listViewPertinentComplete, listViewRequestedTasks, listViewRequestedComplete, listViewAcceptedTasks, listViewDoneComplete, listViewAllTasks };
 
             Presenter = new MainPagePresenter(this, username);
             materialTabControl1.SelectedIndexChanged += new EventHandler(Presenter.SelectedTabChanged);
@@ -108,6 +109,21 @@ namespace Borelli_BdT.view {
             mRdButUVOposDelta.CheckedChanged += new EventHandler(Presenter.ReLoadUsersTab);
             mRdButUVOallDelta.CheckedChanged += new EventHandler(Presenter.ReLoadUsersTab);
 
+            textBoxSearchAllTasks.TextChanged += new EventHandler(Presenter.ReLoadAllTasks);
+            listViewAllTasks.MouseDoubleClick += new MouseEventHandler(Presenter.DoubleClickDetailsLV);
+            mRdButTSFacceptor.CheckedChanged += new EventHandler(Presenter.ReLoadAllTasks);
+            mRdButTSFrequester.CheckedChanged += new EventHandler(Presenter.ReLoadAllTasks);
+            mRdButTVOrequested.CheckedChanged += new EventHandler(Presenter.ReLoadAllTasks);
+            mRdButTVOaccepted.CheckedChanged += new EventHandler(Presenter.ReLoadAllTasks);
+            mRdButTVOdone.CheckedChanged += new EventHandler(Presenter.ReLoadAllTasks);
+            mRdButTVOall.CheckedChanged += new EventHandler(Presenter.ReLoadAllTasks);
+            mSwitchDateFilter.CheckedChanged += new EventHandler(Presenter.OnSwitchDateTime);
+            dTimePickerStart.ValueChanged += new EventHandler(Presenter.ReLoadAllTasks);
+            dTimePickerEnd.ValueChanged += new EventHandler(Presenter.ReLoadAllTasks);
+            mButtonTselectAll.Click += new EventHandler(Presenter.OnSelectAllTasksWorksList);
+            mButtonTdeselectAll.Click += new EventHandler(Presenter.OnDeselectAllTasksWorksList);
+            listViewTasksWorksFilter.ItemChecked += new ItemCheckedEventHandler(Presenter.ListViewJobsTasksCheckedChanged);
+
             Verdolino = Color.FromArgb(192, 255, 192);
             Arancino = Color.FromArgb(255, 224, 192);
             Giallino = Color.FromArgb(255, 255, 192);
@@ -118,6 +134,7 @@ namespace Borelli_BdT.view {
             LoadLegendPaletteAcceptedTask();
             LoadLegendPaletteRequestedTask();
             LoadLegendPaletteUsers();
+            LoadLegendPaletteAllTasks();
         }
 
 
@@ -298,6 +315,21 @@ namespace Borelli_BdT.view {
                                 break;
                         }
                         break;
+                    case TaskType.All:
+                        lwOutp = listViewAllTasks;
+                        lvi = new ListViewItem(new string[] { tsk[i].Field1, tsk[i].Field3, tsk[i].Field4, tsk[i].Field11, tsk[i].Field5, tsk[i].Field9 }); //id, richiedente, acc, lavoro, data richiesta, ore
+
+                        if (Presenter.IsTaskDone(tsk[i])) {
+                            lvi.BackColor = Verdolino;
+                        } else if (Presenter.IsTaskAccepted(tsk[i])) {
+                            lvi.BackColor = Giallino;
+                        } else {
+                            lvi.BackColor = Arancino;
+                        }
+
+                        lvi.ForeColor = Color.Black;
+
+                        break;
                 }
 
                 if (i == 0)
@@ -356,7 +388,18 @@ namespace Borelli_BdT.view {
                     }
                     listViewWorksUsersFilter.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
                     break;
+                case ViewType.Task:
+                    for (int i = 0; i < input.Count; i++) {
+                        if (i == 0)
+                            listViewTasksWorksFilter.ItemChecked -= Presenter.ListViewJobsTasksCheckedChanged;
 
+                        if (i == listViewTasksWorksFilter.Items.Count - 1)
+                            listViewTasksWorksFilter.ItemChecked += Presenter.ListViewJobsTasksCheckedChanged;
+
+                        listViewTasksWorksFilter.Items.Add(input[i]);
+                    }
+                    listViewTasksWorksFilter.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
+                    break;
             }
 
         }
@@ -374,15 +417,24 @@ namespace Borelli_BdT.view {
                         listViewWorksUsersFilter.Items[i].Checked = check;
                     }
                     break;
+                case ViewType.Task:
+                    for (int i = 0; i < listViewTasksWorksFilter.Items.Count; i++) {
+                        if (i == 0)
+                            listViewTasksWorksFilter.ItemChecked -= Presenter.ListViewJobsTasksCheckedChanged;
 
+                        if (i == listViewTasksWorksFilter.Items.Count - 1)
+                            listViewTasksWorksFilter.ItemChecked += Presenter.ListViewJobsTasksCheckedChanged;
 
+                        listViewTasksWorksFilter.Items[i].Checked = check;
+                    }
+                    break;
             }
         }
 
         public List<string> GetSelectedJobsListInLV(ViewType vType) {
             List<string> outp = new List<string>();
 
-            ListView lv = (vType == ViewType.Users) ? listViewWorksUsersFilter : null /*TODO*/;
+            ListView lv = (vType == ViewType.Users) ? listViewWorksUsersFilter : listViewTasksWorksFilter;
 
             for (int i = 0; i < lv.CheckedItems.Count; i++) {
                 outp.Add(lv.CheckedItems[i].SubItems[0].Text);
@@ -429,6 +481,9 @@ namespace Borelli_BdT.view {
                 case TaskType.Accepted:
                     research = textBoxSearchAcceptedTasks.Text;
                     break;
+                case TaskType.All:
+                    research = textBoxSearchAllTasks.Text;
+                    break;
             }
 
             return research;
@@ -436,6 +491,36 @@ namespace Borelli_BdT.view {
 
         public string GetTextInUsersSearchBar() {
             return textBoxSearchUser.Text;
+        }
+
+        public TaskState GetUsedFilterInAllTasks() {
+            TaskState outp;
+
+            if (mRdButTVOall.Checked) {
+                outp = TaskState.All;
+            } else if (mRdButTVOdone.Checked) {
+                outp = TaskState.Done;
+            } else if (mRdButTVOaccepted.Checked) {
+                outp = TaskState.Accepted;
+            } else {
+                outp = TaskState.Requested;
+            }
+
+            return outp;
+        }
+
+
+
+        public void SetDateTimePickersState(bool state) {
+            dTimePickerStart.Enabled = dTimePickerEnd.Enabled = state;
+        }
+
+        public bool IsSwitchDateTimePickerChecked() {
+            return mSwitchDateFilter.Checked;
+        }
+
+        public DateTime[] GetTaskDateFilterDates() {
+            return new DateTime[] { dTimePickerStart.Value, dTimePickerEnd.Value };
         }
 
 
@@ -451,6 +536,9 @@ namespace Borelli_BdT.view {
                     break;
                 case TaskType.Accepted:
                     outp = mRdButASFjob.Checked ? ResearchOption.Job : ResearchOption.Requester;
+                    break;
+                case TaskType.All:
+                    outp = mRdButTSFacceptor.Checked ? ResearchOption.Acceptor : ResearchOption.Requester;
                     break;
             }
 
@@ -503,6 +591,16 @@ namespace Borelli_BdT.view {
 
             labelDotUsersMinusDelta.ForeColor = Arancino;
             labelDotUsersPlusDelta.ForeColor = Verdolino;
+        }
+
+        public void LoadLegendPaletteAllTasks() {
+            SetLabelFont(labelDotTrequested);
+            SetLabelFont(labelDotTaccepted);
+            SetLabelFont(labelDotTdone);
+
+            labelDotTrequested.ForeColor = Arancino;
+            labelDotTaccepted.ForeColor = Giallino;
+            labelDotTdone.ForeColor = Verdolino;
         }
 
 
