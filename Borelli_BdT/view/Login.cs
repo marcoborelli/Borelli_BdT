@@ -69,7 +69,11 @@ namespace Borelli_BdT.view {
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData) {
             switch (keyData) {
                 case Keys.Enter:
-                    mButtonLogin.PerformClick();
+                    if (!mButtonSignUp.Focused) {
+                        mButtonLogin.PerformClick();
+                    } else {
+                        mButtonSignUp.PerformClick();
+                    }
                     return true;
                 default:
                     return base.ProcessCmdKey(ref msg, keyData);

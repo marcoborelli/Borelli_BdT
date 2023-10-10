@@ -51,3 +51,5 @@ Restano ancora al momento in sospeso alcuni TODO:
 4. Non si possono ancora inserire, in fase di creazione dell'account, nuove zone in cui si è disposti a lavorare;
 5. La possibilità di ordinare le colonne delle varie liste in base al click sulla colonna interessata.
 6. La possibilità di un reset password da parte del segretario nei confronti di un profilo utente. Al momento quando il segretario apre in modifica l'account di un utente può ancora modificarne tutti i dati (da rimuovere).
+7. Tasto logout e scelta da parte dell'utente del tema (per modificarlo manualmente: `utilities/FormManager`: `Init()` e poi ricompilare).
+8. Password criptate.
