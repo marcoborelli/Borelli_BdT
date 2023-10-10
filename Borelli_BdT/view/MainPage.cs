@@ -66,6 +66,12 @@ namespace Borelli_BdT.view {
             MListViews = new List<ListView> { listViewPertinentTasks, listViewPertinentComplete, listViewRequestedTasks, listViewRequestedComplete, listViewAcceptedTasks, listViewDoneComplete, listViewAllTasks };
 
             Presenter = new MainPagePresenter(this, username);
+
+            if (!Presenter.IsSecretary()) {
+                materialTabControl1.TabPages.Remove(tabAcceptUsers);
+                materialTabControl1.TabPages.Remove(tabAllTasks);
+            }
+
             materialTabControl1.SelectedIndexChanged += new EventHandler(Presenter.SelectedTabChanged);
 
             listViewAcceptedTasks.MouseDoubleClick += new MouseEventHandler(Presenter.DoubleClickLWAcceptedTask);
